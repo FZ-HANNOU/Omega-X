@@ -10,7 +10,6 @@ It hosts also relevant alignements to external resources (ontologies/standards).
 The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...
 
 The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). 
-
 ```
 📂 Omega-X Ontology 
 │
