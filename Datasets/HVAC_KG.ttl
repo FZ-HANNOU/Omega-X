@@ -1,0 +1,152 @@
+@prefix omegax: <https://w3id.org/omega-x/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix bot: <http://example.org/bot#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix schema: <http://schema.org/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
+@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix sched: <https://w3id.org/omega-x/SchedulingOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@prefix quality: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix flex: <https://w3id.org/omega-x/FlexibilityOntology/> .
+@prefix maia: <https://w3id.org/omega-x/Maia/HVAC/> .
+
+
+#----property
+prop:UseStatus rdfs:subClassOf prop:Property ; prop:isEvaluatedIn prop:UseStatusCategory.
+prop:UseStatusCategory rdfs:subClassOf prop:Category.
+prop:OnStatus a prop:UseStatusCategory , ets:PropertyValue.
+prop:OffStatus a prop:UseStatusCategory ,  ets:PropertyValue.
+#---HVAC Use status is the property of use status that tracks values of specific HVAC system use. Data are described in both modes: historical and scheduled. 
+maia:HVACUseStatus a prop:UseStatus.
+
+#----HVAC Historical consumption
+#---The time series
+maia:HVACHistoricaldata a ets:TimeSeries, ets:ValueSet, eds:EnergyDataSet ; 
+    ets:temporalContext maia:MaiaCoverage ; 
+    eds:includesTechnicalContext maia:HVACHistoricalTC ; 
+    eds:isExchanedIn maia:HVACHistoricalBC ; 
+    ets:hasStep [time:numericDuration "15"^^xsd:decimal ;
+    time:unitType time:unitMinute ;
+  ] ; 
+   qual:isProvidedUsing qual:Metering .
+
+#---Technical Context
+maia:HVACHistoricalTC a eds:TechnicalContext ; 
+               eds:hasEvaluationPoint maia:SM345 .
+maia:SM345 a eds:EvaluationPoint, seas:SmartMeter ; 
+    infra:hasLocation maia:CoberturaVerde . 
+
+maia:CoberturaVerde a schema:PostalAddress ; 
+                    schema:addressCountry "portugal" ; 
+                    schema:addressRegion "Maia" ; 
+                    geo:lat "41.234158" ;
+                    geo:long "-8.623050".
+
+#---Business Context
+maia:HVACHistoricalBC a eds:ExchangeContext ;
+                        eds:fromSource role:MaiaMunicipality ; 
+                        eds:toTarget role:Tecnalia.
+
+role:MaiaMunicipality a role:MarketParticipant ; role:plays role:DataProvider.
+role:Tecnalia a role:MarketParticipant ; role:plays role:ServiceProvider.
+
+maia:MaiaCoverage a time:Interval ;
+                    time:hasBeginning  [a time:Instant ; time:inXSDDateTimeStamp  "2024-01-01T00:00:00"^^xsd:dateTimeStamp ] ; 
+                    time:hasDurationDescription [ a time:DurationDescription ; time:months  "1"^^xsd:integrer] .
+
+
+#--------HVAC Time Series with scheduled data
+maia:HVACScheduledData a ets:TimeSeries, ets:ValueSet, eds:EnergyDataSet ; 
+    ets:temporalContext maia:MaiaCoverage ; 
+    eds:includesTechnicalContext maia:HVACScheduledTC ; 
+    eds:isExchanedIn maia:HVACScheduledBC ;
+    ets:hasStep [time:numericDuration "15"^^xsd:decimal ;
+    time:unitType time:unitMinute ;
+  ] ; 
+  qual:isProvidedUsing qual:Scheduling .
+
+maia:HVACFlexService a flex:EvaluationPoint, flex:FlexibilityService ;
+     flex:isProvidedBy maia:FlexOperator . 
+maia:FlexOperator a role:MarketParticipant.
+maia:HVACScheduledTC a eds:TechnicalContext ; 
+               eds:hasEvaluationPoint maia:SM345 .
+
+maia:HVACScheduledBC a eds:ExchangeContext. 
+
+#----HVAC Historical Time Series Data Points
+maia:HistoricalDataPoint1 a ets:DataPoint;
+  ets:hasDataValue prop:OnStatus;
+  ets:isElementOf maia:HVACHistoricaldata ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:00:00"^^xsd:dateTimeStamp.
+
+maia:HistoricalDataPoint2 a ets:DataPoint;
+  ets:hasDataValue prop:OffStatus;
+  ets:isElementOf maia:HVACHistoricaldata ;
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:15:00"^^xsd:dateTimeStamp.
+
+maia:HistoricalDataPoint3 a ets:DataPoint;
+  ets:hasDataValue prop:OnStatus;
+  ets:isElementOf maia:HVACHistoricaldata ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:30:00"^^xsd:dateTimeStamp.
+
+maia:HistoricalDataPoint4 a ets:DataPoint;
+  ets:hasDataValue prop:OffStatus;
+  ets:isElementOf maia:HVACHistoricaldata ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:45:00"^^xsd:dateTimeStamp.
+
+maia:HistoricalDataPoint5 a ets:DataPoint;
+  ets:hasDataValue prop:OnStatus;
+  ets:isElementOf maia:HVACHistoricaldata ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T01:00:00"^^xsd:dateTimeStamp.
+
+#----HVAC Scheduled Time Series Data Points
+
+maia:ScheduledDataPoint1 a ets:DataPoint;
+  ets:hasDataValue prop:OffStatus;
+  ets:isElementOf maia:HVACScheduledData ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:00:00"^^xsd:dateTimeStamp.
+
+maia:ScheduledDataPoint2 a ets:DataPoint;
+  ets:hasDataValue prop:OnStatus;
+  ets:isElementOf maia:HVACScheduledData ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:15:00"^^xsd:dateTimeStamp.
+
+maia:ScheduledDataPoint3 a ets:DataPoint;
+  ets:hasDataValue prop:OffStatus;
+  ets:isElementOf maia:HVACScheduledData ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:30:00"^^xsd:dateTimeStamp.
+
+maia:ScheduledDataPoint4 a ets:DataPoint;
+  ets:hasDataValue prop:OnStatus;
+  ets:isElementOf maia:HVACScheduledData ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T00:45:00"^^xsd:dateTimeStamp.
+
+maia:ScheduledDataPoint5 a ets:DataPoint;
+  ets:hasDataValue prop:OffStatus;
+  ets:isElementOf maia:HVACScheduledData ; 
+  prop:isAboutProperty maia:HVACUseStatus ; 
+  ets:dataTime "2024-01-01T01:00:00"^^xsd:dateTimeStamp.

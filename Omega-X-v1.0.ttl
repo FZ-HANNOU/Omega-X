@@ -1,0 +1,68 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix schema: <http://schema.org/>.
+@prefix omegax: <https://w3id.org/omega-x/> .
+
+<https://w3id.org/omega-x/> a owl:Ontology , voaf:Vocabulary;
+                                             owl:versionIRI <https://w3id.org/omega-x-1.0/> ;
+                                             dcterms:description """ Omega-X ontology """@en ; 
+                                             dcterms:creator <https://omega-x.eu/> ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Bruno Traverson"] ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Henon Lambaro"] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Cyril Effantin"] ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
+                                             
+                                             dcterms:license <https://opensource.org/license/mit/> ;
+                                             dcterms:created "2024-02-02"^^xsd:date ;
+                                             dcterms:modified "2024-05-04"^^xsd:date;
+                                             dcterms:issued "2024-05-06"^^xsd:date;
+                                             dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+                                             dcterms:title "Omega-X ontology"@en ;
+                                             vann:preferredNamespacePrefix "omegax" ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/> ;
+                                             rdfs:label "Omega-X Ontology"@en ;
+                                             owl:versionInfo "1.0" ; 
+                                             owl:imports <https://w3id.org/omega-x/EventTimeSeriesOntology> , 
+                                                         <https://w3id.org/omega-x/EnergyDataSetOntology> ,
+                                                         <https://w3id.org/omega-x/InfrastructureOntology> ,
+                                                         <https://w3id.org/omega-x/PropertyOntology> ,
+                                                         <https://w3id.org/omega-x/QualityOntology> ,
+                                                         <https://w3id.org/omega-x/SchedulingOntology> ,
+                                                         <https://w3id.org/omega-x/EnergyRoleOntology> ,
+                                                         <https://w3id.org/omega-x/EUMEDMeteringOntology> ,
+                                                         <https://w3id.org/omega-x/FlexibilityOntology> ,
+                                                         <https://w3id.org/omega-x/RenewableSolarOntology> ,
+                                                         <https://w3id.org/omega-x/ElectromobilityOntology> ,
+                                                         <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology> .
+
+#---------------------------------------------------------------
+#    Annotation properties
+#--------------------------------------------------------------
+
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+owl:maxQualifiedCardinality a owl:AnnotationProperty .
+owl:qualifiedCardinality a owl:AnnotationProperty .
+vs:term_status a owl:AnnotationProperty .
+schema:domainIncludes a owl:AnnotationProperty .
+schema:rangeIncludes a owl:AnnotationProperty .
+time:TemporalEntity a owl:Class .

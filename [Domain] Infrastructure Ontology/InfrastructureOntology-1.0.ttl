@@ -1,0 +1,160 @@
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix un: <https://qudt.org/vocab/unit#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@prefix seas:<https://w3id.org/seas/>.
+@prefix prop:<https://w3id.org/omega-x/PropertyOntology/>.
+@prefix eds:<https://w3id.org/omega-x/EnergyDataSetOntology/>.
+@prefix bot:<https://w3id.org/bot#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+<https://w3id.org/omega-x/InfrastructureOntology> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/InfrastructureOntology-1.0> ;
+                                                   dcterms:creator <https://omega-x.eu/> ;
+                                                  dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
+                                                  dcterms:contributor [a foaf:Person ; foaf:name "Cyril Effantin" ] ;
+                                                  dcterms:created "2024-01-22";
+                                                  dcterms:issued "2024-03-06";
+                                                  dcterms:description "Purpose: Contextual information about shared data sets in an Energy Data Space should include information about infrastructure that produced those data. Scope: Infrastructure ontology provides OWL classes and properties to allow infrastructure of an energy system to be described. Description: This Infrastructure Ontology helps to define infrastructure components in various domains such as photovoltaic plants, electromobility, etc. It primarily comprises interconnected systems that are have attributes that are set in a datsheet or configured.."@en ;
+                                                  dcterms:license <https://opensource.org/license/mit/> ;
+                                                  dcterms:modified "2024-05-03"@en ;
+                                                  dcterms:title " Infrastructure Ontology"@en ;
+                                                  vann:preferredNamespacePrefix "infra" ;
+                                                  vann:preferredNamespaceUri <https://w3id.org/omega-x/InfrastructureOntology/> ;
+                                                  rdfs:label "Infrastructure Ontology"@en ;
+                                                  owl:versionInfo "v1.0" .
+
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+infra:Equipment rdf:type owl:Class ;
+                                           rdfs:comment "An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station."@en ;
+                                           rdfs:subClassOf infra:System;
+                                           rdfs:label "Equipment"@en ;
+                                            rdfs:isDefinedBy infra:.
+
+infra:Site rdf:type owl:Class ;
+                                           rdfs:comment "A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool."@en ;
+                                           rdfs:subClassOf infra:System;
+                                           rdfs:label "Site"@en;
+                                            rdfs:isDefinedBy infra:.
+
+infra:System rdf:type owl:Class ;
+                                           rdfs:subClassOf seas:System , eds:EvaluationPoint, 
+                                          [ rdf:type owl:Restriction ;
+                                            owl:onProperty infra:hasLocation ;
+                                            owl:someValuesFrom bot:Zone
+                                         ] ,
+                                         [ rdf:type owl:Restriction ;
+                                           owl:onProperty infra:hasSystemConfiguration ;
+                                           owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                           owl:onClass infra:SystemConfiguration
+                                         ] ;
+                                         rdfs:label "System"@en ;
+                                         rdfs:comment "A system may be an equipment, a site, or any other physical or virtual system. A system that is neither an equipment nor a site may be, for instance, an electric grid or a data analytics service available on a Dataspace."@en ;
+                                         rdfs:isDefinedBy infra: .
+             
+infra:SystemConfiguration rdf:type owl:Class ;
+                                         rdfs:comment "A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet."@en ;
+                                         rdfs:label "System Configuration"@en ; 
+                                         rdfs:isDefinedBy infra:.
+
+                                  
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+infra:isConnected rdf:type owl:ObjectProperty ;
+                                              owl:equivalentProperty seas:ConnectedTo.
+
+
+infra:isConnectedTo rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf infra:isConnected;
+                                              owl:inverseOf infra:isConnectedFrom;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range infra:System ;
+                                              rdfs:comment "This property permits to create the simplified topology link toward a system in downstream."@en ;
+                                              rdfs:label "is connected to"@en ;
+                                               rdfs:isDefinedBy infra:.
+
+infra:isConnectedFrom rdf:type owl:ObjectProperty ;
+                                              rdfs:subPropertyOf infra:isConnected;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range infra:System ;
+                                              rdfs:comment "This property permits to create the simplified topology link toward an equipment in upstream."@en ;
+                                              rdfs:label "is connected from"@en ;
+                                               rdfs:isDefinedBy infra:.
+
+
+infra:consistsOf rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range infra:System ;
+                                              rdfs:comment "This property permits to link a system to its components."@en ;
+                                              rdfs:label "consists of "@en ;
+                                               rdfs:isDefinedBy infra:.
+infra:isPartOf rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf infra:consistsOf ;
+                                              rdfs:domain infra:System ;
+                                            rdfs:range infra:System ;
+                                             rdfs:comment "This property links a system component to the system it is part of."@en ;
+                                               rdfs:label "is part of"@en ;
+                                            rdfs:isDefinedBy infra:.
+infra:hasSystemProperty rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range prop:Property ;
+                                              rdfs:comment "This property permits to link a system to its datasheet attributes or configured parameters."@en ;
+                                              rdfs:label "has system property"@en ;
+                                               rdfs:isDefinedBy infra:.
+
+infra:hasLocation rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:System ;
+                                              rdfs:comment "This property permits to link a system to its location."@en ;
+                                              rdfs:label "has location"@en ;
+                                              rdfs:isDefinedBy infra:.
+
+infra:hasSystemConfiguration rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range infra:SystemConfiguration ;
+                                              rdfs:comment "This property permits to link a system to its configuration."@en ;
+                                              rdfs:label "has system configuration"@en ;
+                                              rdfs:isDefinedBy infra:.
+infra:isSystemConfigurationOf rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf infra:hasSystemConfiguration;
+                                              rdfs:domain infra:SystemConfiguration ;
+                                              rdfs:range infra:System ;
+                                              rdfs:comment "This property permits to link a system configuration to its corresponding system."@en ;
+                                              rdfs:label "is system configuration of"@en ;
+                                              rdfs:isDefinedBy infra:.
+infra:includesProperty rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:SystemConfiguration ;
+                                              rdfs:range prop:Property ;
+                                              rdfs:comment "This property permits to link a system configuration to its properties."@en ;
+                                              rdfs:label "includes property"@en ;
+                                              rdfs:isDefinedBy infra:.
+                                    
+infra:isAssociatedWith rdf:type owl:ObjectProperty ;
+                                              rdfs:domain infra:System ;
+                                              rdfs:range role:MarketParticipant ;
+                                              rdfs:comment "This property permits to associate a system with its market participant."@en ;
+                                              rdfs:label "is associated with"@en ;
+                                              rdfs:isDefinedBy infra:.                                             
+#--------------------------------------------------------------
+#    Datatype properties
+#---------------------------------------------------------------
+
+
+infra:identifier rdf:type owl:DatatypeProperty ;
+                                              rdfs:comment "The identifier of a system."@en ;
+                                              rdfs:label "identifier"@en ;
+                                              rdfs:isDefinedBy infra:.

@@ -1,0 +1,29 @@
+PREFIX ets: <https://w3id.org/omega-x/ets/>
+PREFIX eds: <https://w3id.org/omega-x/eds/>
+PREFIX schema: <http://schema.org/>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX flex: <https://w3id.org/omega-x/flex/>
+PREFIX infra: <https://w3id.org/omega-x/infra/>
+PREFIX qual: <https://w3id.org/omega-x/qual/>
+
+SELECT ?timestamp ?historicalValue ?scheduledValue
+WHERE {
+  
+  ?hvacHistorical ets:isComposedOf ?dataPointHistorical .
+  ?dataPointHistorical ets:aboutProperty ?propertyHistorical .
+  ?propertyHistorical a flex:HVACConsumptionHistory .
+  ?dataPointHistorical time:inXSDDateTime ?timestamp .
+  ?dataPointHistorical schema:value ?historicalValue .
+  ?dataPointHistorical qual:hasQuality ?qualityHistorical .
+  ?qualityHistorical qual:MeasuringMethod "Historical" .
+
+  
+  ?hvacScheduled ets:isComposedOf ?dataPointScheduled .
+  ?dataPointScheduled ets:aboutProperty ?propertyScheduled .
+  ?propertyScheduled a flex:HVACConsumptionHistory .
+  ?dataPointScheduled time:inXSDDateTime ?timestamp .
+  ?dataPointScheduled schema:value ?scheduledValue .
+  ?dataPointScheduled qual:hasQuality ?qualityScheduled .
+  ?qualityScheduled qual:MeasuringMethod "Scheduled" .
+}

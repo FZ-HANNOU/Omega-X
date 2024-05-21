@@ -1,0 +1,131 @@
+@prefix : <https://w3id.org/omega-x/SchedulingOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix unit: <https://qudt.org/vocab/unit/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
+@prefix sched: <https://w3id.org/omega-x/SchedulingOntology#> .
+@prefix omegax: <https://w3id.org/omega-x/> .
+@prefix schema: <http://schema.org/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/omega-x/SchedulingOntology/> .
+
+<https://w3id.org/omega-x/SchedulingOntology> rdf:type owl:Ontology ;                                              
+                                               dcterms:creator <https://omega-x.eu/> ;
+                                               dcat:contactPoint "henon.lamboro@trialog.com" ;
+                                               dcterms:contributor [a foaf:Person ; foaf:name "Henon M. Lamboro" ] ; 
+                                               dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ;
+                                               dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
+                                               dcterms:description "This Scheduling Ontology helps to represent a schedule, which organizes and arranges events or activities according to specific dates, times, and other relevant parameters."@en ;
+                                               dcterms:issued "2024-15-03"^^xsd:date ;
+                                               dcterms:license <https://opensource.org/license/mit/> ;
+                                               dcterms:rights "Copyright © Omega-X Consortium 2022-2025" 
+                                               dcterms:modified "2024-29-04"@en ;
+                                               dcterms:title "Scheduling Ontology"@en ;
+                                               vann:preferredNamespacePrefix "sched" ;
+                                               vann:preferredNamespaceUri <https://w3id.org/omega-x/SchedulingOntology/> ;
+                                               rdfs:label "Scheduling Ontology"@en ;
+                                               owl:versionIRI <https://w3id.org/omega-x/SchedulingOntology-0.2>;
+                                               owl:versionInfo "v0.2" .
+
+
+#################################################################
+#    Datatype
+#################################################################
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+###  https://w3id.org/omega-x/SchedulingOntology#cron
+sched:cron rdf:type rdfs:Datatype ;
+           owl:equivalentClass [ rdf:type rdfs:Datatype ;
+                                 owl:onDatatype xsd:string ;
+                                 owl:withRestrictions ( [ xsd:pattern "@(annually|yearly|monthly|weekly|daily|hourly|reboot))|(@every (\\d+(ns|us|µs|ms|s|m|h))+)|((((\\d+,)+\\d+|(\\d+(\\/|-)\\d+)|\\d+|\\*) ?){5,7})"
+                                                        ]
+                                                      )
+                               ] .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/omega-x/SchedulingOntology#hasCreator
+sched:hasCreator rdf:type owl:ObjectProperty ;
+                 rdfs:domain sched:Schedule ;
+                 rdfs:range role:MarketParticipant .
+
+###  https://w3id.org/omega-x/SchedulingOntology#isAbout
+sched:isAbout rdf:type owl:ObjectProperty ;
+              rdfs:domain sched:Schedule ;
+              rdfs:range prop:Property .
+
+###  https://w3id.org/omega-x/SchedulingOntology#isDescribedBy
+sched:isDescribedBy rdf:type owl:ObjectProperty ;
+                    rdfs:domain sched:Schedule ;
+                    rdfs:range ets:ValueSet .
+
+###  https://w3id.org/omega-x/SchedulingOntology#isScheduledFor
+sched:isScheduledFor rdf:type owl:ObjectProperty ;
+                     rdfs:domain sched:Schedule ;
+                     rdfs:range infra:System .
+
+###  https://w3id.org/omega-x/SchedulingOntology#isValidDuring
+sched:isValidDuring rdf:type owl:ObjectProperty ;
+                    rdfs:domain sched:Schedule ;
+                    rdfs:range time:DateTimeInterval .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/omega-x/SchedulingOntology#created
+sched:createdOn rdf:type owl:DatatypeProperty ;
+              rdfs:domain sched:Schedule ;
+              rdfs:range xsd:dateTime .
+
+###  https://w3id.org/omega-x/SchedulingOntology#hasPeriodicity
+sched:hasPeriodicity rdf:type owl:DatatypeProperty ;
+                     rdfs:domain sched:Schedule ;
+                     rdfs:range sched:cron .
+
+###  https://w3id.org/omega-x/SchedulingOntology#identifier
+sched:identifier rdf:type owl:DatatypeProperty ;
+                 rdfs:domain sched:Schedule ;
+                 rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/omega-x/SchedulingOntology#Schedule
+sched:Schedule rdf:type owl:Class ;
+               rdfs:comment "A schedule is a plan of performing a specific task. In the energy domain, schedule can be used to manage energy consumption and production activities to optimize efficiency "@en ;
+               rdfs:label "schedule"@en .
+
+###  http://www.w3.org/2006/time#DateTimeInterval
+time:DateTimeInterval rdf:type owl:Class .
+
+###  https://w3id.org/omega-x/EnergyRoleOntology/MarketParticipant
+role:MarketParticipant rdf:type owl:Class .
+
+###  https://w3id.org/omega-x/EventTimeSeriesOntology/ValueSet
+ets:ValueSet rdf:type owl:Class .
+
+###  https://w3id.org/omega-x/InfrastructureOntology/System
+infra:System rdf:type owl:Class .
+
+###  https://w3id.org/omega-x/PropertyOntology/Property
+prop:Property rdf:type owl:Class .

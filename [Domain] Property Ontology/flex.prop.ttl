@@ -1,0 +1,48 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix schema: <http://schema.org/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@base <https://w3id.org/omega-x/PropertyOntology/> .
+
+
+# Quantitative Properties
+
+# Voltage
+prop:Voltage rdfs:subClassOf prop:Property ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Voltage"@en.
+
+# Irradiance
+prop:irradiance rdfs:subClassOf prop:Property ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Irradiance"@en.
+
+# Energy Cost
+prop:EnergyCost rdfs:subClassOf prop:Property ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Energy Cost"@en.
+
+# Temperature
+prop:Temperature rdfs:subClassOf prop:Property ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Temperature"@en.
+
+# Air Temperature
+prop:AirTemperature rdfs:subClassOf prop:Temperature ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Air Temperature"@en.
+
+# System Internal Temperature
+prop:SystemInternalTemperature rdfs:subClassOf prop:Property ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "System Internal Temperature"@en.

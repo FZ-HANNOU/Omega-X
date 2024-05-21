@@ -1,0 +1,175 @@
+# # # # # # # # # # # # # Knoweldge Graph of the historical Meteo Maia data set # # # # # # # # # # # # # 
+
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rfds: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix schema: <http://schema.org/> .
+# # # # # # # # # # # # # # 
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix qudt: <http://qudt.org/schema/qudt/Unit/> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix seas: <https://w3id.org/seas/> .
+# # # # # # # # # # # # # # 
+@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+@prefix solar: <https://w3id.org/omega-x/RenewableSolarOntology/> . 
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> . 
+@prefix maia: <https://w3id.org/omega-x/Maia/Meteo/> .
+
+#Location of Maia weather station   
+maia:CoberturaVerde a schema:PostalAddress ; 
+                    schema:addressCountry "Portugal" ; 
+                    schema:addressRegion "Maia" ; 
+                    geo:lat "41.234158" ;
+                    geo:long "-8.623050".
+                    
+#Maia time series temporal coverage
+maia:MaiaMeteoTemporalCoverage a time:Interval ;
+                    time:hasBeginning  [a time:Instant ; time:inXSDDateTimeStamp  "2023-01-01T00:00:00"^^xsd:dateTimeStamp ] ; 
+                    time:hasDurationDescription [ a time:DurationDescription ; time:years  "1"^^xsd:integrer] .
+
+#Maia Weather station
+maia:ATMOS41 a eds:EvaluationPoint , infra:System, solar:WeatherStation;
+             infra:hasLocation maia:CoberturaVerde . 
+
+#Technical Context    
+maia:MaiaMeteoTC a eds:TechnicalContext ; 
+               eds:includesEvaluationPoint maia:ATMOS41 .
+
+#Exhange Context               
+maia:MaiaMeteoExC a eds:ExchangeContext ; eds:fromSource role:MaiaMunicipality .
+role:MaiaMunicipality a role:MarketParticipant.
+
+# Maia Meteo Properties
+maia:MeteoTemperatureProperty a prop:TemperatureProperty.
+maia:MeteoPressureProperty a prop:AirPressure.
+maia:MeteoRelativeHumidity a prop:RelativeHumidity.
+maia:MeteoGlobalIrradiance a prop:MeteoGlobalIrradiance.
+
+#Maia energy data set which is a time series  
+maia:MaiaMeteoTS a ets:TimeSeries, ets:ValueSet, eds:EnergyDataSet ; 
+                   qual:isProvidedUsing qual:Observation;
+                   ets:hasTemporalContext maia:MaiaMeteoTemporalCoverage; 
+                   eds:includesTechnicalContext maia:MaiaMeteoTC ; 
+                   eds:includesBusinessContext maia:MaiaMeteoBC . 
+    
+#Data collections of the Maia meteo time series. Each row of the CSV file is a data collection which has 4 data points.
+
+#Data collection 1 of the Maia meteo Time series. 
+<maia:DataCollection/1> a ets:DataCollection ;
+                        ets:collectionTime "15/08/2023 01:00" ;
+                        ets:collectionValuesCount "4"^^xsd:integer;
+                        ets:isElementOf maia:MaiaMeteoTS.
+                        
+#The first data point of the data collection 1 of the Maia meteo time series.
+<maia:DataPoint/temperature/1> a ets:DataPoint ;
+                               ets:belongsTo <maia:DataCollection/1> ;
+                               ets:hasDataValue <maia:DataValue/DataPoint/temperature/1>;
+                               ets:rank "1"^^xsd:integer; .
+<maia:DataValue/DataPoint/temperature/1> a ets:PropertyValue;
+                                         ets:value "18.8"^^xsd:decimal ;
+                                         prop:isAboutProperty maia:MeteoTemperatureProperty;
+                                         prop:hasUnit qudt:DEG_C.
+
+
+
+#The second data point of the data collection 1 of the Maia meteo time series.
+<maia:DataPoint/pressure/1> a ets:DataPoint ;
+                            ets:belongsTo <maia:DataCollection/1> ;
+                            ets:hasDataValue <maia:DataValue/DataPoint/pressure/1> ;
+                            ets:rank "2"^^xsd:integer.
+                            
+<maia:DataValue/DataPoint/pressure/1> a ets:PropertyValue;
+                                      ets:value "100.5"^^xsd:decimal ;
+                                      prop:isAboutProperty maia:MeteoPressureProperty;
+                                      prop:hasUnit qudt:PA.
+   
+    
+#The third data point of the data collection 1 of the Maia meteo time series.                        
+<maia:DataPoint/humidity/1> a ets:DataPoint ;
+                           ets:belongsTo <maia:DataCollection/1> ;
+                           ets:hasDataValue <maia:DataValue/DataPoint/humidity/1>;
+                           ets:rank "3"^^xsd:integer .
+
+<maia:DataValue/DataPoint/humidity/1> a ets:PropertyValue;
+                                      ets:value "90"^^xsd:string ;
+                                      prop:isAboutProperty maia:MeteoRelativeHumidity;
+                                      prop:hasUnit  qudt:PERCENT.
+    
+#The fourth data point of the data collection 1 of the Maia meteo time series.    
+<maia:DataPoint/irradiance/1> a ets:DataPoint ;
+                               ets:belongsTo <maia:DataCollection/1> ;
+                               ets:hasDataValue  <maia:DataValue/DataPoint/irradiance/1> ;
+                               ets:rank "4"^^xsd:integer .
+<maia:DataValue/DataPoint/irradiance/1>  a ets:PropertyValue;
+                                         ets:value "0"^^xsd:string ;
+                                         prop:isAboutProperty maia:MeteoGlobalIrradiance;
+                                         prop:hasUnit  qudt:W-PER-M2.
+                                         
+                                         
+#Data collection 2 of the Maia meteo Time series. 
+<maia:DataCollection/2> a ets:DataCollection ;
+                        ets:collectionTime "15/08/2023 01:15" ;
+                        ets:collectionValuesCount "4"^^xsd:integer;
+                        ets:isElementOf maia:MaiaMeteoTS.
+                        
+#The first data point of the data collection 2 of the Maia meteo time series.
+<maia:DataPoint/temperature/2> a ets:DataPoint ;
+                               ets:belongsTo <maia:DataCollection/2> ;
+                               ets:hasDataValue <maia:DataValue/DataPoint/temperature/2>;
+                               ets:rank "1"^^xsd:integer; .
+<maia:DataValue/DataPoint/temperature/2> a ets:PropertyValue;
+                                         ets:value "18.7"^^xsd:decimal ;
+                                         prop:isAboutProperty maia:MeteoTemperatureProperty;
+                                         prop:hasUnit qudt:DEG_C.
+
+
+#The second data point of the data collection 2 of the Maia meteo time series.
+<maia:DataPoint/pressure/2> a ets:DataPoint ;
+                            ets:belongsTo <maia:DataCollection/2> ;
+                            ets:hasDataValue <maia:DataValue/DataPoint/pressure/2> ;
+                            ets:rank "2"^^xsd:integer.
+                            
+<maia:DataValue/DataPoint/pressure/2> a ets:PropertyValue;
+                                      ets:value "100.5"^^xsd:decimal ;
+                                      prop:isAboutProperty maia:MeteoPressureProperty;
+                                      prop:hasUnit qudt:PA.
+   
+    
+#The third data point of the data collection 2 of the Maia meteo time series.                        
+<maia:DataPoint/humidity/2> a ets:DataPoint ;
+                           ets:belongsTo <maia:DataCollection/2> ;
+                           ets:hasDataValue <maia:DataValue/DataPoint/humidity/2>;
+                           ets:rank "3"^^xsd:integer .
+
+<maia:DataValue/DataPoint/humidity/2> a ets:PropertyValue;
+                                      ets:value "90"^^xsd:string ;
+                                      prop:isAboutProperty maia:MeteoRelativeHumidity;
+                                      prop:hasUnit  qudt:PERCENT.
+    
+#The fourth data point of the data collection 2 of the Maia meteo time series.    
+<maia:DataPoint/irradiance/2> a ets:DataPoint ;
+                               ets:belongsTo <maia:DataCollection/2> ;
+                               ets:hasDataValue  <maia:DataValue/DataPoint/irradiance/2> ;
+                               ets:rank "4"^^xsd:integer .
+<maia:DataValue/DataPoint/irradiance/2>  a ets:PropertyValue;
+                                         ets:value "0"^^xsd:string ;
+                                         prop:isAboutProperty maia:MeteoGlobalIrradiance;
+                                         prop:hasUnit  qudt:W-PER-M2.                                         
+
+    
+
+    
+
+                        
+

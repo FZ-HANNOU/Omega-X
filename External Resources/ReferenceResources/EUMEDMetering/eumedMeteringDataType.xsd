@@ -1,0 +1,2758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xsd:simpleType name="AccumulationKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of accumulation behaviour for read / measured values from individual end points.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not applicable, or implied by the unit of measure.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="bulkQuantity">
+				<xsd:annotation>
+					<xsd:documentation>A value from a register which represents the bulk quantity of a commodity. This quantity is computed as the integral of the commodity usage rate. This value is typically used as the basis for the dial reading at the meter, and as a result, will roll over upon reaching a maximum dial value. 
+Note 1: With the metering system, the roll-over behaviour typically implies a roll-under behavior so that the value presented is always a positive value (e.g. unsigned integer or positive decimal.) However, when communicating data between enterprise applications a negative value might occur in a case such as net metering.
+Note 2: A 'bulkQuantity' refers primarily to the dial reading and not the consumption over a specific period of time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="continuousCumulative">
+				<xsd:annotation>
+					<xsd:documentation>The sum of the previous billing period values and the present period value.
+Note: 'continuousCumulative' is commonly used in conjunction with 'demand', and it  would represent the cumulative sum of the previous billing period maximum demand values (as occurring with each demand reset) summed with the present period maximum demand value (which has yet to be reset.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cumulative">
+				<xsd:annotation>
+					<xsd:documentation>The sum of the previous billing period values.
+Note: 'cumulative' is commonly used in conjunction with “demand.” Each demand reset causes the maximum demand value for the present billing period (since the last demand reset) to accumulate as an accumulative total of all maximum demands. So instead of 'zeroing' the demand register, a demand reset has the effect of adding the present maximum demand to this accumulating total. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="deltaData">
+				<xsd:annotation>
+					<xsd:documentation>The difference between the value at the end of the prescribed interval and the beginning of the interval. This is used for incremental interval data. 
+Note: One common application would be for load profile data, another use might be to report the number of events within an interval (such as the number of equipment energisations within the specified period of time.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="indicating">
+				<xsd:annotation>
+					<xsd:documentation>As if a needle is swung out on the meter face to a value to indicate the current value.
+Note: An 'indicating' value is typically measured over hundreds of milliseconds or greater, or may imply a “pusher” mechanism to capture a value. Compare this to 'instantaneous' which is measured over a shorter period of time.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="summation">
+				<xsd:annotation>
+					<xsd:documentation>A form of accumulation which is selective with respect to time. 
+Note : 'summation' could be considered a specialisation of 'bulkQuantity' as it selectively accumulates pulses over a timing pattern (while 'bulkQuantity' accumulates pulses all of the time).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="timeDelay">
+				<xsd:annotation>
+					<xsd:documentation>A form of computation which introduces a time delay characteristic to the data value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="instantaneous">
+				<xsd:annotation>
+					<xsd:documentation>Typically measured over the fastest period of time allowed by the definition of the metric (usually milliseconds or tens of milliseconds.)
+Note: 'instantaneous' was moved to attribute #3 in Ed.2 of IEC 61968-9, from attribute #1 in Ed.1 of IEC 61968-9.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="latchingQuantity">
+				<xsd:annotation>
+					<xsd:documentation>When this description is applied to a metered value, it implies that the value is a time-independent cumulative quantity much like a 'bulkQuantity', except that it latches upon the maximum value upon reaching that value. Any additional accumulation (positive or negative) is discarded until a reset occurs. 
+Note: A 'latchingQuantity' may also occur in the downward direction – upon reaching a minimum value. The terms 'maximum' or 'minimum' (for 'aggregate') will usually be included when this type of accumulation behaviour is present. 
+When this description is applied to an encoded value (UOM= 'Code'), it implies that the value has one or more bits which are latching. The condition that caused the bit to be set may have long since evaporated.
+In either case, the timestamp that accompanies the value may not coincide with the moment the value was initially set.
+In both cases a system will need to perform an operation to clear the latched value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="boundedQuantity">
+				<xsd:annotation>
+					<xsd:documentation>A time-independent cumulative quantity much like a 'bulkQuantity' or a 'latchingQuantity', except that the accumulation stops at the maximum or minimum values. When the maximum is reached, any additional positive accumulation is discarded, but negative accumulation may be accepted (thus lowering the counter.) Likewise, when the negative bound is reached, any additional negative accumulation is discarded, but positive accumulation is accepted (thus increasing the counter.) </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="AggregateKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of aggregation for read / measured values from multiple end points.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not applicable.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="average">
+				<xsd:annotation>
+					<xsd:documentation>The value represents average.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="excess">
+				<xsd:annotation>
+					<xsd:documentation>The value represents an amount over which a threshold was exceeded.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="highThreshold">
+				<xsd:annotation>
+					<xsd:documentation>The value represents a programmed high threshold. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lowThreshold">
+				<xsd:annotation>
+					<xsd:documentation>The value represents a programmed low threshold. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="maximum">
+				<xsd:annotation>
+					<xsd:documentation>The highest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="minimum">
+				<xsd:annotation>
+					<xsd:documentation>The smallest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="nominal">
+				<xsd:annotation>
+					<xsd:documentation>The nominal value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="normal">
+				<xsd:annotation>
+					<xsd:documentation>The normal value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="secondMaximum">
+				<xsd:annotation>
+					<xsd:documentation>The second highest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="secondMinimum">
+				<xsd:annotation>
+					<xsd:documentation>The second smallest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="thirdMaximum">
+				<xsd:annotation>
+					<xsd:documentation>The third highest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fourthMaximum">
+				<xsd:annotation>
+					<xsd:documentation>The fourth highest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fifthMaximum">
+				<xsd:annotation>
+					<xsd:documentation>The fifth highest value observed.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sum">
+				<xsd:annotation>
+					<xsd:documentation>The accumulated sum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CommodityKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of commodity being measured.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not Applicable</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="electricitySecondaryMetered">
+				<xsd:annotation>
+					<xsd:documentation>All types of metered quantities. This type of reading comes from the meter and represents a “secondary” metered value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="electricityPrimaryMetered">
+				<xsd:annotation>
+					<xsd:documentation>It is possible for a meter to be outfitted with an external VT and/or CT. The meter might not be aware of these devices, and the display not compensate for their presence. Ultimately, when these scalars are applied, the value that represents the service value is called the “primary metered” value. The “index” in sub-category 3 mirrors those of sub-category 0.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="communication">
+				<xsd:annotation>
+					<xsd:documentation>A measurement of the communication infrastructure itself.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="air"/>
+			<xsd:enumeration value="insulativeGas">
+				<xsd:annotation>
+					<xsd:documentation>(SF6 is found separately below.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="insulativeOil"/>
+			<xsd:enumeration value="naturalGas"/>
+			<xsd:enumeration value="propane"/>
+			<xsd:enumeration value="potableWater">
+				<xsd:annotation>
+					<xsd:documentation>Drinkable water</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="steam">
+				<xsd:annotation>
+					<xsd:documentation>Water in steam form, usually used for heating.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="wasteWater">
+				<xsd:annotation>
+					<xsd:documentation>(Sewerage)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="heatingFluid">
+				<xsd:annotation>
+					<xsd:documentation>This fluid is likely in liquid form. It is not necessarily water or water based. The warm fluid returns cooler than when it was sent. The heat conveyed may be metered.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="coolingFluid">
+				<xsd:annotation>
+					<xsd:documentation>The cool fluid returns warmer than when it was sent. The heat conveyed may be metered.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="nonpotableWater">
+				<xsd:annotation>
+					<xsd:documentation>Reclaimed water – possibly used for irrigation but not sufficiently treated to be considered safe for drinking.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="nox">
+				<xsd:annotation>
+					<xsd:documentation>Nitrous Oxides NOX</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="so2">
+				<xsd:annotation>
+					<xsd:documentation>Sulfur Dioxide SO2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ch4">
+				<xsd:annotation>
+					<xsd:documentation>Methane CH4</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="co2">
+				<xsd:annotation>
+					<xsd:documentation>Carbon Dioxide CO2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="carbon"/>
+			<xsd:enumeration value="hch">
+				<xsd:annotation>
+					<xsd:documentation>Hexachlorocyclohexane HCH</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="pfc">
+				<xsd:annotation>
+					<xsd:documentation>Perfluorocarbons PFC</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sf6">
+				<xsd:annotation>
+					<xsd:documentation>Sulfurhexafluoride SF6</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="tvLicence">
+				<xsd:annotation>
+					<xsd:documentation>Television</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="internet">
+				<xsd:annotation>
+					<xsd:documentation>Internet service</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="refuse">
+				<xsd:annotation>
+					<xsd:documentation>trash</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="Currency">
+		<xsd:annotation>
+			<xsd:documentation>Monetary currencies.  ISO 4217 standard including 3-character currency code.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="AED">
+				<xsd:annotation>
+					<xsd:documentation>United Arab Emirates dirham.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AFN">
+				<xsd:annotation>
+					<xsd:documentation>Afghan afghani.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ALL">
+				<xsd:annotation>
+					<xsd:documentation>Albanian lek.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AMD">
+				<xsd:annotation>
+					<xsd:documentation>Armenian dram.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ANG">
+				<xsd:annotation>
+					<xsd:documentation>Netherlands Antillean guilder.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AOA">
+				<xsd:annotation>
+					<xsd:documentation>Angolan kwanza.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ARS">
+				<xsd:annotation>
+					<xsd:documentation>Argentine peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AUD">
+				<xsd:annotation>
+					<xsd:documentation>Australian dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AWG">
+				<xsd:annotation>
+					<xsd:documentation>Aruban florin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AZN">
+				<xsd:annotation>
+					<xsd:documentation>Azerbaijani manat.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BAM">
+				<xsd:annotation>
+					<xsd:documentation>Bosnia and Herzegovina convertible mark.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BBD">
+				<xsd:annotation>
+					<xsd:documentation>Barbados dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BDT">
+				<xsd:annotation>
+					<xsd:documentation>Bangladeshi taka.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BGN">
+				<xsd:annotation>
+					<xsd:documentation>Bulgarian lev.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BHD">
+				<xsd:annotation>
+					<xsd:documentation>Bahraini dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BIF">
+				<xsd:annotation>
+					<xsd:documentation>Burundian franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BMD">
+				<xsd:annotation>
+					<xsd:documentation>Bermudian dollar (customarily known as Bermuda dollar).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BND">
+				<xsd:annotation>
+					<xsd:documentation>Brunei dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BOB">
+				<xsd:annotation>
+					<xsd:documentation>Boliviano.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BOV">
+				<xsd:annotation>
+					<xsd:documentation>Bolivian Mvdol (funds code).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BRL">
+				<xsd:annotation>
+					<xsd:documentation>Brazilian real.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BSD">
+				<xsd:annotation>
+					<xsd:documentation>Bahamian dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BTN">
+				<xsd:annotation>
+					<xsd:documentation>Bhutanese ngultrum.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BWP">
+				<xsd:annotation>
+					<xsd:documentation>Botswana pula.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BYR">
+				<xsd:annotation>
+					<xsd:documentation>Belarusian ruble.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BZD">
+				<xsd:annotation>
+					<xsd:documentation>Belize dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CAD">
+				<xsd:annotation>
+					<xsd:documentation>Canadian dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CDF">
+				<xsd:annotation>
+					<xsd:documentation>Congolese franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CHF">
+				<xsd:annotation>
+					<xsd:documentation>Swiss franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CLF">
+				<xsd:annotation>
+					<xsd:documentation>Unidad de Fomento (funds code), Chile.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CLP">
+				<xsd:annotation>
+					<xsd:documentation>Chilean peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CNY">
+				<xsd:annotation>
+					<xsd:documentation>Chinese yuan.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="COP">
+				<xsd:annotation>
+					<xsd:documentation>Colombian peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="COU">
+				<xsd:annotation>
+					<xsd:documentation>Unidad de Valor Real.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CRC">
+				<xsd:annotation>
+					<xsd:documentation>Costa Rican colon.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CUC">
+				<xsd:annotation>
+					<xsd:documentation>Cuban convertible peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CUP">
+				<xsd:annotation>
+					<xsd:documentation>Cuban peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CVE">
+				<xsd:annotation>
+					<xsd:documentation>Cape Verde escudo.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CZK">
+				<xsd:annotation>
+					<xsd:documentation>Czech koruna.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DJF">
+				<xsd:annotation>
+					<xsd:documentation>Djiboutian franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DKK">
+				<xsd:annotation>
+					<xsd:documentation>Danish krone.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DOP">
+				<xsd:annotation>
+					<xsd:documentation>Dominican peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="DZD">
+				<xsd:annotation>
+					<xsd:documentation>Algerian dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EEK">
+				<xsd:annotation>
+					<xsd:documentation>Estonian kroon.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EGP">
+				<xsd:annotation>
+					<xsd:documentation>Egyptian pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ERN">
+				<xsd:annotation>
+					<xsd:documentation>Eritrean nakfa.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ETB">
+				<xsd:annotation>
+					<xsd:documentation>Ethiopian birr.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="EUR">
+				<xsd:annotation>
+					<xsd:documentation>Euro.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FJD">
+				<xsd:annotation>
+					<xsd:documentation>Fiji dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FKP">
+				<xsd:annotation>
+					<xsd:documentation>Falkland Islands pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GBP">
+				<xsd:annotation>
+					<xsd:documentation>Pound sterling.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GEL">
+				<xsd:annotation>
+					<xsd:documentation>Georgian lari.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GHS">
+				<xsd:annotation>
+					<xsd:documentation>Ghanaian cedi.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GIP">
+				<xsd:annotation>
+					<xsd:documentation>Gibraltar pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GMD">
+				<xsd:annotation>
+					<xsd:documentation>Gambian dalasi.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GNF">
+				<xsd:annotation>
+					<xsd:documentation>Guinean franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GTQ">
+				<xsd:annotation>
+					<xsd:documentation>Guatemalan quetzal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GYD">
+				<xsd:annotation>
+					<xsd:documentation>Guyanese dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HKD">
+				<xsd:annotation>
+					<xsd:documentation>Hong Kong dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HNL">
+				<xsd:annotation>
+					<xsd:documentation>Honduran lempira.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HRK">
+				<xsd:annotation>
+					<xsd:documentation>Croatian kuna.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HTG">
+				<xsd:annotation>
+					<xsd:documentation>Haitian gourde.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HUF">
+				<xsd:annotation>
+					<xsd:documentation>Hungarian forint.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IDR">
+				<xsd:annotation>
+					<xsd:documentation>Indonesian rupiah.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ILS">
+				<xsd:annotation>
+					<xsd:documentation>Israeli new sheqel.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="INR">
+				<xsd:annotation>
+					<xsd:documentation>Indian rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IQD">
+				<xsd:annotation>
+					<xsd:documentation>Iraqi dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="IRR">
+				<xsd:annotation>
+					<xsd:documentation>Iranian rial.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ISK">
+				<xsd:annotation>
+					<xsd:documentation>Icelandic króna.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JMD">
+				<xsd:annotation>
+					<xsd:documentation>Jamaican dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JOD">
+				<xsd:annotation>
+					<xsd:documentation>Jordanian dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPY">
+				<xsd:annotation>
+					<xsd:documentation>Japanese yen.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KES">
+				<xsd:annotation>
+					<xsd:documentation>Kenyan shilling.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KGS">
+				<xsd:annotation>
+					<xsd:documentation>Kyrgyzstani som.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KHR">
+				<xsd:annotation>
+					<xsd:documentation>Cambodian riel.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KMF">
+				<xsd:annotation>
+					<xsd:documentation>Comoro franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KPW">
+				<xsd:annotation>
+					<xsd:documentation>North Korean won.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KRW">
+				<xsd:annotation>
+					<xsd:documentation>South Korean won.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KWD">
+				<xsd:annotation>
+					<xsd:documentation>Kuwaiti dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KYD">
+				<xsd:annotation>
+					<xsd:documentation>Cayman Islands dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KZT">
+				<xsd:annotation>
+					<xsd:documentation>Kazakhstani tenge.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LAK">
+				<xsd:annotation>
+					<xsd:documentation>Lao kip.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LBP">
+				<xsd:annotation>
+					<xsd:documentation>Lebanese pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LKR">
+				<xsd:annotation>
+					<xsd:documentation>Sri Lanka rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LRD">
+				<xsd:annotation>
+					<xsd:documentation>Liberian dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LSL">
+				<xsd:annotation>
+					<xsd:documentation>Lesotho loti.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LTL">
+				<xsd:annotation>
+					<xsd:documentation>Lithuanian litas.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LVL">
+				<xsd:annotation>
+					<xsd:documentation>Latvian lats.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="LYD">
+				<xsd:annotation>
+					<xsd:documentation>Libyan dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MAD">
+				<xsd:annotation>
+					<xsd:documentation>Moroccan dirham.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MDL">
+				<xsd:annotation>
+					<xsd:documentation>Moldovan leu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MGA">
+				<xsd:annotation>
+					<xsd:documentation>Malagasy ariary.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MKD">
+				<xsd:annotation>
+					<xsd:documentation>Macedonian denar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MMK">
+				<xsd:annotation>
+					<xsd:documentation>Myanma kyat.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MNT">
+				<xsd:annotation>
+					<xsd:documentation>Mongolian tugrik.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MOP">
+				<xsd:annotation>
+					<xsd:documentation>Macanese pataca.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MRO">
+				<xsd:annotation>
+					<xsd:documentation>Mauritanian ouguiya.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MUR">
+				<xsd:annotation>
+					<xsd:documentation>Mauritian rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MVR">
+				<xsd:annotation>
+					<xsd:documentation>Maldivian rufiyaa.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MWK">
+				<xsd:annotation>
+					<xsd:documentation>Malawian kwacha.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MXN">
+				<xsd:annotation>
+					<xsd:documentation>Mexican peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MYR">
+				<xsd:annotation>
+					<xsd:documentation>Malaysian ringgit.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="MZN">
+				<xsd:annotation>
+					<xsd:documentation>Mozambican metical.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NAD">
+				<xsd:annotation>
+					<xsd:documentation>Namibian dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NGN">
+				<xsd:annotation>
+					<xsd:documentation>Nigerian naira.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NIO">
+				<xsd:annotation>
+					<xsd:documentation>Cordoba oro.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NOK">
+				<xsd:annotation>
+					<xsd:documentation>Norwegian krone.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NPR">
+				<xsd:annotation>
+					<xsd:documentation>Nepalese rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NZD">
+				<xsd:annotation>
+					<xsd:documentation>New Zealand dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="OMR">
+				<xsd:annotation>
+					<xsd:documentation>Omani rial.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PAB">
+				<xsd:annotation>
+					<xsd:documentation>Panamanian balboa.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PEN">
+				<xsd:annotation>
+					<xsd:documentation>Peruvian nuevo sol.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PGK">
+				<xsd:annotation>
+					<xsd:documentation>Papua New Guinean kina.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PHP">
+				<xsd:annotation>
+					<xsd:documentation>Philippine peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PKR">
+				<xsd:annotation>
+					<xsd:documentation>Pakistani rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PLN">
+				<xsd:annotation>
+					<xsd:documentation>Polish zloty.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PYG">
+				<xsd:annotation>
+					<xsd:documentation>Paraguayan guaraní.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="QAR">
+				<xsd:annotation>
+					<xsd:documentation>Qatari rial.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RON">
+				<xsd:annotation>
+					<xsd:documentation>Romanian new leu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RSD">
+				<xsd:annotation>
+					<xsd:documentation>Serbian dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RUB">
+				<xsd:annotation>
+					<xsd:documentation>Russian rouble.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="RWF">
+				<xsd:annotation>
+					<xsd:documentation>Rwandan franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SAR">
+				<xsd:annotation>
+					<xsd:documentation>Saudi riyal.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SBD">
+				<xsd:annotation>
+					<xsd:documentation>Solomon Islands dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SCR">
+				<xsd:annotation>
+					<xsd:documentation>Seychelles rupee.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SDG">
+				<xsd:annotation>
+					<xsd:documentation>Sudanese pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SEK">
+				<xsd:annotation>
+					<xsd:documentation>Swedish krona/kronor.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SGD">
+				<xsd:annotation>
+					<xsd:documentation>Singapore dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SHP">
+				<xsd:annotation>
+					<xsd:documentation>Saint Helena pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SLL">
+				<xsd:annotation>
+					<xsd:documentation>Sierra Leonean leone.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SOS">
+				<xsd:annotation>
+					<xsd:documentation>Somali shilling.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SRD">
+				<xsd:annotation>
+					<xsd:documentation>Surinamese dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="STD">
+				<xsd:annotation>
+					<xsd:documentation>São Tomé and Príncipe dobra.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SYP">
+				<xsd:annotation>
+					<xsd:documentation>Syrian pound.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SZL">
+				<xsd:annotation>
+					<xsd:documentation>Lilangeni.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="THB">
+				<xsd:annotation>
+					<xsd:documentation>Thai baht.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TJS">
+				<xsd:annotation>
+					<xsd:documentation>Tajikistani somoni.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TMT">
+				<xsd:annotation>
+					<xsd:documentation>Turkmenistani manat.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TND">
+				<xsd:annotation>
+					<xsd:documentation>Tunisian dinar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TOP">
+				<xsd:annotation>
+					<xsd:documentation>Tongan pa'anga.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TRY">
+				<xsd:annotation>
+					<xsd:documentation>Turkish lira.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TTD">
+				<xsd:annotation>
+					<xsd:documentation>Trinidad and Tobago dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TWD">
+				<xsd:annotation>
+					<xsd:documentation>New Taiwan dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="TZS">
+				<xsd:annotation>
+					<xsd:documentation>Tanzanian shilling.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UAH">
+				<xsd:annotation>
+					<xsd:documentation>Ukrainian hryvnia.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UGX">
+				<xsd:annotation>
+					<xsd:documentation>Ugandan shilling.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="USD">
+				<xsd:annotation>
+					<xsd:documentation>United States dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UYU">
+				<xsd:annotation>
+					<xsd:documentation>Uruguayan peso.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="UZS">
+				<xsd:annotation>
+					<xsd:documentation>Uzbekistan som.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VEF">
+				<xsd:annotation>
+					<xsd:documentation>Venezuelan bolívar fuerte.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VND">
+				<xsd:annotation>
+					<xsd:documentation>Vietnamese Dong.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VUV">
+				<xsd:annotation>
+					<xsd:documentation>Vanuatu vatu.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WST">
+				<xsd:annotation>
+					<xsd:documentation>Samoan tala.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XAF">
+				<xsd:annotation>
+					<xsd:documentation>CFA franc BEAC.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XCD">
+				<xsd:annotation>
+					<xsd:documentation>East Caribbean dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XOF">
+				<xsd:annotation>
+					<xsd:documentation>CFA Franc BCEAO.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XPF">
+				<xsd:annotation>
+					<xsd:documentation>CFP franc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="YER">
+				<xsd:annotation>
+					<xsd:documentation>Yemeni rial.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ZAR">
+				<xsd:annotation>
+					<xsd:documentation>South African rand.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ZMK">
+				<xsd:annotation>
+					<xsd:documentation>Zambian kwacha.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ZWL">
+				<xsd:annotation>
+					<xsd:documentation>Zimbabwe dollar.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CustomerKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of customer.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="residential">
+				<xsd:annotation>
+					<xsd:documentation>Residential customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="residentialAndCommercial">
+				<xsd:annotation>
+					<xsd:documentation>Residential and commercial customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="residentialAndStreetlight">
+				<xsd:annotation>
+					<xsd:documentation>Residential and streetlight customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="residentialStreetlightOthers">
+				<xsd:annotation>
+					<xsd:documentation>Residential streetlight or other related customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="residentialFarmService">
+				<xsd:annotation>
+					<xsd:documentation>Residential farm service customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="commercialIndustrial">
+				<xsd:annotation>
+					<xsd:documentation>Commercial industrial customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="pumpingLoad">
+				<xsd:annotation>
+					<xsd:documentation>Pumping load customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="windMachine">
+				<xsd:annotation>
+					<xsd:documentation>Wind machine customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="energyServiceSupplier">
+				<xsd:annotation>
+					<xsd:documentation>Customer as energy service supplier.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="energyServiceScheduler">
+				<xsd:annotation>
+					<xsd:documentation>Customer as energy service scheduler.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="internalUse">
+				<xsd:annotation>
+					<xsd:documentation>Internal use customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="enterprise"/>
+			<xsd:enumeration value="regionalOperator"/>
+			<xsd:enumeration value="subsidiary"/>
+			<xsd:enumeration value="other">
+				<xsd:annotation>
+					<xsd:documentation>Other kind of customer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="FlowDirectionKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of flow direction for reading/measured  values proper to some commodities such as, for example, energy, power, demand.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not Applicable (N/A)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="forward">
+				<xsd:annotation>
+					<xsd:documentation>"Delivered," or "Imported" as defined 61968-2.
+Forward Active Energy is a positive kWh value as one would naturally expect to find as energy is supplied by the utility and consumed at the service.
+Forward Reactive Energy is a positive VArh value as one would naturally expect to find in the presence of inductive loading.
+In polyphase metering, the forward energy register is incremented when the sum of the phase energies is greater than zero:
+&lt;img src="HTS_1.PNG" width="209" height="16" border="0" alt="graphic"/&gt;</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lagging">
+				<xsd:annotation>
+					<xsd:documentation>Typically used to describe that a power factor is lagging the reference value. 
+Note 1: When used to describe VA, “lagging” describes a form of measurement where reactive power is considered in all four quadrants, but real power is considered only in quadrants I and IV.
+Note 2: When used to describe power factor, the term “Lagging” implies that the PF is negative. The term “lagging” in this case takes the place of the negative sign. If a signed PF value is to be passed by the data producer, then the direction of flow enumeration zero (none) should be used in order to avoid the possibility of creating an expression that employs a double negative. The data consumer should be able to tell from the sign of the data if the PF is leading or lagging. This principle is analogous to the concept that “Reverse” energy is an implied negative value, and to publish a negative reverse value would be ambiguous.
+Note 3: Lagging power factors typically indicate inductive loading.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="leading">
+				<xsd:annotation>
+					<xsd:documentation>Typically used to describe that a power factor is leading the reference value.
+Note: Leading power factors typically indicate capacitive loading.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="net">
+				<xsd:annotation>
+					<xsd:documentation>|Forward| - |Reverse|, See 61968-2.
+
+Note: In some systems, the value passed as a “net” value could become negative. In other systems the value passed as a “net” value is always a positive number, and rolls-over and rolls-under as needed. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q1plusQ2">
+				<xsd:annotation>
+					<xsd:documentation>Reactive positive quadrants. (The term “lagging” is preferred.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q1plusQ3">
+				<xsd:annotation>
+					<xsd:documentation>Quadrants 1 and 3</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q1plusQ4">
+				<xsd:annotation>
+					<xsd:documentation>Quadrants 1 and 4 usually represent forward active energy</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q1minusQ4">
+				<xsd:annotation>
+					<xsd:documentation>Q1 minus Q4</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q2plusQ3">
+				<xsd:annotation>
+					<xsd:documentation>Quadrants 2 and 3 usually represent reverse active energy</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q2plusQ4">
+				<xsd:annotation>
+					<xsd:documentation>Quadrants 2 and 4</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q2minusQ3">
+				<xsd:annotation>
+					<xsd:documentation>Q2 minus Q3</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q3plusQ4">
+				<xsd:annotation>
+					<xsd:documentation>Reactive negative quadrants. (The term “leading” is preferred.)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="q3minusQ2">
+				<xsd:annotation>
+					<xsd:documentation>Q3 minus Q2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="quadrant1">
+				<xsd:annotation>
+					<xsd:documentation>Q1 only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="quadrant2">
+				<xsd:annotation>
+					<xsd:documentation>Q2 only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="quadrant3">
+				<xsd:annotation>
+					<xsd:documentation>Q3 only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="quadrant4">
+				<xsd:annotation>
+					<xsd:documentation>Q4 only</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="reverse">
+				<xsd:annotation>
+					<xsd:documentation>Reverse Active Energy is equivalent to "Received," or "Exported" as defined in 61968-2.
+Reverse Active Energy is a positive kWh value as one would expect to find when energy is backfed by the service onto the utility network.
+Reverse Reactive Energy is a positive VArh value as one would expect to find in the presence of capacitive loading and a leading Power Factor.
+In polyphase metering, the reverse energy register is incremented when the sum of the phase energies is less than zero:
+&lt;img src="HTS_1.PNG" width="209" height="16" border="0" alt="graphic"/&gt;
+Note: The value passed as a reverse value is always a positive value. It is understood by the label “reverse” that it represents negative flow.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="total">
+				<xsd:annotation>
+					<xsd:documentation>|Forward| + |Reverse|, See 61968-2.
+The sum of the commodity in all quadrants Q1+Q2+Q3+Q4.
+In polyphase metering, the total energy register is incremented when the absolute value of the sum of the phase energies is greater than zero:
+&lt;img src="HTS_1.PNG" width="217" height="16" border="0" alt="graphic"/&gt;</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="totalByPhase">
+				<xsd:annotation>
+					<xsd:documentation>In polyphase metering, the total by phase energy register is incremented when the sum of the absolute values of the phase energies is greater than zero:
+&lt;img src="HTS_1.PNG" width="234" height="16" border="0" alt="graphic"/&gt;
+In single phase metering, the formulas for “Total” and “Total by phase” collapse to the same expression. For communication purposes however, the “Total” enumeration should be used with single phase meter data.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MacroPeriodKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of macro period for calculations on read / measured values.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not applicable.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="billingPeriod">
+				<xsd:annotation>
+					<xsd:documentation>Captured during the billing period starting at midnight of the first day of the billing period (as defined by the billing cycle day). If during the current billing period, it specifies a period from the start of the current billing period until "now".</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="daily">
+				<xsd:annotation>
+					<xsd:documentation>Daily period starting at midnight. If for the current day, this specifies the time from midnight to "now".</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="monthly">
+				<xsd:annotation>
+					<xsd:documentation>Monthly period starting at midnight on the first day of the month. If within the current month, this specifies the period from the start of the month until "now."</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="seasonal">
+				<xsd:annotation>
+					<xsd:documentation>A season of time spanning multiple months. E.g. "Summer," "Spring," "Fall," and "Winter" based cycle. If within the current season, it specifies the period from the start of the current season until "now."</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="weekly">
+				<xsd:annotation>
+					<xsd:documentation>Weekly period starting at midnight on the first day of the week and ending the instant before midnight the last day of the week. If within the current week, it specifies the period from the start of the week until "now."</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="specifiedPeriod">
+				<xsd:annotation>
+					<xsd:documentation>For the period defined by the start and end of the TimePeriod element in the message.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MeasurementKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of read / measured value.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not Applicable</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="apparentPowerFactor"/>
+			<xsd:enumeration value="currency">
+				<xsd:annotation>
+					<xsd:documentation>funds</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="current"/>
+			<xsd:enumeration value="currentAngle"/>
+			<xsd:enumeration value="currentImbalance"/>
+			<xsd:enumeration value="date"/>
+			<xsd:enumeration value="demand"/>
+			<xsd:enumeration value="distance"/>
+			<xsd:enumeration value="distortionVoltAmp"/>
+			<xsd:enumeration value="energization"/>
+			<xsd:enumeration value="energy"/>
+			<xsd:enumeration value="energizationLoadSide"/>
+			<xsd:enumeration value="fan"/>
+			<xsd:enumeration value="frequency"/>
+			<xsd:enumeration value="fund">
+				<xsd:annotation>
+					<xsd:documentation>Dup with “currency”</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ieee1366ASAI"/>
+			<xsd:enumeration value="ieee1366ASIDI"/>
+			<xsd:enumeration value="ieee1366ASIFI"/>
+			<xsd:enumeration value="ieee1366CAIDI"/>
+			<xsd:enumeration value="ieee1366CAIFI"/>
+			<xsd:enumeration value="ieee1366CEMIn"/>
+			<xsd:enumeration value="ieee1366CEMSMIn"/>
+			<xsd:enumeration value="ieee1366CTAIDI"/>
+			<xsd:enumeration value="ieee1366MAIFI"/>
+			<xsd:enumeration value="ieee1366MAIFIe"/>
+			<xsd:enumeration value="ieee1366SAIDI"/>
+			<xsd:enumeration value="ieee1366SAIFI"/>
+			<xsd:enumeration value="lineLoss"/>
+			<xsd:enumeration value="loss"/>
+			<xsd:enumeration value="negativeSequence"/>
+			<xsd:enumeration value="phasorPowerFactor"/>
+			<xsd:enumeration value="phasorReactivePower"/>
+			<xsd:enumeration value="positiveSequence"/>
+			<xsd:enumeration value="power"/>
+			<xsd:enumeration value="powerFactor"/>
+			<xsd:enumeration value="quantityPower"/>
+			<xsd:enumeration value="sag">
+				<xsd:annotation>
+					<xsd:documentation>or Voltage Dip</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="swell"/>
+			<xsd:enumeration value="switchPosition"/>
+			<xsd:enumeration value="tapPosition"/>
+			<xsd:enumeration value="tariffRate"/>
+			<xsd:enumeration value="temperature"/>
+			<xsd:enumeration value="totalHarmonicDistortion"/>
+			<xsd:enumeration value="transformerLoss"/>
+			<xsd:enumeration value="unipedeVoltageDip10to15"/>
+			<xsd:enumeration value="unipedeVoltageDip15to30"/>
+			<xsd:enumeration value="unipedeVoltageDip30to60"/>
+			<xsd:enumeration value="unipedeVoltageDip60to90"/>
+			<xsd:enumeration value="unipedeVoltageDip90to100"/>
+			<xsd:enumeration value="voltage"/>
+			<xsd:enumeration value="voltageAngle"/>
+			<xsd:enumeration value="voltageExcursion"/>
+			<xsd:enumeration value="voltageImbalance"/>
+			<xsd:enumeration value="volume">
+				<xsd:annotation>
+					<xsd:documentation>Clarified  from Ed. 1. to indicate fluid volume</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="zeroFlowDuration"/>
+			<xsd:enumeration value="zeroSequence"/>
+			<xsd:enumeration value="distortionPowerFactor"/>
+			<xsd:enumeration value="frequencyExcursion">
+				<xsd:annotation>
+					<xsd:documentation>Usually expressed as a “count”</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="applicationContext"/>
+			<xsd:enumeration value="apTitle"/>
+			<xsd:enumeration value="assetNumber"/>
+			<xsd:enumeration value="bandwidth"/>
+			<xsd:enumeration value="batteryVoltage"/>
+			<xsd:enumeration value="broadcastAddress"/>
+			<xsd:enumeration value="deviceAddressType1"/>
+			<xsd:enumeration value="deviceAddressType2"/>
+			<xsd:enumeration value="deviceAddressType3"/>
+			<xsd:enumeration value="deviceAddressType4"/>
+			<xsd:enumeration value="deviceClass"/>
+			<xsd:enumeration value="electronicSerialNumber"/>
+			<xsd:enumeration value="endDeviceID"/>
+			<xsd:enumeration value="groupAddressType1"/>
+			<xsd:enumeration value="groupAddressType2"/>
+			<xsd:enumeration value="groupAddressType3"/>
+			<xsd:enumeration value="groupAddressType4"/>
+			<xsd:enumeration value="ipAddress"/>
+			<xsd:enumeration value="macAddress"/>
+			<xsd:enumeration value="mfgAssignedConfigurationID"/>
+			<xsd:enumeration value="mfgAssignedPhysicalSerialNumber"/>
+			<xsd:enumeration value="mfgAssignedProductNumber"/>
+			<xsd:enumeration value="mfgAssignedUniqueCommunicationAddress"/>
+			<xsd:enumeration value="multiCastAddress"/>
+			<xsd:enumeration value="oneWayAddress"/>
+			<xsd:enumeration value="signalStrength"/>
+			<xsd:enumeration value="twoWayAddress"/>
+			<xsd:enumeration value="signaltoNoiseRatio">
+				<xsd:annotation>
+					<xsd:documentation>Moved here from Attribute #9 UOM</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="alarm"/>
+			<xsd:enumeration value="batteryCarryover"/>
+			<xsd:enumeration value="dataOverflowAlarm"/>
+			<xsd:enumeration value="demandLimit"/>
+			<xsd:enumeration value="demandReset">
+				<xsd:annotation>
+					<xsd:documentation>Usually expressed as a count as part of a billing cycle</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="diagnostic"/>
+			<xsd:enumeration value="emergencyLimit"/>
+			<xsd:enumeration value="encoderTamper"/>
+			<xsd:enumeration value="ieee1366MomentaryInterruption"/>
+			<xsd:enumeration value="ieee1366MomentaryInterruptionEvent"/>
+			<xsd:enumeration value="ieee1366SustainedInterruption"/>
+			<xsd:enumeration value="interruptionBehaviour"/>
+			<xsd:enumeration value="inversionTamper"/>
+			<xsd:enumeration value="loadInterrupt"/>
+			<xsd:enumeration value="loadShed"/>
+			<xsd:enumeration value="maintenance"/>
+			<xsd:enumeration value="physicalTamper"/>
+			<xsd:enumeration value="powerLossTamper"/>
+			<xsd:enumeration value="powerOutage"/>
+			<xsd:enumeration value="powerQuality"/>
+			<xsd:enumeration value="powerRestoration"/>
+			<xsd:enumeration value="programmed"/>
+			<xsd:enumeration value="pushbutton"/>
+			<xsd:enumeration value="relayActivation"/>
+			<xsd:enumeration value="relayCycle">
+				<xsd:annotation>
+					<xsd:documentation>Usually expressed as a count</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="removalTamper"/>
+			<xsd:enumeration value="reprogrammingTamper"/>
+			<xsd:enumeration value="reverseRotationTamper"/>
+			<xsd:enumeration value="switchArmed"/>
+			<xsd:enumeration value="switchDisabled"/>
+			<xsd:enumeration value="tamper"/>
+			<xsd:enumeration value="watchdogTimeout"/>
+			<xsd:enumeration value="billLastPeriod">
+				<xsd:annotation>
+					<xsd:documentation>Customer’s bill for the previous billing period (Currency)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="billToDate">
+				<xsd:annotation>
+					<xsd:documentation>Customer’s bill, as known thus far within the present billing period (Currency)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="billCarryover">
+				<xsd:annotation>
+					<xsd:documentation>Customer’s bill for the (Currency)</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="connectionFee">
+				<xsd:annotation>
+					<xsd:documentation>Monthly fee for connection to commodity.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="audibleVolume">
+				<xsd:annotation>
+					<xsd:documentation>Sound</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="volumetricFlow"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MeasuringPeriodKind">
+		<xsd:annotation>
+			<xsd:documentation>Kind of period for reading / measuring values.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Not applicable.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="tenMinute">
+				<xsd:annotation>
+					<xsd:documentation>10-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fifteenMinute">
+				<xsd:annotation>
+					<xsd:documentation>15-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="oneMinute">
+				<xsd:annotation>
+					<xsd:documentation>1-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="twentyfourHour">
+				<xsd:annotation>
+					<xsd:documentation>24-hour</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="thirtyMinute">
+				<xsd:annotation>
+					<xsd:documentation>30-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fiveMinute">
+				<xsd:annotation>
+					<xsd:documentation>5-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sixtyMinute">
+				<xsd:annotation>
+					<xsd:documentation>60-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="twoMinute">
+				<xsd:annotation>
+					<xsd:documentation>2-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="threeMinute">
+				<xsd:annotation>
+					<xsd:documentation>3-minute</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="present">
+				<xsd:annotation>
+					<xsd:documentation>Within the present period of time</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="previous">
+				<xsd:annotation>
+					<xsd:documentation>Shifted within the previous monthly cycle and data set</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="twentyMinute">
+				<xsd:annotation>
+					<xsd:documentation>20-minute interval</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock60Min">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock30Min">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock20Min">
+				<xsd:annotation>
+					<xsd:documentation>20-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock15Min">
+				<xsd:annotation>
+					<xsd:documentation>15-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock10Min">
+				<xsd:annotation>
+					<xsd:documentation>10-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock5Min">
+				<xsd:annotation>
+					<xsd:documentation>5-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="fixedBlock1Min">
+				<xsd:annotation>
+					<xsd:documentation>1-minute Fixed Block</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl30MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 30-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl20MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 20-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl15MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 15-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl12MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 12-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl10MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 10-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl6MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 6-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl5MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 5-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock60MinIntvl4MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>60-minute Rolling Block with 4-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl15MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 15-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl10MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 10-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl6MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 6-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl5MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 5-minute sub-intervals.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl3MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 3-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock30MinIntvl2MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>30-minute Rolling Block with 2-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock15MinIntvl5MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>15-minute Rolling Block with 5-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock15MinIntvl3MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>15-minute Rolling Block with 3-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock15MinIntvl1MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>15-minute Rolling Block with 1-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock10MinIntvl5MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>10-minute Rolling Block with 5-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock10MinIntvl2MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>10-minute Rolling Block with 2-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock10MinIntvl1MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>10-minute Rolling Block with 1-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rollingBlock5MinIntvl1MinSubIntvl">
+				<xsd:annotation>
+					<xsd:documentation>5-minute Rolling Block with 1-minute sub-intervals</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PhaseCode">
+		<xsd:annotation>
+			<xsd:documentation>An unordered enumeration of phase identifiers.  Allows designation of phases for both transmission and distribution equipment, circuits and loads.   The enumeration, by itself, does not describe how the phases are connected together or connected to ground.  Ground is not explicitly denoted as a phase.
+Residential and small commercial loads are often served from single-phase, or split-phase, secondary circuits. For the example of s12N, phases 1 and 2 refer to hot wires that are 180 degrees out of phase, while N refers to the neutral wire. Through single-phase transformer connections, these secondary circuits may be served from one or two of the primary phases A, B, and C. For three-phase loads, use the A, B, C phase codes instead of s12N.
+The integer values are from IEC 61968-9 to support revenue metering applications.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="ABCN">
+				<xsd:annotation>
+					<xsd:documentation>Phases A, B, C, and N.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ABC">
+				<xsd:annotation>
+					<xsd:documentation>Phases A, B, and C.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ABN">
+				<xsd:annotation>
+					<xsd:documentation>Phases A, B, and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ACN">
+				<xsd:annotation>
+					<xsd:documentation>Phases A, C and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BCN">
+				<xsd:annotation>
+					<xsd:documentation>Phases B, C, and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AB">
+				<xsd:annotation>
+					<xsd:documentation>Phases A and B.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AC">
+				<xsd:annotation>
+					<xsd:documentation>Phases A and C.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BC">
+				<xsd:annotation>
+					<xsd:documentation>Phases B and C.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="AN">
+				<xsd:annotation>
+					<xsd:documentation>Phases A and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="BN">
+				<xsd:annotation>
+					<xsd:documentation>Phases B and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CN">
+				<xsd:annotation>
+					<xsd:documentation>Phases C and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>Phase A.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="B">
+				<xsd:annotation>
+					<xsd:documentation>Phase B.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>Phase C.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="N">
+				<xsd:annotation>
+					<xsd:documentation>Neutral phase.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s1N">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phase 1 and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s2N">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phase 2 and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s12N">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phases 1, 2, and neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s1">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phase 1.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s2">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phase 2.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s12">
+				<xsd:annotation>
+					<xsd:documentation>Secondary phase 1 and 2.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>No phases specified.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="X">
+				<xsd:annotation>
+					<xsd:documentation>Unknown non-neutral phase.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XY">
+				<xsd:annotation>
+					<xsd:documentation>Two unknown non-neutral phases.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XN">
+				<xsd:annotation>
+					<xsd:documentation>Unknown non-neutral phase plus neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="XYN">
+				<xsd:annotation>
+					<xsd:documentation>Two unknown non-neutral phases plus neutral.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnitMultiplier">
+		<xsd:annotation>
+			<xsd:documentation>The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
+
+For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
+
+For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg".</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="y">
+				<xsd:annotation>
+					<xsd:documentation>Yocto 10**-24.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="z">
+				<xsd:annotation>
+					<xsd:documentation>Zepto 10**-21.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="a">
+				<xsd:annotation>
+					<xsd:documentation>Atto 10**-18.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="f">
+				<xsd:annotation>
+					<xsd:documentation>Femto 10**-15.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="p">
+				<xsd:annotation>
+					<xsd:documentation>Pico 10**-12.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="n">
+				<xsd:annotation>
+					<xsd:documentation>Nano 10**-9.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="micro">
+				<xsd:annotation>
+					<xsd:documentation>Micro 10**-6.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m">
+				<xsd:annotation>
+					<xsd:documentation>Milli 10**-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="c">
+				<xsd:annotation>
+					<xsd:documentation>Centi 10**-2.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="d">
+				<xsd:annotation>
+					<xsd:documentation>Deci 10**-1.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>No multiplier or equivalently multiply by 1.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="da">
+				<xsd:annotation>
+					<xsd:documentation>Deca 10**1.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="h">
+				<xsd:annotation>
+					<xsd:documentation>Hecto 10**2.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="k">
+				<xsd:annotation>
+					<xsd:documentation>Kilo 10**3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>Mega 10**6.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>Giga 10**9.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="T">
+				<xsd:annotation>
+					<xsd:documentation>Tera 10**12.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="P">
+				<xsd:annotation>
+					<xsd:documentation>Peta 10**15.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="E">
+				<xsd:annotation>
+					<xsd:documentation>Exa 10**18.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Z">
+				<xsd:annotation>
+					<xsd:documentation>Zetta 10**21.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Y">
+				<xsd:annotation>
+					<xsd:documentation>Yotta 10**24.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="UnitSymbol">
+		<xsd:annotation>
+			<xsd:documentation>The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
+Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
+To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
+Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
+The integer values are used for harmonization with IEC 61850.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="none">
+				<xsd:annotation>
+					<xsd:documentation>Dimension less quantity, e.g. count, per unit, etc.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m">
+				<xsd:annotation>
+					<xsd:documentation>Length in metres.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kg">
+				<xsd:annotation>
+					<xsd:documentation>Mass in kilograms.  Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="s">
+				<xsd:annotation>
+					<xsd:documentation>Time in seconds.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A">
+				<xsd:annotation>
+					<xsd:documentation>Current in amperes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="K">
+				<xsd:annotation>
+					<xsd:documentation>Temperature in kelvins.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="mol">
+				<xsd:annotation>
+					<xsd:documentation>Amount of substance in moles.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cd">
+				<xsd:annotation>
+					<xsd:documentation>Luminous intensity in candelas.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="deg">
+				<xsd:annotation>
+					<xsd:documentation>Plane angle in degrees.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rad">
+				<xsd:annotation>
+					<xsd:documentation>Plane angle in radians (m/m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sr">
+				<xsd:annotation>
+					<xsd:documentation>Solid angle in steradians (m2/m2).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Gy">
+				<xsd:annotation>
+					<xsd:documentation>Absorbed dose in grays (J/kg).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Bq">
+				<xsd:annotation>
+					<xsd:documentation>Radioactivity in becquerels (1/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="degC">
+				<xsd:annotation>
+					<xsd:documentation>Relative temperature in degrees Celsius.
+In the SI unit system the symbol is °C. Electric charge is measured in coulomb that has the unit symbol C. To distinguish degree Celsius from coulomb the symbol used in the UML is degC. The reason for not using °C is that the special character ° is difficult to manage in software.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Sv">
+				<xsd:annotation>
+					<xsd:documentation>Dose equivalent in sieverts (J/kg).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="F">
+				<xsd:annotation>
+					<xsd:documentation>Electric capacitance in farads (C/V).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="C">
+				<xsd:annotation>
+					<xsd:documentation>Electric charge in coulombs (A·s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="S">
+				<xsd:annotation>
+					<xsd:documentation>Conductance in siemens.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="H">
+				<xsd:annotation>
+					<xsd:documentation>Electric inductance in henrys (Wb/A).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V">
+				<xsd:annotation>
+					<xsd:documentation>Electric potential in volts (W/A).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ohm">
+				<xsd:annotation>
+					<xsd:documentation>Electric resistance in ohms (V/A).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="J">
+				<xsd:annotation>
+					<xsd:documentation>Energy in joules (N·m = C·V = W·s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="N">
+				<xsd:annotation>
+					<xsd:documentation>Force in newtons (kg·m/s²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Hz">
+				<xsd:annotation>
+					<xsd:documentation>Frequency in hertz (1/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lx">
+				<xsd:annotation>
+					<xsd:documentation>Illuminance in lux (lm/m²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lm">
+				<xsd:annotation>
+					<xsd:documentation>Luminous flux in lumens (cd·sr).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Wb">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic flux in webers (V·s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="T">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic flux density in teslas (Wb/m2).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="W">
+				<xsd:annotation>
+					<xsd:documentation>Real power in watts (J/s). Electrical power may have real and reactive components. The real portion of electrical power (I&amp;#178;R or VIcos(phi)), is expressed in Watts. See also apparent power and reactive power.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Pa">
+				<xsd:annotation>
+					<xsd:documentation>Pressure in pascals (N/m²). Note: the absolute or relative measurement of pressure is implied with this entry. See below for more explicit forms.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m2">
+				<xsd:annotation>
+					<xsd:documentation>Area in square metres (m²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3">
+				<xsd:annotation>
+					<xsd:documentation>Volume in cubic metres (m³).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="mPers">
+				<xsd:annotation>
+					<xsd:documentation>Velocity in metres per second (m/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="mPers2">
+				<xsd:annotation>
+					<xsd:documentation>Acceleration in metres per second squared (m/s²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3Pers">
+				<xsd:annotation>
+					<xsd:documentation>Volumetric flow rate in cubic metres per second (m³/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="mPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Fuel efficiency in metres per cubic metres (m/m³).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kgm">
+				<xsd:annotation>
+					<xsd:documentation>Moment of mass in kilogram metres (kg·m) (first moment of mass). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kgPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Density in kilogram/cubic metres (kg/m³). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m2Pers">
+				<xsd:annotation>
+					<xsd:documentation>Viscosity in square metres / second (m²/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPermK">
+				<xsd:annotation>
+					<xsd:documentation>Thermal conductivity in watt/metres kelvin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPerK">
+				<xsd:annotation>
+					<xsd:documentation>Heat capacity in joules/kelvin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ppm">
+				<xsd:annotation>
+					<xsd:documentation>Concentration in parts per million.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rotPers">
+				<xsd:annotation>
+					<xsd:documentation>Rotations per second (1/s). See also Hz (1/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="radPers">
+				<xsd:annotation>
+					<xsd:documentation>Angular velocity in radians per second (rad/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPerm2">
+				<xsd:annotation>
+					<xsd:documentation>Heat flux density, irradiance, watts per square metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPerm2">
+				<xsd:annotation>
+					<xsd:documentation>Insulation energy density, joules per square metre or watt second per square metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="SPerm">
+				<xsd:annotation>
+					<xsd:documentation>Conductance per length (F/m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="KPers">
+				<xsd:annotation>
+					<xsd:documentation>Temperature change rate in kelvins per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="PaPers">
+				<xsd:annotation>
+					<xsd:documentation>Pressure change rate in pascals per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPerkgK">
+				<xsd:annotation>
+					<xsd:documentation>Specific heat capacity, specific entropy, joules per kilogram Kelvin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VA">
+				<xsd:annotation>
+					<xsd:documentation>Apparent power in volt amperes. See also real power and reactive power.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VAr">
+				<xsd:annotation>
+					<xsd:documentation>Reactive power in volt amperes reactive. The “reactive” or “imaginary” component of electrical power (VIsin(phi)). (See also real power and apparent power).
+Note: Different meter designs use different methods to arrive at their results. Some meters may compute reactive power as an arithmetic value, while others compute the value vectorially. The data consumer should determine the method in use and the suitability of the measurement for the intended purpose.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="cosPhi">
+				<xsd:annotation>
+					<xsd:documentation>Power factor, dimensionless.
+Note 1: This definition of power factor only holds for balanced systems. See the alternative definition under code 153.
+Note 2 : Beware of differing sign conventions in use between the IEC and EEI. It is assumed that the data consumer understands the type of meter in use and the sign convention in use by the utility.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Vs">
+				<xsd:annotation>
+					<xsd:documentation>Volt seconds (Ws/A).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V2">
+				<xsd:annotation>
+					<xsd:documentation>Volt squared (W²/A²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="As">
+				<xsd:annotation>
+					<xsd:documentation>Ampere seconds (A·s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A2">
+				<xsd:annotation>
+					<xsd:documentation>Amperes squared (A²).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A2s">
+				<xsd:annotation>
+					<xsd:documentation>Ampere squared time in square amperes (A²s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VAh">
+				<xsd:annotation>
+					<xsd:documentation>Apparent energy in volt ampere hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Wh">
+				<xsd:annotation>
+					<xsd:documentation>Real energy in watt hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VArh">
+				<xsd:annotation>
+					<xsd:documentation>Reactive energy in volt ampere reactive hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VPerHz">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic flux in volt per hertz.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HzPers">
+				<xsd:annotation>
+					<xsd:documentation>Rate of change of frequency in hertz per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="character">
+				<xsd:annotation>
+					<xsd:documentation>Number of characters.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="charPers">
+				<xsd:annotation>
+					<xsd:documentation>Data rate (baud) in characters per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kgm2">
+				<xsd:annotation>
+					<xsd:documentation>Moment of mass in kilogram square metres (kg·m²) (Second moment of mass, commonly called the moment of inertia). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="dB">
+				<xsd:annotation>
+					<xsd:documentation>Sound pressure level in decibels. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPers">
+				<xsd:annotation>
+					<xsd:documentation>Ramp rate in watts per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lPers">
+				<xsd:annotation>
+					<xsd:documentation>Volumetric flow rate in litres per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="dBm">
+				<xsd:annotation>
+					<xsd:documentation>Power level (logarithmic ratio of signal strength , Bel-mW), normalized to 1mW. Note:  multiplier “d” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="h">
+				<xsd:annotation>
+					<xsd:documentation>Time in hours, hour = 60 min = 3600 s.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="min">
+				<xsd:annotation>
+					<xsd:documentation>Time in minutes, minute  = 60 s.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Q">
+				<xsd:annotation>
+					<xsd:documentation>Quantity power, Q.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Qh">
+				<xsd:annotation>
+					<xsd:documentation>Quantity energy, Qh.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ohmm">
+				<xsd:annotation>
+					<xsd:documentation>Resistivity, ohm metres, (rho).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="APerm">
+				<xsd:annotation>
+					<xsd:documentation>A/m, magnetic field strength, amperes per metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="V2h">
+				<xsd:annotation>
+					<xsd:documentation>Volt-squared hour, volt-squared-hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="A2h">
+				<xsd:annotation>
+					<xsd:documentation>Ampere-squared hour, ampere-squared hour.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Ah">
+				<xsd:annotation>
+					<xsd:documentation>Ampere-hours, ampere-hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="count">
+				<xsd:annotation>
+					<xsd:documentation>Amount of substance, Counter value.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ft3">
+				<xsd:annotation>
+					<xsd:documentation>Volume, cubic feet.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3Perh">
+				<xsd:annotation>
+					<xsd:documentation>Volumetric flow rate, cubic metres per hour.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="gal">
+				<xsd:annotation>
+					<xsd:documentation>Volume in gallons, US gallon (1 gal = 231 in3 = 128 fl ounce).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Btu">
+				<xsd:annotation>
+					<xsd:documentation>Energy, British Thermal Units.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="l">
+				<xsd:annotation>
+					<xsd:documentation>Volume in litres, litre = dm3 = m3/1000.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lPerh">
+				<xsd:annotation>
+					<xsd:documentation>Volumetric flow rate, litres per hour.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="lPerl">
+				<xsd:annotation>
+					<xsd:documentation>Concentration, The ratio of the volume of a solute divided by the volume of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µL/L’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="gPerg">
+				<xsd:annotation>
+					<xsd:documentation>Concentration, The ratio of the mass of a solute divided by the mass of  the solution. Note: Users may need use a prefix such a ‘µ’ to express a quantity such as ‘µg/g’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="molPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Concentration, The amount of substance concentration, (c), the amount of solvent in moles divided by the volume of solution in m³.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="molPermol">
+				<xsd:annotation>
+					<xsd:documentation>Concentration, Molar fraction, the ratio of the molar amount of a solute divided by the molar amount of the solution.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="molPerkg">
+				<xsd:annotation>
+					<xsd:documentation>Concentration, Molality, the amount of solute in moles and the amount of solvent in kilograms.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="sPers">
+				<xsd:annotation>
+					<xsd:documentation>Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&amp;#181;’ to show rates such as ‘&amp;#181;s/s’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HzPerHz">
+				<xsd:annotation>
+					<xsd:documentation>Frequency, rate of frequency change.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mHz/Hz’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VPerV">
+				<xsd:annotation>
+					<xsd:documentation>Voltage, ratio of voltages.  Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mV/V’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="APerA">
+				<xsd:annotation>
+					<xsd:documentation>Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VPerVA">
+				<xsd:annotation>
+					<xsd:documentation>Power factor, PF, the ratio of the active power to the apparent power.  Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="rev">
+				<xsd:annotation>
+					<xsd:documentation>Amount of rotation, revolutions.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kat">
+				<xsd:annotation>
+					<xsd:documentation>Catalytic activity, katal = mol / s.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPerkg">
+				<xsd:annotation>
+					<xsd:documentation>Specific energy, Joules / kg.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3Uncompensated">
+				<xsd:annotation>
+					<xsd:documentation>Volume, cubic metres, with the value uncompensated for weather effects.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3Compensated">
+				<xsd:annotation>
+					<xsd:documentation>Volume, cubic metres, with the value compensated for weather effects.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPerW">
+				<xsd:annotation>
+					<xsd:documentation>Signal Strength, ratio of power.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mW/W’.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="therm">
+				<xsd:annotation>
+					<xsd:documentation>Energy, therms.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="onePerm">
+				<xsd:annotation>
+					<xsd:documentation>Wavenumber, reciprocal metres,  (1/m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="m3Perkg">
+				<xsd:annotation>
+					<xsd:documentation>Specific volume, cubic metres per kilogram, v.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Pas">
+				<xsd:annotation>
+					<xsd:documentation>Dynamic viscosity, pascal seconds.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Nm">
+				<xsd:annotation>
+					<xsd:documentation>Moment of force, newton metres.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="NPerm">
+				<xsd:annotation>
+					<xsd:documentation>Surface tension, newton per metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="radPers2">
+				<xsd:annotation>
+					<xsd:documentation>Angular acceleration, radians per second squared.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Energy density, joules per cubic metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VPerm">
+				<xsd:annotation>
+					<xsd:documentation>Electric field strength, volts per metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Electric charge density, coulombs per cubic metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CPerm2">
+				<xsd:annotation>
+					<xsd:documentation>Surface charge density, coulombs per square metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="FPerm">
+				<xsd:annotation>
+					<xsd:documentation>Permittivity, farads per metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="HPerm">
+				<xsd:annotation>
+					<xsd:documentation>Permeability, henrys per metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPermol">
+				<xsd:annotation>
+					<xsd:documentation>Molar energy, joules per mole.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPermolK">
+				<xsd:annotation>
+					<xsd:documentation>Molar entropy, molar heat capacity, joules per mole kelvin.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="CPerkg">
+				<xsd:annotation>
+					<xsd:documentation>Exposure (x rays), coulombs per kilogram.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="GyPers">
+				<xsd:annotation>
+					<xsd:documentation>Absorbed dose rate, grays per second.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPersr">
+				<xsd:annotation>
+					<xsd:documentation>Radiant intensity, watts per steradian.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPerm2sr">
+				<xsd:annotation>
+					<xsd:documentation>Radiance, watts per square metre steradian.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="katPerm3">
+				<xsd:annotation>
+					<xsd:documentation>Catalytic activity concentration, katals per cubic metre.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="d">
+				<xsd:annotation>
+					<xsd:documentation>Time in days, day = 24 h = 86400 s.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="anglemin">
+				<xsd:annotation>
+					<xsd:documentation>Plane angle, minutes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="anglesec">
+				<xsd:annotation>
+					<xsd:documentation>Plane angle, seconds.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ha">
+				<xsd:annotation>
+					<xsd:documentation>Area, hectares.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="tonne">
+				<xsd:annotation>
+					<xsd:documentation>Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="bar">
+				<xsd:annotation>
+					<xsd:documentation>Pressure in bars, (1 bar = 100 kPa).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="mmHg">
+				<xsd:annotation>
+					<xsd:documentation>Pressure, millimetres of mercury (1 mmHg is approximately 133.3 Pa).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="M">
+				<xsd:annotation>
+					<xsd:documentation>Length, nautical miles (1 M = 1852 m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kn">
+				<xsd:annotation>
+					<xsd:documentation>Speed, knots (1 kn = 1852/3600) m/s.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Mx">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic flux, maxwells (1 Mx = 10-8 Wb).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="G">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic flux density, gausses (1 G = 10-4 T).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Oe">
+				<xsd:annotation>
+					<xsd:documentation>Magnetic field in oersteds, (1 Oe = (103/4p) A/m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="Vh">
+				<xsd:annotation>
+					<xsd:documentation>Volt-hour, Volt hours.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="WPerA">
+				<xsd:annotation>
+					<xsd:documentation>Active power per current flow, watts per Ampere.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="onePerHz">
+				<xsd:annotation>
+					<xsd:documentation>Reciprocal of frequency (1/Hz).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="VPerVAr">
+				<xsd:annotation>
+					<xsd:documentation>Power factor, PF, the ratio of the active power to the apparent power. Note: The sign convention used for power factor will differ between IEC meters and EEI (ANSI) meters. It is assumed that the data consumers understand the type of meter being used and agree on the sign convention in use at any given utility.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="ohmPerm">
+				<xsd:annotation>
+					<xsd:documentation>Electric resistance per length in ohms per metre ((V/A)/m).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="kgPerJ">
+				<xsd:annotation>
+					<xsd:documentation>Weight per energy in kilograms per joule (kg/J). Note: multiplier “k” is included in this unit symbol for compatibility with IEC 61850-7-3.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+			<xsd:enumeration value="JPers">
+				<xsd:annotation>
+					<xsd:documentation>Energy rate in joules per second (J/s).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="DateTimeInterval">
+		<xsd:annotation>
+			<xsd:documentation>Interval between two date and time points, where the interval includes the start time but excludes end time.  </xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="end" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>End date and time of this interval.  The end date and time where the interval is defined up to, but excluded.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="start" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Start date and time of this interval.  The start date and time is included in the defined interval.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RationalNumber">
+		<xsd:annotation>
+			<xsd:documentation>Rational number = 'numerator' / 'denominator'.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="numerator" type="xsd:integer" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Numerator.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="denominator" type="xsd:integer" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Denominator. Value 1 indicates the number is a simple integer.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ReadingInterharmonic">
+		<xsd:annotation>
+			<xsd:documentation>Interharmonics are represented as a rational number 'numerator' / 'denominator', and harmonics are represented using the same mechanism and identified by 'denominator'=1.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="numerator" type="xsd:integer" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Interharmonic numerator. Value 0 means not applicable. Value 1 is used in combination with 'denominator'=2 to represent interharmonic 1/2, and with 'denominator'=1 it represents fundamental frequency. Finally, values greater than 1 indicate the harmonic of that order (e.g., 'numerator'=5 is the fifth harmonic).</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="denominator" type="xsd:integer" minOccurs="0" maxOccurs="1">
+				<xsd:annotation>
+					<xsd:documentation>Interharmonic denominator. Value 0 means not applicable. Value 2 is used in combination with 'numerator'=1 to represent interharmonic 1/2. Finally, value 1 indicates the harmonic of the order specified with 'numerator'.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

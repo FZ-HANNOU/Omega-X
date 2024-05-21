@@ -1,0 +1,68 @@
+#################################################################
+#  Q1: What are the schedules that have been created?
+#################################################################
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sched: <https://w3id.org/omega-x/SchedulingOntology#>
+
+SELECT ?Schedules
+WHERE {
+  ?Schedules rdf:type sched:Schedule .
+}
+
+#####################################################################
+#  Q2: What are the schedules associated with market participants?
+#####################################################################
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX sched: <https://w3id.org/omega-x/SchedulingOntology#>
+PREFIX role: <https://w3id.org/omega-x/EnergyRoleOntology/> 
+
+SELECT ?Schedule ?CreatedBy ?CreatorIdentifier
+WHERE {
+  ?Schedule rdf:type sched:Schedule ;
+            sched:hasCreator ?CreatedBy .
+   ?CreatedBy role:identifier ?CreatorIdentifier .
+ }
+##############################################################################
+# CQ3: What are the schedules that are valid during a given data interval?
+##############################################################################
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sched: <https://w3id.org/omega-x/SchedulingOntology#>
+
+SELECT ?ScheduleId ?Beginning ?End
+WHERE {
+  ?ScheduleId rdf:type sched:Schedule ;
+            sched:identifier ?ScheduleId ;
+            sched:isValidDuring ?interval .
+  ?interval time:hasBeginning ?Beginning ;
+            time:hasEnd ?End .
+  FILTER (?Beginning >= "2024-05-01T00:00:00" &&
+          ?End <= "2024-05-10T23:59:59")
+}
+
+
+#################################################################
+#  CQ4: When was a schedule created? 
+#################################################################
+
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX time: <http://www.w3.org/2006/time#>
+PREFIX sched: <https://w3id.org/omega-x/SchedulingOntology#>
+
+SELECT ?Schedule ?CreationDate
+WHERE {
+  ?Schedule rdf:type sched:Schedule ;
+            sched:createdOn ?CreationDate .
+}
+

@@ -1,0 +1,169 @@
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix un: <https://qudt.org/vocab/unit#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
+@prefix sch: <https://w3id.org/omega-x/SchedulingOntology/> .
+@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@base <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+
+<https://w3id.org/omega-x/EnergyDataSetOntology> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/EnergyDataSetOntology-1.0/> ;
+                                                  dcterms:creator <https://omega-x.eu/> ;
+                                                  dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
+                                                  dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ;
+                                                  dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
+                                                  dcterms:created "2023-09-04"^^xsd:date ;
+                                                  dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+                                                  dcterms:description """This Energy Data set Ontology helps to define data sets in Energy Data Spaces. It adds:
+- the technical context as the property, the schedule, and the quality associated to an energy data set
+- the exchange context as the participants of the data exchange.
+- the evaluation point attached to the data set exchange.
+Scope : Sharing data resources in complex environments like in the case of energy domain requires some contextual information together with data values to facilitate and ensure consistent interpretation of data. 
+"""@en ;
+                                                  dcterms:license <https://opensource.org/license/mit/> ;
+                                                  dcterms:modified "2024-05-03"@en ;
+                                                  dcterms:issued "2024-05-06"@en ;
+                                                  dcterms:title "Energy Data Set Ontology"@en ;
+                                                  vann:preferredNamespacePrefix "eds" ;
+                                                  vann:preferredNamespaceUri <https://w3id.org/omega-x/EnergyDataSetOntology/> ;
+                                                  rdfs:label "Energy Data Set Ontology"@en ;
+                                                  owl:versionInfo "v1.0" .
+
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+eds:ExchangeContext rdf:type owl:Class ;
+                                           rdfs:comment "Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange."@en ;
+                                           rdfs:label "Exchange Context"@en .                           
+
+eds:EnergyDataSet rdf:type owl:Class ;
+                                        rdfs:comment "Group of data exchanged using an Energy Dataspace."@en ;
+                                        rdfs:label "Energy Data Set"@en ;
+                                        rdfs:subClassOf ets:ValueSet;
+                                        rdfs:isDefinedBy eds:.
+
+eds:EvaluationPoint rdf:type owl:Class ;
+                                        rdfs:comment "Evaluation point concerned by the data exchanged. It can be either a physical or virtual component. An evaluation point can be a smart meter collecting the data or a software compiling the data."@en ;
+                                        rdfs:label "Evaluation Point"@en ;
+                                        rdfs:isDefinedBy eds:.
+
+eds:TechnicalContext rdf:type owl:Class ;
+                                            rdfs:comment "Technical characteristics of the context where the exchange of data takes place."@en ;
+                                            rdfs:label "Technical Context"@en;
+                                            rdfs:subClassOf [ a owl:Restriction ; owl:onProperty eds:includesProperty; owl:someValuesFrom prop:Property] ;
+                                            rdfs:subClassOf [ a owl:Restriction ; owl:onProperty eds:includesSchedule; owl:someValuesFrom sch:Schedule] ;
+                                            rdfs:isDefinedBy eds:.
+                                            
+                                                                                                                        
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+eds:isExchangedIn rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf eds:exchanges;
+                                              rdfs:domain eds:EnergyDataSet ;
+                                              rdfs:range eds:ExchangeContext ;
+                                              rdfs:comment "Links the data set to a specific exchange context."@en ;
+                                              rdfs:label "is exchanged in"@en ;
+                                              rdfs:isDefinedBy eds:.
+eds:exchanges rdf:type owl:ObjectProperty ;
+                                               rdfs:domain eds:ExchangeContext;
+                                               rdfs:range eds:EnergyDataSet ;
+                                               rdfs:comment "Links the exchange context to a specific data set."@en ;
+                                               rdfs:label "exchanges"@en ;
+                                               rdfs:isDefinedBy eds:.
+eds:includesTechnicalContext rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf eds:isTechnicalContextOf ;
+                                               rdfs:domain eds:EnergyDataSet ;
+                                               rdfs:range eds:TechnicalContext;
+                                               rdfs:comment "Links the data set to a specific technical context."@en ;
+                                               rdfs:label "includes technical context"@en ;
+                                               rdfs:isDefinedBy eds:.
+eds:isTechnicalContextOf rdf:type owl:ObjectProperty ;
+                                                rdfs:domain eds:TechnicalContext ;
+                                                rdfs:range eds:EnergyDataSet ;
+                                                rdfs:comment "Links the technical context to a specific data set."@en ;
+                                                rdfs:label "is technical context of"@en ;
+                                                rdfs:isDefinedBy eds:.
+
+eds:includesEvaluationPoint rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf eds:isEvaluationPointOf ;
+                                              rdfs:domain eds:TechnicalContext ;
+                                              rdfs:range eds:EvaluationPoint ;
+                                              rdfs:comment "Links the data set to a specific evaluation point."@en ;
+                                              rdfs:label "includes evaluation point"@en ;
+                                              rdfs:isDefinedBy eds:.
+
+eds:fromSource rdf:type owl:ObjectProperty ;
+                                     rdfs:domain eds:ExchangeContext ;
+                                     rdfs:range role:MarketParticipant ;
+                                     rdfs:comment "Relates the Exchange Context to its source market participant."@eng ;
+                                     rdfs:label "from source"@en ;
+                                     rdfs:isDefinedBy eds:.
+
+eds:toTarget rdf:type owl:ObjectProperty ;
+                                     rdfs:domain eds:ExchangeContext ;
+                                     rdfs:range role:MarketParticipant ;
+                                     rdfs:comment "Relates the Exchange Context to its target market participant."@eng ;
+                                     rdfs:label "to target"@en ;
+                                     rdfs:isDefinedBy eds:.
+                                               
+eds:isEvaluationPointOf rdf:type owl:ObjectProperty ;
+                                               rdfs:domain eds:EvaluationPoint ;
+                                               rdfs:range eds:TechnicalContext;
+                                               rdfs:comment "Links the evaluation point to a specific data set."@en ;
+                                               rdfs:label "is evaluation point of"@en ;
+                                               rdfs:isDefinedBy eds:.
+
+eds:includesSchedule rdf:type owl:ObjectProperty ;
+                                                rdfs:domain eds:TechnicalContext ;
+                                                rdfs:range sch:Schedule;
+                                                rdfs:comment "Links the technical context to a specific schedule."@en ;
+                                                rdfs:label "includes schedule"@en ;
+                                                rdfs:isDefinedBy eds:.
+
+eds:includesProperty rdf:type owl:ObjectProperty ;
+                                                rdfs:domain eds:TechnicalContext ;
+                                                rdfs:range prop:Property;
+                                                rdfs:comment "Links the technical context to all property covered by a data set."@en ;
+                                                rdfs:label "includes property"@en ;
+                                                rdfs:isDefinedBy eds:.
+                                                                                                                         
+#--------------------------------------------------------------
+#    Datatype properties
+#---------------------------------------------------------------
+
+
+eds:identifier rdf:type owl:DatatypeProperty ;
+                                              rdfs:comment "The identifier of a technical context, buiness context, or an EvaluationPoint."@en ;
+                                            rdfs:domain [ rdf:type owl:Class ;  owl:unionOf ( eds:TechnicalContext  eds:ExchangeContext eds:EvaluationPoint )
+                                                        ] ;
+                                              rdfs:label "identifier"@en ;
+                                              rdfs:isDefinedBy eds:.
+eds:valueDataType rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain eds:TechnicalContext ;
+                                         rdfs:comment "Data type (integer, decimal, boolean, string ...) of the values contained in the energy data set."@en ;
+                                         rdfs:label "value data type"@en ;
+                                         rdfs:isDefinedBy eds:.      
+
+
+eds:build rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain eds:EnergyDataSet ;
+                                           rdfs:comment "The building version or time or reference of an energy data set."@en ;
+                                           rdfs:label "build"@en;
+                                           rdfs:isDefinedBy eds:.                                         
+
+

@@ -1,0 +1,280 @@
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+
+#-LEC dynamic quantitative properties-----------------------------------------------------
+
+:Elosses rdf:type owl:Class ;
+							rdfs:comment "The estimated amount of energy lost in the distribution grid."@en ;
+							rdfs:label "Electrical losses"@en ;
+							rdfs:subClassOf seas:ElectricalEnergyProperty;
+							prop:measuredIn unit:KiloW-HR;
+                            rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:ThermalEnergy  rdf:type owl:Class ;
+							rdfs:comment "Thermal energy is a kind of energy and it is generated when the temperature rises. It can be consumed or supplied."@en ;
+							rdfs:subClassOf seas:ElectricalEnergyProperty, prop:QuantitaiveProperty;
+							rdfs:label "Thermal energy "@en ;
+							prop:measuredIn unit:KiloW-HR;
+							rdfs:isDefinedBy prop:.
+:QLosses rdf:type owl:Class ;
+							rdfs:comment "The amount of water lost in the distribution grid. It can be consumed or supplied."@en ;
+							rdfs:subClassOf prop:WaterQuantity;
+							rdfs:label "water losses "@en ;
+							prop:measuredIn prop:CubicMeter-HR;
+							rdfs:isDefinedBy prop:.
+:WaterQuantity rdf:type owl:Class ;
+							rdfs:comment "Volume flow rate quantity equal to the volume dV of substance crossing a given surface during a time interval with infinitesimal duration dt, divided by this duration, thus qV = dV / dt."@en ;
+							rdfs:label "water losses "@en ;
+						    rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=113-03-72>;
+							prop:measuredIn prop:CubicMeter-HR;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:WaterQuantitySupplied owl:Class ;
+                            rdfs:comment "The water quantity supplied."@en ;
+							rdfs:label "water quantity supplied"@en ;
+							dfs:subClassOf prop:WaterQuantity;
+							rdfs:isDefinedBy prop:.
+:WaterQuantityConsumed owl:Class ;
+                            rdfs:comment "The water quantity consumed."@en ;
+							rdfs:label "water quantity consumed"@en ;
+							dfs:subClassOf prop:WaterQuantity;
+							rdfs:isDefinedBy prop:.
+:WaterQuantityLost owl:Class ;
+                            rdfs:comment "The computed water quantity lost."@en ;
+							rdfs:label "water quantity lost"@en ;
+							dfs:subClassOf prop:WaterQuantity;
+							rdfs:isDefinedBy prop:.
+:ActiveEnergy rdf:type owl:Class ;
+							rdfs:comment "the active energy is the integral of the instantaneous power p over a time interval [t1, t2]."@en ;
+							rdfs:label "active energy"@en ;
+							rdfs:subClassOf seas:ElectricEnergyProperty;
+							rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-57>;
+							prop:measuredIn unit:KiloW-HR;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+							
+:ReactiveEnergy rdf:type owl:Class ;
+							rdfs:comment "In an AC system, the captive electrical energy exchanged continuously between the different electric and magnetic fields associated with the operation of the electrical system and of all the connected apparatus."@en ;
+							rdfs:label "reactive energy"@en ;
+							rdfs:subClassOf seas:ElectricEnergyProperty;
+							rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=601-01-20>;
+							prop:measuredIn unit:KiloW-HR;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:ActivePower rdf:type owl:Class ;
+							rdfs:comment "Under periodic conditions, mean value, taken over one period T, of the instantaneous power p."@en ;
+							rdfs:label "active power"@en ;
+							rdfs:subClassOf seas:ElectricPoweryProperty;
+							rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-42>;
+							prop:measuredIn unit:W;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:ReactivePower rdf:type owl:Class ;
+							rdfs:comment "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
+							rdfs:label "reactive power"@en ;
+							rdfs:subClassOf seas:ElectricPoweryProperty;
+							rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-44>;
+							prop:measuredIn unit:W;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:ReactivePowerSetPoint rdf:type owl:Class ;
+							rdfs:comment "Predetermined or desired value of reactive power that a device or electrical system should produce or consume at a given time."@en ;
+							rdfs:label "reactive energy"@en ;
+							rdfs:subClassOf seas:ElectricPowerProperty;
+							prop:measuredIn unit:W;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:DCPower rdf:type owl:Class ;
+							rdfs:comment "power in DC mode."@en ;
+							rdfs:label "DC power"@en ;
+							rdfs:subClassOf seas:ElectricPowerProperty;
+							prop:measuredIn unit:W;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							rdfs:isDefinedBy prop:.
+:EnergyPrice rdf:type owl:Class ;
+							rdfs:comment "Energy prices agreed with the DSO for the power term ."@en ;
+							rdfs:label "energy price"@en ;
+							rdfs:subClassOf seas:PricePerEnergy, prop:QuantitaiveProperty;
+							prop:measuredIn unit:EUR-PER-KiloW;
+							rdfs:isDefinedBy prop:.
+:EnergyCost rdf:type owl:Class ;
+							rdfs:comment "Energy prices agreed with the supplier for the energy term."@en ;
+							rdfs:label "energy cost"@en ;
+							rdfs:subClassOf seas:PricePerEnergy,prop:QuantitaiveProperty;
+							prop:measuredIn unit:EUR-PER-KiloW;
+							rdfs:isDefinedBy prop:.
+:StateofPowerCharge rdf:type owl:Class ;
+							rdfs:comment "The state of power in charge."@en ;
+							rdfs:label "state of power in charge"@en ;
+							rdfs:subClassOf seas:PowerEnergy,prop:QuantitaiveProperty;
+							prop:measuredIn unit:W;
+							rdfs:isDefinedBy prop:.
+:StateofPowerDischarge rdf:type owl:Class ;
+							rdfs:comment "The state of power in discharge."@en ;
+							rdfs:label "state of power in discharge"@en ;
+							rdfs:subClassOf seas:PowerEnergy,prop:QuantitaiveProperty;
+							prop:measuredIn unit:W;
+							rdfs:isDefinedBy prop:.
+:StateofCharge rdf:type owl:Class ;
+							rdfs:comment "The state of charge of a battery."@en ;
+							rdfs:label "state of charge"@en ;
+							rdfs:subClassOf prop:QuantitaiveProperty;
+							prop:measuredIn unit:W;
+							rdfs:isDefinedBy prop:.
+
+:RMSVoltage rdf:type owl:Class ;
+							rdfs:comment "The root mean square voltage."@en ;
+							rdfs:label "rms voltage"@en ;
+							rdfs:subClassOf seas:Voltage,prop:QuantitaiveProperty;
+							prop:measuredIn unit:V;
+							rdfs:isDefinedBy prop:.
+							
+#---LEC dynamic qaulitative properties------------------------------------
+:SMEventLogs rdf:type owl:Class ;
+							rdfs:comment "The event logs generated by a smart meter."@en ;
+							rdfs:subClassOf prop:EventLogs,prop:QuanlitativeProperty;
+							rdfs:label "Smart Meter Event logs "@en .
+:EnergyFraud rdf:type owl:Class ;
+							rdfs:comment "Which type of installation is stealing energy:  Bitcoin mining, Marihuana plantations, Squatting."@en ;
+							rdfs:label "Energy Fraud "@en ;
+							rdfs:subClassOf prop:QuanlitativeProperty.
+
+
+
+#--LEC Battery static properties----------------------------------------------------------
+:batteryProperty  a owl:Class ;
+				        rdfs:subClassOf seas:Property , prop:QuantitaiveProperty;
+						rdfs:comment "data sheet/static property related to a battery."@en.
+						
+:batteryNominalVoltage a owl:Class ;
+						rdfs:subClassOf seas:Voltage , prop:batteryroperty;
+						rdfs:comment "The operating voltage under load is 3V."@en ;
+						rdfs:label "battery nominal voltage"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+:batteryOperatingVoltage a owl:Class ;
+						rdfs:subClassOf seas:Voltage , prop:batteryProperty;
+						rdfs:comment "The operating volatge at 80% DOD."@en ;
+						rdfs:label "battery operating voltage"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+:batteryMinSoC a owl:Class ;
+						rdfs:subClassOf prop:SoC, prop:QuantitaiveProperty;
+						rdfs:comment "The minimum state of charge."@en ;
+						rdfs:label "battery minimum state of charge"@en ;
+						prop:measuredIn unit:PERCENT;
+						rdfs:isDefinedBy prop:.
+:batteryMaxSoC a owl:Class ;
+						rdfs:subClassOf prop:SoC, prop:QuantitaiveProperty;
+						rdfs:comment "The maximum state of charge."@en ;
+						rdfs:label "battery maximum state of charge"@en ;
+						prop:measuredIn unit:PERCENT;
+						rdfs:isDefinedBy prop:.
+:deepDischargeVoltage a owl:Class ;
+						rdfs:subClassOf  seas:Volatge, prop:QuantitaiveProperty;
+						rdfs:comment "The cell is damaged if voltage drops below this voltage."@en ;
+						rdfs:label "deep discharge voltage"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+:batteryCapacity a owl:Class ;
+						rdfs:subClassOf  prop:QuantitaiveProperty;
+						rdfs:comment "The capacity of the battery in ampere hour."@en ;
+						rdfs:label "battery capacity"@en ;
+						prop:measuredIn unit:A-HR;
+						rdfs:isDefinedBy prop:.
+:batteryCellAverageTemperature a owl:Class ;
+						rdfs:subClassOf  seas:Temperature, prop:QuantitaiveProperty;
+						rdfs:comment "The battery temperature should not decrease this level during charge and discharge."@en ;
+						rdfs:label "battery cell average temperature"@en ;
+						prop:measuredIn unit:DEG_C;
+						rdfs:isDefinedBy prop:.
+:batteryMaxTemperature a owl:Class ;
+						rdfs:subClassOf  seas:Temperature, prop:QuantitaiveProperty;
+						rdfs:comment "The battery temperature should not increase this level during charge and discharge."@en ;
+						rdfs:label "battery cell average temperature"@en ;
+						prop:measuredIn unit:DEG_C;
+						rdfs:isDefinedBy prop:.
+:batteryMaxChargeVoltage a owl:Class ;
+						rdfs:subClassOf  seas:Voltage, prop:QuantitaiveProperty;
+						rdfs:comment "The battery cell si damaged if voltage exceeds thsi level."@en ;
+						rdfs:label "battery max charge voltage"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+:batteryOptimalDischargeCurrent a owl:Class ;
+						rdfs:subClassOf  seas:Current, prop:QuantitaiveProperty;
+						rdfs:comment "The maximal  current at 0.5 C."@en ;
+						rdfs:label "battery optimal discharge current"@en ;
+						prop:measuredIn unit:A;
+						rdfs:isDefinedBy prop:.
+:batteryMaxDischargeCurrent a owl:Class ;
+						rdfs:subClassOf  seas:Current, prop:QuantitaiveProperty;
+						rdfs:comment "The maximal current at 3 C, continious for max 15 minutes from full charge."@en ;
+						rdfs:label "battery optimal discharge current"@en ;
+						prop:measuredIn unit:A;
+						rdfs:isDefinedBy prop:.
+:batteryMaxPeakDischargeCurrent a owl:Class ;
+						rdfs:subClassOf  seas:Current, prop:QuantitaiveProperty;
+						rdfs:comment "The maximal current at 10 C, maximal 5 seconds in 1 minute."@en ;
+						rdfs:label "battery max peak discharge current"@en ;
+						prop:measuredIn unit:A;
+						rdfs:isDefinedBy prop:.
+:batteryOptimalChargeCurrent a owl:Class ;
+						rdfs:subClassOf  seas:Current, prop:QuantitaiveProperty;
+						rdfs:comment "The maximal current at 0.5 C."@en ;
+						rdfs:label "battery optimal charge current"@en ;
+						prop:measuredIn unit:A;
+						rdfs:isDefinedBy prop:.
+:batteryMaChargeCurrent a owl:Class ;
+						rdfs:subClassOf  seas:Current, prop:QuantitaiveProperty;
+						rdfs:comment "the maximal current at <0.3 C with battery temperature monitoring."@en ;
+						rdfs:label "battery mac charge current"@en ;
+						prop:measuredIn unit:A;
+						rdfs:isDefinedBy prop:.
+:batteryDimensions a owl:Class ;
+						rdfs:subClassOf prop:QuantitaiveProperty;
+						rdfs:comment "The dimension of the battery Lxlxh."@en ;
+						rdfs:label "battery dimensions"@en ;
+						prop:measuredIn unit:MilliM;
+						rdfs:isDefinedBy prop:.
+:batteryWeight  a owl:Class ;
+						rdfs:subClassOf prop:QuantitaiveProperty;
+						rdfs:comment "The weight of the battery in Kg."@en ;
+						rdfs:label "battery weight"@en ;
+						prop:measuredIn unit:KiloGM;
+						rdfs:isDefinedBy prop:.
+
+#--Transformer static properties---------------------------------------------------
+:transformerPower a owl:Class ;
+						rdfs:subClassOf  seas:PowerProperty, prop:QuantitaiveProperty;
+						rdfs:comment "the transformer power."@en ;
+						rdfs:label "transformer power"@en ;
+						prop:measuredIn unit:W;
+						rdfs:isDefinedBy prop:.
+:transformerResistance a owl:Class ;
+						rdfs:subClassOf  seas:ElectricResistanceProperty, prop:QuantitaiveProperty;
+						rdfs:comment "the transformer resistance."@en ;
+						rdfs:label "transformer resistance"@en ;
+						prop:measuredIn unit:OHM;
+						rdfs:isDefinedBy lec:.
+:transfomerCapacity a owl:Class ;
+						rdfs:subClassOf  prop:Capacity, prop:QuantitaiveProperty;
+						rdfs:comment "the transformer capacity."@en ;
+						rdfs:label "transformer capacity"@en ;
+						prop:measuredIn unit:KiloV-A;
+						rdfs:isDefinedBy prop:.
+:transformerVolatgeLevel a owl:Class ;
+						rdfs:subClassOf  prop:Voltage, prop:QuantitaiveProperty;
+						rdfs:comment "the transformer voltage level."@en ;
+						rdfs:label "transformer voltage level"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+#--Bus static properties--------
+:busVolatge a owl:Class ;
+						rdfs:subClassOf  prop:Voltage, prop:QuantitaiveProperty;
+						rdfs:comment "the bus voltage ."@en ;
+						rdfs:label "bus volatge"@en ;
+						prop:measuredIn unit:V;
+						rdfs:isDefinedBy prop:.
+
+

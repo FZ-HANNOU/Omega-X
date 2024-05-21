@@ -1,0 +1,74 @@
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+#---- General property range?--------
+#-REN dynamic quantitative properties-----------------------------------------------------
+
+:prop:PVPanelInternalTemperature  rdf:type owl:Class ;
+							rdfs:comment "The estimated amount of energy lost in the distribution grid."@en ;
+							rdfs:label "Electrical losses"@en ;
+							rdfs:subClassOf seas:TemperatureProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:DEG_C;
+							rdfs:isDefinedBy prop:.
+
+#-REN static quantitative properties-----------------------------------------------------
+
+#---- REN Inverter properties-----------------------------------------------------------
+:inveterDCMaxInputVoltage rdf:type owl:Class ;
+							rdfs:comment "The maximum input dc voltage of an inverter."@en ;
+							rdfs:label "inverter max input voltage"@en ;
+							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:V;
+							rdfs:isDefinedBy prop:.
+:inveterMaxInputCurrent	rdf:type owl:Class ;
+							rdfs:comment "DC maximum  voltage for input of an inverter."@en ;
+							rdfs:label "inverter max input current"@en ;
+							rdfs:subClassOf seas:CurrentProperty,prop:QuantitaiveProperty;
+							prop:measuredIn unit:A;
+							rdfs:isDefinedBy prop:.		
+:inveterMaxInputPower	rdf:type owl:Class ;
+							rdfs:comment "DC maximum power for input of an inverter."@en ;
+							rdfs:label "inverter max input power"@en ;
+							rdfs:subClassOf seas:ElectricPowerProperty,prop:QuantitaiveProperty;
+							prop:measuredIn unit:W;
+							rdfs:isDefinedBy prop:.		
+:inveterMaxPowerPointVoltageRange rdf:type owl:Class ;
+							rdfs:comment "DC maximum power point voltage range of an inverter."@en ;
+							rdfs:label "inverter max power point voltage range"@en ;
+							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:V;
+							rdfs:isDefinedBy prop:.	
+
+#---- REN Solar Module properties------------------------------------------------------------
+:solarModuleVoC rdf:type owl:Class ;
+							rdfs:comment "solar module open circuit voltage given at STC operating standard conditions."@en ;
+							rdfs:label "solar module voc"@en ;
+							rdfs:subClassOf seas:VoltageProperty,  prop:QuantitaiveProperty;
+							prop:measuredIn unit:V;
+							rdfs:isDefinedBy prop:.
+:solarModuleIsc rdf:type owl:Class ;
+							rdfs:comment "solar module short circuit current given at STC operating standard conditions."@en ;
+							rdfs:label "solar module isc"@en ;
+							rdfs:subClassOf seas:CurrentProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:A;
+							rdfs:isDefinedBy prop:.
+:solarModuleVmp rdf:type owl:Class ;
+							rdfs:comment "solar module maximum power point voltage at operating standard conditions."@en ;
+							rdfs:label "solar module vmp"@en ;
+							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:V;
+							rdfs:isDefinedBy prop:.
+:solarModuleImp rdf:type owl:Class ;
+							rdfs:comment "solar module maximum power point current at operating standard conditions."@en ;
+							rdfs:label "solar module isc"@en ;
+							rdfs:subClassOf seas:CurrentProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:A;
+							rdfs:isDefinedBy prop:.
+
+:solarModuleTemperatureCoefficient rdf:type owl:Class ;
+							rdfs:comment "solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
+							rdfs:label "solar module isc"@en ;
+							rdfs:subClassOf seas:TemperatureProperty, prop:QuantitaiveProperty;
+							prop:measuredIn unit:DEG_C;
+							rdfs:isDefinedBy prop:.
+

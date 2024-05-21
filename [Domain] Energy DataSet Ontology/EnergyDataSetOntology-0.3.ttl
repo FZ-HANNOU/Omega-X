@@ -1,0 +1,501 @@
+@prefix : <https://w3id.org/omega-x/EnergyDataSetOntology#> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix un: <https://qudt.org/vocab/unit#> .
+@prefix cur: <https://www.iso.org/iso-4217-currency-codes#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology#> .
+@prefix ets: <https://w3id.org/omega-x/ValueSetOntology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@base <https://w3id.org/omega-x/EnergyDataSetOntology> .
+
+<https://w3id.org/omega-x/EnergyDataSetOntology> rdf:type owl:Ontology ;
+                                            owl:versionIRI <https://w3id.org/omega-x/EnergyDataSetOntology-0.3> ;
+                                            owl:imports <https://w3id.org/omega-x/ValueSetOntology-0.2> ;
+                                            dcterms:contributor <https://omega-x.eu/> ;
+                                            dcterms:issued "2023-09-04"^^xsd:date ,
+                                                           "This Energy Dataset Ontology helps to define data sets in Energy Data Spaces."@en ;
+                                            dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+                                            dcterms:modified "2023-09-18"@en ;
+                                            dcterms:title "Energy Data Set ontology"@en ;
+                                            vann:preferredNamespacePrefix "eds" ;
+                                            vann:preferredNamespaceUri <https://w3id.org/omega-x/> ;
+                                            rdfs:label "Energy Data Set Ontology"@en ;
+                                            owl:versionInfo "v0.3" .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://purl.org/dc/terms/contributor
+dcterms:contributor rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/creator
+dcterms:creator rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/description
+dcterms:description rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/issued
+dcterms:issued rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/license
+dcterms:license rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/modified
+dcterms:modified rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/dc/terms/title
+dcterms:title rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespacePrefix
+vann:preferredNamespacePrefix rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/preferredNamespaceUri
+vann:preferredNamespaceUri rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#maxQualifiedCardinality
+owl:maxQualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2002/07/owl#qualifiedCardinality
+owl:qualifiedCardinality rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2003/06/sw-vocab-status/ns#term_status
+vs:term_status rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/omega-x/contains
+<https://w3id.org/omega-x/contains> rdf:type owl:ObjectProperty ;
+                                    owl:inverseOf <https://w3id.org/omega-x/isPartOf> ;
+                                    rdfs:domain <https://w3id.org/omega-x/EnergyDataSet> ;
+                                    rdfs:range [ rdf:type owl:Class ;
+                                                         owl:unionOf ( <https://w3id.org/omega-x/EnergyValueSet>
+                                                                       <https://w3id.org/omega-x/EvaluationPoint>
+									<https://w3id.org/omega-x/BusinessContext>
+									<https://w3id.org/omega-x/TechnicalContext>
+                                                                     )
+                                                       ] ;
+                                    rdfs:comment "Gives access to the list of data values, evaluation points, business contexts and technical contexte contained in a data set exchanged using an Energy Dataspace."@en ;
+                                    rdfs:label "contains"@en .
+
+
+###  https://w3id.org/omega-x/hasBusinessContext
+<https://w3id.org/omega-x/hasBusinessContext> rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf <https://w3id.org/omega-x/isBusinessContextOf> ;
+                                              rdfs:domain <https://w3id.org/omega-x/EnergyValueSet> ;
+                                              rdfs:range <https://w3id.org/omega-x/BusinessContext> ;
+                                              rdfs:comment "Links the value set to a specific business context."@en ;
+                                              rdfs:label "has business context"@en .
+
+
+###  https://w3id.org/omega-x/hasEvaluationPoint
+<https://w3id.org/omega-x/hasEvaluationPoint> rdf:type owl:ObjectProperty ;
+                                              owl:inverseOf <https://w3id.org/omega-x/isEvaluationPointOf> ;
+                                              rdfs:domain <https://w3id.org/omega-x/EnergyValueSet>;
+                                              rdfs:range <https://w3id.org/omega-x/EvaluationPoint> ;
+                                              rdfs:comment "Links the value set to a specific evaluation point."@en ;
+                                              rdfs:label "has evaluation point"@en .
+
+
+###  https://w3id.org/omega-x/macroPeriod
+<https://w3id.org/omega-x/macroPeriod> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                          rdfs:range time:Interval ;
+                                          rdfs:comment "Time period of interest that reflects how the reading is viewed or captured over a long period of time."@en ;
+                                          rdfs:label "macro period"@en .
+
+
+###  https://w3id.org/omega-x/measuringPeriod
+<https://w3id.org/omega-x/measuringPeriod> rdf:type owl:ObjectProperty ;
+                                              rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                              rdfs:range time:Interval ;
+                                              rdfs:comment """Time attribute inherent or fundamental to the reading value (as opposed to 'macroPeriod' that supplies an "adjective" to describe aspects of a time period with regard to the measurement). It refers to the way the value was originally measured and not to the frequency at which it is reported or presented. For example, an hourly interval of consumption data would have value 'hourly' as an attribute. However in the case of an hourly sampled voltage value, the meterReadings schema would carry the 'hourly' interval size information.
+It is common for meters to report demand in a form that is measured over the course of a portion of an hour, while enterprise applications however commonly assume the demand (in kW or kVAr) normalised to 1 hour. The system that receives readings directly from the meter therefore shall perform this transformation before publishing readings for use by the other enterprise systems. The scalar used is chosen based on the block size (not any sub-interval size)."""@en  ;
+                                              rdfs:label "measuring period"@en.
+
+###  https://w3id.org/omega-x/unitSymbol
+<https://w3id.org/omega-x/unitSymbol> rdf:type owl:ObjectProperty ;
+                                          rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                          rdfs:range un:Unit ;
+                                          rdfs:comment "Metering-specific unit."@en ;
+                                          rdfs:label "unit symbol"@en .
+
+###  https://w3id.org/omega-x/currency
+<https://w3id.org/omega-x/currency> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                    rdfs:range cur:Currency ;
+                                    rdfs:comment "Metering-specific currency. "@en ;
+                                    rdfs:label "currency"@en .
+
+
+###  https://w3id.org/omega-x/hasTechnicalContext
+<https://w3id.org/omega-x/hasTechnicalContext> rdf:type owl:ObjectProperty ;
+                                               owl:inverseOf <https://w3id.org/omega-x/isTechnicalContextOf> ;
+                                               rdfs:domain <https://w3id.org/omega-x/EnergyValueSet> ;
+                                               rdfs:range <https://w3id.org/omega-x/TechnicalContext> ;
+                                               rdfs:comment "Links the value set to a specific technical context."@en ;
+                                               rdfs:label "has technical context"@en .
+
+
+###  https://w3id.org/omega-x/isBusinessContextOf
+<https://w3id.org/omega-x/isBusinessContextOf> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                               rdfs:range <https://w3id.org/omega-x/EnergyValueSet> ;
+                                               rdfs:comment "Links the business context to a specific value set."@en ;
+                                               rdfs:label "is business context of"@en .
+
+
+###  https://w3id.org/omega-x/isEvaluationPointOf
+<https://w3id.org/omega-x/isEvaluationPointOf> rdf:type owl:ObjectProperty ;
+                                               rdfs:domain <https://w3id.org/omega-x/EvaluationPoint> ;
+                                               rdfs:range <https://w3id.org/omega-x/EnergyValueSet> ;
+                                               rdfs:comment "Links the evaluation point to a specific value set."@en ;
+                                               rdfs:label "is evaluation point of"@en .
+
+
+###  https://w3id.org/omega-x/isPartOf
+<https://w3id.org/omega-x/isPartOf> rdf:type owl:ObjectProperty ;
+                                    rdfs:domain [ rdf:type owl:Class ;
+                                                         owl:unionOf ( <https://w3id.org/omega-x/EnergyValueSet>
+                                                                       <https://w3id.org/omega-x/EvaluationPoint>
+									<https://w3id.org/omega-x/BusinessContext>
+									<https://w3id.org/omega-x/TechnicalContext>
+                                                                     )
+                                                       ] ;
+                                    rdfs:range <https://w3id.org/omega-x/EnergyDataSet> ;
+                                    rdfs:comment "Gives access to the value sets, evaluation points, business conexts and technical contexts of a dataset exchanged using an Energy Dataspace."@en ;
+                                    rdfs:label "is part of"@en .
+
+
+###  https://w3id.org/omega-x/isTechnicalContextOf
+<https://w3id.org/omega-x/isTechnicalContextOf> rdf:type owl:ObjectProperty ;
+                                                rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                                rdfs:range <https://w3id.org/omega-x/EnergyValueSet> ;
+                                                rdfs:comment "Links the technical context to a specific value set."@en ;
+                                                rdfs:label "is technical context of"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://w3id.org/omega-x/typeId
+<https://w3id.org/omega-x/typeId> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Identifier of the type of the business context."@en ;
+                                        rdfs:label "type identifier"@en .
+
+
+###  https://w3id.org/omega-x/typeName
+<https://w3id.org/omega-x/typeName> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Name of the type of the business context."@en ;
+                                        rdfs:label "type name"@en .
+
+
+###  https://w3id.org/omega-x/typeVersion
+<https://w3id.org/omega-x/typeVersion> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Version of the type of the business context."@en ;
+                                        rdfs:label "type version"@en .
+
+
+###  https://w3id.org/omega-x/sourceId
+<https://w3id.org/omega-x/sourceId> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Identifier of the source of the data exchanged."@en ;
+                                        rdfs:label "source identifier"@en .
+
+
+###  https://w3id.org/omega-x/sourceName
+<https://w3id.org/omega-x/sourceName> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Name of the source of the data exchanged."@en ;
+                                        rdfs:label "source name"@en .
+
+
+###  https://w3id.org/omega-x/sourceType
+<https://w3id.org/omega-x/sourceType> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Type of the source of the data exchanged."@en ;
+                                        rdfs:label "source type"@en .
+
+###  https://w3id.org/omega-x/targetId
+<https://w3id.org/omega-x/targetId> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Identifier of the target of the data exchanged."@en ;
+                                        rdfs:label "iarget identifier"@en .
+
+
+###  https://w3id.org/omega-x/targetName
+<https://w3id.org/omega-x/targetName> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Name of the target of the data exchanged."@en ;
+                                        rdfs:label "target name"@en .
+
+
+###  https://w3id.org/omega-x/targetType
+<https://w3id.org/omega-x/targetType> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string;
+                                        rdfs:comment "Type of the target of the data exchanged."@en ;
+                                        rdfs:label "target type"@en .
+
+
+###  https://w3id.org/omega-x/build
+<https://w3id.org/omega-x/build> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range time:instant ;
+                                        rdfs:comment "Tilme stamp of the data exchange."@en ;
+                                        rdfs:label "build"@en .
+
+
+###  https://w3id.org/omega-x/briefId
+<https://w3id.org/omega-x/briefId> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Identifier of the brief associated to the business context."@en ;
+                                        rdfs:label "brief identifier"@en .
+
+
+###  https://w3id.org/omega-x/contractId
+<https://w3id.org/omega-x/contractId> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Identifier of the contract associated to the business context."@en ;
+                                        rdfs:label "contract identifier"@en .
+
+
+###  https://w3id.org/omega-x/subscriptionNb
+<https://w3id.org/omega-x/subscriptionNb> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Number of the subscription associated to the business context."@en ;
+                                        rdfs:label "subscription number"@en .
+
+
+
+
+###  https://w3id.org/omega-x/conditionsOfUse
+<https://w3id.org/omega-x/conditionsOfUse> rdf:type owl:DatatypeProperty ;
+                                        rdfs:domain <https://w3id.org/omega-x/BusinessContext> ;
+                                        rdfs:range xsd:string ;
+                                        rdfs:comment "Conditions of use associated to the business context."@en ;
+                                        rdfs:label "condisions of use"@en .
+
+
+
+
+###  https://w3id.org/omega-x/aggregate
+<https://w3id.org/omega-x/aggregate> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:comment """Salient attribute of the reading data aggregated from individual endpoints. This is mainly used to define a mathematical operation carried out over 'macroPeriod', but may also be used to describe an attribute of the data when the 'macroPeriod' is not defined.
+Possible values are: none, average, axcess, highThreshold, lowThreshold, maximum, minimum, nominal, secondMaximum, secondMinimum, thirdMaximum, fourthMaximum, fifthdMaximum, sum, or other."""@en ;
+                                     rdfs:label "aggregate"@en .
+
+###  https://w3id.org/omega-x/argument
+<https://w3id.org/omega-x/argument> rdf:type owl:DatatypeProperty ;
+                                     rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                     rdfs:range xsd:string ;
+                                     rdfs:comment """SArgument used to introduce numbers into the unit of measure description where they are needed (e.g., 4 where the measure needs an argument such as CEMI(n=4)). Most arguments used in practice however will be integers (i.e., 'denominator'=1).
+Value 0 in 'numerator' and 'denominator' means not applicable."""@en ;
+                                     rdfs:label "argument"@en .
+
+
+###  https://w3id.org/omega-x/commodity
+<https://w3id.org/omega-x/commodity> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:comment """Commodity being measured.
+ """@en ;
+                                    rdfs:label "commodity"@en .
+
+
+###  https://w3id.org/omega-x/consumptionTier
+<https://w3id.org/omega-x/consumptionTier> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:comment """In case of common flat-rate pricing for power, in which all purchases are at a given rate, 'consumptionTier'=0. Otherwise, the value indicates the consumption tier, which can be used in conjunction with TOU or CPP pricing.
+Consumption tier pricing refers to the method of billing in which a certain "block" of energy is purchased/sold at one price, after which the next block of energy is purchased at another price, and so on, all throughout a defined period. At the start of the defined period, consumption is initially zero, and any usage is measured against the first consumption tier ('consumptionTier'=1). If this block of energy is consumed before the end of the period, energy consumption moves to be reconed against the second consumption tier ('consumptionTier'=2), and so on. At the end of the defined period, the consumption accumulator is reset, and usage within the 'consumptionTier'=1 restarts. """@en ;
+                                           rdfs:label "consumption tier"@en .
+
+
+###  https://w3id.org/omega-x/cpp
+<https://w3id.org/omega-x/cpp> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                               rdfs:range xsd:string ;
+                               rdfs:comment """Critical peak period (CPP) bucket the reading value is attributed to. Value 0 means not applicable. Even though CPP is usually considered a specialised form of time of use 'tou', this attribute is defined explicitly for flexibility."""@en ;
+                               rdfs:label "critical peak period"@en .
+
+
+###  https://w3id.org/omega-x/evaluationPointId
+<https://w3id.org/omega-x/evaluationPointId> rdf:type owl:DatatypeProperty ,
+                                                      owl:FunctionalProperty ;
+                                             rdfs:domain <https://w3id.org/omega-x/EvaluationPoint> ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:comment "The identifier of an evaluation point."@en ;
+                                             rdfs:label "evaluation point id"@en .
+
+
+###  https://w3id.org/omega-x/technicalContextId
+<https://w3id.org/omega-x/technicalContextId> rdf:type owl:DatatypeProperty ,
+                                                      owl:FunctionalProperty ;
+                                             rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                             rdfs:range xsd:string ;
+                                             rdfs:comment "The identifier of a technical context."@en ;
+                                             rdfs:label "technical context id"@en .
+
+
+###  https://w3id.org/omega-x/evaluationPointKind
+<https://w3id.org/omega-x/evaluationPointKind> rdf:type owl:DatatypeProperty ;
+                                               rdfs:domain <https://w3id.org/omega-x/EvaluationPoint> ;
+                                               rdfs:range xsd:string ;
+                                               rdfs:comment "The kind  of the evaluation point that can be described based on the context of a dataset exchanged using an Energy Dataspace."@en ;
+                                               rdfs:label "evaluation point kind"@en .
+
+
+###  https://w3id.org/omega-x/flowDirection
+<https://w3id.org/omega-x/flowDirection> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:comment "Flow direction for a reading where the direction of flow of the commodity is important (for electricity measurements this includes current, energy, power, and demand)."@en ;
+                                         rdfs:label "flow direction"@en .
+
+###  https://w3id.org/omega-x/interharmonic
+<https://w3id.org/omega-x/interharmonic> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:comment """Indication of a "harmonic" or "interharmonic" basis for the measurement. Value 0 in 'numerator' and 'denominator' means not applicable."""@en ;
+                                         rdfs:label "interharmonic"@en .
+
+
+###  https://w3id.org/omega-x/location
+<https://w3id.org/omega-x/location> rdf:type owl:DatatypeProperty ;
+                                    rdfs:domain <https://w3id.org/omega-x/EvaluationPoint> ;
+                                    rdfs:range xsd:string ;
+                                    rdfs:comment "The location of an evaluation point ."@en ;
+                                    rdfs:label "location"@en .
+
+
+###  https://w3id.org/omega-x/measurementKind
+<https://w3id.org/omega-x/measurementKind> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                           rdfs:range xsd:string ;
+                                           rdfs:comment """Identifies "what" is being measured, as refinement of 'commodity'. When combined with 'unit', it provides detail to the unit of measure. For example, 'energy' with a unit of measure of 'kWh' indicates to the user that active energy is being measured, while with 'kVAh' or 'kVArh', it indicates apparent energy and reactive energy, respectively. 'power' can be combined in a similar way with various power units of measure: Distortion power ('distortionVoltAmperes') with 'kVA' is different from 'power' with 'kVA'."""@en ;
+                                           rdfs:label "measurementKind"@en .
+
+
+###  https://w3id.org/omega-x/phases
+<https://w3id.org/omega-x/phases> rdf:type owl:DatatypeProperty ;
+                                  rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                  rdfs:range xsd:string ;
+                                  rdfs:comment "Metering-specific phase code."@en ;
+                                  rdfs:label "phases"@en .
+
+
+###  https://w3id.org/omega-x/tou
+<https://w3id.org/omega-x/tou> rdf:type owl:DatatypeProperty ;
+                               rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                               rdfs:range xsd:string ;
+                               rdfs:comment "Time of use (TOU) bucket the reading value is attributed to. Value 0 means not applicable."@en ;
+                               rdfs:label "time of use"@en .
+
+
+###  https://w3id.org/omega-x/unitMultiplier
+<https://w3id.org/omega-x/unitMultiplier> rdf:type owl:DatatypeProperty ;
+                                          rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                          rdfs:range xsd:string ;
+                                          rdfs:comment "Metering-specific multiplier."@en ;
+                                          rdfs:label "unit multiplier"@en .
+
+
+
+###  https://w3id.org/omega-x/valueDataType
+<https://w3id.org/omega-x/valueDataType> rdf:type owl:DatatypeProperty ;
+                                         rdfs:domain <https://w3id.org/omega-x/TechnicalContext> ;
+                                         rdfs:range xsd:string ;
+                                         rdfs:comment "Data type (integer, decimal, boolean, string ...) of the values contained in the value set."@en ;
+                                         rdfs:label   "value data type"@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/omega-x/TechnicalContext
+<https://w3id.org/omega-x/TechnicalContext> rdf:type owl:Class ;
+                                           rdfs:comment "Technical characteristics of the context where the exchange of data takes place."@en ;
+                                           rdfs:label "Technical Context"@en .
+
+
+###  http://www.ontology-of-units-of-measure.org/resource/om-2/Unit
+un:Unit rdf:type owl:Class .
+
+
+###  http://www.w3.org/2006/time#Duration
+time:Duration rdf:type owl:Class .
+
+
+###  https://w3id.org/omega-x/BusinessContext
+<https://w3id.org/omega-x/BusinessContext> rdf:type owl:Class ;
+                                           rdfs:comment "Business characteristics of the context where the exchange of data takes place."@en ;
+                                           rdfs:label "Business Context"@en .
+
+
+###  https://w3id.org/omega-x/EvaluationPoint
+<https://w3id.org/omega-x/EvaluationPoint> rdf:type owl:Class ;
+                                           rdfs:comment "Evaluation point concerned by the exchange of data takes place."@en ;
+                                           rdfs:label "Evaluation Point"@en .
+
+
+###  https://w3id.org/omega-x/EnergyDataSet
+<https://w3id.org/omega-x/EnergyDataSet> rdf:type owl:Class ;
+                                   rdfs:comment "Group of data exchanged using an Energy Dataspace."@en ;
+                                   rdfs:label "Energy Data Set"@en .
+
+
+###  https://w3id.org/omega-x/EnergyValueSet
+<https://w3id.org/omega-x/EnergyValueSet> rdfs:subClassOf <https://w3id.org/omega-x/ValueSet>;
+                                   rdfs:comment "Group of values exchanged using an Energy Dataspace."@en ;
+                                   rdfs:label "Energy Value Set"@en  .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
