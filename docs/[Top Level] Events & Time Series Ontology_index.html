@@ -1,0 +1,5290 @@
+<h1>Omega-X Ontology Repository</h1>
+<p>Welcome to the Omega-X Ontology repository! </p>
+<h2>Repository Structure</h2>
+<p>The repository structure is built to fit multi-level modular ontologies.
+It hosts also relevant alignements to external resources (ontologies/standards). </p>
+<p>The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...</p>
+<p>The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). </p>
+<p><code>📂 Omega-X Ontology 
+│
+├─ 📁 Top Level-ETS Ontology
+│   ├── 📄 onto.ttl                  /* T-box
+│   ├── 📄 dataset.ttl              /* A-box
+│   ├── 🖼️ diagram.&lt;imgFormat&gt;     /* eg. CHOWLK diagram
+│   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
+│   └── 📄 README.md
+│
+├─ 📁 Domain Ontologies
+│   ├── 📄 onto.ttl               /* T-box
+│   ├── 📄 dataset.ttl           /* A-box
+│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
+│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
+│   └── 📄 README.md
+│
+├─ 📁 Application-UC Ontology      /* One folder per application ontology (Renewable, Electromobility, LEC, Flexibility)
+│   ├── 📄 onto.ttl               /* T-box
+│   ├── 📄 dataset.ttl           /* A-box
+│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
+│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
+│   └── 📄 README.md
+│
+├─ 📁 Tooling
+│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
+│   ├── 📁 SHACL                  /* Shacl constraints and validation 
+│   ├── 📁 doc                   /* Doc generations scripts
+│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
+│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
+│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
+│   ├── 📁 SHACL                  /* Shacl constraints and validation 
+│   ├── 📁 doc                   /* Doc generations scripts
+│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
+│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
+│   └── 📄 README.md
+│
+├─ 📁 External Resources
+│   ├── 📁 EUMED Metering
+│   ├── 📄 onto.ttl              /* T-box
+│   │   ├── 📁 Alignements      /* Alignements of EUMED with Omega-X.
+│   └── 📄 README.md
+│
+├─ 📄 README.md</code></p>
+<h2>List of modules</h2>
+<p>Group Name| Module | Scope |State
+|---|---|---|---|
+|Top Level | <a href="./[Top Level] Events &amp; Time Series Ontology">Events and Time Series (ETS)</a> | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
+|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
+|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
+|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
+|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.0
+|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
+|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
+|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
+|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V0.1 (in progress)
+|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V0.1 (in progress)
+|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
+|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)</p>
+<h2>Overview of common modules</h2>
+<p>The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
+<a href="https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D">Common Modules Diagram</a></p>
+<p><img alt="Common Modules" src="./CommonModules.png"/></p>
+<h2>Utils</h2>
+<ul>
+<li>Ontology diagrams can be defined using CHOWLK <a href="https://app.diagrams.net/">diagram.net</a>. A library for specific ontology conceptualisation is available here <a href="https://chowlk.linkeddata.es/">CHOWLK Ontology library</a>. To learn more about visual notation specification, see: <a href="https://chowlk.linkeddata.es/notation.html">CHOWLK Documentation</a>. </li>
+</ul>
+<h2>License</h2>
+<p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for details.</p>
+<h2>Credit</h2>
+<p>This work has been conducted by <a href="https://www.edf.fr/">Electricité De France (EDF)</a> team and partners (<a href="https://www.mines-stetienne.fr/">Ecole des mines de Saint-Etienne</a> and <a href="https://www.trialog.com/fr/accueil/">Trialog</a>), in the frame of the European projetc Omega-X <a href="https://omega-x.eu/">Omega-X website</a>, </p>
+<p><img alt="alt text" src="EU.png"/></p><!DOCTYPE html>
+
+<html>
+<head>
+<title>Event and Time Series Ontology</title>
+<style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "https://w3id.org/omega-x/EventTimeSeriesOntology/",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b1"
+      },
+      {
+        "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b2"
+      },
+      {
+        "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b3"
+      }
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@language": "en",
+        "@value": "Copyright  Omega-X Consortium 2022-2025"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@id": "https://omega-x.eu/"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2023-11-11"
+      }
+    ],
+    "https://schema.org/dateIssued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-06"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-04"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": " Event and time series ontology describes the global structure of value sets. Value sets can be :\r\n                                                - Data points, elementary data structure that holds a data value and optional data time. \r\n                                                - Events, elementary data structure that holds an event value and mandatory trigerring time. \r\n                                                - Data collections, complex data structures that includes multiple data points. \r\n                                                - Time series, timely ordered data collections. Time series include data points, events or data collections. They can be nested too. \r\n                                             "
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://opensource.org/license/mit/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Event and Time Series ontology"
+      },
+      {
+        "@language": "en",
+        "@value": "Event and Time Series Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b1",
+    "https://schema.org/name": [
+      {
+        "@value": "Fatma-Zohra Hannou"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b2",
+    "https://schema.org/name": [
+      {
+        "@value": "Lina Nachabe"
+      }
+    ]
+  },
+  {
+    "@id": "_:n1545ac7aa5074d73ab3f4e8443317e54b3",
+    "https://schema.org/name": [
+      {
+        "@value": "Maxime Lefranois"
+      }
+    ]
+  }
+]
+	</script>
+</head>
+<body>
+<div id="content">
+<div class="section" id="metadata">
+<h1>Event and Time Series ontologyEvent and Time Series Ontology</h1>
+<h2>Metadata</h2>
+<dl>
+<div>
+<dt>
+<strong>IRI</strong>
+</dt>
+<dd>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/</code>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+</dt>
+<dd>
+<ul>
+<li><p>Event and Time Series ontology</p></li>
+<li><p>Event and Time Series Ontology</p></li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+</dt>
+<dd>https://omega-x.eu/</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
+</dt>
+<dd>
+<ul>
+<li>
+<span>
+<span>Fatma-Zohra Hannou</span>
+</span>
+</li>
+<li>
+<span>
+<span>Lina Nachabe</span>
+</span>
+</li>
+<li>
+<span>
+<span>Maxime Lefranois</span>
+</span>
+</li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+</dt>
+<dd><p>2023-11-11</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
+</dt>
+<dd><p>2024-05-04</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/issued" title="Date of formal issuance of the resource. Defined in DCMI Metadata Terms">Date Issued</a>
+</dt>
+<dd><p>2024-05-06</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+</dt>
+<dd>
+<a href="https://opensource.org/license/mit/">https://opensource.org/license/mit/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+</dt>
+<dd><p>Copyright  Omega-X Consortium 2022-2025</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology-1.0/">https://w3id.org/omega-x/EventTimeSeriesOntology-1.0/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
+</dt>
+<dd><p>1.0</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+</dt>
+<dd><p>ets</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</dt>
+<dd><p>Event and time series ontology describes the global structure of value sets. Value sets can be :
+                                                - Data points, elementary data structure that holds a data value and optional data time. 
+                                                - Events, elementary data structure that holds an event value and mandatory trigerring time. 
+                                                - Data collections, complex data structures that includes multiple data points. 
+                                                - Time series, timely ordered data collections. Time series include data points, events or data collections. They can be nested too. </p></dd>
+</div>
+</dl>
+</div>
+<div class="section" id="classes">
+<h2>Classes</h2>
+<div class="property entity" id="TemporalEntity">
+<h3>Temporal Entity
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2006/time#TemporalEntity</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ValueSet">
+<h3>Value Set
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/ValueSet</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Container for a set of values. The four kinds of value set are: data points, data collections, events and time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#isElementOf">Is Element Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasQuality">Has Quality</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#identifier">Identifier</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#name">Name</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#creationTime">Creation Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#isComposedOf">is Composed Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>some<br/>
+</span>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Event">
+<h3>Event
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/Event</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>An occurrence of a change in the environement that happens at a specific time. </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasEventValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#cause">Cause</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#state">State</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#triggeringTime">Triggering Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#cause">Cause</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>some<br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#state">State</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>some<br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#triggeringTime">Triggering Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="DataCollection">
+<h3>Data Collection
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A data collection represents a set of data points, that share some common context. Data Collections may also have a common collection time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#comprises">Comprises</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#collectionValuesCount">Collection Values Count</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#collectionTime">Collection Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#belongsTo">Belongs To</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<a href="#CollectionTime">ets:CollectionTime</a>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="TimeSeries">
+<h3>Time Series
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Value container for a time series. Time series elements can be regularly spaced (in time) with a fixed step.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#isComposedOf">is Composed Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasStep">Has Step</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#seriesElementsCount">Series Elements Count</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#isElementOf">Is Element Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<span>
+<a href="#hasStep">Has Step</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>some<br/>
+</span>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="DataPoint">
+<h3>Data Point
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/DataPoint</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A data point with a unique value, and possible data time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#belongsTo">Belongs To</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasDataValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#dataTime">Data Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#rank">Rank</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#comprises">Comprises</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#dataTime">Data Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#rank">Rank</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="PropertyValue">
+<h3>Property Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A property value is the value associated with a unique property and a unit of measurement.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#isAboutProperty">About Property</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasUnit">has unit</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#value">Value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasDataValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasEventValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#value">Value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#isAboutProperty">About Property</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#hasUnit">has unit</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span>
+<div class="section" id="objectproperties">
+<h2>Object Properties</h2>
+<div class="property entity" id="isElementOf">
+<h3>Is Element Of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/isElementOf</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship designating the time series in which the value set is element. A value set can be part of multiple time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isComposedOf">
+<h3>is Composed Of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/isComposedOf</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the value sets composing a time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="belongsTo">
+<h3>Belongs To
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the data collection to which the data point belongs.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="comprises">
+<h3>Comprises
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/comprises</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating data points comprised in a data collection.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasStep">
+<h3>Has Step
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasStep</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The step between two elements of a time series. This value is only indicated for regular series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasQuality">
+<h3>Has Quality
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasQuality</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a quality value for a value set.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasDataValue">
+<h3>Has Data Value
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for a data point.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasEventValue">
+<h3>Has Data Value
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasEventValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasTemporalContext">
+<h3>Has Temporal Context
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasTemporalContext</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Associates a temporal context for value set coverage. This represents the timeseries entire coverage interval, a data point or an event validity time, i.e time period in which collected values still valid. </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isAboutProperty">
+<h3>About Property
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating which property is evaluated with the property value.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasUnit">
+<h3>has unit
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasUnit</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating which unit used for the property value .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="datatypeproperties">
+<h2>Datatype Properties</h2>
+<div class="property entity" id="dataTime">
+<h3>Data Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/dataTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The data time indicating the value recording time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="rank">
+<h3>Rank
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/rank</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The rank of a data point within a data collection if r</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="collectionValuesCount">
+<h3>Collection Values Count
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/collectionValuesCount</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The count of collection data points.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="collectionTime">
+<h3>Collection Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/collectionTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The collection time indicating common data points values recording time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="cause">
+<h3>Cause
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/cause</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The cause that triggered an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="state">
+<h3>State
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/state</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The state of a system following the occurence of an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="triggeringTime">
+<h3>Triggering Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/triggeringTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Trigerring time refers to the timestamp when the event occurs in the real world.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="seriesElementsCount">
+<h3>Series Elements Count
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/seriesElementsCount</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The count of timeSeries elements.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="identifier">
+<h3>Identifier
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/identifier</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The identifier of a value set .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="name">
+<h3>Name
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/name</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the name of a value set .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creationTime">
+<h3>Creation Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/creationTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Creation time refers to the timestamp when the value set is created.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="value">
+<h3>Value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/value</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The value associated with a property value .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="annotationproperties">
+<h2>Annotation Properties</h2>
+<div class="property entity" id="contributor">
+<h3>contributor
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/contributor</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creator">
+<h3>creator
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/creator</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="description">
+<h3>description
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/description</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="issued">
+<h3>issued
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/issued</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="license">
+<h3>license
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/license</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="modified">
+<h3>modified
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/modified</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="title">
+<h3>title
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/title</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespacePrefix">
+<h3>preferred namespace prefix
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespacePrefix</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespaceUri">
+<h3>preferred namespace uri
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespaceUri</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="maxQualifiedCardinality">
+<h3>max qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#maxQualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="qualifiedCardinality">
+<h3>qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#qualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="term_status">
+<h3>term_status
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#term_status</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="domainIncludes">
+<h3>domain includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://schema.org/domainIncludes</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="rangeIncludes">
+<h3>range includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://schema.org/rangeIncludes</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="functionalproperties">
+<h2>Functional Properties</h2>
+<div class="property entity" id="belongsTo">
+<h3>Belongs To
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the data collection to which the data point belongs.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasDataValue">
+<h3>Has Data Value
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for a data point.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasEventValue">
+<h3>Has Data Value
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasEventValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="namespaces">
+<h2>Namespaces</h2>
+<dl>
+<dt id="dcterms">dcterms</dt>
+<dd>
+<code>http://purl.org/dc/terms/</code>
+</dd>
+<dt id="ets">ets</dt>
+<dd>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/</code>
+</dd>
+<dt id="foaf">foaf</dt>
+<dd>
+<code>http://xmlns.com/foaf/0.1/</code>
+</dd>
+<dt id="omegax">omegax</dt>
+<dd>
+<code>https://w3id.org/omega-x/</code>
+</dd>
+<dt id="owl">owl</dt>
+<dd>
+<code>http://www.w3.org/2002/07/owl#</code>
+</dd>
+<dt id="prop">prop</dt>
+<dd>
+<code>https://w3id.org/omega-x/PropertyOntology/</code>
+</dd>
+<dt id="prov">prov</dt>
+<dd>
+<code>http://www.w3.org/ns/prov#</code>
+</dd>
+<dt id="rdf">rdf</dt>
+<dd>
+<code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+</dd>
+<dt id="rdfs">rdfs</dt>
+<dd>
+<code>http://www.w3.org/2000/01/rdf-schema#</code>
+</dd>
+<dt id="schema">schema</dt>
+<dd>
+<code>https://schema.org/</code>
+</dd>
+<dt id="schema1">schema1</dt>
+<dd>
+<code>http://schema.org/</code>
+</dd>
+<dt id="time">time</dt>
+<dd>
+<code>http://www.w3.org/2006/time#</code>
+</dd>
+<dt id="vann">vann</dt>
+<dd>
+<code>http://purl.org/vocab/vann/</code>
+</dd>
+<dt id="vs">vs</dt>
+<dd>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code>
+</dd>
+<dt id="xsd">xsd</dt>
+<dd>
+<code>http://www.w3.org/2001/XMLSchema#</code>
+</dd>
+</dl>
+</div>
+<div id="legend">
+<h2>Legend</h2>
+<table class="entity">
+<tr>
+<td>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</td>
+<td>Object Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</td>
+<td>Datatype Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</td>
+<td>Annotation Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</td>
+<td>Functional Properties</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="pylode">
+<p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+<span id="p">p</span>
+<span id="y">y</span>
+<span>LODE</span>
+</a>
+<a href="https://github.com/rdflib/pyLODE/release/3.1.4" id="version">3.1.4</a>
+<span> with the </span>
+<a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
+<span>profile</span>
+</p>
+</div>
+
+</body>
+</html><!DOCTYPE html>
+
+<html>
+<head>
+<title>Event and Time Series Ontology</title>
+<style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "https://w3id.org/omega-x/EventTimeSeriesOntology/",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b1"
+      },
+      {
+        "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b2"
+      },
+      {
+        "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b3"
+      }
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@language": "en",
+        "@value": "Copyright  Omega-X Consortium 2022-2025"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@id": "https://omega-x.eu/"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2023-11-11"
+      }
+    ],
+    "https://schema.org/dateIssued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-15"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-15"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": " Event and time series ontology describes the global structure of value sets. Value sets can be :\r\n                                                - Data points, elementary data structure that holds a data value and optional data time. \r\n                                                - Events, elementary data structure that holds an event value and mandatory trigerring time. \r\n                                                - Data collections, complex data structures that includes multiple data points. \r\n                                                - Time series, timely ordered data collections. Time series include data points, events or data collections. They can be nested too. \r\n                                             "
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://opensource.org/license/mit/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Event and Time Series ontology"
+      },
+      {
+        "@language": "en",
+        "@value": "Event and Time Series Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b1",
+    "https://schema.org/name": [
+      {
+        "@value": "Fatma-Zohra Hannou"
+      }
+    ]
+  },
+  {
+    "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b2",
+    "https://schema.org/name": [
+      {
+        "@value": "Lina Nachabe"
+      }
+    ]
+  },
+  {
+    "@id": "_:n7554582c67a24b4aa8d15b0596bb5772b3",
+    "https://schema.org/name": [
+      {
+        "@value": "Maxime Lefranois"
+      }
+    ]
+  }
+]
+	</script>
+</head>
+<body>
+<div id="content">
+<div class="section" id="metadata">
+<h1>Event and Time Series ontologyEvent and Time Series Ontology</h1>
+<h2>Metadata</h2>
+<dl>
+<div>
+<dt>
+<strong>IRI</strong>
+</dt>
+<dd>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/</code>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+</dt>
+<dd>
+<ul>
+<li><p>Event and Time Series ontology</p></li>
+<li><p>Event and Time Series Ontology</p></li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+</dt>
+<dd>https://omega-x.eu/</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
+</dt>
+<dd>
+<ul>
+<li>
+<span>
+<span>Fatma-Zohra Hannou</span>
+</span>
+</li>
+<li>
+<span>
+<span>Lina Nachabe</span>
+</span>
+</li>
+<li>
+<span>
+<span>Maxime Lefranois</span>
+</span>
+</li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+</dt>
+<dd><p>2023-11-11</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
+</dt>
+<dd><p>2024-05-15</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/issued" title="Date of formal issuance of the resource. Defined in DCMI Metadata Terms">Date Issued</a>
+</dt>
+<dd><p>2024-05-15</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+</dt>
+<dd>
+<a href="https://opensource.org/license/mit/">https://opensource.org/license/mit/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+</dt>
+<dd><p>Copyright  Omega-X Consortium 2022-2025</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology-1.0/">https://w3id.org/omega-x/EventTimeSeriesOntology-1.0/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
+</dt>
+<dd><p>1.0</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+</dt>
+<dd><p>ets</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</dt>
+<dd><p>Event and time series ontology describes the global structure of value sets. Value sets can be :
+                                                - Data points, elementary data structure that holds a data value and optional data time. 
+                                                - Events, elementary data structure that holds an event value and mandatory trigerring time. 
+                                                - Data collections, complex data structures that includes multiple data points. 
+                                                - Time series, timely ordered data collections. Time series include data points, events or data collections. They can be nested too. </p></dd>
+</div>
+</dl>
+</div>
+<div class="section" id="classes">
+<h2>Classes</h2>
+<div class="property entity" id="TemporalEntity">
+<h3>Temporal Entity
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2006/time#TemporalEntity</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ValueSet">
+<h3>Value Set
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/ValueSet</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Container for a set of values. The four kinds of value set are: data points, data collections, events and time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#isElementOf">Is Element Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasQuality">Has Quality</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#identifier">Identifier</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#name">Name</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#creationTime">Creation Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#isComposedOf">is Composed Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<span>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>some<br/>
+</span>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Event">
+<h3>Event
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/Event</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>An occurrence of a change in the environement that happens at a specific time. </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasEventValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#cause">Cause</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#state">State</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#triggeringTime">Triggering Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#cause">Cause</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>some<br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#state">State</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>some<br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#triggeringTime">Triggering Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="DataCollection">
+<h3>Data Collection
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A data collection represents a set of data points, that share some common context. Data Collections may also have a common collection time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#comprises">Comprises</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#collectionValuesCount">Collection Values Count</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#collectionTime">Collection Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#belongsTo">Belongs To</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<a href="#CollectionTime">ets:CollectionTime</a>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="TimeSeries">
+<h3>Time Series
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Value container for a time series. Time series elements can be regularly spaced (in time) with a fixed step.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#isComposedOf">is Composed Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasStep">Has Step</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#seriesElementsCount">Series Elements Count</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#isElementOf">Is Element Of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<span>
+<span>
+<span>
+<a href="#hasStep">Has Step</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>some<br/>
+</span>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="DataPoint">
+<h3>Data Point
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/DataPoint</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A data point with a unique value, and possible data time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#belongsTo">Belongs To</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasDataValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#dataTime">Data Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#rank">Rank</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#comprises">Comprises</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#dataTime">Data Time</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<span>
+<a href="#rank">Rank</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="PropertyValue">
+<h3>Property Value
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>A property value is the value associated with a unique property and a unit of measurement.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#value">Value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasDataValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasEventValue">Has Data Value</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/restriction" title="Convenience property for things that subclass owl:Restriction. Defined in Ontology Documentation Profile">Restriction</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<span>
+<span>
+<a href="#value">Value</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+<li>
+<span>
+<span>
+<a href="#hasUnit">ets:hasUnit</a>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span><br/>
+</span>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span>
+<span>
+<span class="cardinality">max</span>
+<span>1</span>
+</span>
+<div class="section" id="objectproperties">
+<h2>Object Properties</h2>
+<div class="property entity" id="isElementOf">
+<h3>Is Element Of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/isElementOf</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship designating the time series in which the value set is element. A value set can be part of multiple time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isComposedOf">
+<h3>is Composed Of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/isComposedOf</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the value sets composing a time series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="belongsTo">
+<h3>Belongs To
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the data collection to which the data point belongs.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="comprises">
+<h3>Comprises
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/comprises</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating data points comprised in a data collection.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasStep">
+<h3>Has Step
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasStep</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The step between two elements of a time series. This value is only indicated for regular series.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasQuality">
+<h3>Has Quality
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasQuality</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a quality value for a value set.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasDataValue">
+<h3>Has Data Value
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for a data point.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasEventValue">
+<h3>Has Data Value
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasEventValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasTemporalContext">
+<h3>Has Temporal Context
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasTemporalContext</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Associates a temporal context for value set coverage. This represents the timeseries entire coverage interval, a data point or an event validity time, i.e time period in which collected values still valid. </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="http://www.w3.org/2006/time#TemporalEntity">time:TemporalEntity</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="datatypeproperties">
+<h2>Datatype Properties</h2>
+<div class="property entity" id="dataTime">
+<h3>Data Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/dataTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The data time indicating the value recording time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="rank">
+<h3>Rank
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/rank</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The rank of a data point within a data collection if r</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="collectionValuesCount">
+<h3>Collection Values Count
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/collectionValuesCount</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The count of collection data points.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="collectionTime">
+<h3>Collection Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/collectionTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The collection time indicating common data points values recording time.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="cause">
+<h3>Cause
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/cause</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The cause that triggered an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="state">
+<h3>State
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/state</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The state of a system following the occurence of an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="triggeringTime">
+<h3>Triggering Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/triggeringTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Trigerring time refers to the timestamp when the event occurs in the real world.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="seriesElementsCount">
+<h3>Series Elements Count
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/seriesElementsCount</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The count of timeSeries elements.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#TimeSeries">Time Series</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">xsd:nonNegativeInteger</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="identifier">
+<h3>Identifier
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/identifier</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The identifier of a value set .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="name">
+<h3>Name
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/name</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the name of a value set .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creationTime">
+<h3>Creation Time
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/creationTime</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Creation time refers to the timestamp when the value set is created.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ValueSet">Value Set</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#dateTime">xsd:dateTime</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="value">
+<h3>Value
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/value</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The value associated with a property value .</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="annotationproperties">
+<h2>Annotation Properties</h2>
+<div class="property entity" id="contributor">
+<h3>contributor
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/contributor</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creator">
+<h3>creator
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/creator</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="description">
+<h3>description
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/description</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="issued">
+<h3>issued
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/issued</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="license">
+<h3>license
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/license</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="modified">
+<h3>modified
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/modified</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="title">
+<h3>title
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/title</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespacePrefix">
+<h3>preferred namespace prefix
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespacePrefix</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespaceUri">
+<h3>preferred namespace uri
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespaceUri</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="maxQualifiedCardinality">
+<h3>max qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#maxQualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="qualifiedCardinality">
+<h3>qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#qualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="term_status">
+<h3>term_status
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#term_status</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="domainIncludes">
+<h3>domain includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://schema.org/domainIncludes</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="rangeIncludes">
+<h3>range includes
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://schema.org/rangeIncludes</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="functionalproperties">
+<h2>Functional Properties</h2>
+<div class="property entity" id="belongsTo">
+<h3>Belongs To
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/EventTimeSeriesOntology/">Event and Time Series ontology</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the relationship indicating the data collection to which the data point belongs.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#DataCollection">Data Collection</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasDataValue">
+<h3>Has Data Value
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for a data point.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#DataPoint">Data Point</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasEventValue">
+<h3>Has Data Value
+            <sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/hasEventValue</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The relationship indicating a property value for an event.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Event">Event</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#PropertyValue">Property Value</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="namespaces">
+<h2>Namespaces</h2>
+<dl>
+<dt id="dcterms">dcterms</dt>
+<dd>
+<code>http://purl.org/dc/terms/</code>
+</dd>
+<dt id="ets">ets</dt>
+<dd>
+<code>https://w3id.org/omega-x/EventTimeSeriesOntology/</code>
+</dd>
+<dt id="foaf">foaf</dt>
+<dd>
+<code>http://xmlns.com/foaf/0.1/</code>
+</dd>
+<dt id="omegax">omegax</dt>
+<dd>
+<code>https://w3id.org/omega-x/</code>
+</dd>
+<dt id="owl">owl</dt>
+<dd>
+<code>http://www.w3.org/2002/07/owl#</code>
+</dd>
+<dt id="prop">prop</dt>
+<dd>
+<code>https://w3id.org/omega-x/PropertyOntology/</code>
+</dd>
+<dt id="prov">prov</dt>
+<dd>
+<code>http://www.w3.org/ns/prov#</code>
+</dd>
+<dt id="rdf">rdf</dt>
+<dd>
+<code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+</dd>
+<dt id="rdfs">rdfs</dt>
+<dd>
+<code>http://www.w3.org/2000/01/rdf-schema#</code>
+</dd>
+<dt id="schema">schema</dt>
+<dd>
+<code>https://schema.org/</code>
+</dd>
+<dt id="schema1">schema1</dt>
+<dd>
+<code>http://schema.org/</code>
+</dd>
+<dt id="time">time</dt>
+<dd>
+<code>http://www.w3.org/2006/time#</code>
+</dd>
+<dt id="vann">vann</dt>
+<dd>
+<code>http://purl.org/vocab/vann/</code>
+</dd>
+<dt id="vs">vs</dt>
+<dd>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code>
+</dd>
+<dt id="xsd">xsd</dt>
+<dd>
+<code>http://www.w3.org/2001/XMLSchema#</code>
+</dd>
+</dl>
+</div>
+<div id="legend">
+<h2>Legend</h2>
+<table class="entity">
+<tr>
+<td>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</td>
+<td>Object Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</td>
+<td>Datatype Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</td>
+<td>Annotation Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-fp" title="OWL Functional Property">fp</sup>
+</td>
+<td>Functional Properties</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="pylode">
+<p>made by 
+        <a href="https://github.com/rdflib/pyLODE">
+<span id="p">p</span>
+<span id="y">y</span>
+<span>LODE</span>
+</a>
+<a href="https://github.com/rdflib/pyLODE/release/3.1.4" id="version">3.1.4</a>
+<span> with the </span>
+<a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
+<span>profile</span>
+</p>
+</div>
+<div id="toc">
+<h3>Table of Contents</h3>
+<ul class="first">
+<li>
+<h4>
+<a href="#metadata">Metadata</a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="#classes">Classes</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#TemporalEntity">Temporal Entity</a>
+</li>
+<li>
+<a href="#ValueSet">Value Set</a>
+</li>
+<li>
+<a href="#Event">Event</a>
+</li>
+<li>
+<a href="#DataCollection">Data Collection</a>
+</li>
+<li>
+<a href="#TimeSeries">Time Series</a>
+</li>
+<li>
+<a href="#DataPoint">Data Point</a>
+</li>
+<li>
+<a href="#PropertyValue">Property Value</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#objectproperties">Object Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#isElementOf">Is Element Of</a>
+</li>
+<li>
+<a href="#isComposedOf">is Composed Of</a>
+</li>
+<li>
+<a href="#belongsTo">Belongs To</a>
+</li>
+<li>
+<a href="#comprises">Comprises</a>
+</li>
+<li>
+<a href="#hasStep">Has Step</a>
+</li>
+<li>
+<a href="#hasQuality">Has Quality</a>
+</li>
+<li>
+<a href="#hasDataValue">Has Data Value</a>
+</li>
+<li>
+<a href="#hasEventValue">Has Data Value</a>
+</li>
+<li>
+<a href="#hasTemporalContext">Has Temporal Context</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#datatypeproperties">Datatype Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dataTime">Data Time</a>
+</li>
+<li>
+<a href="#rank">Rank</a>
+</li>
+<li>
+<a href="#collectionValuesCount">Collection Values Count</a>
+</li>
+<li>
+<a href="#collectionTime">Collection Time</a>
+</li>
+<li>
+<a href="#cause">Cause</a>
+</li>
+<li>
+<a href="#state">State</a>
+</li>
+<li>
+<a href="#triggeringTime">Triggering Time</a>
+</li>
+<li>
+<a href="#seriesElementsCount">Series Elements Count</a>
+</li>
+<li>
+<a href="#identifier">Identifier</a>
+</li>
+<li>
+<a href="#name">Name</a>
+</li>
+<li>
+<a href="#creationTime">Creation Time</a>
+</li>
+<li>
+<a href="#value">Value</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#annotationproperties">Annotation Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#contributor">contributor</a>
+</li>
+<li>
+<a href="#creator">creator</a>
+</li>
+<li>
+<a href="#description">description</a>
+</li>
+<li>
+<a href="#issued">issued</a>
+</li>
+<li>
+<a href="#license">license</a>
+</li>
+<li>
+<a href="#modified">modified</a>
+</li>
+<li>
+<a href="#title">title</a>
+</li>
+<li>
+<a href="#preferredNamespacePrefix">preferred namespace prefix</a>
+</li>
+<li>
+<a href="#preferredNamespaceUri">preferred namespace uri</a>
+</li>
+<li>
+<a href="#maxQualifiedCardinality">max qualified cardinality</a>
+</li>
+<li>
+<a href="#qualifiedCardinality">qualified cardinality</a>
+</li>
+<li>
+<a href="#term_status">term_status</a>
+</li>
+<li>
+<a href="#domainIncludes">domain includes</a>
+</li>
+<li>
+<a href="#rangeIncludes">range includes</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#functionalproperties">Functional Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#belongsTo">Belongs To</a>
+</li>
+<li>
+<a href="#hasDataValue">Has Data Value</a>
+</li>
+<li>
+<a href="#hasEventValue">Has Data Value</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#namespaces">Namespaces</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dcterms">dcterms</a>
+</li>
+<li>
+<a href="#ets">ets</a>
+</li>
+<li>
+<a href="#foaf">foaf</a>
+</li>
+<li>
+<a href="#omegax">omegax</a>
+</li>
+<li>
+<a href="#owl">owl</a>
+</li>
+<li>
+<a href="#prop">prop</a>
+</li>
+<li>
+<a href="#prov">prov</a>
+</li>
+<li>
+<a href="#rdf">rdf</a>
+</li>
+<li>
+<a href="#rdfs">rdfs</a>
+</li>
+<li>
+<a href="#schema">schema</a>
+</li>
+<li>
+<a href="#schema1">schema1</a>
+</li>
+<li>
+<a href="#time">time</a>
+</li>
+<li>
+<a href="#vann">vann</a>
+</li>
+<li>
+<a href="#vs">vs</a>
+</li>
+<li>
+<a href="#xsd">xsd</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#legend">Legend</a>
+</h4>
+<ul class="second"></ul>
+</li>
+</ul>
+</div>
+</body>
+</html>
