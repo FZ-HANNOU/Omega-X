@@ -60,7 +60,7 @@ The omega-X ontology is defined by two modules: a core ontology for Events and T
 ## List of modules 
 Group Name| Module | Scope |State
 |---|---|---|---|
-|Top Level | Events and Time Series (ETS) | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
+|Top Level | [Events and Time Series (ETS)](./[Top Level] Events & Time Series Ontology) | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
 |Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
 |Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
 |Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
