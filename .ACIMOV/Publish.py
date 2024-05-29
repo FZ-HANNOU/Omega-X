@@ -1,93 +1,107 @@
-#!/usr/bin/env python3
 import os
-import sys
-import logging
-import shutil
 import subprocess
-import rdflib
-from rdflib import Graph, URIRef, Literal, BNode
-from rdflib.namespace import RDF, OWL, DCTERMS, XSD
-import pylode
 import markdown
+import fnmatch
+from bs4 import BeautifulSoup
 
-logging.basicConfig(level=logging.DEBUG)
+def find_directories_starting_with_bracket():
+    current_directory = os.getcwd()
+    matching_dirs = []
+    
+    for root, dirs, files in os.walk(current_directory):
+        for dir_name in dirs:
+            if dir_name.startswith('['):
+                matching_dirs.append(os.path.join(root, dir_name))
+    
+    return matching_dirs
 
-base = "http://example.org/"
+def add_left_margin_to_html(content):
+    # Define your function to add left margin to HTML content
+    return content  # Placeholder, modify as per your requirement
 
-os.makedirs("public", exist_ok=True)
-shutil.copytree("resources", "public", dirs_exist_ok=True)
+def remove_toc_from_html(file_path):
+    with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
+        content = file.read()
 
-input_files = ["src/" + f.name for f in os.scandir("src") if f.is_file()]
+    soup = BeautifulSoup(content, 'html.parser')
+    toc_div = soup.find('div', id='toc')
+    if toc_div:
+        toc_div.extract()
+    
+    cleaned_content = str(soup)
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(cleaned_content)
 
-for input_file_path in input_files:
-    dest_path = input_file_path.replace("src/" , "public/")[0:-4]
+def process_html_file(file_path):
+    # Define your function to process HTML file
+    pass
 
-    # parse and check ttl syntax
-    g = Graph()
-    try:
-        g.parse(input_file_path)
-    except rdflib.plugins.parsers.notation3.BadSyntax as err:
-        err_string = str(err).replace('\n', '\n  ')
-        logging.error(f"File {input_file_path} {err_string}")
-        sys.exit(1) # exit with error code if there is a parsing error
+def append_html_to_file(src_file, dest_file):
+    if not os.path.exists(src_file):
+        print(f"Source file does not exist: {src_file}")
+        return
 
-    if len(list(g.subjects(RDF.type, OWL.Ontology))) != 1: # check there is one ontology declaration
-        logging.error("There MUST be exactly one triple: `?ontology rdf:type owl:Ontology`")
-        sys.exit(1) # exit with error code if there is a parsing error
+    with open(src_file, 'r', encoding='utf-8', errors='ignore') as sf:
+        src_content = sf.read()
+    with open(dest_file, 'a', encoding='utf-8', errors='ignore') as df:
+        df.write(src_content)
 
-    for ontology in g.subjects(RDF.type, OWL.Ontology):
-        logging.debug(f"The ontology is {ontology.n3()}")
-        break;
+# Determine the paths
+script_directory = os.path.dirname(os.path.abspath(__file__))
+parent_directory = os.path.dirname(script_directory)
+docs_directory = os.path.join(parent_directory, 'docs')
+readme_path = os.path.join(parent_directory, 'README.md')
 
-    # find when the file was first added to the git repository, and set dct:created .
+# Ensure the docs directory exists
+os.makedirs(docs_directory, exist_ok=True)
 
-    git_dct_created = subprocess.check_output(["git", "log", "--diff-filter=A", "--format='%ad'", "--date=short", "--", input_file_path]).decode('ascii')[1:-2]
+# Read and process the main README.md file
+with open(readme_path, 'r', encoding='utf-8', errors='ignore') as f:
+    tempMd = f.read()
+styled_html = add_left_margin_to_html(tempMd)
+tempHtml = markdown.markdown(styled_html, extensions=['tables'])
+index_html_path = os.path.join(docs_directory, 'index.html')
+with open(index_html_path, 'w', encoding='utf-8') as f:
+    f.write(tempHtml)
 
-    for dct_created in g.objects(ontology, DCTERMS.created):
-        break
+directory = os.getcwd()
+for root, dirs, files in os.walk(directory):
+    for file_name in files:
+        if fnmatch.fnmatch(file_name, '*Ontology*.ttl'):
+            print(f"Processing file: {file_name}")
+            ttl_file = os.path.join(root, file_name)
+            html_file = os.path.join(docs_directory, os.path.splitext(file_name)[0] + ".html")
+            subprocess.run(['pylode', ttl_file, '-o', html_file])
+            process_html_file(html_file)
+            append_html_to_file(html_file, index_html_path)
+remove_toc_from_html(index_html_path)
 
-    try:
-        dct_created
-    except NameError:
-        logging.debug(f"No dct:created attribute. Adding the date when {input_file_path} was first commited: {git_dct_created}")
-        g.add((ontology, DCTERMS.created, Literal(git_dct_created,datatype=XSD.date)))
-    else:
-        if dct_created.lstrip() != git_dct_created:
-            logging.debug(f"dct:created value {dct_created.n3()} is different from the date when {input_file_path} was first commited: {git_dct_created}")
+try:
+    directories = find_directories_starting_with_bracket()
+    for directory in directories:
+        try:
+            with open(readme_path, 'r', encoding='utf-8', errors='ignore') as f:
+                tempMd = f.read()
+            styled_html = add_left_margin_to_html(tempMd)
+            tempHtml = markdown.markdown(styled_html, extensions=['tables'])
 
+            dir_index_html_path = os.path.join(docs_directory, f'{os.path.basename(directory)}_index.html')
+            with open(dir_index_html_path, 'w', encoding='utf-8', errors='ignore') as f:
+                f.write(tempHtml)
 
-    # find when the set dct:modified automatically ?
-    git_dct_modified = subprocess.check_output(["git", "log", "-1", "--format='%ad'", "--date=short", "--", input_file_path]).decode('ascii')[1:-2]
-    dct_modified = Literal(git_dct_modified,datatype=XSD.date)
-    if (ontology, DCTERMS.modified, dct_modified) not in g:
-        g.add((ontology, DCTERMS.modified, dct_modified))
-        logging.debug(f"adding last git commit date as dct:modified value: {git_dct_modified.lstrip()}")
+            for root, dirs, files in os.walk(directory):
+                for file in files:
+                    if file.endswith(".ttl"):
+                        print(f"Processing file: {file}")
+                        ttl_file = os.path.join(root, file)
+                        html_file = os.path.join(docs_directory, os.path.splitext(file)[0] + ".html")
+                        subprocess.run(['pylode', ttl_file, '-o', html_file])
+                        process_html_file(html_file)
+                        append_html_to_file(html_file, dir_index_html_path)
+            remove_toc_from_html(dir_index_html_path)
 
-    # generate html documentation and rdf variants
-    html = pylode.MakeDocco(input_data_file=input_file_path).document()
-    with open(dest_path+ ".html", "w") as output:
-        output.write(html)
-    with open(dest_path+ ".ttl", "wb") as output:
-        output.write(g.serialize(format='ttl', encoding='utf-8'))
-    with open(dest_path+ ".rdf", "wb") as output:
-        output.write(g.serialize(format='pretty-xml', encoding='utf-8'))
-    with open(dest_path+ ".json-ld", "wb") as output:
-        output.write(g.serialize(format='json-ld', indent=4, encoding='utf-8'))
-    with open(dest_path+ ".n3", "wb") as output:
-        output.write(g.serialize(format='n3', encoding='utf-8'))
-    with open(dest_path+ ".nt", "wb") as output:
-        output.write(g.serialize(format='nt', encoding='utf-8'))
+        except Exception as e:
+            print(f"An error occurred while processing directory {directory}: {e}")
 
-# generate html documentation from markdown
-for root, dirs, files in os.walk("domains"):
-   for name in files:
-        dest_dir = "public/" + root
-        os.makedirs(dest_dir, exist_ok=True)
-        if name == "README.md":
-            md_file = os.path.join(root, name)
-            html_file = os.path.join(dest_dir, 'index.html')
-            markdown.markdownFromFile(input=md_file, output=html_file, encoding='utf-8', extensions=['tables'])
-        else:
-            shutil.copyfile(src=os.path.join(root, name), dst=os.path.join(dest_dir, name))
-
-       
+except Exception as e:
+    print(f"An error occurred: {e}")
