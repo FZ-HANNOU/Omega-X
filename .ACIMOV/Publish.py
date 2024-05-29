@@ -16,8 +16,7 @@ def find_directories_starting_with_bracket():
     return matching_dirs
 
 def add_left_margin_to_html(content):
-    # Define your function to add left margin to HTML content
-    return content  # Placeholder, modify as per your requirement
+    return content  
 
 def remove_toc_from_html(file_path):
     with open(file_path, 'r', encoding='utf-8', errors='ignore') as file:
