@@ -1,81 +1,68 @@
-<h1>Omega-X Ontology Repository</h1>
-<p>Welcome to the Omega-X Ontology repository! </p>
-<h2>Repository Structure</h2>
-<p>The repository structure is built to fit multi-level modular ontologies.
-It hosts also relevant alignements to external resources (ontologies/standards). </p>
-<p>The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...</p>
-<p>The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). </p>
-<p><code>📂 Omega-X Ontology 
-│
-├─ 📁 Top Level-ETS Ontology
-│   ├── 📄 onto.ttl                  /* T-box
-│   ├── 📄 dataset.ttl              /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;     /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Domain Ontologies
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Application-UC Ontology      /* One folder per application ontology (Renewable, Electromobility, LEC, Flexibility)
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Tooling
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   └── 📄 README.md
-│
-├─ 📁 External Resources
-│   ├── 📁 EUMED Metering
-│   ├── 📄 onto.ttl              /* T-box
-│   │   ├── 📁 Alignements      /* Alignements of EUMED with Omega-X.
-│   └── 📄 README.md
-│
-├─ 📄 README.md</code></p>
-<h2>List of modules</h2>
-<p>Group Name| Module | Scope |State
-|---|---|---|---|
-|Top Level | <a href="./[Top Level] Events &amp; Time Series Ontology">Events and Time Series (ETS)</a> | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
-|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
-|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
-|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
-|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.0
-|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
-|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
-|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
-|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V0.1 (in progress)
-|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V0.1 (in progress)
-|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
-|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)</p>
-<h2>Overview of common modules</h2>
-<p>The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
-<a href="https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D">Common Modules Diagram</a></p>
-<p><img alt="Common Modules" src="./CommonModules.png"/></p>
-<h2>Utils</h2>
+<h1>Quality Ontology</h1>
+<h2>Description</h2>
+<p><code>Quality</code>, or <code>QUal</code>, is a domain ontology module of the Common Semantic Data Model (CSDM). It is a common ontology that enables to describe quality dimensions associated with data. It can be : </p>
 <ul>
-<li>Ontology diagrams can be defined using CHOWLK <a href="https://app.diagrams.net/">diagram.net</a>. A library for specific ontology conceptualisation is available here <a href="https://chowlk.linkeddata.es/">CHOWLK Ontology library</a>. To learn more about visual notation specification, see: <a href="https://chowlk.linkeddata.es/notation.html">CHOWLK Documentation</a>. </li>
+<li>Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.</li>
+<li>Quality Metrics: indicates the quality metrics attributes associated with data according to data quality dimensions defined by ISO 25012.</li>
+<li>Measurement Procedure: indicates what procedure produced the data: measurement, prediction,...  </li>
 </ul>
-<h2>License</h2>
-<p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for details.</p>
-<h2>Credit</h2>
-<p>This work has been conducted by <a href="https://www.edf.fr/">Electricité De France (EDF)</a> team and partners (<a href="https://www.mines-stetienne.fr/">Ecole des mines de Saint-Etienne</a> and <a href="https://www.trialog.com/fr/accueil/">Trialog</a>), in the frame of the European projetc Omega-X <a href="https://omega-x.eu/">Omega-X website</a>, </p>
-<p><img alt="alt text" src="EU.png"/></p><!DOCTYPE html>
+<h2>Competency Questions</h2>
+<h3>Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>How elements of time series are grouped temporally ?</td>
+<td>Each element of a time series corresponds to either a value observed at the timestamp</td>
+</tr>
+</tbody>
+</table>
+<p>| cq-2 | Is the value set complete regarding the temporal coverage period ? | The completeness of a value set can be evaluated using the percentage of missing values. |</p>
+<p>| cq-3 | How was data produced ? | Data production process can be indicated to distinguish service-computed datasets from metered data for example. |</p>
+<p>| cq-3 | WHat is the list of device properties described with the dataset ? | Data can represent grouped electrical consumption of a set of home appliances for example. The aggregation context should list these elements. |</p>
+<h2>Glossary</h2>
+<ul>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/QualityMetric/"><strong><em>qual:QualityMetric</em></strong></a>: The class of quantifiable measures used to assess a quality attribute.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/QualityAttribute/"><strong><em>qual:QualityAttribute</em></strong></a>: The class of attributes representing the degree to which data satisfy the requirements.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/Aggregation/"><strong><em>qual:Aggregation</em></strong></a>: The class of functions applied to aggregate data such as sum of values or average</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/MeasuringProcedure/"><strong><em>qual:MeasuringProcedure</em></strong></a>: The class of procedures used to provide data</p>
+</li>
+</ul>
+<h2>OWL Description</h2>
+<p><img alt="Diagram" src="./Diagram.png"/></p>
+<h2>Recommendations</h2>
+<ul>
+<li>
+<p>A <code>qual:Aggregation</code> enables the definition of what aggregation level to be used while interpreting values in a value set. The aggreation can occur on a <code>TemporalContext</code> indicating a time interval on which the aggregaton has been applied, a <code>SpatialAggregationContext</code> indicating a spatial location on which the aggreation has been applied or a <code>LogicalAggregationContext</code> to cover other grouping types. 
+If no aggregation indicated, the default interpretation can be to associate the exact value to the corresponding timestamp.</p>
+</li>
+<li>
+<p>According to usage, individuals are created for each (function, Aggregation contexte). For example, <code>qual:HourlySum</code> indicates an Aggregation of type <code>qual:Sum</code> with a <code>qual:TemporalAggregationContext</code> of 1 hour.</p>
+</li>
+<li>
+<p>The <code>qual:MeasuringProcedure</code> enables to indicate the procedure used to produce data. The use of hardware devices such as smart meters indicates a <code>qual:Metering</code> procedure, <code>qual:Observation</code> for sensors, while software simulators give <code>qual:Simulation</code>, scheduling services <code>qual:Scheduling</code> and <code>qual:Prediction</code> for other software predicting data. </p>
+</li>
+<li>
+<p>A set of <code>qual:QualityMetric</code> can be associated with a <code>ets:ValueSet</code> to describe its quality. For each relevant quality metric, one individual should be created to indicate the <code>qual:value</code>. For example, to descrive the <code>qual:Completeness</code> of the electrical consumption time series <code>ElectricityTimeSeries</code>, a <code>ETSPercentOfMissingValues</code> individual of type <code>qual:PercentOfMissingValues</code> enables to provide a value of completeness. </p>
+</li>
+</ul>
+<h2>Related Work</h2>
+<h3>ISO 25012</h3>
+<p><a href="https://iso25000.com/index.php/en/iso-25000-standards/iso-25012">ISO 25012</a></p><!DOCTYPE html>
 
 <html>
 <head>
@@ -367,10 +354,10 @@ td {
     ],
     "https://schema.org/contributor": [
       {
-        "@id": "_:n3b8724db3551464582f7908f92ccb65ab1"
+        "@id": "_:na7bf5e26ab2e490582172c87b90f438eb1"
       },
       {
-        "@id": "_:n3b8724db3551464582f7908f92ccb65ab2"
+        "@id": "_:na7bf5e26ab2e490582172c87b90f438eb2"
       }
     ],
     "https://schema.org/copyrightNotice": [
@@ -425,7 +412,7 @@ td {
     ]
   },
   {
-    "@id": "_:n3b8724db3551464582f7908f92ccb65ab1",
+    "@id": "_:na7bf5e26ab2e490582172c87b90f438eb1",
     "https://schema.org/name": [
       {
         "@value": "Fatma-Zohra Hannou"
@@ -433,7 +420,7 @@ td {
     ]
   },
   {
-    "@id": "_:n3b8724db3551464582f7908f92ccb65ab2",
+    "@id": "_:na7bf5e26ab2e490582172c87b90f438eb2",
     "https://schema.org/name": [
       {
         "@value": "Maxime Lefranois"
@@ -1564,19 +1551,7 @@ td {
 </table>
 </div>
 </div>
-<div id="pylode">
-<p>made by 
-        <a href="https://github.com/rdflib/pyLODE">
-<span id="p">p</span>
-<span id="y">y</span>
-<span>LODE</span>
-</a>
-<a href="https://github.com/rdflib/pyLODE/release/3.1.4" id="version">3.1.4</a>
-<span> with the </span>
-<a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
-<span>profile</span>
-</p>
-</div>
+
 
 </body>
 </html>

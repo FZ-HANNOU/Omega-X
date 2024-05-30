@@ -1,78 +1,68 @@
-<h1>Omega-X Ontology Repository</h1>
-<p>Welcome to the Omega-X Ontology repository! </p>
-<h2>Repository Structure</h2>
-<p>The repository structure is built to fit multi-level modular ontologies.
-It hosts also relevant alignements to external resources (ontologies/standards). </p>
-<p>The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...</p>
-<p>The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). </p>
-<p><code>📂 Omega-X Ontology 
-│
-├─ 📁 Top Level-ETS Ontology
-│   ├── 📄 onto.ttl                  /* T-box
-│   ├── 📄 dataset.ttl              /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;     /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Domain Ontologies
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Application-UC Ontology      /* One folder per application ontology (Renewable, Electromobility, LEC, Flexibility)
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Tooling
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   └── 📄 README.md
-│
-├─ 📁 External Resources
-│   ├── 📁 EUMED Metering
-│   ├── 📄 onto.ttl              /* T-box
-│   │   ├── 📁 Alignements      /* Alignements of EUMED with Omega-X.
-│   └── 📄 README.md
-│
-├─ 📄 README.md</code></p>
-<h2>List of modules</h2>
-<p>Group Name| Module | Scope |State
-|---|---|---|---|
-|Top Level | <a href="./[Top Level] Events &amp; Time Series Ontology">Events and Time Series (ETS)</a> | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
-|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
-|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
-|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
-|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.0
-|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
-|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
-|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
-|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V0.1 (in progress)
-|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V0.1 (in progress)
-|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
-|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)</p>
-<h2>Overview of common modules</h2>
-<p>The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
-<a href="https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D">Common Modules Diagram</a></p>
-<p><img alt="Common Modules" src="./CommonModules.png"/></p>
-<h2>Utils</h2>
+<h1>Energy Role Ontology</h1>
+<h2>Description</h2>
+<h3>Purpose</h3>
+<p>The Energy Role ontology is dedicated to business parties, their intended behaviour and relationships with other elements involved in energy market business processes. </p>
+<h3>Scope</h3>
+<p>The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role) and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility and local energy communities domains.</p>
+<h2>Competency Questions</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>Get the list of Charge Point Operators.</td>
+<td></td>
+</tr>
+<tr>
+<td>cq-2</td>
+<td>Get the list of eMobility Service Providers.</td>
+<td></td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>Get the list of market participants that are altogether Charge Point Operators and eMobility Service Providers.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2>Glossary</h2>
 <ul>
-<li>Ontology diagrams can be defined using CHOWLK <a href="https://app.diagrams.net/">diagram.net</a>. A library for specific ontology conceptualisation is available here <a href="https://chowlk.linkeddata.es/">CHOWLK Ontology library</a>. To learn more about visual notation specification, see: <a href="https://chowlk.linkeddata.es/notation.html">CHOWLK Documentation</a>. </li>
+<li>Market Participant: (source IEC 62325-351 Ed.3) The identification of the party participating in energy market business processes.</li>
+<li>Market Role: (source IEC 62325-351 Ed.3) The identification of the intended behaviour of a market participant played within a given business process.</li>
+<li>Association: (source The PROV Namespace) An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it.</li>
 </ul>
-<h2>License</h2>
-<p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for details.</p>
-<h2>Credit</h2>
-<p>This work has been conducted by <a href="https://www.edf.fr/">Electricité De France (EDF)</a> team and partners (<a href="https://www.mines-stetienne.fr/">Ecole des mines de Saint-Etienne</a> and <a href="https://www.trialog.com/fr/accueil/">Trialog</a>), in the frame of the European projetc Omega-X <a href="https://omega-x.eu/">Omega-X website</a>, </p>
-<p><img alt="alt text" src="EU.png"/></p>
+<h2>OWL Description</h2>
+<p>The Energy Role Ontology contains a generic model and specific classifications for electromobility, local energy community and flexibility:
+- Generic model
+<img alt="Diagram" src="./EnergyRoleOntologyV10-Energy_Role_Generic.png"/>
+- Classification for Electromobility roles
+<img alt="Diagram" src="./EnergyRoleOntologyV10-Energy_Role_EM.png"/>
+- Classification for Local Energy Community roles
+<img alt="Diagram" src="./EnergyRoleOntologyV10-Energy_Role_LEC.png"/>
+- Classification for Flexibility roles
+<img alt="Diagram" src="./EnergyRoleOntologyV10-Energy_Role_FLEX.png"/></p>
+<h2>Recommendations</h2>
+<ul>
+<li>
+<p>When used as datatype property of 'role:MarketParticipant', it is recommended to give to 'role:identifier' a value delivered by an authorized authority. </p>
+</li>
+<li>
+<p>When used as datatype properties of 'role:MarketRole', it is recommended to give to 'role:identifier' and 'role:name' values recognised by a standard role model (https://eepublicdownloads.entsoe.eu/clean-documents/EDI/Library/HRM/Harmonised_Role_Model_2022-01.pdf, for instance). </p>
+</li>
+</ul>
+<h2>See Also</h2>
+<h3>SEAS 1.1</h3>
+<ul>
+<li>
+<p><a href="https://w3id.org/seas/PlayerOntology-1.1"><strong><em>seas:Player</em></strong></a>: One of the important people, companies etc involved in a particular industry, market, situation etc. (source: the Longman Business Dictionary).</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/PlayerOntology-1.1"><strong><em>seas:ElectricityMarket</em></strong></a>: The class of Electricity Market SEAS players.</p>
+</li>
+</ul>

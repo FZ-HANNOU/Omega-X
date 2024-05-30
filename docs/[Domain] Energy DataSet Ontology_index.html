@@ -1,81 +1,112 @@
-<h1>Omega-X Ontology Repository</h1>
-<p>Welcome to the Omega-X Ontology repository! </p>
-<h2>Repository Structure</h2>
-<p>The repository structure is built to fit multi-level modular ontologies.
-It hosts also relevant alignements to external resources (ontologies/standards). </p>
-<p>The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...</p>
-<p>The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). </p>
-<p><code>📂 Omega-X Ontology 
-│
-├─ 📁 Top Level-ETS Ontology
-│   ├── 📄 onto.ttl                  /* T-box
-│   ├── 📄 dataset.ttl              /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;     /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Domain Ontologies
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Application-UC Ontology      /* One folder per application ontology (Renewable, Electromobility, LEC, Flexibility)
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.&lt;imgFormat&gt;  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Tooling
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   └── 📄 README.md
-│
-├─ 📁 External Resources
-│   ├── 📁 EUMED Metering
-│   ├── 📄 onto.ttl              /* T-box
-│   │   ├── 📁 Alignements      /* Alignements of EUMED with Omega-X.
-│   └── 📄 README.md
-│
-├─ 📄 README.md</code></p>
-<h2>List of modules</h2>
-<p>Group Name| Module | Scope |State
-|---|---|---|---|
-|Top Level | <a href="./[Top Level] Events &amp; Time Series Ontology">Events and Time Series (ETS)</a> | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
-|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
-|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
-|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
-|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.0
-|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
-|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
-|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
-|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V0.1 (in progress)
-|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V0.1 (in progress)
-|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
-|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)</p>
-<h2>Overview of common modules</h2>
-<p>The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
-<a href="https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D">Common Modules Diagram</a></p>
-<p><img alt="Common Modules" src="./CommonModules.png"/></p>
-<h2>Utils</h2>
+<h1>Energy Data Set Ontology</h1>
+<h2>Description</h2>
+<h3>Purpose:</h3>
+<p>Sharing data resources in complex environments like in the case of energy domain requires some contextual information together with data values to facilitate and ensure consistent interpretation of data exchange in the dataspace. </p>
+<h3>Scope:</h3>
+<p>Energy Data Set ontology provides OWL classes and properties to allow energy data sets to be described. The use of a dataset description enriches the data structure description with contextual information.</p>
+<h3>Description:</h3>
+<p>This Energy Data set Ontology helps to define data sets in Energy Data Spaces. It adds:
+- the technical context as the property, the schedule, and the quality associated to an energy data set.
+- the exchange context as the participants of the data exchange.
+- the evaluation point attached to the data set exchange.</p>
+<h2>Competency Questions</h2>
+<h3>Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>What is the evaluation point of a specifc energy data set?</td>
+<td>The evaluation point associated to a specific energy data set like the weather station associated to a meteolological data set.</td>
+</tr>
+<tr>
+<td>cq-2</td>
+<td>What are the properties included in a sepcific  energy data set?</td>
+<td>The list of properties  associated to a specific energy data set like the global irradiance.</td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>What are the energy data sets sent by a specific partcipant?</td>
+<td>The list of energy data sets sent by a specific participant for example the energy data sets sent by EDFRD renewable power producer.</td>
+</tr>
+<tr>
+<td>cq-4</td>
+<td>What is the value data type of a specific energy data set?</td>
+<td>The value type of a specific energy data set like integer, float,...</td>
+</tr>
+<tr>
+<td>cq-5</td>
+<td>What is the technical context associated to a specific energy data set?</td>
+<td>The technical context associated to a specific energy data set .</td>
+</tr>
+<tr>
+<td>### Inference Questions</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ID</td>
+<td>Question in natural language</td>
+<td>Example</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>iq-1</td>
+<td>What are the properties associated to an energy data set?</td>
+<td>The list of properties associated to an energy data set.</td>
+</tr>
+</tbody>
+</table>
+<h2>Glossary</h2>
+<h3>Omega-X EDS</h3>
 <ul>
-<li>Ontology diagrams can be defined using CHOWLK <a href="https://app.diagrams.net/">diagram.net</a>. A library for specific ontology conceptualisation is available here <a href="https://chowlk.linkeddata.es/">CHOWLK Ontology library</a>. To learn more about visual notation specification, see: <a href="https://chowlk.linkeddata.es/notation.html">CHOWLK Documentation</a>. </li>
+<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/EnergyDataSet/"><strong>eds:<em>EnergyDataSet</em></strong></a>
+Group of data exchanged using an Energy Dataspace. </li>
+<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/TechnicalContext/"><strong>eds:<em>TechnicalContext</em></strong></a>
+Technical characteristics of the context where the exchange of data takes place.</li>
+<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/EvaluationPoint/"><strong>eds:<em>EvaluationPoint</em></strong></a>
+Evaluation point concerned by the data exchanged. It can be either a physical or virtual component. An evaluation point can be a smart meter collecting the data or a software compiling the data.</li>
+<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/ExchangeContext/"><strong>eds:<em>ExchangeContext</em></strong></a>
+Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange.</li>
 </ul>
-<h2>License</h2>
-<p>This project is licensed under the MIT License. See the <a href="./LICENSE">LICENSE</a> file for details.</p>
-<h2>Credit</h2>
-<p>This work has been conducted by <a href="https://www.edf.fr/">Electricité De France (EDF)</a> team and partners (<a href="https://www.mines-stetienne.fr/">Ecole des mines de Saint-Etienne</a> and <a href="https://www.trialog.com/fr/accueil/">Trialog</a>), in the frame of the European projetc Omega-X <a href="https://omega-x.eu/">Omega-X website</a>, </p>
-<p><img alt="alt text" src="EU.png"/></p><!DOCTYPE html>
+<h2>OWL Description</h2>
+<p><img alt="Diagram" src="./EDSModule-v1.0.png"/></p>
+<h2>Recommendations</h2>
+<ul>
+<li>A <code>ets:ValueSet</code> (see <a href="../  [Top Level] Events &amp; Time Series Ontology"><em>ValueSet</em></a>) exchanged within the energy data space will be considered as an energy data set<code>eds:EnergyDataSet</code>. </li>
+<li>An <code>eds:EvaluationPoint</code> can be a <code>infra:System</code> (see <a href="../ [Domain] Infrastructure Ontology"><em>System</em></a>). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).</li>
+<li>A <code>eds:EnergyDataSet</code> can have <code>eds:ContextExchange</code> sent from a <code>role:MarketParticipant</code> to another <code>role:MarketParticpant</code> (see <a href="../  [Domain] Energy Role Ontology"><em>MarkeParticipant</em></a>). More details about the market participants can be described in (../  [Domain] Energy Role Ontology) module.</li>
+<li>A <code>eds:TechnicalContext</code> will include all the properties associated to the data exchange. These properties can be inferred from the relation: of <code>ets:PropertyValue</code> <code>prop:isAboutProperty</code> <code>prop:Property</code> in  (../  [Top Level] Events &amp; Time Series Ontology) module.</li>
+</ul>
+<h2>Related Work</h2>
+<h3>EUMED Metering profile (IEC 61968-9 Ed 3.0)</h3>
+<ul>
+<li>
+<p>Evaluation point: The identification of an entity where energy products are measured or computed.</p>
+</li>
+<li>
+<p>Measurement kind: Identifies "what" is being measured, as refinement of 'commodity'. When
+combined with 'unit', it provides detail to the unit of measure.</p>
+</li>
+<li>Business Role: A business role that this organisation plays. A single organisation
+typically performs many functions, each one described as a role.</li>
+<li>build: Time stamp of the data exchange.</li>
+<li>A business context is a set of properties that gives some business details on a value set.</li>
+<li>A technical context is a set of properties that gives some technical details on a value set.</li>
+</ul>
+<h3>SEAS</h3>
+<p><a href="https://w3id.org/seas/System"><strong>_seas:System</strong></a>: The class of systems, i.e., systems virtually isolated from the environment, whose behaviour and interactions with the environment are modeled.
+ <a href="https://w3id.org/seas/FeatureOfInterest"><strong>_seas:FeatureOfInterest</strong></a>: A feature of interest is an abstraction of a real world phenomena (thing, person, event, etc). A feature of interest is then defined in terms of its properties.</p><!DOCTYPE html>
 
 <html>
 <head>
@@ -367,13 +398,13 @@ td {
     ],
     "https://schema.org/contributor": [
       {
-        "@id": "_:nba47872cc2584046a1e8072634a25c2fb1"
+        "@id": "_:n7e65950260d6486495a064d2cca0dce2b1"
       },
       {
-        "@id": "_:nba47872cc2584046a1e8072634a25c2fb2"
+        "@id": "_:n7e65950260d6486495a064d2cca0dce2b2"
       },
       {
-        "@id": "_:nba47872cc2584046a1e8072634a25c2fb3"
+        "@id": "_:n7e65950260d6486495a064d2cca0dce2b3"
       }
     ],
     "https://schema.org/copyrightNotice": [
@@ -424,7 +455,7 @@ td {
     ]
   },
   {
-    "@id": "_:nba47872cc2584046a1e8072634a25c2fb1",
+    "@id": "_:n7e65950260d6486495a064d2cca0dce2b1",
     "https://schema.org/name": [
       {
         "@value": "Lina Nachabe"
@@ -432,7 +463,7 @@ td {
     ]
   },
   {
-    "@id": "_:nba47872cc2584046a1e8072634a25c2fb2",
+    "@id": "_:n7e65950260d6486495a064d2cca0dce2b2",
     "https://schema.org/name": [
       {
         "@value": "Fatma-Zohra Hannou"
@@ -440,7 +471,7 @@ td {
     ]
   },
   {
-    "@id": "_:nba47872cc2584046a1e8072634a25c2fb3",
+    "@id": "_:n7e65950260d6486495a064d2cca0dce2b3",
     "https://schema.org/name": [
       {
         "@value": "Maxime Lefranois"
@@ -1396,10 +1427,10 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <a href="#EvaluationPoint">Evaluation Point</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span> <span class="cardinality">or</span> <span>
-<a href="#TechnicalContext">Technical Context</a>
+<a href="#ExchangeContext">Exchange Context</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span> <span class="cardinality">or</span> <span>
-<a href="#ExchangeContext">Exchange Context</a>
+<a href="#TechnicalContext">Technical Context</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span></td>
 </tr>
@@ -1575,19 +1606,7 @@ Scope : Sharing data resources in complex environments like in the case of energ
 </table>
 </div>
 </div>
-<div id="pylode">
-<p>made by 
-        <a href="https://github.com/rdflib/pyLODE">
-<span id="p">p</span>
-<span id="y">y</span>
-<span>LODE</span>
-</a>
-<a href="https://github.com/rdflib/pyLODE/release/3.1.4" id="version">3.1.4</a>
-<span> with the </span>
-<a href="https://w3id.org/profile/ontpub" id="profile">OntPub</a>
-<span>profile</span>
-</p>
-</div>
+
 
 </body>
 </html>
