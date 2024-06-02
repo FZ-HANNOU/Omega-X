@@ -1,0 +1,149 @@
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Upper Level Ontology: Event &amp; Time Series</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<p><code>Events and Time Series</code>, or <code>ETS</code>, is the upper-level module of the Common Semantic Data Model (CSDM). It is an upper-level ontology that captures knowledge about datasets' global structure and underlying elements.
+The scope of this module extends also to the definition of common metadata for shared datasets.</p>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>What event occured within a specific time period ?</td>
+<td>The list of events that has a temporal footprint within the indicated time period.</td>
+</tr>
+<tr>
+<td>cq-2</td>
+<td>What is the type of time series elements ?</td>
+<td>Time series can be composed of events, data points, data collections or other time series.</td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>Does a specific data set represent measured/observed phenomenon or predicted activity ?</td>
+<td>Given a value set, what quality indictor are associated, covering measuring methodology ? Example: a time series about energy production can correspond to a prediction provided by a software.</td>
+</tr>
+<tr>
+<td>cq-4</td>
+<td>To what granularity correspond each element of the time series ? exact time instant observation or aggregatd values on an interval ?</td>
+<td>Given a time series, what quality indicators are associated covering the granularity level ? (max, min, avg,...). Example: electrical consumption time series can be provided with hourly average values.</td>
+</tr>
+<tr>
+<td>cq-5</td>
+<td>What are time series that describe multiple properties of weather data (temperature, pressure, irradiance,...) ?</td>
+<td>Identify time series that describe meteo properties.</td>
+</tr>
+<tr>
+<td>cq-6</td>
+<td>To what extent the dataset is temporally valid ?</td>
+<td>what temporal context is associated with the value set ? Example: data about equipement quality state provided on a weekly basis, is considered valid the entire week.</td>
+</tr>
+<tr>
+<td>### Inference Questions</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>ID</td>
+<td>Question in natural language</td>
+<td>Example</td>
+</tr>
+<tr>
+<td>---</td>
+<td>---</td>
+<td>---</td>
+</tr>
+<tr>
+<td>iq-1</td>
+<td>What are properties covered by a data collection ?</td>
+<td>Properties covered by a data collection are the set of properties associated to data points belonging to this collection.</td>
+</tr>
+<tr>
+<td>iq-2</td>
+<td>What is the temporal context of a time series  ?</td>
+<td>The temporal context of a time series can be infered as the interval starting with the time associated to the first element, and ending with the time associated to the last element.</td>
+</tr>
+</tbody>
+</table>
+<h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Omega-X ETS</h3>
+<ul>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/ValueSet/"><strong>ets:<em>ValueSet</em></strong></a>
+Value container for a set of data (data point, collection, event or time series).</li>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries/"><strong>ets:<em>TimeSeries</em></strong></a>
+Value container for a time series.</li>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection/"><strong>ets:<em>DataCollection</em></strong></a>
+A data collection represents a set of data points, that share some common context. Data Collections can have a common dateTime.</li>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/DataPoint/"><strong>ets:<em>DataPoint</em></strong></a>
+A data point with a unique value, and possible data time.</li>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Event/"><strong>ets:<em>Event</em></strong></a>
+An occurrence of a change in the environement that happens at a specific time.</li>
+<li><a href="https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue/"><strong>ets:<em>PropertyValue</em></strong></a>
+A property value is the value associated with a unique property and a unit of measurement.</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2>
+<p><img alt="Diagram" src="./EventTimeSeries.png"/></p>
+<h2 style="color: #21618C; text-decoration: underline;">Recommendations</h2>
+<ul>
+<li>
+<p>A <code>ets:ValueSet</code> is a generic concept that covers different structures of datasets. It is recommended to specify through sublcasses the exact type of the top class value set: <code>ets:DataPoint</code>, <code>ets:DataCollection</code>, <code>ets:Event</code>, <code>ets:TimeSeries</code>. A <code>ets:ValueSet</code> is identified using an identifier or a name. It might have a <code>ets:creationTime</code> corresponidng to the time instant when the data structure has been digitally created or uploaded into the dataspace for example. Real-world temporal footprint is indicated in subclasses. </p>
+</li>
+<li>
+<p>A set of quality indicators can be associated to value sets. They are described in the <code>quality</code> module (<code>qual:Aggregation</code>, <code>qual:QualityMetric</code>, <code>qual:MeasuringProcedure</code>).</p>
+</li>
+<li>
+<p>Value Sets basic elements are <code>ets:DataPoint</code> and <code>ets:Event</code>. They both enable to indicate a mandatory value <code>ets:propertyValue</code> using an object property (resp. <code>ets:hasDataValue</code> and <code>ets:hasEventValue</code>). They also provide description on temporality. </p>
+</li>
+<li>
+<p>A value set and property value provide descriptions about some properties <code>prop:Property</code> (see <a href="../Property Ontology"><em>property</em></a>). In case the entire <code>TimeSeries</code> describe one unique property, the information about the property (<code>prop:isAboutProperty</code>) is indicated at the global level (<code>TimeSeries</code>). Elsewhere, detailed description of properties described is associated with each <code>DataPoint</code> or <code>Event</code>.</p>
+</li>
+<li>
+<p>Data collections enable to devine a structured data container where data points are ordered using a <code>ets:rank</code> value (when temporal footprint is not used). </p>
+</li>
+<li>
+<p>Time series elements has a mandatory temporal footprint (<code>dataTime</code>, <code>eventTime</code>, <code>collectionTime</code> or temporal context is case of nested time series). </p>
+</li>
+<li>
+<p>One <code>PropertyValue</code> is defined for each <code>DataPoint</code> or <code>Event</code>. It can either describe a <code>QuantitativeProperty</code> using numerical values in <code>ets:value</code> or <code>prop:QualitativeProprety</code> by indicating as a range of <code>hasDataValue</code> (resp. <code>hasEventValue</code>) an individual of <code>Category</code> used to evaluate qualitative properties. In the latter case, no instanciation of property value is needed. </p>
+</li>
+<li>
+<p>In case of dynamic datasets, <code>PropertyValue</code> is used to build complex data structure with multiple values for the same <code>Property</code>. <code>PropertyValue</code> also provides a way to indicate static values (stable in time) for <code>Property</code> such as the voltage of an equipement, or the color of a connection. </p>
+</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
+<h3 style="color: #21618C; text-decoration: underline;">INTERCONNECT</h3>
+<ul>
+<li>
+<p><a href="http://ontology.tno.nl/interconnect/datapoint#TimeSeries"><strong><em>ic-data:TimeSeries</em></strong></a>: An ordered sequence of data points of a quantity observed at spaced time intervals is referred to as a time series. Time series can be a result of prediction algorithm.</p>
+</li>
+<li>
+<p><a href="http://ontology.tno.nl/interconnect/datapoint#DataPoint"><strong><em>ic-data:DataPoint</em></strong></a>: A data point is a quantity that is extended with various pieces of process information, namely : </p>
+</li>
+<li>
+<p>A creation time (instant). This is the point in time when the data point was created, which is not necessarily the time for which it is valid. In the case of soft-sensors or forecasters, a data point might have been created ahead of time, in the case of a direcet measurement a data point might created at its time of validity (or at the end of its validity time interval) and in the case of an archived value the data point might have been created after the fact.</p>
+</li>
+<li>
+<p>A validity time (temporal entity) which will be named \"time stamp\". The validity time is the instant or interval in time in which a specific quantity is in effect. For example a room temperature might be measured at 12:00, which means it is in effect at this very instant. A specific amount of energy might me expended within the time-slot between 12:30 and 12:45, which means that the energy measurement is in effect during this time interval.</p>
+</li>
+<li>
+<p>A location or topological association. For example, a measurement might be taken in a specific room, a power avarage might have been measured by a specific meter, a forecast might be valid for a specific region or grid segment. This association is therefore not always a location.</p>
+</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">SEDMOON</h3>
+<ul>
+<li>
+<p><a href="https://w3id.org/platoon/Event"><strong><em>plt:Event</em></strong></a>: A event is a thing that happens. An event has a temporal context. </p>
+</li>
+<li>
+<p><a href="https://w3id.org/platoon/EnergyEvaluation"><strong><em>plt:EnergyEvaluation</em></strong></a>: The class of evaluation for energy properties.</p>
+</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">Data Catalog Vocabulary (DCAT)</h3>
+<ul>
+<li><a href="https://www.w3.org/ns/dcat#dataset"><strong><em>dcat:Dataset</em></strong></a>: A collection of data, published or curated by a single source, and available for access or download in one or more representations.</li>
+</ul></body></html>

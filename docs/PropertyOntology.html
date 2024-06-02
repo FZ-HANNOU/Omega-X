@@ -1,50 +1,4 @@
-<h1>Domain Ontology: Property</h1>
-<h2>Description</h2>
-<p><code>Property</code>, or <code>Prop</code>, is a domain level module of the Common Semantic Data Model (CSDM). It provides a taxonomy of energy domain properties. 
-The scope of this module extends also to the definition of units and categories associated with properties, and used for values definition.</p>
-<h2>Competency Questions</h2>
-<h3>Querying Questions</h3>
-<table>
-<thead>
-<tr>
-<th>ID</th>
-<th>Question in natural language</th>
-<th>Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cq-1</td>
-<td>What are possible values to be associated with a qualitative property ?</td>
-<td>Possible values for a qualitative property include the set of values defined in the category in which it is evaluated.</td>
-</tr>
-<tr>
-<td>cq-2</td>
-<td>What are possible properties that can be associated with a unit of measurement ?</td>
-<td>EUR-PER-KiloW-HR is a unit of measurement that can be used for energySellingprice, EnergyBuyingPrice,...</td>
-</tr>
-<tr>
-<td>cq-3</td>
-<td>What are possible units for measuring a property ?</td>
-<td>Temperature property can be measured in Celsus Degrees,  Fahrenheit degrees,...</td>
-</tr>
-</tbody>
-</table>
-<h2>Glossary</h2>
-<h2>OWL Description</h2>
-<p><img alt="Diagram" src="./Diagram.png"/></p>
-<h2>Recommendations</h2>
-<ul>
-<li>
-<p>A <code>prop:Property</code> is the upper class for the omega-X property taxonomy. It is further distinguished into <code>prop:QuantitativeProperty</code> for properties to which numerical values are assigned (<code>prop:Temperature</code> has as possible values <code>18</code>, <code>19</code>,..), and <code>prop:QualitativeProperty</code> for properties with values defined in a category (eg. <code>prop:OperatingStatus</code> has as possible values <code>On</code> and <code>Off</code>). </p>
-</li>
-<li>
-<p>The evaluation of properties is described in <code>Event and Time Series</code> module, through the <code>ets:PropertyValue</code> class . For dyamic values (chaning over time), a <code>ets:ValueSet</code> is created with the entire set of values, following a <code>ets:TemporalContext</code>. For static values (stable in time), the object property <code>prop:hasPropertyValue</code> enables to indicate one value per property.</p>
-</li>
-<li>
-<p>Categorical individuals of type <code>prop:Category</code> are used as property values <code>ets:PropertyValue</code> in case of qualitative Datasets.</p>
-</li>
-</ul><!DOCTYPE html>
+<html><head></head><body><!DOCTYPE html>
 
 <html>
 <head>
@@ -336,19 +290,19 @@ td {
     ],
     "https://schema.org/contributor": [
       {
-        "@id": "_:nc1836417cb5b432ab73ca48799d388a2b1"
+        "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb1"
       },
       {
-        "@id": "_:nc1836417cb5b432ab73ca48799d388a2b2"
+        "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb2"
       },
       {
-        "@id": "_:nc1836417cb5b432ab73ca48799d388a2b3"
+        "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb3"
       }
     ],
     "https://schema.org/copyrightNotice": [
       {
         "@language": "en",
-        "@value": "Copyright  Omega-X Consortium 2022-2025"
+        "@value": "Copyright © Omega-X Consortium 2022-2025"
       }
     ],
     "https://schema.org/creator": [
@@ -392,7 +346,7 @@ td {
     ]
   },
   {
-    "@id": "_:nc1836417cb5b432ab73ca48799d388a2b1",
+    "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb1",
     "https://schema.org/name": [
       {
         "@value": "Fatma-Zohra Hannou"
@@ -400,7 +354,7 @@ td {
     ]
   },
   {
-    "@id": "_:nc1836417cb5b432ab73ca48799d388a2b2",
+    "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb2",
     "https://schema.org/name": [
       {
         "@value": "Lina Nachabe"
@@ -408,10 +362,10 @@ td {
     ]
   },
   {
-    "@id": "_:nc1836417cb5b432ab73ca48799d388a2b3",
+    "@id": "_:n74bdfb4b5d824e3ca1c7cd9250490a4bb3",
     "https://schema.org/name": [
       {
-        "@value": "Maxime Lefranois"
+        "@value": "Maxime Lefrançois"
       }
     ]
   }
@@ -467,7 +421,7 @@ td {
 </li>
 <li>
 <span>
-<span>Maxime Lefranois</span>
+<span>Maxime Lefrançois</span>
 </span>
 </li>
 </ul>
@@ -495,7 +449,7 @@ td {
 <dt>
 <a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
 </dt>
-<dd><p>Copyright  Omega-X Consortium 2022-2025</p></dd>
+<dd><p>Copyright © Omega-X Consortium 2022-2025</p></dd>
 </div>
 <div>
 <dt>
@@ -1274,6 +1228,167 @@ td {
 </div>
 </div>
 
-
+<div id="toc">
+<h3>Table of Contents</h3>
+<ul class="first">
+<li>
+<h4>
+<a href="#metadata">Metadata</a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="#classes">Classes</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#TemporalEntity">Temporal Entity</a>
+</li>
+<li>
+<a href="#Property">Property</a>
+</li>
+<li>
+<a href="#QuantitativeProperty">Quantitative property</a>
+</li>
+<li>
+<a href="#QualitativeProperty">Qualitative Property</a>
+</li>
+<li>
+<a href="#Unit">Unit</a>
+</li>
+<li>
+<a href="#Category">Category</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#objectproperties">Object Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#isMeasuredIn">Is Measured In</a>
+</li>
+<li>
+<a href="#isEvaluatedIn">Is Evaluated In</a>
+</li>
+<li>
+<a href="#hasPropertyValue">Has Property Value</a>
+</li>
+<li>
+<a href="#isAboutProperty">Is About Property</a>
+</li>
+<li>
+<a href="#isUsedIn">Is Used In</a>
+</li>
+<li>
+<a href="#hasUnit">Has Unit</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#annotationproperties">Annotation Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#contributor">contributor</a>
+</li>
+<li>
+<a href="#creator">creator</a>
+</li>
+<li>
+<a href="#description">description</a>
+</li>
+<li>
+<a href="#issued">issued</a>
+</li>
+<li>
+<a href="#license">license</a>
+</li>
+<li>
+<a href="#modified">modified</a>
+</li>
+<li>
+<a href="#title">title</a>
+</li>
+<li>
+<a href="#preferredNamespacePrefix">preferred namespace prefix</a>
+</li>
+<li>
+<a href="#preferredNamespaceUri">preferred namespace uri</a>
+</li>
+<li>
+<a href="#maxQualifiedCardinality">max qualified cardinality</a>
+</li>
+<li>
+<a href="#qualifiedCardinality">qualified cardinality</a>
+</li>
+<li>
+<a href="#term_status">term_status</a>
+</li>
+<li>
+<a href="#domainIncludes">domain includes</a>
+</li>
+<li>
+<a href="#rangeIncludes">range includes</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#namespaces">Namespaces</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dcterms">dcterms</a>
+</li>
+<li>
+<a href="#ets">ets</a>
+</li>
+<li>
+<a href="#foaf">foaf</a>
+</li>
+<li>
+<a href="#owl">owl</a>
+</li>
+<li>
+<a href="#prop">prop</a>
+</li>
+<li>
+<a href="#prov">prov</a>
+</li>
+<li>
+<a href="#rdf">rdf</a>
+</li>
+<li>
+<a href="#rdfs">rdfs</a>
+</li>
+<li>
+<a href="#schema">schema</a>
+</li>
+<li>
+<a href="#schema1">schema1</a>
+</li>
+<li>
+<a href="#time">time</a>
+</li>
+<li>
+<a href="#vann">vann</a>
+</li>
+<li>
+<a href="#vs">vs</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#legend">Legend</a>
+</h4>
+<ul class="second"></ul>
+</li>
+</ul>
+</div>
 </body>
 </html>
+</body></html>

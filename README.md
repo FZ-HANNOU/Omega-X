@@ -89,6 +89,6 @@ The figure below illustrates common modules (Top level and domain modules). The 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ## Credit
-This work has been conducted by [Electricité De France (EDF)](https://www.edf.fr/) team and partners ([Ecole des mines de Saint-Etienne](https://www.mines-stetienne.fr/) and [Trialog](https://www.trialog.com/fr/accueil/)), in the frame of the European projetc Omega-X [Omega-X website](https://omega-x.eu/), 
+This work has been developed by [Electricité De France (EDF)](https://www.edf.fr/) team and partners ([Ecole des mines de Saint-Etienne](https://www.mines-stetienne.fr/) and [Trialog](https://www.trialog.com/fr/accueil/)), in the frame of the European projetc Omega-X [Omega-X website](https://omega-x.eu/), 
 
-![alt text](EU.png)
+![Europe](EU.png)

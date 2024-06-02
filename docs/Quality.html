@@ -1,0 +1,65 @@
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Quality Ontology</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<p><code>Quality</code>, or <code>QUal</code>, is a domain ontology module of the Common Semantic Data Model (CSDM). It is a common ontology that enables to describe quality dimensions associated with data. It can be : </p>
+<ul>
+<li>Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.</li>
+<li>Quality Metrics: indicates the quality metrics attributes associated with data according to data quality dimensions defined by ISO 25012.</li>
+<li>Measurement Procedure: indicates what procedure produced the data: measurement, prediction,...  </li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>How elements of time series are grouped temporally ?</td>
+<td>Each element of a time series corresponds to either a value observed at the timestamp</td>
+</tr>
+</tbody>
+</table>
+<p>| cq-2 | Is the value set complete regarding the temporal coverage period ? | The completeness of a value set can be evaluated using the percentage of missing values. |</p>
+<p>| cq-3 | How was data produced ? | Data production process can be indicated to distinguish service-computed datasets from metered data for example. |</p>
+<p>| cq-3 | WHat is the list of device properties described with the dataset ? | Data can represent grouped electrical consumption of a set of home appliances for example. The aggregation context should list these elements. |</p>
+<h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
+<ul>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/QualityMetric/"><strong><em>qual:QualityMetric</em></strong></a>: The class of quantifiable measures used to assess a quality attribute.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/QualityAttribute/"><strong><em>qual:QualityAttribute</em></strong></a>: The class of attributes representing the degree to which data satisfy the requirements.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/Aggregation/"><strong><em>qual:Aggregation</em></strong></a>: The class of functions applied to aggregate data such as sum of values or average</p>
+</li>
+<li>
+<p><a href="https://w3id.org/omega-x/QualityOntology/MeasuringProcedure/"><strong><em>qual:MeasuringProcedure</em></strong></a>: The class of procedures used to provide data</p>
+</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2>
+<p><img alt="Diagram" src="./QualityDiagram.png"/></p>
+<h2 style="color: #21618C; text-decoration: underline;">Recommendations</h2>
+<ul>
+<li>
+<p>A <code>qual:Aggregation</code> enables the definition of what aggregation level to be used while interpreting values in a value set. The aggreation can occur on a <code>TemporalContext</code> indicating a time interval on which the aggregaton has been applied, a <code>SpatialAggregationContext</code> indicating a spatial location on which the aggreation has been applied or a <code>LogicalAggregationContext</code> to cover other grouping types. 
+If no aggregation indicated, the default interpretation can be to associate the exact value to the corresponding timestamp.</p>
+</li>
+<li>
+<p>According to usage, individuals are created for each (function, Aggregation contexte). For example, <code>qual:HourlySum</code> indicates an Aggregation of type <code>qual:Sum</code> with a <code>qual:TemporalAggregationContext</code> of 1 hour.</p>
+</li>
+<li>
+<p>The <code>qual:MeasuringProcedure</code> enables to indicate the procedure used to produce data. The use of hardware devices such as smart meters indicates a <code>qual:Metering</code> procedure, <code>qual:Observation</code> for sensors, while software simulators give <code>qual:Simulation</code>, scheduling services <code>qual:Scheduling</code> and <code>qual:Prediction</code> for other software predicting data. </p>
+</li>
+<li>
+<p>A set of <code>qual:QualityMetric</code> can be associated with a <code>ets:ValueSet</code> to describe its quality. For each relevant quality metric, one individual should be created to indicate the <code>qual:value</code>. For example, to descrive the <code>qual:Completeness</code> of the electrical consumption time series <code>ElectricityTimeSeries</code>, a <code>ETSPercentOfMissingValues</code> individual of type <code>qual:PercentOfMissingValues</code> enables to provide a value of completeness. </p>
+</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
+<h3 style="color: #21618C; text-decoration: underline;">ISO 25012</h3>
+<p><a href="https://iso25000.com/index.php/en/iso-25000-standards/iso-25012">ISO 25012</a></p></body></html>
