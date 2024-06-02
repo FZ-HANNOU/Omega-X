@@ -16,7 +16,7 @@ The scope of this module extends also to the definition of units and categories 
 
 ## OWL Description
 
-![Diagram](./Diagram.png)
+![Diagram](./Property.png)
 
 
 ## Recommendations
