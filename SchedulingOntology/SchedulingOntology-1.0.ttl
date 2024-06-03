@@ -1,5 +1,5 @@
-@prefix : <https://w3id.org/omega-x/SchedulingOntology/> .
-@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix : <https://w3id.org/omega-x/ontology/Scheduling/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -8,19 +8,19 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix unit: <https://qudt.org/vocab/unit/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
-@prefix sched: <https://w3id.org/omega-x/SchedulingOntology#> .
-@prefix omegax: <https://w3id.org/omega-x/> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix sched: <https://w3id.org/omega-x/ontology/Scheduling/> .
+@prefix omegax: <https://w3id.org/omega-x/ontology/> .
 @prefix schema: <http://schema.org/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/omega-x/SchedulingOntology/> .
+@base <https://w3id.org/omega-x/ontology/Scheduling/> .
 
-<https://w3id.org/omega-x/SchedulingOntology> rdf:type owl:Ontology ;                                              
+<https://w3id.org/omega-x/ontology/Scheduling/> rdf:type owl:Ontology ;                                              
                                                dcterms:creator <https://omega-x.eu/> ;                                 
                                                dcterms:contributor [a foaf:Person ; foaf:name "Henon M. Lamboro" ] ; 
                                                dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;                                           
@@ -32,9 +32,9 @@
                                                dcterms:modified "2024-05-03"^^xsd:date ;
                                                dcterms:title "Scheduling Ontology"@en ;
                                                vann:preferredNamespacePrefix "sched" ;
-                                               vann:preferredNamespaceUri <https://w3id.org/omega-x/SchedulingOntology/> ;
+                                               vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Scheduling/> ;
                                                rdfs:label "Scheduling Ontology"@en ;
-                                               owl:versionIRI <https://w3id.org/omega-x/SchedulingOntology-1.0>;
+                                               owl:versionIRI <https://w3id.org/omega-x/ontology/Scheduling-1.0>;
                                                owl:versionInfo "v1.0" .
 
 #---------------------------------------------------------------
