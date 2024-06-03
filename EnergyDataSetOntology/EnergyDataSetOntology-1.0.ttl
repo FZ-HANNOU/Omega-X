@@ -1,8 +1,8 @@
-@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology/> .
+@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
-@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> . 
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
@@ -14,14 +14,14 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
-@prefix sch: <https://w3id.org/omega-x/SchedulingOntology/> .
-@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
-@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
-@base <https://w3id.org/omega-x/Ontology/EnergyDataSet/> .
+@prefix sch:  <https://w3id.org/omega-x/ontology/Scheduling/>  .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole> .
+@base <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
 
-<https://w3id.org/omega-x/EnergyDataSetOntology> rdf:type owl:Ontology ;
-                                                  owl:versionIRI <https://w3id.org/omega-x/EnergyDataSetOntology-1.0/> ;
+<https://w3id.org/omega-x/ontology/EnergyDataSet/> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyDataSet-1.0/> ;
                                                   dcterms:creator <https://omega-x.eu/> ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ;
@@ -39,7 +39,7 @@ Scope : Sharing data resources in complex environments like in the case of energ
                                                   dcterms:issued "2024-05-06"@en ;
                                                   dcterms:title "Energy Data Set Ontology"@en ;
                                                   vann:preferredNamespacePrefix "eds" ;
-                                                  vann:preferredNamespaceUri <https://w3id.org/omega-x/EnergyDataSetOntology/> ;
+                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet/> ;
                                                   rdfs:label "Energy Data Set Ontology"@en ;
                                                   owl:versionInfo "v1.0" .
 
