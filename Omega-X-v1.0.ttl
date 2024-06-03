@@ -13,8 +13,8 @@
 @prefix schema: <http://schema.org/>.
 @prefix omegax: <https://w3id.org/omega-x/ontology> .
 
-<https://w3id.org/omega-x/> a owl:Ontology , voaf:Vocabulary;
-                                             owl:versionIRI <https://w3id.org/omega-x-1.0/> ;
+<https://w3id.org/omega-x/ontology> a owl:Ontology , voaf:Vocabulary;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology> ;
                                              dcterms:description """ Omega-X ontology """@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
@@ -31,21 +31,21 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Omega-X ontology"@en ;
                                              vann:preferredNamespacePrefix "omegax" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology> ;
                                              rdfs:label "Omega-X Ontology"@en ;
                                              owl:versionInfo "1.0" ; 
-                                             owl:imports <https://w3id.org/omega-x/EventTimeSeriesOntology> , 
-                                                         <https://w3id.org/omega-x/EnergyDataSetOntology> ,
-                                                         <https://w3id.org/omega-x/InfrastructureOntology> ,
-                                                         <https://w3id.org/omega-x/PropertyOntology> ,
-                                                         <https://w3id.org/omega-x/QualityOntology> ,
-                                                         <https://w3id.org/omega-x/SchedulingOntology> ,
-                                                         <https://w3id.org/omega-x/EnergyRoleOntology> ,
-                                                         <https://w3id.org/omega-x/EUMEDMeteringOntology> ,
-                                                         <https://w3id.org/omega-x/FlexibilityOntology> ,
-                                                         <https://w3id.org/omega-x/RenewableSolarOntology> ,
-                                                         <https://w3id.org/omega-x/ElectromobilityOntology> ,
-                                                         <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology> .
+                                             owl:imports <https://w3id.org/omega-x/ontology/EventsTimeSeries> , 
+                                                         <https://w3id.org/omega-x/ontology/EnergyDataSet> ,
+                                                         <https://w3id.org/omega-x/ontology/Infrastructure> ,
+                                                         <https://w3id.org/omega-x/ontology/Property> ,
+                                                         <https://w3id.org/omega-x/ontology/Quality> ,
+                                                         <https://w3id.org/omega-x/ontology/Scheduling> ,
+                                                         <https://w3id.org/omega-x/ontology/EnergyRole> ,
+                                                         <https://w3id.org/omega-x/ontology/EUMEDMetering> ,
+                                                         <https://w3id.org/omega-x/ontology/Flexibility> ,
+                                                         <https://w3id.org/omega-x/ontology/RenewableSolar> ,
+                                                         <https://w3id.org/omega-x/ontology/Electromobility> ,
+                                                         <https://w3id.org/omega-x/ontology/LocalEnergyCommunities> .
 
 #---------------------------------------------------------------
 #    Annotation properties
