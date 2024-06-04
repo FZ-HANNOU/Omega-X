@@ -1,0 +1,269 @@
+@prefix omegax: <https://w3id.org/omega-x/ontology> .
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix bot: <http://example.org/bot#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix schema: <http://schema.org/>.
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
+@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix em: <https://w3id.org/omega-x/ontology/Electromobility/> .
+@prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> .
+@prefix sched: <https://w3id.org/omega-x/ontology/Scheduling/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
+@prefix flex: <https://w3id.org/omega-x/ontology/Flexibility/> .
+@prefix s4bldg: <https://saref.etsi.org/saref4bldg/> .
+@prefix : <https://w3id.org/omega-x/ontology/Flexibility/> .
+
+
+<https://w3id.org/omega-x/ontology/Flexibility> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Flexibility-1.0>  ;
+                                             dcterms:description """ The flexibility ontology is a use case family ontology describing the flexibility family on three dimensions :
+                                                - Flexibility Operations, describes flexbility offer, request and order and their subsequent data. 
+                                                - Flexibility Infrastructure, describes infrastructure elements involved in the flexiblity use cases. This extends to the grid topology, building equipements, and imports specific electromobility and renewable infrastructures defined in their respective modules. 
+                                                - Flexibility Properties, links operations and infrastructre elements to their associated properties, from the property ontology.
+                                             """@en ; 
+                                             owl:imports ets: , role:, eds:, prop: , infra:, qual: , sched: , em: , lec: ;
+                                             dcterms:creator <https://omega-x.eu/> ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
+                                             dcterms:license <https://opensource.org/license/mit/> ;
+                                             dcterms:created "2024-04-08"^^xsd:date ;
+                                             dcterms:modified "2024-04-08"^^xsd:date;
+                                             dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+                                             dcterms:title "Flexbility Ontology"@en ;
+                                             vann:preferredNamespacePrefix "flex" ;
+                                             vann:preferredNamespaceUri <> ;
+                                             rdfs:label "Flexibility Ontology"@en ;
+                                             owl:versionInfo "1.0".
+
+#---------------------------------------------------------------
+#    Annotation properties
+#--------------------------------------------------------------
+
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+owl:maxQualifiedCardinality a owl:AnnotationProperty .
+owl:qualifiedCardinality a owl:AnnotationProperty .
+vs:term_status a owl:AnnotationProperty .
+schema:domainIncludes a owl:AnnotationProperty .
+schema:rangeIncludes a owl:AnnotationProperty .
+time:TemporalEntity a owl:Class .
+
+
+#----------------------------------------------------------------
+#    Flexibility Operations
+#----------------------------------------------------------------
+
+# Flexibility Data
+flex:FlexibilityData a owl:Class ;
+    rdfs:subClassOf ets:ValueSet , eds:EnergyDataSet ; 
+    rdfs:comment "Data included in the flexibility operation." ;
+    rdfs:label "Flexibility Data"@en .
+
+# Flexibility Operation
+flex:FlexibilityOperation a owl:Class ;
+    rdfs:comment "An operation involving the provision or usage of flexibility services." ;
+    rdfs:label "Flexibility Operation"@en .
+
+# Flexibility Offer
+flex:FlexibilityOffer a owl:Class ;
+    rdfs:subClassOf flex:FlexibilityOperation ; 
+    rdfs:comment "An offer operation for energy flexibility."@en ;
+   rdfs:label "Flexbility Offer"@en .
+
+# Flexibility Order
+flex:FlexibilityOrder a owl:Class ;
+    rdfs:subClassOf flex:FlexibilityOperation ; 
+    rdfs:comment "An order operation for energy flexibility."@en ;
+   rdfs:label "Flexbility Order"@en .
+
+# Flexibility Request
+flex:FlexibilityRequest a owl:Class ;
+    rdfs:subClassOf flex:FlexibilityOperation ; 
+    rdfs:comment "A request operation for energy flexibility."@en ;
+   rdfs:label "Flexbility Request"@en .
+
+# Flexibility Service
+flex:FlexibilityService a owl:Class ; 
+    rdfs:comment "A service that provides flexibility in the management of energy demand or supply." ;
+   rdfs:label "Flexbility Service"@en .
+
+# Bidding Zone
+flex:BiddingZone a owl:Class ;
+    rdfs:comment "A market area within which the trading of flexibility services can occur."@en ;
+     rdfs:label "Bidding Zone"@en .
+
+            
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+# Includes Offer
+flex:includesOffer rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityData ;
+    rdfs:range flex:FlexibilityOffer ;
+    rdfs:comment "A property linking flexibility offer to data it includes." ;
+    rdfs:label "includes offer"@en .
+
+# Includes Order
+flex:includesOrder rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityData ;
+    rdfs:range flex:FlexibilityOrder ;
+    rdfs:comment "A property linking flexibility Order to data it includes." ;
+    rdfs:label "includes order"@en .
+
+# Includes Request
+flex:includesRequest rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityData ;
+    rdfs:range flex:FlexibilityRequest ;
+    rdfs:comment "A property linking flexibility request to data it includes." ;
+    rdfs:label "includes request"@en .
+
+# Has Flexibility Type
+flex:hasFlexibilityType rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityOperation ;
+    rdfs:range prop:FlexibilityType ;
+    rdfs:comment "A property indicating the type of a flexibility operation." ;
+    rdfs:label "has flexibility type"@en .
+
+# Has Flexibility Participant
+flex:hasFlexibilityParticipant rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityOperation ;
+    rdfs:range role:MarketParticipant ;
+    rdfs:comment "A property linking a flexibility operation to the market participant producing it." ;
+    rdfs:label "has flexibility participant"@en .
+
+# Covers Zone
+flex:coversZone rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:BiddingZone ;
+    rdfs:range bot:Zone ;
+    rdfs:comment "A property linking the bidding zone to the geographical zone it covers." ;
+    rdfs:label "covers zone"@en .
+
+# Covers Zone
+flex:hasLocation rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:BiddingZone ;
+    rdfs:range geo:SpatialThing ;
+    rdfs:comment "A property linking the bidding zone to the geographical zone it covers." ;
+    rdfs:label "covers zone"@en .
+
+# Provided By
+flex:isProvidedBy rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityService ;
+    rdfs:range role:MarketParticipant ;
+    rdfs:comment "A property indicating which market participant is providing a given flexibility service." ;
+    rdfs:label "is provided by"@en .
+
+# Relates To
+flex:relatesTo rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:FlexibilityService ;
+    rdfs:range flex:BiddingZone ;
+    rdfs:comment "A property to associate flexibility services with the bidding zone." ;
+    rdfs:label "relates to"@en .
+
+#supports 
+flex:supports a owl:ObjectProperty ; 
+    rdfs:domain flex:FlexibilityService ; 
+    rdfs:range flex:FlexibilityOperation ; 
+    rdfs:comment "A property to associate a flexbility service with the operation it supports" ; 
+    rdfs:label "supports"@en.
+
+
+#----------------------------------------------------------------
+#    Flexibility Infrastructure
+#----------------------------------------------------------------
+
+# Grid Component
+flex:GridComponent a owl:Class ;
+    rdfs:subClassOf infra:System ; 
+    rdfs:comment "Grid component is a system that is part of the grid." ;
+    rdfs:label "Grid Component"@en .
+
+
+# Primary substation
+flex:PrimarySubstation a owl:Class ;
+    rdfs:subClassOf flex:GridComponent ; 
+    rdfs:comment "A primary substation " ;
+    rdfs:label "Primary Substation"@en .
+
+# Secondary substation
+flex:SecondarySubstation a owl:Class ;
+    rdfs:subClassOf flex:GridComponent ;
+    infra:isConnectedTo flex:PrimarySubstation ;  
+    rdfs:comment "A secondary substation " ;
+    rdfs:label "Secondary Substation"@en .
+
+# Feeder
+flex:Feeder a owl:Class ;
+    rdfs:subClassOf flex:GridComponent ; 
+     infra:isConnectedTo flex:SecondarySubstation ;  
+    rdfs:comment "A feeder " ;
+    rdfs:label "Feeder"@en .
+
+# Connection Point
+flex:ConnectionPoint a owl:Class ;
+    infra:hasSystemProperty prop:ElectricityPhase ;
+    rdfs:subClassOf infra:System ; 
+    infra:isConnectedTo flex:Feeder ;  
+    rdfs:comment "A connection point " ;
+    rdfs:label "Connection Point"@en .
+
+# Smart Meter
+flex:SmartMeter a owl:Class ;
+    rdfs:subClassOf infra:equipement ; 
+    rdfs:comment "A smart meter" ;
+    rdfs:label "Smart Meter"@en .
+
+# Asset
+flex:Asset a owl:Class ;
+    rdfs:subClassOf infra:equipement ; 
+    rdfs:comment "An asset" ;
+    rdfs:label "Asset"@en .
+
+s4bld:PhysicalObject rdfs:subClassOf flex:Asset . 
+
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+# connectsAt
+flex:connectsAt rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:SmartMeter;
+    rdfs:range flex:ConnectionPoint ;
+    rdfs:comment "connects at." ;
+    rdfs:label "connects at"@en .
+
+# observesConsumptionOf
+flex:observesConsumptionOf rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:SmartMeter;
+    rdfs:range flex:Asset ;
+    rdfs:comment "observes consumption of" ;
+    rdfs:label "observes consumption of "@en .
+
+#connectsTo
+flex:connectsTo rdf:type owl:ObjectProperty ;
+    rdfs:domain flex:Asset;
+    rdfs:range flex:SmartMeter ;
+    rdfs:comment "connects to"@en ;
+    rdfs:label "connects to"@en .
+
+
+
