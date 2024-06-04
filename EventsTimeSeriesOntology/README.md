@@ -36,7 +36,7 @@ An occurrence of a change in the environement that happens at a specific time.
 A property value is the value associated with a unique property and a unit of measurement.
 ## OWL Description
 
-![Diagram](./EventTimeSeries.png)
+![Diagram](./EventsTimeSeries.png)
 
 
 ## Recommendations
