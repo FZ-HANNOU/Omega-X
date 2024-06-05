@@ -1,0 +1,24 @@
+PREFIX ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/>
+PREFIX qual: <https://w3id.org/omega-x/QualityOntology/>
+prefix cc: <http://creativecommons.org/ns#> 
+prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> 
+prefix owl: <http://www.w3.org/2002/07/owl#> 
+prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+prefix xml: <http://www.w3.org/XML/1998/namespace> 
+prefix xsd: <http://www.w3.org/2001/XMLSchema#> 
+prefix foaf: <http://xmlns.com/foaf/0.1/> 
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> 
+prefix vann: <http://purl.org/vocab/vann/> 
+prefix voaf: <http://purl.org/vocommons/voaf#> 
+prefix dcterms: <http://purl.org/dc/terms/> 
+prefix time: <http://www.w3.org/2006/time#> 
+prefix schema: <http://schema.org/>
+prefix omegax: <https://w3id.org/omega-x/ontology> 
+prefix maia: <https://w3id.org/omega-x/Maia/Meteo/> 
+
+SELECT ?s ?m
+WHERE 
+{
+    ?s rdf:type ets:TimeSeries .
+    ?s qual:isProvidedUsing ?m .
+}
