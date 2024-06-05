@@ -1,0 +1,482 @@
+
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix unit: <http://qudt.org/vocab/unit/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetsOntology/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix velverde:  <https://w3id.org/omega-x/velverde/> .
+@base <https://w3id.org/omega-x/velverde/> .
+
+# Map The Excel File to time series for each home management system
+<#TimeSeriesProductionConsumptionProfile>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; #Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:TimeSeries/{TS_id}";
+    ];
+    rr:predicateObjectMap [
+           rr:predicate rdf:type ;
+           rr:object ets:TimeSeries # Time Series
+] ;
+    rr:predicateObjectMap [
+               rr:predicate rdf:type ;
+               rr:object eds:EnergyDataSet  # Energy DataSet
+] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:hasStep;
+        rr:objectMap [
+            rr:datatype time:Duration ;
+            rr:constant "PT5M" ;
+        ];
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eds:includesTechnicalContext;
+        rr:objectMap [rr:template "velverde:TechnicalContext/{TS_id}";]    
+    ]; 
+       rr:predicateObjectMap [
+        rr:predicate eds:isExchangedIn;
+        rr:objectMap [rr:template "velverde:ExchangeContext/{TS_id}";]    
+    ].
+<#AggregationTotal>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:AggegationKind/Total";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object qual:Sum
+] .
+<#TechnicalContext>
+ rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:TechnicalContext/{TS_id}";
+    ];
+    rr:predicateObjectMap [
+         rr:predicate rdf:type ;
+         rr:object eds:TechnicalContext] ;
+    rr:predicateObjectMap [
+          rr:predicate eds:hasEvaluationPoint ;
+          rr:objectMap [rr:template "velverde:EvaluationPoint/{HMS_id}";]
+    ] .
+
+<#TEvaluationPoint>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:EvaluationPoint/{HMS_id}";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object eds:EvaluationPoint  # Time Series
+] ;
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object lec:HMS  # Energy DataSet
+] .
+<#ExchangeContext>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv";  # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ExchangeContext/{TS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object eds:ExchangeContext
+    ];
+    rr:predicateObjectMap [
+        rr:predicate eds:fromSource ;
+        rr:objectMap [
+            rr:template  "velverde:ExchangeSource/{TS_id}/EDP" ]
+    ].
+<#ExchangeSource>
+  rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv";  # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ExchangeSource/{TS_id}/EDP"
+    ];
+    rr:predicateObjectMap [
+         rr:predicate rdf:type ;
+         rr:object role:MarketParticipant] ;
+    rr:predicateObjectMap [
+          rr:predicate role:name ;
+           rr:objectMap [ rr:datatype xsd:string ;
+            rr:constant "EDP (Energias de Portugal)" ;] ];
+     rr:predicateObjectMap [
+         rr:predicate role:plays ;
+         rr:objectMap [
+            rr:template  "velverde:ExchangeSource/{TS_id}/EDPLECPromoter" ]].
+<#MarketPlayer>
+   rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv";  # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ExchangeSource/{TS_id}/EDPLECPromoter"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object role:LocalEnergyCommunityPromoter
+    ].
+
+#--------------------Time Series Energy imported------------------------------------------------------------
+<#TSActiveEnergyImported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:TimeSeries/ActiveEnergyImported/{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:TimeSeries  # Time Series
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty ;
+        rr:objectMap [rr:template "velverde:Property/ActiveEnergyImported/{HMS_id}";]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:hasAggregationKind ;
+        rr:objectMap [rr:template "velverde:AggegationKind/Total";]
+    ] ;
+      rr:predicateObjectMap [
+        rr:predicate ets:isElementOf ;
+        rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasUnit ;
+        rr:objectMap [
+            rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
+        ]
+    ] .
+<#PropertyActiveEnergyImported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:Property/ActiveEnergyImported/{HMS_id}";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object prop:ActiveEnergyImported  # Time Series
+] .
+<#DPActiveEnergyImported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyImported/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:DataPoint  # Data Point
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:dataTime ;
+        rr:objectMap [rml:reference "DateUTC" ; rr:datatype xsd:dateTime]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "velverde:TimeSeries/ActiveEnergyImported/{HMS_id}"]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "velverde:ActiveEnergyImported/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"]
+    ] .
+<#PValueActiveEnergyImported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyImported/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:PropertyValue  # Property Value
+    ];
+    rr:predicateObjectMap [
+       rr:predicate ets:value ;
+       rr:objectMap [
+            rml:reference "TotalActiveEnergy+";
+            rr:datatype xsd:double
+        ]
+    ] .
+#--------------------Time Series Energy Exported------------------------------------------------------------
+<#TSActiveEnergyExported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:TimeSeries/ActiveEnergyExported/{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:TimeSeries  # Time Series
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty ;
+        rr:objectMap [rr:template "velverde:Property/ActiveEnergyExported/{HMS_id}";]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:hasAggregationKind ;
+        rr:objectMap [rr:template "velverde:AggegationKind/Total";]
+    ] ;
+      rr:predicateObjectMap [
+        rr:predicate ets:isElementOf ;
+        rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasUnit ;
+        rr:objectMap [
+            rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
+        ]
+    ] .
+<#PropertyActiveEnergyExported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:Property/ActiveEnergyExported/{HMS_id}";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object prop:ActiveEnergyExported  # Time Series
+] .
+<#DPActiveEnergyExported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyExported/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:DataPoint  # Data Point
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:dataTime ;
+        rr:objectMap [rml:reference "DateUTC" ; rr:datatype xsd:dateTime]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "velverde:TimeSeries/ActiveEnergyExported/{HMS_id}"]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "velverde:ActiveEnergyExported/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"]
+    ] .
+<#PValueActiveEnergyExported>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyExported/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:PropertyValue  # Property Value
+    ];
+    rr:predicateObjectMap [
+       rr:predicate ets:value ;
+       rr:objectMap [
+            rml:reference "TotalActiveEnergy-";
+            rr:datatype xsd:double
+        ]
+    ] .
+
+#--------------------Time Series Energy Consumed------------------------------------------------------------
+<#TSActiveEnergyConsumed>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:TimeSeries/ActiveEnergyConsumed/{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:TimeSeries  # Time Series
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty ;
+        rr:objectMap [rr:template "velverde:Property/ActiveEnergyConsumed/{HMS_id}";]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:isElementOf ;
+        rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasUnit ;
+        rr:objectMap [
+            rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
+        ]
+    ] .
+<#PropertyActiveEnergyConsumed>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:Property/ActiveEnergyConsumed/{HMS_id}";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object prop:ActiveEnergyConsumed  # Time Series
+] .
+<#DPActiveEnergyConsumed>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyConsumed/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:DataPoint  # Data Point
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:dataTime ;
+        rr:objectMap [rml:reference "DateUTC" ; rr:datatype xsd:dateTime]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "velverde:TimeSeries/ActiveEnergyConsumed/{HMS_id}"]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "velverde:ActiveEnergyConsumed/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"]
+    ] .
+<#PValueActiveEnergyConsumed>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyConsumed/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:PropertyValue  # Property Value
+    ];
+    rr:predicateObjectMap [
+       rr:predicate ets:value ;
+       rr:objectMap [
+            rml:reference "consumption";
+            rr:datatype xsd:double
+        ]
+    ] .
+
+#--------------------Time Series Energy Produced------------------------------------------------------------
+<#TSActiveEnergyProduced>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:TimeSeries/ActiveEnergyProduced/{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:TimeSeries  # Time Series
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty ;
+        rr:objectMap [rr:template "velverde:Property/ActiveEnergyProduced/{HMS_id}";]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:isElementOf ;
+        rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasUnit ;
+        rr:objectMap [
+            rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
+        ]
+    ] .
+<#PropertyActiveEnergyProduced>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input csv file
+        rml:referenceFormulation ql:CSV
+    ];
+     rr:subjectMap [
+        rr:template "velverde:Property/ActiveEnergyProduced/{HMS_id}";
+    ];
+    rr:predicateObjectMap [
+    rr:predicate rdf:type ;
+    rr:object prop:ActiveEnergyProduced  # Time Series
+] .
+<#DPActiveEnergyProduced>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyProduced/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:DataPoint  # Data Point
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:dataTime ;
+        rr:objectMap [rml:reference "DateUTC" ; rr:datatype xsd:dateTime]
+    ] ;
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "velverde:TimeSeries/ActiveEnergyProduced/{HMS_id}"]
+    ] ;
+     rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "velverde:ActiveEnergyProduced/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"]
+    ] .
+<#PValueActiveEnergyProduced>
+    rml:logicalSource [
+        rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/Velverde_Data/modified_combined_production_consumption_574.csv"; # Link to the input CSV file
+        rml:referenceFormulation ql:CSV
+    ];
+    rr:subjectMap [
+        rr:template "velverde:ActiveEnergyProduced/PropertyValue/DataPoint_{id}/TimeSeries_{HMS_id}"
+    ];
+    rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:PropertyValue  # Property Value
+    ];
+    rr:predicateObjectMap [
+       rr:predicate ets:value ;
+       rr:objectMap [
+            rml:reference "production";
+            rr:datatype xsd:double
+        ]
+    ] .

@@ -30,7 +30,7 @@
 * [**_qual:MeasuringProcedure_**](https://w3id.org/omega-x/QualityOntology/MeasuringProcedure/): The class of procedures used to provide data
 ## OWL Description
 
-![Diagram](./QualityDiagram.png)
+![Diagram](./Quality.png)
 
 
 ## Recommendations

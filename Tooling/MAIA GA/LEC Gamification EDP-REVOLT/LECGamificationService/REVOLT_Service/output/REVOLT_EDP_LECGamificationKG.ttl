@@ -1,0 +1,146 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix unit: <http://qudt.org/vocab/unit/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetsOntology/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix revolt: <https://w3id.org/omega-x/revolt/> .
+@base <https://w3id.org/omega-x/revolt/> .
+
+<https://w3id.org/omega-x/revolt/DataCollection/QX8l> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/QX8l> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/QX8l> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/QX8l> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/QX8l>.
+<https://w3id.org/omega-x/revolt/DataCollection/sck2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/sck2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/sck2> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/sck2> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/sck2>.
+<https://w3id.org/omega-x/revolt/DataCollection/HMha> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/HMha> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/HMha> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/HMha> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/HMha>.
+<https://w3id.org/omega-x/revolt/DataCollection/IlKF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/IlKF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/IlKF> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/IlKF> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/IlKF>.
+<https://w3id.org/omega-x/revolt/DataCollection/6WLd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/6WLd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/6WLd> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/6WLd> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/6WLd>.
+<https://w3id.org/omega-x/revolt/DataCollection/jQbl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/jQbl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/jQbl> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/jQbl> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/jQbl>.
+<https://w3id.org/omega-x/revolt/DataCollection/Zi5F> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/Zi5F> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/Zi5F> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/Zi5F> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/Zi5F>.
+<https://w3id.org/omega-x/revolt/DataCollection/ej7W> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection>.
+<https://w3id.org/omega-x/revolt/DataCollection/ej7W> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EnergyDataSetsOntology/EnergyDataSet>.
+<https://w3id.org/omega-x/revolt/DataCollection/ej7W> <https://w3id.org/omega-x/EnergyDataSetsOntology/creationTime> "2023-03-31 00:00:00+00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>.
+<https://w3id.org/omega-x/revolt/DataCollection/ej7W> <https://w3id.org/omega-x/EnergyDataSetsOntology/isExchangedIn> <https://w3id.org/omega-x/revolt/ExchangeContext/ej7W>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/QX8l>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/QX8l>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/QX8l>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/sck2>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/sck2>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/sck2>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/HMha>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/HMha>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/HMha>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/IlKF>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/IlKF>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/IlKF>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/6WLd>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/6WLd>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/6WLd>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/jQbl>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/jQbl>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/jQbl>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/Zi5F>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/Zi5F>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/Zi5F>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/ej7W>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/Points/ej7W>.
+<https://w3id.org/omega-x/revolt/Points/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/ej7W>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/QX8l> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "25"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/sck2> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "8"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/HMha> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "3"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/IlKF> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "3"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/6WLd> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "0"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/jQbl> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "0"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/Zi5F> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "0"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/ej7W> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue>.
+<https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "0"^^<http://www.w3.org/2001/XMLSchema#integer>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/QX8l>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/QX8l>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/QX8l>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/sck2>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/sck2>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/sck2>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/HMha>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/HMha>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/HMha>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/IlKF>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/IlKF>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/IlKF>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/6WLd>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/6WLd>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/6WLd>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/jQbl>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/jQbl>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/jQbl>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/Zi5F>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/Zi5F>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/Zi5F>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/ej7W>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/MonthlyExecution/ej7W>.
+<https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/ej7W>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/value> "true"^^<http://www.w3.org/2001/XMLSchema#boolean>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/QX8l>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/QX8l>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/QX8l> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/sck2>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/sck2>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/sck2> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/HMha>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/HMha>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/HMha> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/IlKF>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/IlKF>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/IlKF> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/6WLd>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/6WLd>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/6WLd> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/jQbl>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/jQbl>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/jQbl> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/Zi5F>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/Zi5F>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/Zi5F> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/belongsTo> <https://w3id.org/omega-x/revolt/DataCollection/ej7W>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/isAboutProperty> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/ej7W>.
+<https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/ej7W> <https://w3id.org/omega-x/EventTimeSeriesOntology/hasDataValue> <https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/600-750kWh>.

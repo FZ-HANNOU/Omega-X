@@ -1,0 +1,62 @@
+{
+  "target_efficiency": [{
+    "id": "QX8l",
+    "Points": 25,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "sck2",
+    "Points": 8,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "HMha",
+    "Points": 3,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "IlKF",
+    "Points": 3,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "6WLd",
+    "Points": 0,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "jQbl",
+    "Points": 0,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "Zi5F",
+    "Points": 0,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  },
+  {
+    "id": "ej7W",
+    "Points": 0,
+    "monthly_execution": "true",
+    "timestamp": "2023-03-31 00:00:00+00:00",
+    "consumption_group": "600-750kWh"
+  }
+]
+}
+
+
+

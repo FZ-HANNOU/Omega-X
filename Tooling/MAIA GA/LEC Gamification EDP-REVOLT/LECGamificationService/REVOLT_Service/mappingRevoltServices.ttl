@@ -1,0 +1,140 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix ex: <http://example.com/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix unit: <http://qudt.org/vocab/unit/>.
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetsOntology/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix revolt: <https://w3id.org/omega-x/revolt/> .
+@base <https://w3id.org/omega-x/revolt/> .
+
+<TriplesMapDataCollections>
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/DataCollection/{id}";
+    ];
+    rr:predicateObjectMap [
+           rr:predicate rdf:type ;
+           rr:object ets:DataCollection, eds:EnergyDataSet
+] ;
+rr:predicateObjectMap [
+        rr:predicate eds:creationTime;
+        rr:objectMap [ rml:reference "timestamp" ; rr:datatype xsd:dateTime]
+];
+       rr:predicateObjectMap [
+        rr:predicate eds:isExchangedIn;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/ExchangeContext/{id}";]    
+    ].
+<TriplesMapDataPointPoints>
+ a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/Points/DataCollection/{id}";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/DataCollection/{id}";]    
+    ]; 
+    rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/Property/Points/{id}";]    
+    ];
+       rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/{id}";]    
+    ].
+<TriplesMapDataValuePoints>
+ a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/DataValue/Points/DataCollection/{id}";
+    ];
+       rr:predicateObjectMap [
+        rr:predicate rdf:type ;
+        rr:object ets:PropertyValue  # Property Value
+    ];
+    rr:predicateObjectMap [
+       rr:predicate ets:value ;
+       rr:objectMap [
+            rml:reference "Points";
+            rr:datatype xsd:integer
+        ]
+    ] .
+<TriplesMapDataPointMonthlyExecution>
+ a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/MonthlyExecution/DataCollection/{id}";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/DataCollection/{id}";]    
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/Property/MonthlyExecution/{id}";]    
+    ];
+       rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/{id}";]    
+    ].
+<TriplesMapDataValueMonthlyExecution>
+ a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/DataValue/MonthlyExecution/DataCollection/{id}";
+    ];
+ rr:predicateObjectMap [
+        rr:predicate ets:value;
+        rr:objectMap [ rml:reference "monthly_execution" ; rr:datatype xsd:boolean]
+].
+<TriplesMapDataPointConsumptionGroup>
+ a rr:TriplesMap;
+  rml:logicalSource [
+    rml:source "/home/lina/SDM-RDFizer/example/LECGamificationService/REVOLT_Service/2023-03-31_target_efficiency.json";
+    rml:referenceFormulation ql:JSONPath;
+    rml:iterator "$.target_efficiency[*]"
+  ];
+  rr:subjectMap [
+        rr:template "https://w3id.org/omega-x/revolt/ConsumptionGroup/DataCollection/{id}";
+    ];
+    rr:predicateObjectMap [
+        rr:predicate ets:belongsTo;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/DataCollection/{id}";]    
+    ];
+      rr:predicateObjectMap [
+        rr:predicate ets:isAboutProperty;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/{id}";]    
+    ];
+       rr:predicateObjectMap [
+        rr:predicate ets:hasDataValue;
+        rr:objectMap [rr:template "https://w3id.org/omega-x/revolt/Property/ConsumptionGroup/{consumption_group}";]    
+    ].
