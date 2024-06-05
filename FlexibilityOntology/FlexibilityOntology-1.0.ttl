@@ -24,7 +24,6 @@
 @prefix sched: <https://w3id.org/omega-x/ontology/Scheduling/> .
 @prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
 @prefix flex: <https://w3id.org/omega-x/ontology/Flexibility/> .
-@prefix s4bldg: <https://saref.etsi.org/saref4bldg/> .
 @prefix : <https://w3id.org/omega-x/ontology/Flexibility/> .
 
 
@@ -238,7 +237,6 @@ flex:Asset a owl:Class ;
     rdfs:comment "An asset" ;
     rdfs:label "Asset"@en .
 
-s4bldg:PhysicalObject rdfs:subClassOf flex:Asset . 
 
 #--------------------------------------------------------------
 #    Object Properties
