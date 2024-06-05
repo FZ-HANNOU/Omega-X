@@ -38,7 +38,6 @@
                                              owl:imports ets: , role:, eds:, prop: , infra:, qual: , sched: , em: , lec: ;
                                              dcterms:creator <https://omega-x.eu/> ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
-                                             dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
                                              dcterms:license <https://opensource.org/license/mit/> ;
                                              dcterms:created "2024-04-08"^^xsd:date ;
                                              dcterms:modified "2024-04-08"^^xsd:date;
@@ -239,7 +238,7 @@ flex:Asset a owl:Class ;
     rdfs:comment "An asset" ;
     rdfs:label "Asset"@en .
 
-s4bld:PhysicalObject rdfs:subClassOf flex:Asset . 
+s4bldg:PhysicalObject rdfs:subClassOf flex:Asset . 
 
 #--------------------------------------------------------------
 #    Object Properties
