@@ -1,0 +1,134 @@
+
+@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix seas: <https://w3id.org/seas/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix unit: <http://qudt.org/vocab/unit/> .
+@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix : <https://w3id.org/omega-x/EstabanellBattery/> .
+
+
+
+#################################################################
+#   Knoweldge Gragh Battery Estabanell
+#################################################################
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHABattery
+:LFP100AHABattery rdf:type owl:NamedIndividual ,
+                                                                       lec:Battery ;
+                                                              lec:hasBatteryConfiguration :LFP100AHABatteryConfiguration ;
+                                                              lec:BatteryModelName "LFP100AHA Wide"@en .
+
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHABatteryConfiguration
+:LFP100AHABatteryConfiguration rdf:type owl:NamedIndividual ,
+                                                                           lec:BatteryConfiguration ;
+                                                                           lec:includesBatteryProperties :LFP100AHACapacity, 
+                                                                           :LFP100AHADeepDischargeVoltage,
+                                                                           :LFP100AHAMaxChargeCurrent,
+                                                                           :LFP100AHAMaxChargeVoltage,
+                                                                           :LFP100AHAMaxContOperatingTemp,
+                                                                           :LFP100AHAMaxDischargeCurrent , 
+                                                                           :LFP100AHANominalVoltage,
+                                                                           :LFP100AHAOperatingVoltage,
+                                                                           :LFP100AHAOptimalChargeCurrent,
+                                                                           :LFP100AHAOptimalDischargeCurrent,
+                                                                           :LFP100AHAWeights.
+
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHACapacity
+:LFP100AHACapacity rdf:type owl:NamedIndividual ,
+                                                prop:batteryCapacity ;
+                                                prop:isMeasuredIn unit:OHM;
+                                                prop:hasPropertyValue :LFP100AHACapacityValue.
+:LFP100AHACapacityValue a ets:PropertyValue;
+                        ets:value "100"^^xsd:decimal;
+                        prop:hasUnit unit:OHM.
+
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHADeepDischargeVoltage
+:LFP100AHADeepDischargeVoltage rdf:type owl:NamedIndividual ,
+                                        prop:batteryDeepDischargeVoltage ;
+                                        prop:hasPropertyValue :LFP100AHADeepDischargeVoltageValue.
+
+:LFP100AHADeepDischargeVoltageValue a ets:PropertyValue;
+                                    ets:value "2.5"^^xsd:decimal;
+                                    prop:hasUnit unit:V.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAMaxChargeCurrent
+:LFP100AHAMaxChargeCurrent rdf:type owl:NamedIndividual ,
+                                    prop:batteryMaxChargeCurrent ;
+                                    prop:hasPropertyValue :LFP100AHAMaxChargeCurrentValue.
+:LFP100AHAMaxChargeCurrentValue a ets:PropertyValue;
+                                  ets:value "300"^^xsd:decimal;
+                                  prop:hasUnit unit:A.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAMaxChargeVoltage
+:LFP100AHAMaxChargeVoltage rdf:type owl:NamedIndividual ,
+                                    prop:batteryMaxChargeVoltage ;
+                                    prop:hasPropertyValue :LFP100AHAMaxChargeVoltageValue.                                            
+:LFP100AHAMaxChargeVoltageValue a ets:PropertyValue;
+                                  ets:value "4"^^xsd:decimal;
+                                  prop:hasUnit unit:V.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAMaxContOperatingTemp
+:LFP100AHAMaxContOperatingTemp rdf:type owl:NamedIndividual ,
+                                        prop:batteryMaxTemperature ;
+                                        prop:hasPropertyValue :LFP100AHAMaxContOperatingTempValue.                                             
+:LFP100AHAMaxContOperatingTempValue a ets:PropertyValue;
+                                  ets:value "80"^^xsd:decimal;
+                                  prop:hasUnit unit:DEG_C.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAMaxDischargeCurrent
+:LFP100AHAMaxDischargeCurrent rdf:type owl:NamedIndividual ,
+                                        prop:batteryOptimalDischargeCurrent ;
+                                        prop:hasPropertyValue :LFP100AHAMaxDischargeCurrentValue.                                           
+:LFP100AHAMaxDischargeCurrentValue a ets:PropertyValue;
+                                  ets:value "300"^^xsd:decimal;
+                                  prop:hasUnit unit:A.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHANominalVoltage
+:LFP100AHANominalVoltage rdf:type owl:NamedIndividual ,
+                                  prop:batteryNominalVoltage ;
+                                  prop:hasPropertyValue :LFP100AHANominalVoltageValue.
+:LFP100AHANominalVoltageValue a ets:PropertyValue;
+                              ets:value "3.2"^^xsd:decimal;
+                              prop:hasUnit unit:V.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAOperatingVoltage
+:LFP100AHAOperatingVoltage rdf:type owl:NamedIndividual ,
+                                    prop:batteryNominalVoltage ;
+                                    prop:hasPropertyValue :LFP100AHAOperatingVoltageValue.
+:LFP100AHAOperatingVoltageValue a ets:PropertyValue;
+                              ets:value "4"^^xsd:decimal;
+                              prop:hasUnit unit:V.
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAOptimalChargeCurrent
+:LFP100AHAOptimalChargeCurrent rdf:type owl:NamedIndividual ,
+                                        prop:batteryOptimalChargeCurrent ;
+                                        prop:hasPropertyValue :LFP100AHAOptimalChargeCurrentValue.
+:LFP100AHAOptimalChargeCurrentValue a ets:PropertyValue;
+                                      ets:value "50"^^xsd:decimal;
+                                       prop:hasUnit unit:A.
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAOptimalDischargeCurrent
+:LFP100AHAOptimalDischargeCurrent rdf:type owl:NamedIndividual ,
+                                           prop:batteryMaxDischargeCurrent ;
+                                           prop:hasPropertyValue :LFP100AHAOptimalDischargeCurrentValue.
+:LFP100AHAOptimalDischargeCurrentValue  a ets:PropertyValue;
+                                       ets:value "300"^^xsd:decimal;
+                                     prop:hasUnit unit:A.
+
+
+###  https://w3id.org/omega-x/EstabanellBattery/LFP100AHAWeights
+:LFP100AHAWeight rdf:type  owl:NamedIndividual ,
+                           prop:batteryWeight ;
+                           prop:hasPropertyValue :LFP100AHAWeightValue.
+:LFP100AHAWeightValue a ets:PropertyValue;
+                        ets:value "3.6"^^xsd:decimal;
+                         prop:hasUnit unit:KiloGM.
