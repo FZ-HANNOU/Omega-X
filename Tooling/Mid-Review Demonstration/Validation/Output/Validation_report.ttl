@@ -1,0 +1,46 @@
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode <https://w3id.org/omega-x/linky/P1D_DI000001_BASE_EAS_D1> ;
+            sh:resultMessage "Invalid unit for activePower. Expected kWh." ;
+            sh:resultPath eds:unit ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n2a509469813b469fad86f97f3212f331b1 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://w3id.org/omega-x/linky/P1D_FC000010_BASE_EAS_F1> ;
+            sh:resultMessage "Invalid unit for activePower. Expected kWh." ;
+            sh:resultPath eds:unit ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n2a509469813b469fad86f97f3212f331b1 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://w3id.org/omega-x/linky/P1D_FC000010_BASE_EAS_F2> ;
+            sh:resultMessage "Invalid unit for activePower. Expected kWh." ;
+            sh:resultPath eds:unit ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n2a509469813b469fad86f97f3212f331b1 ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <https://w3id.org/omega-x/linky/P1D_FC000010_BASE_EAS_F4> ;
+            sh:resultMessage "Invalid unit for activePower. Expected kWh." ;
+            sh:resultPath eds:unit ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:HasValueConstraintComponent ;
+            sh:sourceShape _:n2a509469813b469fad86f97f3212f331b1 ] .
+
+_:Nd0898b588b3d4acaa12daf4f1e988806 a sh:PropertyShape ;
+    sh:hasValue "activePower" ;
+    sh:path eds:measurementKind .
+
+_:n2a509469813b469fad86f97f3212f331b1 a sh:PropertyShape ;
+    sh:condition _:Nd0898b588b3d4acaa12daf4f1e988806 ;
+    sh:hasValue "kWh" ;
+    sh:message "Invalid unit for activePower. Expected kWh." ;
+    sh:path eds:unit ;
+    sh:severity sh:Violation .
+

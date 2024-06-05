@@ -1,0 +1,19 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology> .
+@prefix ex: <http://example.org/> .
+
+ex:ActivePowerShape
+    a sh:NodeShape;
+    sh:targetClass eds:TechnicalContext;
+    sh:property [
+        a sh:PropertyShape;
+        sh:path eds:unit;
+        sh:hasValue "kW";
+        sh:severity sh:Violation;
+        sh:message "Invalid unit for activePower. Expected kW.";
+        sh:condition [
+            a sh:PropertyShape;
+            sh:path eds:measurementKind;
+            sh:hasValue "activePower";
+        ];
+    ].

@@ -1,0 +1,58 @@
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetOntology> .
+@prefix eumedMet: <http://iec.ch/TC57/EUMED-Metering> .
+@prefix ex: <http://example.org/> .
+@prefix linky: <https://w3id.org/omega-x/linky/> .
+
+linky:123456789ABCDE
+        a eds:EvaluationPoint;
+        eds:evaluationPointID "123456789ABCDE";
+        eds:nameType "EUMED UsagePoint";
+        eds:nameTypeAuthority "EUMED".
+
+linky:P1D_FC000010_BASE_EAS_F1
+    a eds:TechnicalContext;
+    eds:technicalContextID "P1D_FC000010_BASE_EAS_F1";
+    eds:nameType "EUMED ReadingType";
+    eds:nameTypeAuthority "EUMED";
+    eds:aggregate "sum";
+    eds:measuringPeriod "twentyfourHour";
+    eds:accumulation "cumulative";
+    eds:flowDirection "forward";
+    eds:measurementKind "activePower";
+    eds:unit "Wr".
+
+linky:P1D_DI000001_BASE_EAS_D1
+    a eds:TechnicalContext;
+    eds:technicalContextID "P1D_DI000001_BASE_EAS_D1";
+    eds:nameType "EUMED ReadingType";
+    eds:nameTypeAuthority "EUMED";
+    eds:aggregate "sum";
+    eds:measuringPeriod "twentyfourHour";
+    eds:accumulation "cumulative";
+    eds:flowDirection "forward";
+    eds:measurementKind "activePower";
+    eds:unit "kW".
+
+linky:P1D_FC000010_BASE_EAS_F2
+    a eds:TechnicalContext;
+    eds:technicalContextID "P1D_FC000010_BASE_EAS_F1";
+    eds:nameType "EUMED ReadingType";
+    eds:nameTypeAuthority "EUMED";
+    eds:aggregate "sum";
+    eds:measuringPeriod "twentyfourHour";
+    eds:accumulation "cumulative";
+    eds:flowDirection "forward";
+    eds:measurementKind "activePower";
+    eds:unit "Wr".
+
+linky:P1D_FC000010_BASE_EAS_F4
+    a eds:TechnicalContext;
+    eds:technicalContextID "P1D_FC000010_BASE_EAS_F1";
+    eds:nameType "EUMED ReadingType";
+    eds:nameTypeAuthority "EUMED";
+    eds:aggregate "sum";
+    eds:measuringPeriod "twentyfourHour";
+    eds:accumulation "cumulative";
+    eds:flowDirection "forward";
+    eds:measurementKind "activePower";
+    eds:unit "Wr".
