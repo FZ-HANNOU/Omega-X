@@ -1,1 +1,95 @@
-<html><head></head><body><p>No README.md found</p></body></html>
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Local Energy Communities Ontology</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Purpose</h3>
+<p>Optimizing self consuption, losses detection and gamification for eletric saving requires some knoweldge on LEC equipments.</p>
+<h3 style="color: #21618C; text-decoration: underline;">Scope</h3>
+<p>Local energy communities ontology provides OWL classes and properties to allow local energy equipments and their static parameters to be described.</p>
+<h3 style="color: #21618C; text-decoration: underline;">Description</h3>
+<p>This Local Energy Communities ontology helps to define the equipments of OMEGA-X Local energy communities use cases. It includes the battery, transformer, bus, smart meter and Intelligent Distribution Power Router. </p>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>What is the battery configuration of a specific battery?</td>
+<td>the battery configuration  of a specific battery</td>
+</tr>
+<tr>
+<td>cq-2</td>
+<td>What is the transformer configuration of a specific transformer?</td>
+<td>the  transformer configuration of a specific transformer</td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>What is the location of specific bus?</td>
+<td>the  geolocation of a specific bus</td>
+</tr>
+<tr>
+<td>cq-4</td>
+<td>To which solar inverter a specific battery is connected to?</td>
+<td>the solar inverter connected to a specific battery</td>
+</tr>
+</tbody>
+</table>
+<h3 style="color: #21618C; text-decoration: underline;">Inference Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iq-1</td>
+<td>To which batteries a specific solar inverter is connected to?</td>
+<td>the list of batteries connected to a specific solar inverter</td>
+</tr>
+</tbody>
+</table>
+<h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Omega-X LEC</h3>
+<ul>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/Battery"><strong>lec:<em>Battery</em></strong></a>
+Battery electric power storage systems.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/PED"><strong>lec:<em>PED</em></strong></a>
+Power electronic device that takes power from the battery/grid to balance the difference phases.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/IDPR"><strong>lec:<em>IDPR</em></strong></a>
+Intelligent Distribution Power Router.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/PCC"><strong>lec:<em>PCC</em></strong></a>
+The exchange point of the grid.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/batteryConfiguration"><strong>lec:<em>batteryConfiguration</em></strong></a>
+A battery configuration defining the value of the battery properties based on the battery data sheet.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/Transformer"><strong>lec:<em>Transformer</em></strong></a>
+A static piece of apparatus with two or more windings which, by electromagnetic induction, transforms a system of alternating voltage and current into another system of voltage and current usually of different values and at the same frequency for the purpose of transmitting electrical power.</li>
+<li><a href="https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/transformerConfiguration"><strong>lec:<em>transformerConfiguration</em></strong></a>
+A transformer configuration defining the value of the transformer propertie.</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2><img alt="OWL Description" src="LEC-Module.png"/>
+<p><img alt="Diagram" src="./LEC-Module.png"/></p>
+<h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
+<h3 style="color: #21618C; text-decoration: underline;">SEAS</h3>
+<ul>
+<li>
+<p><a href="https://w3id.org/seas/Battery"><strong><em>seas:Battery</em></strong></a>: The class of batteries, which are electric power storage systems.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/stateOfChargeRatio"><strong><em>seas:stateOfChargeRatio</em></strong></a>:The state of charge of a battery, quantified by unitless values.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/ElectricPowerSystem"><strong><em>seas:ElectricPowerSystem</em></strong></a>:The class of electric power systems, i.e., systems that exchange electricity (i.e., electric power) with other systems.</p>
+</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">PLATOON</h3>
+<ul>
+<li><a href="&lt;https://w3id.org/platoon/Transformer"><strong><em>plt:Transformer</em></strong></a>: An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point.</li>
+</ul></body></html>
