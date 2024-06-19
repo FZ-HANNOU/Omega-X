@@ -3,11 +3,11 @@ import rdflib
 
 
 data_graph = rdflib.Graph()
-with open("C:/Users/g28683/Documents/Omega-X/WP4/Omega-X-Ontology-Git/omega-x/Tooling/Mid-Review Demonstration/Validation/index.ttl", "r") as file:
+with open("index.ttl", "r") as file:
     data_graph.parse(file=file, format="turtle")
 
 shapes_graph = rdflib.Graph()
-with open("C:/Users/g28683/Documents/Omega-X/WP4/Omega-X-Ontology-Git/omega-x/Tooling/Mid-Review Demonstration/Validation/PowerUnit.shacl", "r") as file:
+with open("PowerUnit.shacl", "r") as file:
     shapes_graph.parse(file=file, format="turtle")
 
 
@@ -24,5 +24,5 @@ else:
     
     turtle_results = results_graph.serialize(format="turtle")
     
-    with open("C:/Users/g28683/Documents/Omega-X/WP4/Omega-X-Ontology-Git/omega-x/Tooling/Mid-Review Demonstration/Validation/Output/Validation_report.ttl", "w") as f:
+    with open("./Output/Validation_report.ttl", "w") as f:
         f.write(turtle_results)
