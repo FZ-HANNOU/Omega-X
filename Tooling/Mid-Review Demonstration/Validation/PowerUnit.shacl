@@ -17,3 +17,11 @@ ex:ActivePowerShape
             sh:hasValue "activePower";
         ];
     ].
+
+ex:ActiveExample
+a sh:NodeShape ; 
+sh:targetClass eds:TechnicalContext;
+sh:property [
+sh:path masso:prop1; 
+sh:lessThan masso:prop2. 
+] ; 

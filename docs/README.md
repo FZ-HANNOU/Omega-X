@@ -1,6 +1,9 @@
 # Omega-X Common Semantic Data Model 
 Welcome to the Omega-X project Common Semantic Data Model website. 
 
+
+![Overview of CSDM Modules](Overview.png)
+
 ## List of modules 
 
 Group Name| Module |  |Documentation | Source
@@ -18,9 +21,9 @@ Group Name| Module |  |Documentation | Source
 |Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
 |Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)
 
-## Overview of common modules
 
-The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
-[Common Modules Diagram](https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D)
+## Credit
+This work has been developed by [Electricité De France (EDF)](https://www.edf.fr/) team and partners ([Ecole des mines de Saint-Etienne](https://www.mines-stetienne.fr/) and [Trialog](https://www.trialog.com/fr/accueil/)), in the frame of the European projetc Omega-X [Omega-X website](https://omega-x.eu/), 
 
-![Common Modules](./CommonModules.png)
+## Contact
+

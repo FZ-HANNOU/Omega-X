@@ -1,1 +1,269 @@
-<html><head></head><body><p>No README.md found</p></body></html>
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Renewables Solar Ontology</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Purpose</h3>
+<p>Information about sharing data concerning solar plant in order to execute a set of services</p>
+<h3 style="color: #21618C; text-decoration: underline;">Scope</h3>
+<p>This module provides solar dedicated classes for the simplified topology as well as mechanism to attach dynamic measures to equipment.</p>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CQ1</td>
+<td>What is the static configuration of each equipment ?</td>
+<td>The configuration properties of an equipement</td>
+</tr>
+<tr>
+<td>CQ2</td>
+<td>For a given equipment what is the weatherStation to refer in order to have the irradiance time series ?</td>
+<td>the weatherstation attached to the timeseries containing the irradiance</td>
+</tr>
+<tr>
+<td>CQ3</td>
+<td>What are the equipments controlled by a tracker ?</td>
+<td>The list of equipments controlled by a solar tracker</td>
+</tr>
+<tr>
+<td>CQ4</td>
+<td>What are the inverters of an inverter station ?</td>
+<td>The list of inverter which are subsystem of an inverter station</td>
+</tr>
+</tbody>
+</table>
+<h3 style="color: #21618C; text-decoration: underline;">Inference Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IQ1</td>
+<td>What are the electric power production equipments of a solar site ?</td>
+<td>The list of electric power production equipments such as solar array, solar string, solar panel, solar module and solar cells.</td>
+</tr>
+<tr>
+<td>## Glossary</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>### Omega-X SOLAR</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarTracker/"><strong>solar:<em>SolarTracker</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A solar tracker is a device that orients a payload toward the Sun. Payloads are usually solar panels, parabolic troughs, fresnel reflectors, mirrors or lenses.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarArray/"><strong>solar:<em>SolarArray</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Solar arrays consist of one or many strings of solar panels connected in parallel.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarString/"><strong>solar:<em>SolarString</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Solar strings consist of one or many solar panels connected in series.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarPanel/"><strong>solar:<em>SolarPanel</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Solar panels consist of one or many solar modules integrated in the same mechanical part.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarModule/"><strong>solar:<em>SolarModule</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Solar modules consist of one or many solar cells in parallel to a by-pass diode.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/SolarCell/"><strong>solar:<em>SolarCell</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Device that directly converts the energy of light into electrical energy through the photovoltaic effect.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Inverter/"><strong>solar:<em>Inverter</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>The class of electronic devices or circuitry that change direct current (DC) to alternating current (AC).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/PowerModule/"><strong>solar:<em>PowerModule</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A sub unit of PowerInverter with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Transformer/"><strong>solar:<em>Transformer</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/InverterStation/"><strong>solar:<em>InverterStation</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cabinet of inverters.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/CombinerBox/"><strong>solar:<em>CombinerBox</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>PowerCabinet wich contain electrical equipments for combining energy coming from solar arrays.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/PowerCabinet/"><strong>solar:<em>PowerCabinet</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cabinet for electrical equipments.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Substation/"><strong>solar:<em>Substation</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Feeder/"><strong>solar:<em>Feeder</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A collection of equipment for organizational purposes, used for grouping distribution resources. The organization of a feeder does not necessarily reflect connectivity or current operation state.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/WeatherStation/"><strong>solar:<em>WeatherStation</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>A weather station is instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.(source : wikipedia).</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>* <a href="https://w3id.org/omega-x/EventTimeSeriesOntology/Meter/"><strong>solar:<em>Meter</em></strong></a></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Equipment measuring the production of PV Plant.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>## OWL Description</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Diagram" src="./Renewables.png"/></p>
+<h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
+<h3 style="color: #21618C; text-decoration: underline;">SEAS</h3>
+<ul>
+<li><a href="https://w3id.org/seas/ElectricPowerSystem"><strong><em>seas:_ElectricPowerSystem</em></strong></a>: 
+The class of evaluations for electric reactance properties.</li>
+<li><a href="https://w3id.org/seas/ElectricPowerProducer"><strong><em>seas:_ElectricPowerProducer</em></strong></a>: An electric power producer is an electric power system that is capable of producing electricity.</li>
+<li><a href="https://w3id.org/seas/ElectricPowerTransformer"><strong><em>seas:_ElectricPowerTransformer</em></strong></a>: 
+An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point.</li>
+<li><a href="https://w3id.org/seas/SolarPanel"><strong><em>seas:_SolarPanel</em></strong></a>: 
+Solar panels consist of one or many solar modules.</li>
+<li><a href="https://w3id.org/seas/SolarModule"><strong><em>seas:_SolarModule</em></strong></a>: 
+Solar modules consist of one or many solar cells.</li>
+<li><a href="https://w3id.org/seas/SolarCell"><strong><em>seas:_SolarCell</em></strong></a>: 
+Solar cells belong a solar module.</li>
+<li><a href="https://w3id.org/seas/PowerInverter"><strong><em>seas:_PowerInverter</em></strong></a>: 
+The class of electronic devices or circuitry that change direct current (DC) to alternating current (AC). (source: The Authoritative Dictionary of IEEE Standards Terms, Seventh Edition, IEEE Press, 2000, ISBN 0-7381-2601-2, page 588).</li>
+<li><a href="https://w3id.org/seas/SolarTracker"><strong><em>seas:_SolarTracker</em></strong></a>: 
+A solar tracker is a device that orients a payload toward the Sun. Payloads are usually solar panels, parabolic troughs, fresnel reflectors, mirrors or lenses. (source: Wikipedia).</li>
+<li><a href="https://w3id.org/seas/connectedTo"><strong><em>seas:_connectedTo</em></strong></a>: 
+Links a system to a system it is connected to.</li>
+<li><a href="https://w3id.org/seas/subSystemOf"><strong><em>seas:_subSystemOf</em></strong></a>: 
+Properties of subsystems somehow contribute to the properties of the super system</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">PLATOON</h3>
+<ul>
+<li><a href="https://w3id.org/platoon/WeatherStation"><strong>plt:<em>WeatherStation</em></strong></a>: 
+A weather station is  instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.(source : wikipedia).</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">SAREF For System</h3>
+<ul>
+<li><a href="https://saref.etsi.org/saref4syst/System"><strong>saref4syst:<em>System</em></strong></a>: 
+The class of systems, i.e., systems virtually isolated from the environment, whose behaviour and interactions with the environment are modeled. Systems can be connected to other systems. Connected systems interact in some ways. Systems can also have subsystems. Properties of subsystems somehow contribute to the properties of the supersystem.</li>
+<li><a href="https://saref.etsi.org/saref4syst/connectedTo"><strong>saref4syst:<em>connectedTo</em></strong></a>: 
+Links a system to a system it is connected to. Connected systems interact in some way. The exact meaning of "interact" is defined by sub properties of s4syst:connectedTo. Property s4syst:connectedTo is symmetric. This property can be qualified using class s4syst:Connection, which connects the two systems. If there is a connection between several systems, then one may infer these systems are pairwise connected.</li>
+<li><a href="https://saref.etsi.org/saref4syst/subSystemOf"><strong>saref4syst:<em>subSystemOf</em></strong></a>: 
+Links a system to its super system. Properties of subsystems somehow contribute to the properties of the super system. The exact meaning of "contribute is defined by sub properties of s4syst:subSystemOf. Property s4syst:subSystemOf is transitive.</li>
+</ul></body></html>
