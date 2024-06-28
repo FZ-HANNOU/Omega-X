@@ -25,6 +25,24 @@ The flexibility ontology is a use case family ontology describing the flexibilit
 - The flexibility ontology covers both operations, services providing them and infrastructure components. 
 - The flexbility ontology imports different UCs infrastructures such as those of electromobility (to consider charging stations), renewables (for renewable energy production among prosumres) and local energy communities. Carrefuly consider reviewing them. 
 
+## Related Work 
+### IEC 62746
+- Grid component 
+- Grid operations
+- Smart Meter
+
+### Interconnect Ontology
+- Flexibility Request 
+- Flexibility Offer
+- Flexibility Instruction 
+- Flexibility Profile
+
+### Saref4BLDG
+- Building 
+- Building Device
+- Building Space
+
+
 
 
 
