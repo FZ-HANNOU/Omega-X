@@ -290,13 +290,13 @@ td {
     ],
     "https://schema.org/contributor": [
       {
-        "@id": "_:naf571f9a98b34504a06e4c864f3b8813b1"
+        "@id": "_:n917907a882e749ab9613a02fa329d1f8b1"
       },
       {
-        "@id": "_:naf571f9a98b34504a06e4c864f3b8813b2"
+        "@id": "_:n917907a882e749ab9613a02fa329d1f8b2"
       },
       {
-        "@id": "_:naf571f9a98b34504a06e4c864f3b8813b3"
+        "@id": "_:n917907a882e749ab9613a02fa329d1f8b3"
       }
     ],
     "https://schema.org/copyrightNotice": [
@@ -347,7 +347,7 @@ td {
     ]
   },
   {
-    "@id": "_:naf571f9a98b34504a06e4c864f3b8813b1",
+    "@id": "_:n917907a882e749ab9613a02fa329d1f8b1",
     "https://schema.org/name": [
       {
         "@value": "Lina Nachabe"
@@ -355,7 +355,7 @@ td {
     ]
   },
   {
-    "@id": "_:naf571f9a98b34504a06e4c864f3b8813b2",
+    "@id": "_:n917907a882e749ab9613a02fa329d1f8b2",
     "https://schema.org/name": [
       {
         "@value": "Fatma-Zohra Hannou"
@@ -363,7 +363,7 @@ td {
     ]
   },
   {
-    "@id": "_:naf571f9a98b34504a06e4c864f3b8813b3",
+    "@id": "_:n917907a882e749ab9613a02fa329d1f8b3",
     "https://schema.org/name": [
       {
         "@value": "Maxime Lefrançois"
@@ -783,7 +783,16 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <span>
 <a href="#includesProperty">includes property</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
-</span>some<br/>
+</span>
+<span>
+<span class="cardinality">some</span>
+<span>
+<span>
+<a href="https://w3id.org/omega-x/ontology/Property/Property">prop:Property</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</span>
+</span><br/>
 </span>
 </span>
 </li>
@@ -793,7 +802,16 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <span>
 <a href="#includesSchedule">includes schedule</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
-</span>some<br/>
+</span>
+<span>
+<span class="cardinality">some</span>
+<span>
+<span>
+<a href="https://w3id.org/omega-x/ontology/Scheduling/Schedule">sch:Schedule</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</span>
+</span><br/>
 </span>
 </span>
 </li>
@@ -1315,16 +1333,22 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <th>
 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
 </th>
-<td><span>
+<td>
+<span>
 <a href="#EvaluationPoint">Evaluation Point</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
+</span>
+<span class="cardinality">or</span>
+<span>
 <a href="#ExchangeContext">Exchange Context</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span> <span class="cardinality">or</span> <span>
+</span>
+<span class="cardinality">or</span>
+<span>
 <a href="#TechnicalContext">Technical Context</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span></td>
+</span>
+</td>
 </tr>
 </table>
 </div>
@@ -1405,18 +1429,6 @@ Scope : Sharing data resources in complex environments like in the case of energ
 </table>
 </div>
 </div>
-<span>
-<a href="#TechnicalContext">Technical Context</a>
-<sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span>
-<span>
-<a href="#ExchangeContext">Exchange Context</a>
-<sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span>
-<span>
-<a href="#EvaluationPoint">Evaluation Point</a>
-<sup class="sup-c" title="OWL/RDFS Class">c</sup>
-</span>
 <div id="namespaces">
 <h2>Namespaces</h2>
 <dl>
@@ -1444,10 +1456,6 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <dd>
 <code>https://w3id.org/omega-x/ontology/Property/</code>
 </dd>
-<dt id="prov">prov</dt>
-<dd>
-<code>http://www.w3.org/ns/prov#</code>
-</dd>
 <dt id="rdf">rdf</dt>
 <dd>
 <code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
@@ -1463,10 +1471,6 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <dt id="sch">sch</dt>
 <dd>
 <code>https://w3id.org/omega-x/ontology/Scheduling/</code>
-</dd>
-<dt id="schema">schema</dt>
-<dd>
-<code>https://schema.org/</code>
 </dd>
 <dt id="vann">vann</dt>
 <dd>
@@ -1603,9 +1607,6 @@ Scope : Sharing data resources in complex environments like in the case of energ
 <a href="#prop">prop</a>
 </li>
 <li>
-<a href="#prov">prov</a>
-</li>
-<li>
 <a href="#rdf">rdf</a>
 </li>
 <li>
@@ -1616,9 +1617,6 @@ Scope : Sharing data resources in complex environments like in the case of energ
 </li>
 <li>
 <a href="#sch">sch</a>
-</li>
-<li>
-<a href="#schema">schema</a>
 </li>
 <li>
 <a href="#vann">vann</a>
