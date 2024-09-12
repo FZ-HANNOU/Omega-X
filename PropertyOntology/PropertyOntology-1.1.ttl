@@ -18,7 +18,7 @@
 @base <https://w3id.org/omega-x/ontology/Property/>.
 
 <https://w3id.org/omega-x/ontology/Property/> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.0/> ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.1/> ;
                                              owl:imports ets: ; 
                                              dcterms:description """The property ontology is a common module of the CSDM designed to provide a structured taxonomy for the properties of the energy domain.
                                              It distinguishes two type of properties: 
@@ -31,14 +31,14 @@
                                              dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              dcterms:created "2024-03-08"^^xsd:date ;
-                                             dcterms:modified "2024-04-30"^^xsd:date;
-                                             dcterms:issued "2024-05-07"^^xsd:date;
+                                             dcterms:modified "2024-09-12"^^xsd:date;
+                                             dcterms:issued "2024-09-15"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Property ontology"@en ;
                                              vann:preferredNamespacePrefix "prop" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property>  ;
                                              rdfs:label "Property"@en ;
-                                             owl:versionInfo "1.0".
+                                             owl:versionInfo "1.1".
 
 #---------------------------------------------------------------
 #    Annotation properties
@@ -95,6 +95,15 @@ prop:Category a owl:Class ;
         rdfs:subClassOf ets:PropertyValue ; 
         rdfs:comment "A class of categories, used to enumerate possible values of qualitative properties."@en ;
         rdfs:label "Category"@en .
+
+prop:PropertyKind a owl:Class ;
+          rdfs:comment "A kind of property. This corresponds to XKind in the XKind XOfInterest Ontology Design Pattern.Property kind can be either quantitative or qualitative."@en ;
+          rdfs:label "Property Kind"@en .
+
+
+prop:PropertyOfInterest a owl:Class ;
+          rdfs:comment "A kind of property. This corresponds to XKind in the XKind XOfInterest Ontology Design Pattern."@en ;
+          rdfs:label "Property Kind"@en .
 
 
 # Dynamic Quantitative Properties
