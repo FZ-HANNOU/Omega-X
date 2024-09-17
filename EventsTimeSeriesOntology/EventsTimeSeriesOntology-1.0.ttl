@@ -264,3 +264,16 @@ ets:value a owl:DatatypeProperty ;
             rdfs:domain ets:PropertyValue ;
             rdfs:comment "The value associated with a property value ."@en ;
             rdfs:label "Value"@en .
+
+#--has Property Value
+prop:hasPropertyValue a owl:ObjectProperty ;
+        rdfs:domain prop:Property ;
+        rdfs:range ets:PropertyValue ;
+        rdfs:comment "The link that enables to indicate a value for a property."@en ;
+        rdfs:label "Has Property Value"@en .
+
+#--is about property
+prop:isAboutProperty a owl:ObjectProperty ;
+        rdfs:range prop:Property ; 
+        rdfs:comment "The link that enables to identify which property is evaluated by the property value."@en ;
+        rdfs:label "Is About Property"@en .

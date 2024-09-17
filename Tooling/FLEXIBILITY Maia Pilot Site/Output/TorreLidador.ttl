@@ -1,0 +1,311 @@
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix maia: <https://w3id.org/omega-x/MaiaPTT/> .
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://example.org/DataPoint/ActPow_kW/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "287.53"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "275.74"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "281.48"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "274.16"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "278.34"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "278.55"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "273.83"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "282.43"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/ActPow_kW/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "289.42"^^xsd:float ;
+    ets:hasProperty prop:ActivePower .
+
+<http://example.org/DataPoint/AppPow_kVA/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "291.88"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "279.52"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "285.48"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "277.98"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "281.99"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "282.19"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "277.59"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "286.65"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/AppPow_kVA/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "299.76"^^xsd:float ;
+    ets:hasProperty prop:ApparentPower .
+
+<http://example.org/DataPoint/CurrL1_A/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "388.18"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "374.94"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "375.57"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "377.02"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "373.09"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "386.4"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "375.39"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "386.81"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL1_A/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "406.24"^^xsd:float ;
+    ets:hasProperty prop:CurrentL1 .
+
+<http://example.org/DataPoint/CurrL2_A/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "379.47"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "356.13"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "363.73"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "353.15"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "372.4"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "367.26"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "362.9"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "366.96"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL2_A/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "384.83"^^xsd:float ;
+    ets:hasProperty prop:CurrentL2 .
+
+<http://example.org/DataPoint/CurrL3_A/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "447.99"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "433.08"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "445.37"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "428.98"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "429.53"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "423.43"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "420.17"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "441.66"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/CurrL3_A/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "470.34"^^xsd:float ;
+    ets:hasProperty prop:CurrentL3 .
+
+<http://example.org/DataPoint/ReacPow_kvar/1> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/1> ;
+    ets:dataValue "9752.57"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/2> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/2> ;
+    ets:dataValue "9753.33"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/3> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/3> ;
+    ets:dataValue "9754.09"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/4> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/4> ;
+    ets:dataValue "9754.87"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/5> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/5> ;
+    ets:dataValue "9755.65"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/6> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/6> ;
+    ets:dataValue "9756.39"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/7> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/7> ;
+    ets:dataValue "9757.19"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/8> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/8> ;
+    ets:dataValue "9758.61"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataPoint/ReacPow_kvar/9> a ets:DataPoint ;
+    ets:belongsTo <http://example.org/DataCollection/9> ;
+    ets:dataValue "9991.59"^^xsd:float ;
+    ets:hasProperty prop:ReactivePower .
+
+<http://example.org/DataCollection/1> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:00:55"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/2> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:06"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/3> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:16"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/4> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:26"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/5> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:36"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/6> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:46"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/7> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:01:56"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/8> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:02:15"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
+<http://example.org/DataCollection/9> a ets:DataCollection ;
+    ets:collectionTime "2024-02-16T13:49:36"^^xsd:dateTime ;
+    ets:isElementOf maia:TimeSeries .
+
