@@ -22,17 +22,17 @@ The scope of this module extends also to the definition of common metadata for s
 
 ## Glossary
 ### Omega-X ETS
-* [**ets:_ValueSet_**](https://w3id.org/omega-x/EventTimeSeriesOntology/ValueSet/)
+* [**ets:_ValueSet_**](https://w3id.org/omega-x/ontology/EventTimeSeries/ValueSet/)
 Value container for a set of data (data point, collection, event or time series).
-* [**ets:_TimeSeries_**](https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries/)
+* [**ets:_TimeSeries_**](https://w3id.org/omega-x/ontology/EventTimeSeries/TimeSeries/)
 Value container for a time series.
-* [**ets:_DataCollection_**](https://w3id.org/omega-x/EventTimeSeriesOntology/DataCollection/)
+* [**ets:_DataCollection_**](https://w3id.org/omega-x/ontology/EventTimeSeries/DataCollection/)
 A data collection represents a set of data points, that share some common context. Data Collections can have a common dateTime.
-* [**ets:_DataPoint_**](https://w3id.org/omega-x/EventTimeSeriesOntology/DataPoint/)
+* [**ets:_DataPoint_**](https://w3id.org/omega-x/ontology/EventTimeSeries/DataPoint/)
 A data point with a unique value, and possible data time.
-* [**ets:_Event_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Event/)
+* [**ets:_Event_**](https://w3id.org/omega-x/ontology/EventTimeSeries/Event/)
 An occurrence of a change in the environement that happens at a specific time.
-* [**ets:_PropertyValue_**](https://w3id.org/omega-x/EventTimeSeriesOntology/PropertyValue/)
+* [**ets:_PropertyValue_**](https://w3id.org/omega-x/ontology/EventTimeSeries/PropertyValue/)
 A property value is the value associated with a unique property and a unit of measurement.
 ## OWL Description
 
