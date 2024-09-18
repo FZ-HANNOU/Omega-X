@@ -30,21 +30,21 @@ This Energy Data set Ontology helps to define data sets in Energy Data Spaces. I
 ### Omega-X EDS
 * [**eds:_EnergyDataSet_**](https://w3id.org/omega-x/ontology/EnergyDataSet/EnergyDataSet/)
 Group of data exchanged using an Energy Dataspace. 
-* [**eds:_TechnicalContext_**](https://w3id.org/omega-x/EnergyDataSetOntology/TechnicalContext/)
+* [**eds:_TechnicalContext_**](https://w3id.org/omega-x/ontology/EnergyDataSet/TechnicalContext/)
 Technical characteristics of the context where the exchange of data takes place.
-* [**eds:_EvaluationPoint_**](https://w3id.org/omega-x/EnergyDataSetOntology/EvaluationPoint/)
+* [**eds:_EvaluationPoint_**](https://w3id.org/omega-x/ontology/EnergyDataSet/EvaluationPoint/)
 Evaluation point concerned by the data exchanged. It can be either a physical or virtual component. An evaluation point can be a smart meter collecting the data or a software compiling the data.
-* [**eds:_ExchangeContext_**](https://w3id.org/omega-x/EnergyDataSetOntology/ExchangeContext/)
+* [**eds:_ExchangeContext_**](https://w3id.org/omega-x/ontology/EnergyDataSet/ExchangeContext/)
 Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange.
 ## OWL Description
 
 ![Diagram](./EDSModule-v1.0.png)
 
 ## Recommendations
-- A `ets:ValueSet` (see [_ValueSet_](../  [Top Level] Events & Time Series Ontology)) exchanged within the energy data space will be considered as an energy data set`eds:EnergyDataSet`. 
-- An `eds:EvaluationPoint` can be a `infra:System` (see [_System_](../ [Domain] Infrastructure Ontology)). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).
-- A `eds:EnergyDataSet` can have `eds:ContextExchange` sent from a `role:MarketParticipant` to another `role:MarketParticpant` (see [_MarkeParticipant_](../  [Domain] Energy Role Ontology)). More details about the market participants can be described in (../  [Domain] Energy Role Ontology) module.
-- A `eds:TechnicalContext` will include all the properties associated to the data exchange. These properties can be inferred from the relation: of `ets:PropertyValue` `prop:isAboutProperty` `prop:Property` in  (../  [Top Level] Events & Time Series Ontology) module.
+- A `ets:ValueSet` (see [_ValueSet_](https://w3id.org/omega-x/ontology/EventstimeSeries/ValueSet/)) exchanged within the energy data space will be considered as an energy data set`eds:EnergyDataSet`. 
+- An `eds:EvaluationPoint` can be a `infra:System` (see [_System_](https://w3id.org/omega-x/ontology/Infrastructure/EvaluationPoint/)). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).
+- A `eds:EnergyDataSet` can have `eds:ContextExchange` sent from a `role:MarketParticipant` to another `role:MarketParticpant` (see [_MarkeParticipant_](https://w3id.org/omega-x/ontology/EnergyRole/MarketParticipant/)). More details about the market participants can be described in ((https://w3id.org/omega-x/ontology/EnergyRole/)) module.
+- A `eds:TechnicalContext` will include all the properties associated to the data exchange. These properties can be inferred from the relation: of `ets:PropertyValue` `prop:isAboutProperty` `prop:Property` in  (https://w3id.org/omega-x/ontology/EventsTimeSeries/) module.
 ## Related Work
 ### EUMED Metering profile (IEC 61968-9 Ed 3.0)
 * Evaluation point: The identification of an entity where energy products are measured or computed.
