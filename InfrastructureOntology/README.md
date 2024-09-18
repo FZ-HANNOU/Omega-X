@@ -26,18 +26,18 @@ This Infrastructure Ontology helps to define the infrastructure system of OMEGA-
 
 ## Glossary
 ### OMEGA-X Infrastructure
-* [**infra:_System_**](https://w3id.org/omega-x/InfrastructureOntology/ValueSet/)
+* [**infra:_System_**](https://w3id.org/omega-x/ontology/Infrastructure/ValueSet/)
 A system may be an equipment, a site, or any other physical or virtual system. A system that is neither an equipment nor a site may be, for instance, an electric grid or a data analytics service available on a Dataspace.
-* [**infra:Equipment**](https://w3id.org/omega-x/InfrastructureOntology/Equipment/)
+* [**infra:Equipment**](https://w3id.org/omega-x/ontology/Infrastructure/Equipment/)
 An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station.
-* [**infra:Site**](https://w3id.org/omega-x/InfrastructureOntology/Site/)
+* [**infra:Site**](https://w3id.org/omega-x/ontology/Infrastructure/Site/)
 A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool.
-* [**infra:SystemConfiguration**](https://w3id.org/omega-x/InfrastructureOntology/SystemConfiguration/)
+* [**infra:SystemConfiguration**](https://w3id.org/omega-x/ontology/Infrastructure/SystemConfiguration/)
 A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet.
 ## OWL Description
 ![Diagram](./InfraModule-v1.0.png)
 # Recommendations
-- A `infra:System` can be an `eds:EvaluationPoint` (see [_EvaluationPoint_](../Energy Data Set Ontology) once an energy data set is attached to it. 
+- A `infra:System` can be an `eds:EvaluationPoint` (see https://w3id.org/omega-x/ontology/EnergyDataSet/EvaluationPoint/) once an energy data set is attached to it. 
 - The static attributes of an `infra:System` can be defined in `infra:SystemConfiguration`. 
 - A `infra:System` can have a location. 
 - A `infra:System` can consist of an another  `infra:System` or many  `infra:System`.
