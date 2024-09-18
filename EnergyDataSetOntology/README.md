@@ -28,7 +28,7 @@ This Energy Data set Ontology helps to define data sets in Energy Data Spaces. I
 
 ## Glossary
 ### Omega-X EDS
-* [**eds:_EnergyDataSet_**](https://w3id.org/omega-x/EnergyDataSetOntology/EnergyDataSet/)
+* [**eds:_EnergyDataSet_**](https://w3id.org/omega-x/ontology/EnergyDataSet/EnergyDataSet/)
 Group of data exchanged using an Energy Dataspace. 
 * [**eds:_TechnicalContext_**](https://w3id.org/omega-x/EnergyDataSetOntology/TechnicalContext/)
 Technical characteristics of the context where the exchange of data takes place.
