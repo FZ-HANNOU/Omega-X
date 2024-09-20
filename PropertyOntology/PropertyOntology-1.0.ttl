@@ -574,7 +574,13 @@ prop:TotalHarmonicDistorsionUL3 a owl:Class ;
 		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
 		 prop:isMeasuredIn unit:PERCENT;
 		 rdfs:isDefinedBy prop:.
-		 
+
+# Cos Phi
+prop:CosinusPhi a owl:Class ;
+		 rdfs:label "Cosinus Phi "@en ;
+		 rdfs:subClassOf  prop:Property ;
+		 rdfs:isDefinedBy prop:.
+
 # Reactive Power
 prop:ReactivePower a owl:Class ;
 		   rdfs:comment "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
@@ -582,6 +588,7 @@ prop:ReactivePower a owl:Class ;
 		   rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-44>;
 		   prop:isMeasuredIn unit:V-A_Reactive;
                    rdfs:isDefinedBy prop:.
+
 # Reactive Power Produced
 prop:ReactivePowerProduced a owl:Class ;
 		                   rdfs:comment "The reactive power produced."@en ;
