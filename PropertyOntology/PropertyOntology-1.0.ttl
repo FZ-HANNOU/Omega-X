@@ -26,7 +26,7 @@
                                              The property ontology presents a taxonomy of properties for which values (static or dynamic) are defined using Events and Time Series Module.
                                              """@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
-                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
                                              dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              dcterms:created "2024-03-08"^^xsd:date ;
@@ -178,6 +178,34 @@ prop:Current a owl:Class ;
              rdfs:label "Current"@en;
 			 prop:isMeasuredIn unit:A;
              rdfs:isDefinedBy prop:.
+
+
+# Current L1
+prop:CurrentL1 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty , prop:Current; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Current L1"@en;
+			 prop:isMeasuredIn unit:A;
+             rdfs:isDefinedBy prop:.
+
+
+# Current L2
+prop:CurrentL2 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty , prop:Current; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Current L2"@en;
+			 prop:isMeasuredIn unit:A;
+             rdfs:isDefinedBy prop:.
+
+
+# Current L3
+prop:CurrentL3 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty, prop:Current ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Current L3"@en;
+			 prop:isMeasuredIn unit:A;
+             rdfs:isDefinedBy prop:.
+
 # DC current# Current
 prop:DCCurrent a owl:Class ;
              rdfs:subClassOf prop:Current ; 
@@ -206,6 +234,31 @@ prop:Voltage a owl:Class ;
              rdfs:label "Voltage"@en;
 			 prop:isMeasuredIn unit:V;
              rdfs:isDefinedBy prop:.
+
+# Voltage L1
+prop:VoltageL1 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty , prop:Voltage; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Voltage L1"@en;
+			 prop:isMeasuredIn unit:V;
+             rdfs:isDefinedBy prop:.
+
+# Voltage L2
+prop:VoltageL2 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty , prop:Voltage ; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Voltage L2"@en;
+			 prop:isMeasuredIn unit:V;
+             rdfs:isDefinedBy prop:.
+
+# Voltage L3
+prop:VoltageL3 a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty  , prop:Voltage; 
+             rdfs:comment ""@en ; 
+             rdfs:label "Voltage L3"@en;
+			 prop:isMeasuredIn unit:V;
+             rdfs:isDefinedBy prop:.
+
 # Irradiance  
 prop:Irradiance a owl:Class ;
              rdfs:subClassOf prop:QuantitativeProperty ; 
@@ -417,10 +470,22 @@ prop:ReactiveEnergyProducedPeakHR a owl:Class ;
 prop:ActivePower a owl:Class ;
 		 rdfs:comment "Under periodic conditions, mean value, taken over one period T, of the instantaneous power p."@en ;
 		 rdfs:label "Active Power"@en ;
-		 rdfs:subClassOf seas:ElectricPoweryProperty, prop:Power;
 		 rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-42>;
-		 prop:isMeasuredIn unit:W;
+		 prop:isMeasuredIn unit:W, unit:KiloW;
 		 rdfs:isDefinedBy prop:.
+
+# Reactive Power
+prop:ReactivePower a owl:Class ;
+		 rdfs:label "Reactive Power"@en ;
+		 prop:isMeasuredIn unit:W, unit:KiloW;
+		 rdfs:isDefinedBy prop:.
+
+# Apparent Power
+prop:ApparentPower a owl:Class ;
+		 rdfs:label "Apparent Power"@en ;
+		 prop:isMeasuredIn unit:KiloV-A;
+		 rdfs:isDefinedBy prop:.
+
 # Active Power AC
 prop:ActivePowerAC a owl:Class ;
 		 rdfs:comment "Active Power in AC Mode."@en ;
@@ -440,11 +505,80 @@ prop:ActivePowerProduced a owl:Class ;
 		 rdfs:subClassOf  prop:ActivePower;
 		 rdfs:isDefinedBy prop:.
 
+# Total Harmonic Distorsion
+prop:TotalHarmonicDistorsion a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion"@en ;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+# Total Harmonic Distorsion
+prop:TotalHarmonicDistorsionI a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion I"@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+# Total Harmonic Distorsion I
+prop:TotalHarmonicDistorsionI a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion I"@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+# Total Harmonic Distorsion I L1
+prop:TotalHarmonicDistorsionIL1 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion I L1"@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+# Total Harmonic DistorsionI L2
+prop:TotalHarmonicDistorsionIL2 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion I L2"@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+# Total Harmonic Distorsion IL3
+prop:TotalHarmonicDistorsionIL3 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion I L3"@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+# Total Harmonic Distorsion U 
+prop:TotalHarmonicDistorsionU a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion U "@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+
+# Total Harmonic Distorsion U L1
+prop:TotalHarmonicDistorsionUL1 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion U L1 "@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+
+# Total Harmonic Distorsion U L2
+prop:TotalHarmonicDistorsionUL2 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion U L2 "@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+
+
+# Total Harmonic Distorsion U L3
+prop:TotalHarmonicDistorsionUL3 a owl:Class ;
+		 rdfs:label "Total Harmonic Distorsion U L3 "@en ;
+		 rdfs:subClassOf  prop:TotalHarmonicDistorsion;
+		 prop:isMeasuredIn unit:PERCENT;
+		 rdfs:isDefinedBy prop:.
+		 
 # Reactive Power
 prop:ReactivePower a owl:Class ;
 		   rdfs:comment "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
 		   rdfs:label "Reactive Power"@en ;
-		   rdfs:subClassOf seas:ElectricPoweryProperty, prop:Power;
 		   rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-44>;
 		   prop:isMeasuredIn unit:V-A_Reactive;
                    rdfs:isDefinedBy prop:.
