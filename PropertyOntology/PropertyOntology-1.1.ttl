@@ -102,8 +102,8 @@ prop:PropertyKind a owl:Class ;
 
 
 prop:PropertyOfInterest a owl:Class ;
-          rdfs:comment "A kind of property. This corresponds to XKind in the XKind XOfInterest Ontology Design Pattern."@en ;
-          rdfs:label "Property Kind"@en .
+          rdfs:comment "A unique property in the real world. This corresponds to XofInterest in the XKind XOfInterest Ontology Design Pattern."@en ;
+          rdfs:label "Property of Interest"@en .
 
 
 #--------------------------------------------------------------
