@@ -6,9 +6,8 @@
 @prefix uiote: <http://www.w3id.org/urban-iot/electric#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
 @prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
-@base  <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@base  <https://w3id.org/omega-x/ontology/EnergyRole/>.
 
 role:EnergyRoleOntology rdf:type owl:Ontology ;
         dcterms:title "Energy Role Ontology"@en ;
@@ -19,12 +18,12 @@ role:EnergyRoleOntology rdf:type owl:Ontology ;
         dcterms:created "2024-02-27"^^xsd:date ;
         dcterms:creator <https://omega-x.eu/>;
 	dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
-        dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
+        dcterms:contributor [a foaf:Person ; foaf:name "Maxime LefranÃ§ois" ] ;
         dcterms:license <https://opensource.org/license/mit/> ;
-        dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+        dcterms:rights "Copyright Â© Omega-X Consortium 2022-2025"@en ; 
         vann:preferredNamespacePrefix "role" ;
-        vann:preferredNamespaceUri <https://w3id.org/omega-x/EnergyRoleOntology/> ;  
-        owl:versionIRI <https://w3id.org/omega-x/EnergyRoleOntology-1.0> ;
+        vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EnergyRole/> ;  
+        owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyRole-1.0> ;
         owl:versionInfo "1.0" .
 
 #---------------------------------------------------------------
