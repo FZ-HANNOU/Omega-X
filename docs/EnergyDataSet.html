@@ -70,23 +70,23 @@
 <h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
 <h3 style="color: #21618C; text-decoration: underline;">Omega-X EDS</h3>
 <ul>
-<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/EnergyDataSet/"><strong>eds:<em>EnergyDataSet</em></strong></a>
+<li><a href="https://w3id.org/omega-x/ontology/EnergyDataSet/EnergyDataSet/"><strong>eds:<em>EnergyDataSet</em></strong></a>
 Group of data exchanged using an Energy Dataspace. </li>
-<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/TechnicalContext/"><strong>eds:<em>TechnicalContext</em></strong></a>
+<li><a href="https://w3id.org/omega-x/ontology/EnergyDataSet/TechnicalContext/"><strong>eds:<em>TechnicalContext</em></strong></a>
 Technical characteristics of the context where the exchange of data takes place.</li>
-<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/EvaluationPoint/"><strong>eds:<em>EvaluationPoint</em></strong></a>
+<li><a href="https://w3id.org/omega-x/ontology/EnergyDataSet/EvaluationPoint/"><strong>eds:<em>EvaluationPoint</em></strong></a>
 Evaluation point concerned by the data exchanged. It can be either a physical or virtual component. An evaluation point can be a smart meter collecting the data or a software compiling the data.</li>
-<li><a href="https://w3id.org/omega-x/EnergyDataSetOntology/ExchangeContext/"><strong>eds:<em>ExchangeContext</em></strong></a>
+<li><a href="https://w3id.org/omega-x/ontology/EnergyDataSet/ExchangeContext/"><strong>eds:<em>ExchangeContext</em></strong></a>
 Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange.</li>
 </ul>
 <h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2><img alt="OWL Description" src="EDSModule-v1.0.png"/>
 <p><img alt="Diagram" src="./EDSModule-v1.0.png"/></p>
 <h2 style="color: #21618C; text-decoration: underline;">Recommendations</h2>
 <ul>
-<li>A <code>ets:ValueSet</code> (see <a href="../  [Top Level] Events &amp; Time Series Ontology"><em>ValueSet</em></a>) exchanged within the energy data space will be considered as an energy data set<code>eds:EnergyDataSet</code>. </li>
-<li>An <code>eds:EvaluationPoint</code> can be a <code>infra:System</code> (see <a href="../ [Domain] Infrastructure Ontology"><em>System</em></a>). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).</li>
-<li>A <code>eds:EnergyDataSet</code> can have <code>eds:ContextExchange</code> sent from a <code>role:MarketParticipant</code> to another <code>role:MarketParticpant</code> (see <a href="../  [Domain] Energy Role Ontology"><em>MarkeParticipant</em></a>). More details about the market participants can be described in (../  [Domain] Energy Role Ontology) module.</li>
-<li>A <code>eds:TechnicalContext</code> will include all the properties associated to the data exchange. These properties can be inferred from the relation: of <code>ets:PropertyValue</code> <code>prop:isAboutProperty</code> <code>prop:Property</code> in  (../  [Top Level] Events &amp; Time Series Ontology) module.</li>
+<li>A <code>ets:ValueSet</code> (see <a href="https://w3id.org/omega-x/ontology/EventstimeSeries/ValueSet/"><em>ValueSet</em></a>) exchanged within the energy data space will be considered as an energy data set<code>eds:EnergyDataSet</code>. </li>
+<li>An <code>eds:EvaluationPoint</code> can be a <code>infra:System</code> (see <a href="https://w3id.org/omega-x/ontology/Infrastructure/EvaluationPoint/"><em>System</em></a>). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).</li>
+<li>A <code>eds:EnergyDataSet</code> can have <code>eds:ContextExchange</code> sent from a <code>role:MarketParticipant</code> to another <code>role:MarketParticpant</code> (see <a href="https://w3id.org/omega-x/ontology/EnergyRole/MarketParticipant/"><em>MarkeParticipant</em></a>). More details about the market participants can be described in ((https://w3id.org/omega-x/ontology/EnergyRole/)) module.</li>
+<li>A <code>eds:TechnicalContext</code> will include all the properties associated to the data exchange. These properties can be inferred from the relation: of <code>ets:PropertyValue</code> <code>prop:isAboutProperty</code> <code>prop:Property</code> in  (https://w3id.org/omega-x/ontology/EventsTimeSeries/) module.</li>
 </ul>
 <h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
 <h3 style="color: #21618C; text-decoration: underline;">EUMED Metering profile (IEC 61968-9 Ed 3.0)</h3>
