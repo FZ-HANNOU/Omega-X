@@ -14,6 +14,7 @@ The scope of this module extends also to the definition of common metadata for s
 | cq-4 | To what granularity correspond each element of the time series ? exact time instant observation or aggregatd values on an interval ?  | Given a time series, what quality indicators are associated covering the granularity level ? (max, min, avg,...). Example: electrical consumption time series can be provided with hourly average values.  |
 | cq-5 | What are time series that describe multiple properties of weather data (temperature, pressure, irradiance,...) ? | Identify time series that describe meteo properties. |
 | cq-6 | To what extent the dataset is temporally valid ? | what temporal context is associated with the value set ? Example: data about equipement quality state provided on a weekly basis, is considered valid the entire week.  |
+
 ### Inference Questions
 | ID | Question in natural language | Example
 |---|---|---|
