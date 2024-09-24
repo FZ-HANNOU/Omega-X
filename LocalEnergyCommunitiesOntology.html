@@ -284,13 +284,13 @@ td {
 <script id="schema.org" type="application/ld+json">
 [
   {
-    "@id": "https://w3id.org/omega-x/LocalEnergyCommunitiesOntology",
+    "@id": "https://w3id.org/omega-x/ontology/LocalEnergyCommunities",
     "@type": [
       "https://schema.org/DefinedTermSet"
     ],
     "https://schema.org/contributor": [
       {
-        "@id": "_:n991b808e3ac1436792fe4598b68e8e1cb1"
+        "@id": "_:n37c7370461404bd98161d6e54b09df1bb1"
       }
     ],
     "https://schema.org/copyrightNotice": [
@@ -339,7 +339,7 @@ td {
     ]
   },
   {
-    "@id": "_:n991b808e3ac1436792fe4598b68e8e1cb1",
+    "@id": "_:n37c7370461404bd98161d6e54b09df1bb1",
     "https://schema.org/name": [
       {
         "@value": "Lina Nachabe"
@@ -360,7 +360,7 @@ td {
 <strong>IRI</strong>
 </dt>
 <dd>
-<code>https://w3id.org/omega-x/LocalEnergyCommunitiesOntology</code>
+<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities</code>
 </dd>
 </div>
 <div>
@@ -441,7 +441,7 @@ td {
 <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
 </dt>
 <dd>
-<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/">https://w3id.org/omega-x/ontology/LocalEnergyCommunities/</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunitiesOntology/">https://w3id.org/omega-x/ontology/LocalEnergyCommunitiesOntology/</a>
 </dd>
 </div>
 <div>
@@ -456,8 +456,8 @@ td {
 </div>
 <div class="section" id="classes">
 <h2>Classes</h2>
-<div class="property entity" id="battery">
-<h3>battery
+<div class="property entity" id="Battery">
+<h3>Battery
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -507,13 +507,13 @@ td {
 <ul>
 <li>
 <span>
-<a href="#hasBatteryConfiguration">has battery configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/hasBatteryConfiguration">has battery configuration</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </li>
 <li>
 <span>
-<a href="#BatteryModelName">battery model name</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/BatteryModelName">battery model name</a>
 <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
 </span>
 </li>
@@ -522,8 +522,8 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="transformer">
-<h3>transformer
+<div class="property entity" id="Transformer">
+<h3>Transformer
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -545,7 +545,7 @@ td {
 <th>
 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
 </th>
-<td><p>A static piece of apparatus with two or more windings which, by electromagnetic induction, transforms a system of alternating voltage and current into another system of voltage and current usually of different values and at the same frequency for the purpose of transmitting electrical power .</p></td>
+<td><p>(IEV ref 421-01-01) A static piece of apparatus with two or more windings which, by electromagnetic induction, transforms a system of alternating voltage and current into another system of voltage and current usually of different values and at the same frequency for the purpose of transmitting electrical power .</p></td>
 </tr>
 <tr>
 <th>
@@ -568,15 +568,15 @@ td {
 </th>
 <td>
 <span>
-<a href="#hasTransformerConfiguration">has transformer configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/hasTransformerConfiguration">has transformer configuration</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="bus">
-<h3>bus
+<div class="property entity" id="Bus">
+<h3>Bus
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -598,7 +598,7 @@ td {
 <th>
 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
 </th>
-<td><p>A node with predetermined active and reactive input power .</p></td>
+<td><p>(IEV ref 603-02-33)A node with predetermined active and reactive input power .</p></td>
 </tr>
 <tr>
 <th>
@@ -614,15 +614,15 @@ td {
 </th>
 <td>
 <span>
-<a href="#hasBusProperties">has bus property</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/hasBusProperties">has bus property</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="watermeter">
-<h3>water meter
+<div class="property entity" id="WaterMeter">
+<h3>Water Meter
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -663,15 +663,15 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="electricitymeter">
-<h3>electricity meter
+<div class="property entity" id="ElectricityMeter">
+<h3>Electricity Meter
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
 <tr>
 <th>IRI</th>
 <td>
-<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/ElectricityMeterMeter</code>
+<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/ElectricityMeter</code>
 </td>
 </tr>
 <tr>
@@ -705,15 +705,15 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="powerelectronicdevice">
-<h3>power electronic device
+<div class="property entity" id="PowerElectronicDevice">
+<h3>Power Electronic Device
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
 <tr>
 <th>IRI</th>
 <td>
-<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/PED</code>
+<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/PowerElectronicDevice</code>
 </td>
 </tr>
 <tr>
@@ -744,22 +744,22 @@ td {
 </th>
 <td>
 <span>
-<a href="#IDPR">intelligent distribution power router.</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/IntelligentDistributionPowerRouter">Intelligent Distribution Power Router.</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="IDPR">
-<h3>intelligent distribution power router.
+<div class="property entity" id="IntelligentDistributionPowerRouter.">
+<h3>Intelligent Distribution Power Router.
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
 <tr>
 <th>IRI</th>
 <td>
-<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/IDPR</code>
+<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/IntelligentDistributionPowerRouter</code>
 </td>
 </tr>
 <tr>
@@ -784,7 +784,7 @@ td {
 <ul>
 <li>
 <span>
-<a href="#powerelectronicdevice">power electronic device</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/PowerElectronicDevice">Power Electronic Device</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </li>
@@ -796,15 +796,15 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="pointofcommoncoupling.">
-<h3>point of common coupling.
+<div class="property entity" id="PointofCommonCoupling.">
+<h3>Point of Common Coupling.
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
 <tr>
 <th>IRI</th>
 <td>
-<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/PCC</code>
+<code>https://w3id.org/omega-x/ontology/LocalEnergyCommunities/PointofCommonCoupling</code>
 </td>
 </tr>
 <tr>
@@ -831,8 +831,8 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="load.">
-<h3>load.
+<div class="property entity" id="Load.">
+<h3>Load.
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -866,8 +866,8 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="batteryconfiguration">
-<h3>battery configuration
+<div class="property entity" id="BatteryConfiguration">
+<h3>Battery Configuration
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -905,7 +905,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#includesBatteryProperties">includes battery properties</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/includesBatteryProperties">Includes Battery Properties</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </td>
@@ -916,15 +916,15 @@ td {
 </th>
 <td>
 <span>
-<a href="#hasBatteryConfiguration">has battery configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/hasBatteryConfiguration">has battery configuration</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="transformerconfiguration">
-<h3>transformer configuration
+<div class="property entity" id="TransformerConfiguration">
+<h3>Transformer Configuration
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </h3>
 <table>
@@ -964,13 +964,13 @@ td {
 <ul>
 <li>
 <span>
-<a href="#includesTransformerProperties">includes transformer properties</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/includesTransformerProperties">includes transformer properties</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </li>
 <li>
 <span>
-<a href="#TransformerType">transformer type</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/TransformerType">transformer type</a>
 <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
 </span>
 </li>
@@ -983,7 +983,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#hasTransformerConfiguration">has transformer configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/hasTransformerConfiguration">has transformer configuration</a>
 <sup class="sup-op" title="OWL Object Property">op</sup>
 </span>
 </td>
@@ -993,7 +993,7 @@ td {
 </div>
 <div class="section" id="objectproperties">
 <h2>Object Properties</h2>
-<div class="property entity" id="hasBatteryConfiguration">
+<div class="property entity" id="hasbatteryconfiguration">
 <h3>has battery configuration
             <sup class="sup-op" title="OWL Object Property">op</sup>
 </h3>
@@ -1032,7 +1032,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#battery">battery</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/Battery">Battery</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1043,15 +1043,15 @@ td {
 </th>
 <td>
 <span>
-<a href="#batteryconfiguration">battery configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/BatteryConfiguration">Battery Configuration</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="includesBatteryProperties">
-<h3>includes battery properties
+<div class="property entity" id="IncludesBatteryProperties">
+<h3>Includes Battery Properties
             <sup class="sup-op" title="OWL Object Property">op</sup>
 </h3>
 <table>
@@ -1089,7 +1089,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#batteryconfiguration">battery configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/BatteryConfiguration">Battery Configuration</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1104,7 +1104,7 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="hasTransformerConfiguration">
+<div class="property entity" id="hastransformerconfiguration">
 <h3>has transformer configuration
             <sup class="sup-op" title="OWL Object Property">op</sup>
 </h3>
@@ -1143,7 +1143,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#transformer">transformer</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/Transformer">Transformer</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1154,14 +1154,14 @@ td {
 </th>
 <td>
 <span>
-<a href="#transformerconfiguration">transformer configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/TransformerConfiguration">Transformer Configuration</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="includesTransformerProperties">
+<div class="property entity" id="includestransformerproperties">
 <h3>includes transformer properties
             <sup class="sup-op" title="OWL Object Property">op</sup>
 </h3>
@@ -1200,7 +1200,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#transformerconfiguration">transformer configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/TransformerConfiguration">Transformer Configuration</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1215,7 +1215,7 @@ td {
 </tr>
 </table>
 </div>
-<div class="property entity" id="hasBusProperties">
+<div class="property entity" id="hasbusproperty">
 <h3>has bus property
             <sup class="sup-op" title="OWL Object Property">op</sup>
 </h3>
@@ -1254,7 +1254,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#bus">bus</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/Bus">Bus</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1264,7 +1264,7 @@ td {
 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
 </th>
 <td>
-<a href="#BusVoltage">BusVoltage</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/BusVoltage">BusVoltage</a>
 </td>
 </tr>
 </table>
@@ -1272,7 +1272,7 @@ td {
 </div>
 <div class="section" id="datatypeproperties">
 <h2>Datatype Properties</h2>
-<div class="property entity" id="BatteryModelName">
+<div class="property entity" id="batterymodelname">
 <h3>battery model name
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
 </h3>
@@ -1303,14 +1303,14 @@ td {
 </th>
 <td>
 <span>
-<a href="#battery">battery</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/Battery">Battery</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
 </tr>
 </table>
 </div>
-<div class="property entity" id="TransformerType">
+<div class="property entity" id="transformertype">
 <h3>transformer type
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
 </h3>
@@ -1341,7 +1341,7 @@ td {
 </th>
 <td>
 <span>
-<a href="#transformerconfiguration">transformer configuration</a>
+<a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities/TransformerConfiguration">Transformer Configuration</a>
 <sup class="sup-c" title="OWL/RDFS Class">c</sup>
 </span>
 </td>
@@ -1512,10 +1512,6 @@ td {
 <dd>
 <code>https://w3id.org/seas/</code>
 </dd>
-<dt id="solar">solar</dt>
-<dd>
-<code>https://w3id.org/omega-x/ontology/RenewableSolar/</code>
-</dd>
 <dt id="vann">vann</dt>
 <dd>
 <code>http://purl.org/vocab/vann/</code>
@@ -1567,37 +1563,37 @@ td {
 </h4>
 <ul class="second">
 <li>
-<a href="#battery">battery</a>
+<a href="#Battery">Battery</a>
 </li>
 <li>
-<a href="#transformer">transformer</a>
+<a href="#Transformer">Transformer</a>
 </li>
 <li>
-<a href="#bus">bus</a>
+<a href="#Bus">Bus</a>
 </li>
 <li>
-<a href="#watermeter">water meter</a>
+<a href="#WaterMeter">Water Meter</a>
 </li>
 <li>
-<a href="#electricitymeter">electricity meter</a>
+<a href="#ElectricityMeter">Electricity Meter</a>
 </li>
 <li>
-<a href="#powerelectronicdevice">power electronic device</a>
+<a href="#PowerElectronicDevice">Power Electronic Device</a>
 </li>
 <li>
-<a href="#IDPR">intelligent distribution power router.</a>
+<a href="#IntelligentDistributionPowerRouter.">Intelligent Distribution Power Router.</a>
 </li>
 <li>
-<a href="#pointofcommoncoupling.">point of common coupling.</a>
+<a href="#PointofCommonCoupling.">Point of Common Coupling.</a>
 </li>
 <li>
-<a href="#load.">load.</a>
+<a href="#Load.">Load.</a>
 </li>
 <li>
-<a href="#batteryconfiguration">battery configuration</a>
+<a href="#BatteryConfiguration">Battery Configuration</a>
 </li>
 <li>
-<a href="#transformerconfiguration">transformer configuration</a>
+<a href="#TransformerConfiguration">Transformer Configuration</a>
 </li>
 </ul>
 </li>
@@ -1607,19 +1603,19 @@ td {
 </h4>
 <ul class="second">
 <li>
-<a href="#hasBatteryConfiguration">has battery configuration</a>
+<a href="#hasbatteryconfiguration">has battery configuration</a>
 </li>
 <li>
-<a href="#includesBatteryProperties">includes battery properties</a>
+<a href="#IncludesBatteryProperties">Includes Battery Properties</a>
 </li>
 <li>
-<a href="#hasTransformerConfiguration">has transformer configuration</a>
+<a href="#hastransformerconfiguration">has transformer configuration</a>
 </li>
 <li>
-<a href="#includesTransformerProperties">includes transformer properties</a>
+<a href="#includestransformerproperties">includes transformer properties</a>
 </li>
 <li>
-<a href="#hasBusProperties">has bus property</a>
+<a href="#hasbusproperty">has bus property</a>
 </li>
 </ul>
 </li>
@@ -1629,10 +1625,10 @@ td {
 </h4>
 <ul class="second">
 <li>
-<a href="#BatteryModelName">battery model name</a>
+<a href="#batterymodelname">battery model name</a>
 </li>
 <li>
-<a href="#TransformerType">transformer type</a>
+<a href="#transformertype">transformer type</a>
 </li>
 </ul>
 </li>
@@ -1704,9 +1700,6 @@ td {
 </li>
 <li>
 <a href="#seas">seas</a>
-</li>
-<li>
-<a href="#solar">solar</a>
 </li>
 <li>
 <a href="#vann">vann</a>
