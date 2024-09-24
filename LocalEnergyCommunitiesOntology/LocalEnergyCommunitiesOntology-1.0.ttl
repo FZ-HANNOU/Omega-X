@@ -12,16 +12,16 @@
 @prefix schema: <http://schema.org/>.
 @prefix seas: <https://w3id.org/seas/>.
 @prefix geo: <geo:http://www.w3.org/2003/01/geo/wgs84_pos#>.
-@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/>.
-@prefix prop: <https://w3id.org/omega-x/PropertyOntology/>.
-@prefix solar: <https://w3id.org/omega-x/RenewableSolarOntology/>.
-@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/>.
-@prefix : <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/>.
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/>.
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/>.
+@prefix solar: <https://w3id.org/omega-x/ontology/RenewableSolar/>.
+@prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/>.
+@prefix : <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/>.
 
 @base <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
 
 <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology-v0.2> ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/LocalEnergyCommunities-v1.0> ;
                                              dcterms:description """Purpose: Optimizing self consuption, losses detection and gamification for eletric saving requires some knoweldge on LEC equipents.	
                                              Scope: Local energy communities ontology provides OWL classes and properties to allow local energy equipments and their static parameters to be described.
                                              Description: The local energy communities ontology allows to describe the lec equipments and their properties. It includes the description of battery, transformer, bus, and PDD."""@en ; 
@@ -33,7 +33,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Local Energy Communities Ontology"@en ;
                                              vann:preferredNamespacePrefix "lec" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> ;
                                              rdfs:label "local energy communities"@en ;
                                              owl:versionInfo "1.0".
 
