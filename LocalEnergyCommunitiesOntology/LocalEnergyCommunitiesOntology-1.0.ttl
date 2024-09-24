@@ -34,7 +34,7 @@
                                              dcterms:title "Local Energy Communities Ontology"@en ;
                                              vann:preferredNamespacePrefix "lec" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> ;
-                                             rdfs:label "local energy communities"@en ;
+                                             rdfs:label "Local Energy Communities"@en ;
                                              owl:versionInfo "1.0".
 
 #---------------------------------------------------------------
