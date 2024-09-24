@@ -144,7 +144,7 @@ Note: Interval Data is sometimes also called \"Interval Data Readings\" (IDR).""
 #-- MacroPeriodKind
 eme:MacroPeriodKind rdf:type owl:Class ;
                     rdfs:subClassOf eme:Datatype ;
-                    rdfs:comment "Kind of macro period for calculations on read / measured values."@en ;
+                    rdfs:comment "Kind of macro period for calculations on read or measured values."@en ;
                     rdfs:label "macro period kind"@en .
 
 #-- MeasurementKind
@@ -155,7 +155,7 @@ eme:MeasurementKind rdf:type owl:Class ;
 #-- MeasuringPeriodKind
 eme:MeasuringPeriodKind rdf:type owl:Class ;
                         rdfs:subClassOf eme:Datatype ;
-                        rdfs:comment "Kind of period for reading / measuring values"@en ;
+                        rdfs:comment "Kind of period for reading or measuring values"@en ;
                         rdfs:label "measuring period kind"@en .
 
 #-- Meter
@@ -634,7 +634,7 @@ eme:rationalNumber rdf:type owl:DatatypeProperty ;
                                                      ]
                                           ]
                               ] ;
-                   rdfs:comment "Rational number = 'numerator' / 'denominator'."@en ;
+                   rdfs:comment "Rational number = 'numerator' over 'denominator'."@en ;
                    rdfs:label "rational number"@en .
 
 #-- readingInterharmonic
@@ -649,7 +649,7 @@ eme:readingInterharmonic rdf:type owl:DatatypeProperty ;
                                                            ]
                                                 ]
                                     ] ;
-                         rdfs:comment "Interharmonics are represented as a rational number 'numerator' / 'denominator', and harmonics are represented using the same mechanism and identified by 'denominator'=1."@en ;
+                         rdfs:comment "Interharmonics are represented as a rational number 'numerator' over 'denominator', and harmonics are represented using the same mechanism and identified by 'denominator'=1."@en ;
                          rdfs:label "reading interharmonic"@en .
 
 #-- timeStamp
