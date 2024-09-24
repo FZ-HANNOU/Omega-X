@@ -13,7 +13,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
 @prefix seas:<https://w3id.org/seas/>.
 @prefix prop:<https://w3id.org/omega-x/ontology/Property/>.
 @prefix eds:<https://w3id.org/omega-x/ontology/EnergyDataSet/>.
