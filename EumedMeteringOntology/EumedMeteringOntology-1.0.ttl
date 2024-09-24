@@ -73,13 +73,13 @@ time:DateTimeInterval rdf:type owl:Class .
 #-- AccumulationKind
 eme:AccumulationKind rdf:type owl:Class ;
                      rdfs:subClassOf eme:Datatype ;
-                     rdfs:comment "Kind of accumulation behaviour for read / measured values from individual end points."@en ;
+                     rdfs:comment "Kind of accumulation behaviour for read or measured values from individual end points."@en ;
                      rdfs:label "accumulation kind"@en .
 
 #-- AggregateKind
 eme:AggregateKind rdf:type owl:Class ;
                   rdfs:subClassOf eme:Datatype ;
-                  rdfs:comment "Kind of aggregation for read / measured values from multiple end points."@en ;
+                  rdfs:comment "Kind of aggregation for read or measured values from multiple end points."@en ;
                   rdfs:label "aggregate kind"@en .
 
 #-- CommodityKind
