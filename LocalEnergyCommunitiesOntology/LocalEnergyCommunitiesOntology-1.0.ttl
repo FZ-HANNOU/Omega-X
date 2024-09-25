@@ -161,14 +161,14 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                                               rdfs:domain :Transformer ;
                                               rdfs:range :TransformerConfiguration ;
                                               rdfs:comment "Links the transformer  to a specific transformer configuration."@en ;
-                                              rdfs:label "has transformer configuration"@en ;
+                                              rdfs:label "Has Transformer Configuration"@en ;
                                               rdfs:isDefinedBy lec:.
 :includesTransformerProperties rdf:type owl:ObjectProperty;
                                               rdfs:subPropertyOf infra:includesProperty;
                                               rdfs:domain :TransformerConfiguration ;
                                               rdfs:range prop:TransformerProperty;
                                               rdfs:comment "Links the transfomer  configuration to the transformer properties."@en ;
-                                              rdfs:label "includes transformer properties"@en ;
+                                              rdfs:label "Includes Transformer Properties"@en ;
                                               rdfs:isDefinedBy lec:.
 
 #-----Bus object properties
@@ -177,7 +177,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
                                               rdfs:domain :Bus;
                                               rdfs:range :BusVoltage;
                                               rdfs:comment "Links the bus  to its bus voltage property."@en ;
-                                              rdfs:label "has bus property"@en ;
+                                              rdfs:label "Has Bus Property"@en ;
                                               rdfs:isDefinedBy lec:.
 
 
@@ -190,13 +190,13 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 :BatteryModelName a owl:DatatypeProperty;
            rdfs:domain :Battery;
            rdfs:comment "The model name of the battery."@en ;
-	    rdfs:label "battery model name"@en ;
+	    rdfs:label "Battery Model Name"@en ;
            rdfs:isDefinedBy lec:.
 
 #--Transformer data properties    
 #--Transformer Type        
 :TransformerType    a owl:DatatypeProperty ;
 		      rdfs:comment "the transformer type."@en ;
-		      rdfs:label "transformer type"@en ;
+		      rdfs:label "Transformer Type"@en ;
 		      rdfs:domain :TransformerConfiguration;
 		      rdfs:isDefinedBy lec:.
