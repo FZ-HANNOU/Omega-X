@@ -1,16 +1,16 @@
 
-@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
+@prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix seas: <https://w3id.org/seas/> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix unit: <http://qudt.org/vocab/unit/> .
-@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology/> .
-@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
 @prefix : <https://w3id.org/omega-x/EstabanellBattery/> .
 
 
