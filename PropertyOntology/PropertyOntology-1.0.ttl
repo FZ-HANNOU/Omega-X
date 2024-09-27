@@ -150,6 +150,12 @@ prop:Voltage a owl:Class ;
              rdfs:comment ""@en ; 
              rdfs:label "Voltage"@en;
              rdfs:isDefinedBy prop:.
+# Performance Ratio
+prop:PerformanceRatio a owl:Class ;
+             rdfs:subClassOf prop:QuantitativeProperty ; 
+             rdfs:comment "performance ratio"@en ; 
+             rdfs:label "Performance Ratio"@en;
+             rdfs:isDefinedBy prop:.
 # Energy
 prop:Energy a owl:Class ;
              rdfs:subClassOf prop:QuantitativeProperty ; 
