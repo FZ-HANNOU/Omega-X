@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/omega-x/RenewablesSolarOntology#> .
+@prefix : <https://w3id.org/omega-x/ontology/RenewablesSolar#> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -15,13 +15,13 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix infra: <https://w3id.org/omega-x/InfrastructureOntology#> .
-@prefix solar: <https://w3id.org/omega-x/RenewablesSolarOntology#> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure#> .
+@prefix solar: <https://w3id.org/omega-x/ontology/RenewablesSolar#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/omega-x/RenewablesSolarOntology> .
+@base <https://w3id.org/omega-x/ontology/RenewablesSolar> .
 
-<https://w3id.org/omega-x/RenewablesSolarOntology> rdf:type owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/RenewablesSolarOntology-1.0/> ;
+<https://w3id.org/omega-x/ontogy/RenewablesSolar> rdf:type owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/RenewablesSolar-1.0/> ;
                                              dcterms:description """- Purpose: information about sharing data concerning solar plant in order to execute a set of services
 -Scope: This module provides solar dedicated classes for the simplified topology as well as mechanism to attach dynamic measures to equipments."""@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
@@ -34,7 +34,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Renewables Solar Ontology"@en ;
                                              vann:preferredNamespacePrefix "solar" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/RenewablesSolarOntology/> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/RenewablesSolar/> ;
                                              rdfs:label "Renewables Solar ontology"@en ;
                                              owl:versionInfo "1.0".
 
@@ -44,7 +44,7 @@
 #################################################################
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#consistOfCells
+###  consistOfCells
 solar:consistOfCells rdf:type owl:ObjectProperty ;
                       rdfs:subPropertyOf infra:consistOf ;
                       rdfs:domain seas:SolarModule ;
@@ -53,34 +53,34 @@ solar:consistOfCells rdf:type owl:ObjectProperty ;
                       rdfs:label "consist of cells"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#consistOfModules
+### consistOfModules
 solar:consistOfModules rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf infra:consistOf ;
-                        rdfs:domain seas:SolarArray ;
+                        rdfs:domain solar:SolarArray ;
                         rdfs:range solar:SolarString ;
                         rdfs:comment "Links, if it exists, the solar array to the solar string(s)."@en ;
                         rdfs:label "consist of modules"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#consistOfPanels
+###  consistOfPanels
 solar:consistOfPanels rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf infra:consistOf ;
                        rdfs:domain solar:SolarString ;
-                       rdfs:range seas:SolarPlanel ;
+                       rdfs:range solar:SolarPlanel ;
                        rdfs:comment "Links, if it exists, the solar string to the solar panel(s)."@en ;
                        rdfs:label "consist of panels"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#consistOfStrings
+### consistOfStrings
 solar:consistOfStrings rdf:type owl:ObjectProperty ;
                         rdfs:subPropertyOf infra:consistOf ;
-                        rdfs:domain seas:SolarArray ;
+                        rdfs:domain solar:SolarArray ;
                         rdfs:range solar:SolarString ;
                         rdfs:comment "Links, if it exists, the solar string to the solar panel(s)."@en ;
                         rdfs:label "consist of strings"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#controls
+###  controls
 solar:controls rdf:type owl:ObjectProperty ;
                 rdfs:domain solar:SolarTracker ;
                 rdfs:range infra:Equipment ;
@@ -88,7 +88,7 @@ solar:controls rdf:type owl:ObjectProperty ;
                 rdfs:label "controls"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#subSystemOfInveter
+###  subSystemOfInveter
 solar:subSystemOfInveter rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf seas:subsytemOf ;
                           rdfs:domain solar:PowerModule ;
@@ -97,7 +97,7 @@ solar:subSystemOfInveter rdf:type owl:ObjectProperty ;
                           rdfs:label "subsytem of inverter"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#subSystemOfStation
+###  subSystemOfStation
 solar:subSystemOfStation rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf seas:subsytemOf ;
                           rdfs:domain solar:Inverter ;
@@ -106,7 +106,7 @@ solar:subSystemOfStation rdf:type owl:ObjectProperty ;
                           rdfs:label "subsytem of inveter station"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#subSystemOfSubstatation
+###  subSystemOfSubstatation
 solar:subSystemOfSubstatation rdf:type owl:ObjectProperty ;
                                rdfs:subPropertyOf seas:subsytemOf ;
                                rdfs:domain solar:Feeder ;
@@ -123,7 +123,7 @@ seas:subsytemOf rdf:type owl:ObjectProperty .
 #    Data properties
 #################################################################
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#nbStrings
+###  nbStrings
 solar:nbStrings rdf:type owl:DatatypeProperty ;
                  rdfs:domain solar:PowerCabinet ;
                  rdfs:range xsd:integer ;
@@ -135,63 +135,63 @@ solar:nbStrings rdf:type owl:DatatypeProperty ;
 #################################################################
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#CombinerBox
+###  CombinerBox
 solar:CombinerBox rdf:type owl:Class ;
                    rdfs:subClassOf solar:PowerCabinet ;
                    rdfs:comment "PowerCabinet wich contains electrical equipments for combining energy coming from soclar arrays."@en ;
                    rdfs:label "Combiner box"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#Feeder
+###  Feeder
 solar:Feeder rdf:type owl:Class ;
               rdfs:subClassOf seas:ElectricPowerSystem ;
               rdfs:comment "A collection of equipments for organizational purposes, used for grouping distribution resources.The organization of a feeder does not necessarily reflect connectivity or current operation state."@en ;
               rdfs:label "Feader"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#Inverter
+###  Inverter
 solar:Inverter rdf:type owl:Class ;
                 rdfs:subClassOf seas:PowerInverter ;
                 rdfs:comment "An electric power transformer is an electric power system that can transform electricity within a power network, between a primary connection point and a secondary connection point."@en ;
                 rdfs:label "Inverter"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#InverterStation
+### InverterStation
 solar:InverterStation rdf:type owl:Class ;
                        rdfs:subClassOf solar:PowerCabinet ;
                        rdfs:comment "Cabinet of inverters."@en ;
                        rdfs:label "Inverter Station"@en .
 
 
-###  https://w3id.org/omega-x/RenewableSolarOntology#Meter
+###  Meter
 solar:Meter rdf:type owl:Class ;
              rdfs:subClassOf seas:ElectricPowerSystem ;
              rdfs:comment "Equipment measuring the production of PV Plant."@en ;
              rdfs:label "Meter"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#PowerCabinet
+###  PowerCabinet
 solar:PowerCabinet rdf:type owl:Class ;
                     rdfs:subClassOf seas:ElectricPowerSystem ;
                     rdfs:comment "Cabinet for electrical equipments."@en ;
                     rdfs:label "Power Cabinet"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#PowerModule
+### PowerModule
 solar:PowerModule rdf:type owl:Class ;
                    rdfs:subClassOf solar:Inverter ;
                    rdfs:comment "A sub unit of PowerInverter with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion."@en ;
                    rdfs:label "Power Module"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#SolarArray
+### SolarArray
 solar:SolarArray rdf:type owl:Class ;
                   rdfs:subClassOf seas:SolarArray ;
                   rdfs:comment "Solar arrays consists of one or many strings of solar panels."@en ;
                   rdfs:label "Solar Array"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#SolarPlant
+###  SolarPlant
 solar:SolarPlant rdf:type owl:Class ;
                   rdfs:subClassOf infra:Site ,
                                   seas:ElectricPowerProducer ;
@@ -199,35 +199,35 @@ solar:SolarPlant rdf:type owl:Class ;
                   rdfs:label "Solar Plant"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#SolarString
+###  SolarString
 solar:SolarString rdf:type owl:Class ;
                    rdfs:subClassOf seas:ElectricPowerProducer ;
                    rdfs:comment "Solar strings consist of one or many solar panels."@en ;
                    rdfs:label "Solar String"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#SolarTracker
+###  SolarTracker
 solar:SolarTracker rdf:type owl:Class ;
                     rdfs:subClassOf seas:SolarTracker ;
                     rdfs:comment "A solar tracker is a device that orients a payload toward the Sun. Payloads are usually solar panels, parabolic troughs, fresnel reflectors, mirrors or lenses."@en ;
                     rdfs:label "Solar Tracker"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#Substation
+###  hSubstation
 solar:Substation rdf:type owl:Class ;
                   rdfs:subClassOf seas:ElectricPowerSystem ;
                   rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. "@en ;
                   rdfs:label "Substation"@en .
 
 
-###  https://w3id.org/omega-x/RenewablesSolarOntology#Transformer
+###  Transformer
 solar:Transformer rdf:type owl:Class ;
                    rdfs:subClassOf seas:ElectricPowerTransformer ;
                    rdfs:comment "An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point."@en ;
                    rdfs:label "Transformer"@en .
 
 
-###   https://w3id.org/omega-x/RenewablesSolarOntology#WeatherStation
+###  WeatherStation
 solar:WeatherStation rdf:type owl:Class ;
                    rdfs:subClassOf solar:Equipment ;
                    rdfs:comment "A weather station is instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.(source : wikipedia)."@en ;
