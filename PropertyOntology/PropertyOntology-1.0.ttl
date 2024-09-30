@@ -273,7 +273,13 @@ prop:Irradiance a owl:Class ;
              rdfs:label "Irradiance"@en;
 			 prop:isMeasuredIn unit:W-PER-M2;
 			 prop:isDefinedBy prop:.
-
+# Plane of Array Insulation  
+prop:PlaneOfArrayInsulation a owl:Class ;
+             rdfs:subClassOf prop:Irradiance ; 
+             rdfs:comment "Plane of Array (POA) is the irradiation coming directly from the sun multiplied by the cosine of the angle of incidence (the angle between the direction of the sun and a vector normal to the panel)."@en ; 
+             rdfs:label "Plane of Array Insulation"@en;
+			 prop:isMeasuredIn unit:W-PER-M2;
+			 prop:isDefinedBy prop:.
 # DCVoltage
 prop:DCVoltage a owl:Class ;
              rdfs:subClassOf prop:Voltage ; 
