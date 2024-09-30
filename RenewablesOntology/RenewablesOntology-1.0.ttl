@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/omega-x/ontology/RenewablesSolar#> .
+@prefix : <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -15,10 +15,10 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
-@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure#> .
-@prefix solar: <https://w3id.org/omega-x/ontology/RenewablesSolar#> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix solar: <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/omega-x/ontology/RenewablesSolar> .
+@base <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
 
 <https://w3id.org/omega-x/ontogy/RenewablesSolar> rdf:type owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/RenewablesSolar-1.0/> ;
