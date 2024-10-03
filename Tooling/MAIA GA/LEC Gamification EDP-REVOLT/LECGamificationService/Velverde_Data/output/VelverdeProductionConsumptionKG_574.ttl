@@ -38,10 +38,10 @@
 <velverde:ExchangeSource/velverde_combined_production_consumption_574/EDPLECPromoter> rdf:type <https://w3id.org/omega-x/EnergyRoleOntology/LocalEnergyCommunityPromoter>.
 
 <velverde:TimeSeries/ActiveEnergyImported/574> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
-		ets:isAboutProperty <velverde:Property/ActiveEnergyImported/574>;
-		ets:hasAggregationKind <velverde:AggegationKind/Total>;
+		prop:isAboutProperty <velverde:Property/ActiveEnergyImported/574>;
+		qual:hasAggregationKind <velverde:AggegationKind/Total>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_574>;
-		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
+		prop:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
 <velverde:Property/ActiveEnergyImported/574> rdf:type <https://w3id.org/omega-x/PropertyOntology/ActiveEnergyImported>.
 
@@ -1638,10 +1638,10 @@
 		ets:value "0.009"^^xsd:double.
 
 <velverde:TimeSeries/ActiveEnergyExported/574> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
-		ets:isAboutProperty <velverde:Property/ActiveEnergyExported/574>;
-		ets:hasAggregationKind <velverde:AggegationKind/Total>;
+		prop:isAboutProperty <velverde:Property/ActiveEnergyExported/574>;
+		qual:hasAggregationKind <velverde:AggegationKind/Total>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_574>;
-		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
+		prop:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
 <velverde:Property/ActiveEnergyExported/574> rdf:type <https://w3id.org/omega-x/PropertyOntology/ActiveEnergyExported>.
 
@@ -3238,9 +3238,9 @@
 		ets:value "0.0"^^xsd:double.
 
 <velverde:TimeSeries/ActiveEnergyConsumed/574> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
-		ets:isAboutProperty <velverde:Property/ActiveEnergyConsumed/574>;
+		prop:isAboutProperty <velverde:Property/ActiveEnergyConsumed/574>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_574>;
-		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
+		prop:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
 <velverde:Property/ActiveEnergyConsumed/574> rdf:type <https://w3id.org/omega-x/PropertyOntology/ActiveEnergyConsumed>.
 
@@ -4837,9 +4837,9 @@
 		ets:value "0.009"^^xsd:double.
 
 <velverde:TimeSeries/ActiveEnergyProduced/574> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
-		ets:isAboutProperty <velverde:Property/ActiveEnergyProduced/574>;
+		prop:isAboutProperty <velverde:Property/ActiveEnergyProduced/574>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_574>;
-		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
+		prop:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
 <velverde:Property/ActiveEnergyProduced/574> rdf:type <https://w3id.org/omega-x/PropertyOntology/ActiveEnergyProduced>.
 
