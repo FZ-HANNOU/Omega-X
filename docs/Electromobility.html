@@ -1,1 +1,98 @@
-<html><head></head><body><p>No README.md found</p></body></html>
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Electromobility Ontology</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Purpose</h3>
+<p>The Electromobility ontology represents and organizes knowledge about the charging infrastructure for electric vehicles. </p>
+<h3 style="color: #21618C; text-decoration: underline;">Scope</h3>
+<p>This ontology defines concepts and relations that are relevant to the charging infractrure - such as pool, station, charging point and connector- but do not cover electric vehicle characteritics. 
+Roles of stakeholders of the charging infrastructure are further described in the ROLE ontology. Detailed characteristics of charging equipments and sites are given in the PROPERTY module.
+Booking a charging point requires some knowledge on charging infrastructure, like location of the charging station pools, connector types available on a charging point...<br/>
+Electromobility ontology provides OWL classes and properties to allow charging infrastructure to be described. The use of a charging infrastructure description facilitates the mutual understanding of electromobility players.</p>
+<h3 style="color: #21618C; text-decoration: underline;">Contents</h3>
+<p>This Electromobility Ontology contains four main classes:
+- Electric Vehicle Charging Station Pool
+- Electric Vehicle Charging Station
+- Electric Vehicle Supply Equipment (EVSE)
+- Electric Vehicle Supply Equipment  Connector</p>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>Get the list of electric vehicle charging station pools with their localisation.</td>
+<td></td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>Get the list of all the electric vehicle charging station pools provided by "TEVGO".</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 style="color: #21618C; text-decoration: underline;">Inference Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-2</td>
+<td>Get the list of all the equipments of the electric vehicle charging station pool labelled "Belib/BPX-0104".</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
+<ul>
+<li>Electric Vehicle Charging Station Pool: (source eMIP) A Charging Pool is a location where charging infrastructure elements can be found. A Charging Pool may contain several Charging Stations.</li>
+<li>Electric Vehicle Charging Station: (source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the Human-Machine Interface (HMI) between the charge infrastructure and the end users.</li>
+<li>Electric Vehicle Supply Equipment (EVSE): (source eMIP) A Charging Point, synonym of EVSE (Electric Vehicle Supply Equipment), is the energy supply element. An electrical vehicle can connect to a point on one of its connector. A Charging Point may have several Charging Connectors but only one vehicle could be charged at a time on a Charging Point.</li>
+<li>Electric Vehicle Supply Equipment (EVSE) Connector: (source eMIP) A Connector related to an Electric Vehicle Supply Equipment (EVSE) that connects to the electric vehicle for the purpose of charging. It is an interface to deliver electricity.</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2><img alt="OWL Description" src="ElectromobilityOntologyV1.0.png"/>
+<p><img alt="Diagram" src="./ElectromobilityOntologyV1.0.png"/></p>
+<h2 style="color: #21618C; text-decoration: underline;">Recommendations</h2>
+<ul>
+<li>A qualified association should be used to assign the role played by a Stakaholder with regards to an electric vehicle charging station pool (see ROLE ontology).</li>
+<li>When the property is static (never changes of value in time), its value should be contained in an individual of Property class (see PROP ontology).</li>
+<li>When the property is dynamic (frequently changes of value in time), its value should be contained in an individual of ValueSet class (see ETS ontology).</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">See also</h2>
+<h3 style="color: #21618C; text-decoration: underline;">SEAS 1.0</h3>
+<ul>
+<li>
+<p><a href="https://w3id.org/seas/ElectricVehicleOntology-1.0"><strong><em>seas:ElectricVehicleChargingStationPool</em></strong></a>: The class of electric vehicle charging station pools. An electric vehicle charging station pool is connected to the grid and composed of one or more electric vehicle charging stations.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/ElectricVehicleOntology-1.0"><strong><em>seas:ElectricVehicleChargingStation</em></strong></a>: The class of Charging Stations. An electric vehicle charging station is usually connected to the grid and composed of one or more electric vehicle service equipments.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/ElectricVehicleOntology-1.0"><strong><em>seas:ElectricVehicleServiceEquipment</em></strong></a>: The class of Electric Vehicle Service Equipments.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/ElectricPowerSystemOntology-1.0"><strong><em>seas:ElectricalConnectionPoint</em></strong></a>: The class of electrical connection points of electric power systems, at which they may be electricaly connected to other systems. For example, an electric vehicle service equipment may have three electric power connection points: two different kinds of plugs that enable to charge electric vehicles, and a three-phase power bus connection point to the grid.</p>
+</li>
+</ul>
+<h3 style="color: #21618C; text-decoration: underline;">UIOTE 1.0.1</h3>
+<ul>
+<li>
+<p><a href="http://www.w3id.org/urban-iot/electric"><strong><em>uiote:ChargingStation</em></strong></a>: Place where it is possible to recharge vehicles, that includes both Electric Vehicle Supply Equipments (EVSE) and the parking areas to allow the vehicle stop during the charging activity.</p>
+</li>
+<li>
+<p><a href="http://www.w3id.org/urban-iot/electric"><strong><em>uiote:EVSE</em></strong></a>: Electric Vehicle Supply Equipment (EVSE) available for charging vehicles.</p>
+</li>
+<li>
+<p><a href="http://www.w3id.org/urban-iot/electric"><strong><em>uiote:Connector</em></strong></a>: Connector related to an Electric Vehicle Supply Equipment (EVSE).</p>
+</li>
+</ul></body></html>
