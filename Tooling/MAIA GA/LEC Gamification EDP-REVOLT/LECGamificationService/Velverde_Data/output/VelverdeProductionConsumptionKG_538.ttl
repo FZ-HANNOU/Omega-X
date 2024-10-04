@@ -41,7 +41,7 @@
 
 <velverde:TimeSeries/ActiveEnergyImported/538> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
 		ets:isAboutProperty <velverde:Property/ActiveEnergyImported/538>;
-		ets:hasAggregationKind <velverde:AggegationKind/Total>;
+		qual:hasAggregationKind <velverde:AggegationKind/Total>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_538>;
 		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
@@ -1641,7 +1641,7 @@
 
 <velverde:TimeSeries/ActiveEnergyExported/538> rdf:type <https://w3id.org/omega-x/EventTimeSeriesOntology/TimeSeries>;
 		ets:isAboutProperty <velverde:Property/ActiveEnergyExported/538>;
-		ets:hasAggregationKind <velverde:AggegationKind/Total>;
+		qual:hasAggregationKind <velverde:AggegationKind/Total>;
 		ets:isElementOf <velverde:TimeSeries/velverde_combined_production_consumption_538>;
 		ets:hasUnit <http://qudt.org/vocab/unit/KiloW-HR>.
 
