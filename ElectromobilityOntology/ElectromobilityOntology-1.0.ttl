@@ -23,7 +23,7 @@ em:Electromobility rdf:type owl:Ontology ;
         dcterms:creator <https://omega-x.eu/>;
 	dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
         dcterms:created "2024-03-31"^^xsd:date ;
-        dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ;
+        dcterms:rights "Copyright Omega-X Consortium 2022-2025"@en ;
         dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
 	dcterms:modified "2024-07-01"^^xsd:date ;
         dcterms:issued "2024-06-14"^^xsd:date ;
@@ -74,7 +74,7 @@ em:Equipment a owl:Class ;
 #-- Electric Vehicle Charging Station
 em:ElectricVehicleChargingStation a owl:Class ;
         rdfs:label "Electric Vehicle Charging Station"@en;
-	rdfs:comment """(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the “Human-Machine Interface” (HMI) between the charge infrastructure and the end users."""@en;
+	rdfs:comment """(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the ï¿½Human-Machine Interfaceï¿½ (HMI) between the charge infrastructure and the end users."""@en;
 	rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
         rdfs:subClassOf seas:ElectricVehicleChargingStation, em:Equipment;
 	owl:disjointWith em:ElectricVehicleSupplyEquipment, em:ElectricVehicleSupplyEquipmentConnector;
@@ -241,7 +241,7 @@ em:hasMarketParticipant a owl:ObjectProperty;
 em:hasMaximumElectricPowerAsEVSE a owl:ObjectProperty;
 	rdfs:label "has maximum electric power as EVSE"@en ;
         rdfs:comment "links an Electric Vehicle Supply Equipment to its maximum electric power."@en ;
-        rdfs:domain:ElectricVehicleSupplyEquipment;
+        rdfs:domain em:ElectricVehicleSupplyEquipment;
 	rdfs:range prop:MaximumElectricPower;
         rdfs:subPropertyOf infra:hasSystemProperty;
         rdfs:isDefinedBy em: .
@@ -250,7 +250,7 @@ em:hasMaximumElectricPowerAsEVSE a owl:ObjectProperty;
 em:hasMaximumElectricPowerAsConnector a owl:ObjectProperty;
 	rdfs:label "has maximum electric power as connector"@en ;
         rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its maximum electric power."@en ;
-        rdfs:domain:ElectricVehicleSupplyEquipmentConnector;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector;
 	rdfs:range prop:MaximumElectricPower;
         rdfs:subPropertyOf infra:hasSystemProperty;
         rdfs:isDefinedBy em: .
@@ -286,27 +286,27 @@ em:hasQualifiedAssociation a owl:ObjectProperty;
 em:isPartOfPool a owl:ObjectProperty;
 	rdfs:label "is part of pool"@en ;
         rdfs:comment "links an Electric Vehicle Charging Station to its Electric Vehicle Charging Station Pool."@en ;
-        dfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
         rdfs:range em:ElectricVehicleChargingStationPool ;
-        rrdfs:subPropertyOf infra:isPartOf;
+        rdfs:subPropertyOf infra:isPartOf;
 	rdfs:isDefinedBy em: . 
 
 #-- Is Part Of Station
 em:isPartOfStation a owl:ObjectProperty;
 	rdfs:label "is part of station"@en ;
         rdfs:comment "links an Electric Vehicle Supply Equipment to its Electric Vehicle Charging Station."@en ;
-        dfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
         rdfs:range em:ElectricVehicleChargingStation ;
-        rrdfs:subPropertyOf infra:isPartOf;
+        rdfs:subPropertyOf infra:isPartOf;
 	rdfs:isDefinedBy em: . 
 
 #-- Is Part Of EVSE
 em:isPartOfPool a owl:ObjectProperty;
 	rdfs:label "is part of EVSE"@en ;
         rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its Electric Vehicle Supply Equipment."@en ;
-        dfs:domain em:EElectricVehicleSupplyEquipmentConnector ;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector ;
         rdfs:range em:ElectricVehicleSupplyEquipment ;
-        rrdfs:subPropertyOf infra:isPartOf;
+        rdfs:subPropertyOf infra:isPartOf;
 	rdfs:isDefinedBy em: . 
 
 #--------------------------------------------------------------
