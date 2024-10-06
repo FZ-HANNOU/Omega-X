@@ -1,4 +1,1912 @@
-<html><head></head><body>BadSyntax Error at line 21 of &lt;&gt;:
-Bad syntax (Prefix "foaf:" not bound) at ^ in:
-"...b'dcterms:creator <https: omega-x.eu=""></https:>;\n\tdcterms:contributor['^b'foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno'..."
-</mailto:bruno.traverson@edf.fr></body></html>
+<html><head></head><body><!DOCTYPE html>
+
+<html>
+<head>
+<title>Energy Role Ontology</title>
+<style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "https://w3id.org/omega-x/ontology/EnergyRole/",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@id": "_:n965073321ac348d38f1fae0b66c9f2f8b1"
+      },
+      {
+        "@id": "_:n965073321ac348d38f1fae0b66c9f2f8b2"
+      }
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@language": "en",
+        "@value": "Copyright © Omega-X Consortium 2022-2025"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@id": "https://omega-x.eu/"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-02-27"
+      }
+    ],
+    "https://schema.org/dateIssued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-06"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-05-03"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": "Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour, and relationships with other elements involved in energy market business processes.\n        Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role), and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility, and local energy communities domains.\n    "
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://opensource.org/license/mit/"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Energy Role Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "_:n965073321ac348d38f1fae0b66c9f2f8b1",
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:bruno.traverson@edf.fr"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Bruno Traverson"
+      }
+    ]
+  },
+  {
+    "@id": "_:n965073321ac348d38f1fae0b66c9f2f8b2",
+    "https://schema.org/name": [
+      {
+        "@value": "Maxime Lefrançois"
+      }
+    ]
+  }
+]
+	</script>
+</head>
+<body>
+<div id="content">
+<div class="section" id="metadata">
+<h1>Energy Role Ontology</h1>
+<h2>Metadata</h2>
+<dl>
+<div>
+<dt>
+<strong>IRI</strong>
+</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/EnergyRole/</code>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+</dt>
+<dd><p>Energy Role Ontology</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+</dt>
+<dd>https://omega-x.eu/</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
+</dt>
+<dd>
+<ul>
+<li>
+<span>
+<span>Bruno Traverson</span>
+<span>(
+                      <a href="mailto:bruno.traverson@edf.fr">bruno.traverson@edf.fr</a> )
+                    </span>
+</span>
+</li>
+<li>
+<span>
+<span>Maxime Lefrançois</span>
+</span>
+</li>
+</ul>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+</dt>
+<dd><p>2024-02-27</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
+</dt>
+<dd><p>2024-05-03</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/issued" title="Date of formal issuance of the resource. Defined in DCMI Metadata Terms">Date Issued</a>
+</dt>
+<dd><p>2024-05-06</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+</dt>
+<dd>
+<a href="https://opensource.org/license/mit/">https://opensource.org/license/mit/</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+</dt>
+<dd><p>Copyright © Omega-X Consortium 2022-2025</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole-1.0">role:-1.0</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
+</dt>
+<dd><p>1.0</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+</dt>
+<dd><p>role</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole/">Energy Role Ontology</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</dt>
+<dd><p>Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour, and relationships with other elements involved in energy market business processes.
+        Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role), and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility, and local energy communities domains.</p></dd>
+</div>
+</dl>
+</div>
+<div class="section" id="classes">
+<h2>Classes</h2>
+<div class="property entity" id="MarketParticipant">
+<h3>Market Participant
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleMarketParticipant</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source IEC 62325-351 Ed.3) The identification of the party participating in energy market business processes.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleplays">has role of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleisPlayedBy">is played by</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRolehasParticipant">has participant</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleisAssociatedWith">is associated with</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="MarketRole">
+<h3>Market Role
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleMarketRole</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source IEC 62325-351 Ed.3) The identification of the intended behaviour of a market participant played within a given business process.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleisPlayedBy">is played by</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleplays">has role of</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRolehasRole">has role</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Association">
+<h3>Association
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleAssociation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source The PROV Namespace) An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRolehasRole">has role</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRolehasParticipant">has participant</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRolequalifiedAssociation">qualified association</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectromobilityMarketRole">
+<h3>Electromobility Market Role
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleElectroMobilityMarketRole</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The identification of the intended behaviour of an electromobility market participant played within a given business process.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<a href="http://www.w3id.org/urban-iot/electric#ChargePointOperator">uiote:ChargePointOperator</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleChargePointOperator">Charge Point Operator</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilityServiceProvider">eMobility Service Provider</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilityRoamingServiceProvider">eMobility Service Provider for Roaming</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ChargePointOperator">
+<h3>Charge Point Operator
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleChargePointOperator</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source OCPI 2.2.1) Abbreviated as CPO. Operates a network of Charge Points.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="http://www.w3id.org/urban-iot/electric#ChargePointOperator">uiote:ChargePointOperator</a>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleElectroMobilityMarketRole">Electromobility Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="eMobilityServiceProvider">
+<h3>eMobility Service Provider
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleeMobilityServiceProvider</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source OCPI 2.2.1) Abbreviated as eMSP. Gives EV drivers access to charging services.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="http://www.w3id.org/urban-iot/electric#eMobilityServiceProvider">uiote:eMobilityServiceProvider</a>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleElectroMobilityMarketRole">Electromobility Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilitySAccessingerviceProvider">eMobility Service Provider for Accessing</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilityBookingServiceProvider">eMobility Service Provider for Booking</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="eMobilityServiceProviderforAccessing">
+<h3>eMobility Service Provider for Accessing
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleeMobilitySAccessingerviceProvider</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The eMobility Service Provider for accessing is a service provider that offers to its end-user-customers the ability of accessing charging services on Charging-Points of a CPO (source eMIP Protocol). </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilityServiceProvider">eMobility Service Provider</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="eMobilityServiceProviderforBooking">
+<h3>eMobility Service Provider for Booking
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleeMobilityBookingServiceProvider</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The eMobility Service Provider for booking is a service provider that offers to its end-user-customer the ability of booking Charging-Points of a CPO (source eMIP Protocol). </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleeMobilityServiceProvider">eMobility Service Provider</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="eMobilityServiceProviderforRoaming">
+<h3>eMobility Service Provider for Roaming
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleeMobilityRoamingServiceProvider</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The eMobility Service Provider for roaming is a service provider that facilitates electric vehicle charging access across various networks, enabling seamless charging experiences for drivers while they travel beyond their home network coverage . </p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleElectroMobilityMarketRole">Electromobility Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="LocalEnergyCommunityMarketRole">
+<h3>Local Energy Community Market Role
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleLocalEnergyCommunityMarketRole</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The identification of the intended behaviour of a LEC (local energy community) market participant played within a given business process.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleLocalEnergyCommunityPromoter">Local Energy Community Promoter</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="LocalEnergyCommunityPromoter">
+<h3>Local Energy Community Promoter
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleLocalEnergyCommunityPromoter</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Local Energy Community Promoter.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleLocalEnergyCommunityMarketRole">Local Energy Community Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="FlexibilityMarketRole">
+<h3>Flexibility Market Role
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityMarketRole</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The identification of the intended behaviour of a flexibility market participant played within a given business process.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityProvider">Flexibility Provider</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityUser">Flexibility User</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="FlexibilityProvider">
+<h3>Flexibility Provider
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityProvider</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Flexibility Provider.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityMarketRole">Flexibility Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="FlexibilityUser">
+<h3>Flexibility User
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityUser</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Flexibility User.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleFlexibilityMarketRole">Flexibility Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="objectproperties">
+<h2>Object Properties</h2>
+<div class="property entity" id="hasroleof">
+<h3>has role of
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleplays</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source IEC 62325-351 Ed.3) The role associated with a MarketParticipant.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketParticipant">Market Participant</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketRole">Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isplayedby">
+<h3>is played by
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleisPlayedBy</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source IEC 62325-351 Ed.3) The participant associated with a MarketRole.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketRole">Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketParticipant">Market Participant</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasrole">
+<h3>has role
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRolehasRole</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The role part of an Association.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleAssociation">Association</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketRole">Market Role</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasparticipant">
+<h3>has participant
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRolehasParticipant</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>The participant part of an Association.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleAssociation">Association</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketParticipant">Market Participant</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isassociatedwith">
+<h3>is associated with
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleisAssociatedWith</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Designates the Market Participant associated.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleMarketParticipant">Market Participant</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="qualifiedassociation">
+<h3>qualified association
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRolequalifiedAssociation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Qualifies the parts involved in the association.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="https://w3id.org/omega-x/ontology/EnergyRoleAssociation">Association</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="datatypeproperties">
+<h2>Datatype Properties</h2>
+<div class="property entity" id="hasname">
+<h3>has name
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRolename</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the name of a MarketParticipant or of a MarketRole.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasidentifier">
+<h3>has identifier
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/EnergyRoleidentifier</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole">role:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>the identifier of a MarketParticipant or of a MarketRole.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="annotationproperties">
+<h2>Annotation Properties</h2>
+<div class="property entity" id="contributor">
+<h3>contributor
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/contributor</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creator">
+<h3>creator
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/creator</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="description">
+<h3>description
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/description</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="issued">
+<h3>issued
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/issued</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="license">
+<h3>license
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/license</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="modified">
+<h3>modified
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/modified</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="title">
+<h3>title
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/title</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespacePrefix">
+<h3>preferred namespace prefix
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespacePrefix</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespaceUri">
+<h3>preferred namespace uri
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespaceUri</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="maxQualifiedCardinality">
+<h3>max qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#maxQualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="qualifiedCardinality">
+<h3>qualified cardinality
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2002/07/owl#qualifiedCardinality</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="namespaces">
+<h2>Namespaces</h2>
+<dl>
+<dt id="dcterms">dcterms</dt>
+<dd>
+<code>http://purl.org/dc/terms/</code>
+</dd>
+<dt id="foaf">foaf</dt>
+<dd>
+<code>http://xmlns.com/foaf/0.1/</code>
+</dd>
+<dt id="owl">owl</dt>
+<dd>
+<code>http://www.w3.org/2002/07/owl#</code>
+</dd>
+<dt id="prov">prov</dt>
+<dd>
+<code>http://www.w3.org/ns/prov#</code>
+</dd>
+<dt id="rdf">rdf</dt>
+<dd>
+<code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+</dd>
+<dt id="rdfs">rdfs</dt>
+<dd>
+<code>http://www.w3.org/2000/01/rdf-schema#</code>
+</dd>
+<dt id="role">role</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/EnergyRole</code>
+</dd>
+<dt id="uiote">uiote</dt>
+<dd>
+<code>http://www.w3id.org/urban-iot/electric#</code>
+</dd>
+<dt id="vann">vann</dt>
+<dd>
+<code>http://purl.org/vocab/vann/</code>
+</dd>
+<dt id="xsd">xsd</dt>
+<dd>
+<code>http://www.w3.org/2001/XMLSchema#</code>
+</dd>
+</dl>
+</div>
+<div id="legend">
+<h2>Legend</h2>
+<table class="entity">
+<tr>
+<td>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</td>
+<td>Object Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</td>
+<td>Datatype Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</td>
+<td>Annotation Properties</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="toc">
+<h3>Table of Contents</h3>
+<ul class="first">
+<li>
+<h4>
+<a href="#metadata">Metadata</a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="#classes">Classes</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#MarketParticipant">Market Participant</a>
+</li>
+<li>
+<a href="#MarketRole">Market Role</a>
+</li>
+<li>
+<a href="#Association">Association</a>
+</li>
+<li>
+<a href="#ElectromobilityMarketRole">Electromobility Market Role</a>
+</li>
+<li>
+<a href="#ChargePointOperator">Charge Point Operator</a>
+</li>
+<li>
+<a href="#eMobilityServiceProvider">eMobility Service Provider</a>
+</li>
+<li>
+<a href="#eMobilityServiceProviderforAccessing">eMobility Service Provider for Accessing</a>
+</li>
+<li>
+<a href="#eMobilityServiceProviderforBooking">eMobility Service Provider for Booking</a>
+</li>
+<li>
+<a href="#eMobilityServiceProviderforRoaming">eMobility Service Provider for Roaming</a>
+</li>
+<li>
+<a href="#LocalEnergyCommunityMarketRole">Local Energy Community Market Role</a>
+</li>
+<li>
+<a href="#LocalEnergyCommunityPromoter">Local Energy Community Promoter</a>
+</li>
+<li>
+<a href="#FlexibilityMarketRole">Flexibility Market Role</a>
+</li>
+<li>
+<a href="#FlexibilityProvider">Flexibility Provider</a>
+</li>
+<li>
+<a href="#FlexibilityUser">Flexibility User</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#objectproperties">Object Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#hasroleof">has role of</a>
+</li>
+<li>
+<a href="#isplayedby">is played by</a>
+</li>
+<li>
+<a href="#hasrole">has role</a>
+</li>
+<li>
+<a href="#hasparticipant">has participant</a>
+</li>
+<li>
+<a href="#isassociatedwith">is associated with</a>
+</li>
+<li>
+<a href="#qualifiedassociation">qualified association</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#datatypeproperties">Datatype Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#hasname">has name</a>
+</li>
+<li>
+<a href="#hasidentifier">has identifier</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#annotationproperties">Annotation Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#contributor">contributor</a>
+</li>
+<li>
+<a href="#creator">creator</a>
+</li>
+<li>
+<a href="#description">description</a>
+</li>
+<li>
+<a href="#issued">issued</a>
+</li>
+<li>
+<a href="#license">license</a>
+</li>
+<li>
+<a href="#modified">modified</a>
+</li>
+<li>
+<a href="#title">title</a>
+</li>
+<li>
+<a href="#preferredNamespacePrefix">preferred namespace prefix</a>
+</li>
+<li>
+<a href="#preferredNamespaceUri">preferred namespace uri</a>
+</li>
+<li>
+<a href="#maxQualifiedCardinality">max qualified cardinality</a>
+</li>
+<li>
+<a href="#qualifiedCardinality">qualified cardinality</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#namespaces">Namespaces</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dcterms">dcterms</a>
+</li>
+<li>
+<a href="#foaf">foaf</a>
+</li>
+<li>
+<a href="#owl">owl</a>
+</li>
+<li>
+<a href="#prov">prov</a>
+</li>
+<li>
+<a href="#rdf">rdf</a>
+</li>
+<li>
+<a href="#rdfs">rdfs</a>
+</li>
+<li>
+<a href="#role">role</a>
+</li>
+<li>
+<a href="#uiote">uiote</a>
+</li>
+<li>
+<a href="#vann">vann</a>
+</li>
+<li>
+<a href="#xsd">xsd</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#legend">Legend</a>
+</h4>
+<ul class="second"></ul>
+</li>
+</ul>
+</div>
+</body>
+</html>
+</body></html>

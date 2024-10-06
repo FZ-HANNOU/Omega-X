@@ -1,2 +1,2761 @@
-<html><head></head><body>UnicodeDecodeError Error 'utf-8' codec can't decode byte 0xa9 in position 1345: invalid start byte
+<html><head></head><body><!DOCTYPE html>
+
+<html>
+<head>
+<title>Electromobility Ontology</title>
+<style>
+        #pylode {
+            position: fixed;
+            top: 205px;
+            left: -150px;
+            font-size: small;
+            transform: rotate(-90deg);
+            color: grey;
+        }
+        #pylode a {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            color: #005A9C;
+        }
+        #pylode a:hover {
+            color: #333;
+        }
+        #pylode #p {
+            color: #329545;
+        }
+        #pylode #y {
+            color: #f9cb33;
+        }
+        #pylode #version {
+            font-size: 1.0em;
+        }
+
+        #profile {
+            font-style: italic;
+            font-size: 1.25em;
+            color: darkred!important;
+        }
+
+        .cardinality {
+            font-style: italic;
+            color: #aa00aa;
+        }
+
+        dl {
+            /*border: 1px solid navy;*/
+            /*padding:5px;*/
+        }
+
+        dt {
+            font-weight: bold;
+            padding: 0;
+        }
+
+        dd {
+            margin-bottom: 10px;
+            padding-top: 7px;
+        }
+
+        #metadata ul,
+        #classes ul {
+            list-style-type: none;
+        }
+
+        #metadata ul li,
+        #classes ul li {
+            margin-left: -40px;
+        }
+
+        ul.hlist {
+            list-style-type: none;
+            border: 1px solid navy;
+            padding:5px;
+            background-color: #F4FFFF;
+        }
+
+        ul.hierarchy {
+            border: 1px solid navy;
+            padding: 5px 25px 5px 25px;
+            background-color: #F4FFFF;
+        }
+
+
+        ul.hlist li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        .entity {
+            border: 1px solid navy;
+            margin:5px 0 5px 0;
+            padding: 5px;
+        }
+
+        .entity th {
+            width: 150px;
+            vertical-align: top;
+        }
+
+        .entity th,
+        .entity td {
+            padding-bottom: 20px;
+        }
+
+        .entity table th {
+            text-align: left;
+        }
+
+        section#overview img {
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            text-align: left
+        }
+        h1, h2, h3 {
+            color: #005A9C; background: white
+        }
+        h1 {
+            font: 170% sans-serif;
+            line-height: 110%;
+        }
+        h2 {
+            font: 140% sans-serif;
+            margin-top:40px;
+        }
+        h3 {
+            font: 120% sans-serif;
+            margin-top: 20px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid navy;
+        }
+        h4 { font: bold 100% sans-serif }
+        h5 { font: italic 100% sans-serif }
+        h6 { font: small-caps 100% sans-serif }
+
+        body {
+            padding: 2em 70px 2em 70px;
+            margin: 0;
+            font-family: sans-serif;
+            color: black;
+            background: white;
+            background-position: top left;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            text-align: left;
+        }
+
+        section {
+            max-width: 1500px;
+        }
+
+        .figure {
+            margin-bottom: 20px;
+        }
+
+        :link { color: #00C; background: transparent }
+        :visited { color: #609; background: transparent }
+        a:active { color: #C00; background: transparent }
+
+        .sup-c,
+        .sup-op,
+        .sup-fp,
+        .sup-dp,
+        .sup-ap,
+        .sup-p,
+        .sup-ni,
+        .sup-con,
+        .sup-col {
+            cursor:help;
+        }
+
+        .sup-c {
+            color:orange;
+        }
+
+        .sup-op {
+            color:navy;
+        }
+
+        .sup-fp {
+            color:lightskyblue;
+        }
+
+        .sup-dp {
+            color:green;
+        }
+
+        .sup-ap {
+            color:darkred;
+        }
+
+        .sup-p {
+            color:black;
+        }
+
+        .sup-ni {
+            color:brown;
+        }
+
+        .sup-con {
+            color:orange;
+        }
+
+        .sup-col {
+            color:darkred;
+        }
+
+        sup {
+            margin-left: -3px;
+        }
+        code {
+            font-size: large;
+            color: darkred;
+        }
+
+        /* less prominent links for properties */
+        .proplink {
+            color: #336;
+            text-decoration: none;
+        }
+
+#toc {
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    height: 100%;
+    overflow-y: auto;
+    padding: 10px;
+    border: solid 1px navy;
+    font-size: small;
+    width: 180px;
+}
+#toc h3 {
+    margin-top: 5px;
+}
+
+#toc ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#toc .first > li {
+    margin-top: 5px;
+}
+
+#toc .second,
+#toc .third {
+    padding-left: 10px;
+}
+
+#content {
+    width: calc(100% - 150px);
+}
+
+.hover_property {
+    cursor: help;
+    text-decoration: none;
+    border-bottom: dashed 1px;
+}
+
+.setclass {
+    list-style-type: none;
+}
+
+code{
+    word-wrap: break-word;
+  }
+table {
+    table-layout: fixed;
+    width: 100%;
+}
+td {
+    word-wrap: break-word;
+}
+#legend table.entity {
+    width: 25%;
+}
+	</style>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAABhklEQVQ4jbWPzStEURjG3yQLirlGKUnKFO45Z+SjmXvnnmthQcpCoVhYmD/AwmJiI3OvZuZc2U3UlKU0/gAslMw9JgvhHxAr2fko7r0jHSsl+TgbTz2Lt5731/MASEiJW9ONml2QyX6rsGalmnT74v8BDf12hxJfpV8d1uwNKUBYszabdFv84L8B9X0rESVmmUup2fme0cVhJWaZHw4NWL1SewEAfDe6H3Dy6Ll456WEJsRZS630MwCAOI20ei5OBpxse5zcBZw8eS4uPpfIuDiCainIg9umBCU0GZzgLZ9Hn31OgoATL+CkLDGB5H1OKj4nFd/FBxUXJ0UZNb4edw/6nLyJXaj5FeCVyPLNIVmYK8TG1IwWb16L1gEACAFV90ftoT8bdOX0EeyY99gxBXZMgRz6qGb1KantAACI0UvE6F5XJqEjpsdURouI0Vt5gGOUkUNnPu7ObGIIMfNaGqDmjDRi9FZldF1lRgYzeqUyeoiY4ag5Iy3RgOYRM8+/M2bG8efsO4hGrpmJseyMAAAAAElFTkSuQmCC" rel="icon" sizes="16x16" type="image/png"/>
+<link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAC40lEQVRYhe2UT0hUQRzHp6Iss1B3VZKIDbbdfW9mnoi4f3zzjkJQeOgS0SEIb1EWBGGlLLu460zQPQM1unUIIjA6rfpm6ZAhHjoIRVQUFUlEbG+euTsdXG1d3VL3bVD4g+9h+L35fT/8fvN7ADgY9aHY5fpIvK82HO9ysu66wxWOzbkjcekKx0a2ALYA/n2AGi3a6ArFezcidziecQygNhhrcUficjP6PwBqtGijKxy/thnVBePHywYoDsFhl53GV8SEcsTx4usCMLUewTVpc23BNvEzm6Neyf1+KcG2vwqwUjgrOJq2JmHftwmkVBRGTvncFodnbI7vChO/FRznCmHsNM7aHM9Yk7Df5iqsLMw9sMNOK2g+jS4IEz0UJv4iuJZb2RltWnB4UZqH6ioGAgAAGe5vtiZhtzDx7OoRadLmeM7m6IRjhnLMW2Vx1bA5GhAmnhIcz6/xNj4Ujsky8UspwfayjDPjsF2Y6L7N8Vzx/BfP+KPg6LbgSqd8DnfJW2CnbaLhfH5ephpqygJYvQU4Z3P82TLRsDDhUTnmrSq+Y3N0Mg+Xldy/zwEAnLMWZ3pHpNExmfLs/t0dOdVcbT0JeKxUwFP2VljjqiE47Jp53LTXNxhsUZjerTByXWX6VZWRs/4bIQ2ACv+UAomgDzLCISNZxAxZKMhIDjLy1JfsaK+I+eGBUBNk5E2x8RogX/PdcDZUqieWTSh5D6nOVKqfhoycUmlHFFIyu5RXqf7AcQDISCpv/tqbMBqK883RtmpISRoxQyJKPgGn3wNk5NEigDFa6hslqV/Kj+FdBQD0bshIDlKSLlVcoWQo36UhR80BAMB73lulMn0EMpJTqD6qJiOt3mho/8GbkT2BZNgDB/V+RI0fkOrT3kRIVQbaDizJm2hdNbINBxwk5xAj3yEjuV9rZ1iIkgxixkLBA83mz8uCjLwoGwAx0vOnFSy5mtR4VTaAQvVORMnwZgSpzkrV/QmdE2tKe46+MQAAAABJRU5ErkJggg==" rel="icon" sizes="32x32" type="image/png"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<script id="schema.org" type="application/ld+json">
+[
+  {
+    "@id": "https://w3id.org/omega-x/ontology/Electromobility/Electromobility",
+    "@type": [
+      "https://schema.org/DefinedTermSet"
+    ],
+    "https://schema.org/contributor": [
+      {
+        "@id": "_:nd99705cb69834f308c2e2c133084c803b1"
+      }
+    ],
+    "https://schema.org/copyrightNotice": [
+      {
+        "@language": "en",
+        "@value": "Copyright Omega-X Consortium 2022-2025"
+      }
+    ],
+    "https://schema.org/creator": [
+      {
+        "@id": "https://omega-x.eu/"
+      }
+    ],
+    "https://schema.org/dateCreated": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-03-31"
+      }
+    ],
+    "https://schema.org/dateIssued": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-06-14"
+      }
+    ],
+    "https://schema.org/dateModified": [
+      {
+        "@type": "http://www.w3.org/2001/XMLSchema#date",
+        "@value": "2024-07-01"
+      }
+    ],
+    "https://schema.org/description": [
+      {
+        "@language": "en",
+        "@value": "The Electromobility ontology represents and organizes knowledge about the charging infrastructure for electric vehicles. This ontology defines concepts and relations that are relevant to the charging infrastructure - such as pool, station, charging point and connector- but do not cover electric vehicle characteritics. Roles of stakeholders of the charging infrastructure are further described in the ROLE ontology. Detailed characteristics of charging equipments and sites are given in the PROPERTY module."
+      }
+    ],
+    "https://schema.org/license": [
+      {
+        "@id": "https://www.apache.org/licenses/LICENSE-2.0"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@language": "en",
+        "@value": "Electromobility Ontology"
+      }
+    ]
+  },
+  {
+    "@id": "_:nd99705cb69834f308c2e2c133084c803b1",
+    "https://schema.org/email": [
+      {
+        "@id": "mailto:bruno.traverson@edf.fr"
+      }
+    ],
+    "https://schema.org/name": [
+      {
+        "@value": "Bruno Traverson"
+      }
+    ]
+  }
+]
+	</script>
+</head>
+<body>
+<div id="content">
+<div class="section" id="metadata">
+<h1>Electromobility Ontology</h1>
+<h2>Metadata</h2>
+<dl>
+<div>
+<dt>
+<strong>IRI</strong>
+</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/Electromobility/Electromobility</code>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
+</dt>
+<dd><p>Electromobility Ontology</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/creator" title="An entity responsible for making the resource. Defined in DCMI Metadata Terms">Creator</a>
+</dt>
+<dd>https://omega-x.eu/</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
+</dt>
+<dd>
+<span>
+<span>Bruno Traverson</span>
+<span>(
+                  <a href="mailto:bruno.traverson@edf.fr">bruno.traverson@edf.fr</a> )
+                </span>
+</span>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/created" title="Date of creation of the resource. Defined in DCMI Metadata Terms">Date Created</a>
+</dt>
+<dd><p>2024-03-31</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/modified" title="Date on which the resource was changed. Defined in DCMI Metadata Terms">Date Modified</a>
+</dt>
+<dd><p>2024-07-01</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/issued" title="Date of formal issuance of the resource. Defined in DCMI Metadata Terms">Date Issued</a>
+</dt>
+<dd><p>2024-06-14</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/license" title="A legal document giving official permission to do something with the resource. Defined in DCMI Metadata Terms">License</a>
+</dt>
+<dd>
+<a href="https://www.apache.org/licenses/LICENSE-2.0">https://www.apache.org/licenses/LICENSE-2.0</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/rights" title="Information about rights held in and over the resource. Defined in DCMI Metadata Terms">Rights</a>
+</dt>
+<dd><p>Copyright Omega-X Consortium 2022-2025</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/ontology/Electromobility-1.0">https://w3id.org/omega-x/ontology/Electromobility-1.0</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://www.w3.org/2002/07/owl#versionInfo" title="The annotation property that provides version information for an ontology or another OWL construct. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Info</a>
+</dt>
+<dd><p>1.0</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+</dt>
+<dd><p>em</p></dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespaceUri" title="None. Defined in None">Preferred Namespace Uri</a>
+</dt>
+<dd>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</dd>
+</div>
+<div>
+<dt>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</dt>
+<dd><p>The Electromobility ontology represents and organizes knowledge about the charging infrastructure for electric vehicles. This ontology defines concepts and relations that are relevant to the charging infrastructure - such as pool, station, charging point and connector- but do not cover electric vehicle characteritics. Roles of stakeholders of the charging infrastructure are further described in the ROLE ontology. Detailed characteristics of charging equipments and sites are given in the PROPERTY module.</p></dd>
+</div>
+</dl>
+</div>
+<div class="section" id="classes">
+<h2>Classes</h2>
+<div class="property entity" id="Person">
+<h3>Person
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://xmlns.com/foaf/0.1/Person</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Vocabulary">
+<h3>Vocabulary
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocommons/voaf#Vocabulary</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectricVehicleChargingStationPool">
+<h3>Electric Vehicle Charging Station Pool
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/ElectricVehicleChargingStationPool</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source eMIP) A Charging Pool is a location where charging infrastructure elements can be found. A Charging Pool may contain several Charging Stations.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="https://w3id.org/seas/ElectricVehicleChargingStationPool">seas:ElectricVehicleChargingStationPool</a>
+</li>
+<li>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/Site">infra:Site</a>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasAddress">has address</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasAvailabilityStatusAsPool">has availability status as pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasLocationAsPool">has location as pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasMarketParticipant">has market participant</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasQualifiedAssociation">has qualified association</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#name">name</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#isPartOfPool">is part of pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="Equipment">
+<h3>Equipment
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/Equipment</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>Equipmen of Electromobility infratructure. May be either an ElectricVehicleChargingStation, an ElectricVehicleSupplyEquipment or an ElectricVehicleSupplyEquipmentConnector.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/Equipment">infra:Equipment</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<span>
+<a href="#visualIdentifier">visual identifier</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/superClassOf" title="Inverse of RDFS' subClassOf. Defined in Ontology Documentation Profile">Super Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectricVehicleChargingStation">
+<h3>Electric Vehicle Charging Station
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/ElectricVehicleChargingStation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the �Human-Machine Interface� (HMI) between the charge infrastructure and the end users.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="https://w3id.org/seas/ElectricVehicleChargingStation">seas:ElectricVehicleChargingStation</a>
+</li>
+<li>
+<span>
+<a href="#Equipment">Equipment</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasAuthenticationMode">has authentication mode</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasAvailabilityStatusAsStation">has availability status as station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasLocationAsStation">has location as station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasPaymentMethod">has payment method</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#isPartOfPool">is part of pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#isPartOfStation">is part of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectricVehicleSupplyEquipment">
+<h3>Electric Vehicle Supply Equipment (EVSE)
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/ElectricVehicleSupplyEquipment</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source eMIP) A Charging Point, synonym of EVSE (Electric Vehicle Supply Equipment), is the energy supply element. An electrical vehicle can connect to a point on one of its connector. A Charging Point may have several Charging Connectors but only one vehicle could be charged at a time on a Charging Point.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="https://w3id.org/seas/ElectricVehicleServiceEquipment">seas:ElectricVehicleServiceEquipment</a>
+</li>
+<li>
+<span>
+<a href="#Equipment">Equipment</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasAvailabilityStatusAsEVSE">has availability status as EVSE</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasChargingSpeed">has Charging Speed</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasMaximumElectricPowerAsEVSE">has maximum electric power as EVSE</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasOccupancyStatus">has occupancy status</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#isPartOfStation">is part of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#bookable">bookable</a>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#isPartOfPool">is part of pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="ElectricVehicleSupplyEquipmentConnector">
+<h3>Electric Vehicle Supply Equipment (EVSE) Connector
+            <sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/ElectricVehicleSupplyEquipmentConnector</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>(source eMIP) A Connector related to an Electric Vehicle Supply Equipment (EVSE) that connects to the electric vehicle for the purpose of charging. It is an interface to deliver electricity.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
+</th>
+<td>
+<ul>
+<li>
+<a href="https://w3id.org/seas/ElectricalConnectionPoint">seas:ElectricalConnectionPoint</a>
+</li>
+<li>
+<span>
+<a href="#Equipment">Equipment</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#hasAvailabilityStatusAsConnector">has availability status as connector</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasConnectorFormat">has connector format</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasConnectorType">has connector type</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#hasMaximumElectricPowerAsConnector">has maximum electric power as connector</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#isPartOfPool">is part of pool</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="https://w3id.org/profile/ontdoc/inRangeOf" title="Inverse of rdfs:range. Defined in Ontology Documentation Profile">In Range Of</a>
+</th>
+<td>
+<span>
+<a href="#consistsOfStation">consists of station</a>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="objectproperties">
+<h2>Object Properties</h2>
+<div class="property entity" id="consistsOfStation">
+<h3>consists of stationconsists of EVSEconsists of connector
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/consistsOfStation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td>
+<ul>
+<li><p>links an Electric Vehicle Charging Station Pool to one of its station constituants.</p></li>
+<li><p>links an Electric Vehicle Charging Station to one of its EVSE constituants.</p></li>
+<li><p>links an Electric Vehicle Supply Equipment to one of its connector constituants.</p></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/consistsOf">infra:consistsOf</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAddress">
+<h3>has address
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAddress</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station Pool to its address.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://schema.org/PostalAddress">sch:PostalAddress</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAuthenticationMode">
+<h3>has authentication mode
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAuthenticationMode</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station to its authentication mode.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/AuthenticationMode">prop:AuthenticationMode</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAvailabilityStatusAsPool">
+<h3>has availability status as pool
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAvailabilityStatusAsPool</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station Pool to its availability status.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/AvailabilityStatus">prop:AvailabilityStatus</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAvailabilityStatusAsStation">
+<h3>has availability status as station
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAvailabilityStatusAsStation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station to its availability status.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/AvailabilityStatus">prop:AvailabilityStatus</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAvailabilityStatusAsEVSE">
+<h3>has availability status as EVSE
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAvailabilityStatusAsEVSE</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment to its availability status.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/AvailabilityStatus">prop:AvailabilityStatus</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasAvailabilityStatusAsConnector">
+<h3>has availability status as connector
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasAvailabilityStatusAsConnector</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment Connector to its availability status.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/AvailabilityStatus">prop:AvailabilityStatus</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasChargingSpeed">
+<h3>has Charging Speed
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasChargingSpeed</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment to its charging speed.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/ChargingSpeed">prop:ChargingSpeed</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasConnectorFormat">
+<h3>has connector format
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasConnectorFormat</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment Connector to its connector format.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/ElectricVehicleSupplyEquipmentConnectorFormat">prop:ElectricVehicleSupplyEquipmentConnectorFormat</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasConnectorType">
+<h3>has connector type
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasConnectorType</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment Connector to its connector type.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/ElectricVehicleSupplyEquipmentConnectorType">prop:ElectricVehicleSupplyEquipmentConnectorType</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasLocationAsPool">
+<h3>has location as pool
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasLocationAsPool</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station Pool to its location.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">geo:Point</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasLocationAsStation">
+<h3>has location as station
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasLocationAsStation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station to its location.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2003/01/geo/wgs84_pos#Point">geo:Point</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasMarketParticipant">
+<h3>has market participant
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasMarketParticipant</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station Pool to a market participant.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole/MarketParticipant">role:MarketParticipant</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasMaximumElectricPowerAsEVSE">
+<h3>has maximum electric power as EVSE
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasMaximumElectricPowerAsEVSE</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment to its maximum electric power.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/MaximumElectricPower">prop:MaximumElectricPower</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasMaximumElectricPowerAsConnector">
+<h3>has maximum electric power as connector
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasMaximumElectricPowerAsConnector</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment Connector to its maximum electric power.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/MaximumElectricPower">prop:MaximumElectricPower</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasOccupancyStatus">
+<h3>has occupancy status
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasOccupancyStatus</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment to its occupancy status.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/OccupancyStatus">prop:OccupancyStatus</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasPaymentMethod">
+<h3>has payment method
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasPaymentMethod</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station to its payment method.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Property/PaymentMethod">prop:PaymentMethod</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="hasQualifiedAssociation">
+<h3>has qualified association
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/hasQualifiedAssociation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Charging Station Pool to a qualified association.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/hasSystemProperty">infra:hasSystemProperty</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/EnergyRole/Association">role:Association</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isPartOfPool">
+<h3>is part of poolis part of EVSE
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/isPartOfPool</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td>
+<ul>
+<li><p>links an Electric Vehicle Charging Station to its Electric Vehicle Charging Station Pool.</p></li>
+<li><p>links an Electric Vehicle Supply Equipment Connector to its Electric Vehicle Supply Equipment.</p></li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/isPartOf">infra:isPartOf</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<ul>
+<li>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+<li>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</li>
+</ul>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="isPartOfStation">
+<h3>is part of station
+            <sup class="sup-op" title="OWL Object Property">op</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/isPartOfStation</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>links an Electric Vehicle Supply Equipment to its Electric Vehicle Charging Station.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Infrastructure/isPartOf">infra:isPartOf</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="datatypeproperties">
+<h2>Datatype Properties</h2>
+<div class="property entity" id="name1">
+<h3>name
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://xmlns.com/foaf/0.1/name</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="bookable">
+<h3>bookable
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/bookable</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>indicates if an Electric Vehicle Supply Equipment can be reserved in advance.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="name">
+<h3>name
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/name</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>designates an Electric Vehicle Charging Station Pool.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="visualIdentifier">
+<h3>visual identifier
+            <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>https://w3id.org/omega-x/ontology/Electromobility/visualIdentifier</code>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#isDefinedBy" title="The definition of the subject resource. Defined in The RDF Schema vocabulary (RDFS)">Is Defined By</a>
+</th>
+<td>
+<a href="https://w3id.org/omega-x/ontology/Electromobility/">em:</a>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+</th>
+<td><p>distinguishes visually an Electromobility Equipment.</p></td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
+</th>
+<td>
+<span>
+<a href="#Equipment">Equipment</a>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</span>
+</td>
+</tr>
+<tr>
+<th>
+<a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
+</th>
+<td>
+<a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="section" id="annotationproperties">
+<h2>Annotation Properties</h2>
+<div class="property entity" id="contributor">
+<h3>contributor
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/contributor</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="creator">
+<h3>creator
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/creator</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="description">
+<h3>description
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/description</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="issued">
+<h3>issued
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/issued</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="license">
+<h3>license
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/license</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="modified">
+<h3>modified
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/modified</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="title">
+<h3>title
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/dc/terms/title</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespacePrefix">
+<h3>preferred namespace prefix
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespacePrefix</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="preferredNamespaceUri">
+<h3>preferred namespace uri
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://purl.org/vocab/vann/preferredNamespaceUri</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="property entity" id="term_status">
+<h3>term_status
+            <sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</h3>
+<table>
+<tr>
+<th>IRI</th>
+<td>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#term_status</code>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div id="namespaces">
+<h2>Namespaces</h2>
+<dl>
+<dt id="dcterms">dcterms</dt>
+<dd>
+<code>http://purl.org/dc/terms/</code>
+</dd>
+<dt id="em">em</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/Electromobility/</code>
+</dd>
+<dt id="foaf">foaf</dt>
+<dd>
+<code>http://xmlns.com/foaf/0.1/</code>
+</dd>
+<dt id="geo">geo</dt>
+<dd>
+<code>http://www.w3.org/2003/01/geo/wgs84_pos#</code>
+</dd>
+<dt id="infra">infra</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/Infrastructure/</code>
+</dd>
+<dt id="owl">owl</dt>
+<dd>
+<code>http://www.w3.org/2002/07/owl#</code>
+</dd>
+<dt id="prop">prop</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/Property/</code>
+</dd>
+<dt id="rdf">rdf</dt>
+<dd>
+<code>http://www.w3.org/1999/02/22-rdf-syntax-ns#</code>
+</dd>
+<dt id="rdfs">rdfs</dt>
+<dd>
+<code>http://www.w3.org/2000/01/rdf-schema#</code>
+</dd>
+<dt id="role">role</dt>
+<dd>
+<code>https://w3id.org/omega-x/ontology/EnergyRole/</code>
+</dd>
+<dt id="sch">sch</dt>
+<dd>
+<code>https://schema.org/</code>
+</dd>
+<dt id="seas">seas</dt>
+<dd>
+<code>https://w3id.org/seas/</code>
+</dd>
+<dt id="vann">vann</dt>
+<dd>
+<code>http://purl.org/vocab/vann/</code>
+</dd>
+<dt id="voaf">voaf</dt>
+<dd>
+<code>http://purl.org/vocommons/voaf#</code>
+</dd>
+<dt id="vs">vs</dt>
+<dd>
+<code>http://www.w3.org/2003/06/sw-vocab-status/ns#</code>
+</dd>
+<dt id="xsd">xsd</dt>
+<dd>
+<code>http://www.w3.org/2001/XMLSchema#</code>
+</dd>
+</dl>
+</div>
+<div id="legend">
+<h2>Legend</h2>
+<table class="entity">
+<tr>
+<td>
+<sup class="sup-c" title="OWL/RDFS Class">c</sup>
+</td>
+<td>Classes</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-op" title="OWL Object Property">op</sup>
+</td>
+<td>Object Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-dp" title="OWL Datatype Property">dp</sup>
+</td>
+<td>Datatype Properties</td>
+</tr>
+<tr>
+<td>
+<sup class="sup-ap" title="OWL Annotation Property">ap</sup>
+</td>
+<td>Annotation Properties</td>
+</tr>
+</table>
+</div>
+</div>
+
+<div id="toc">
+<h3>Table of Contents</h3>
+<ul class="first">
+<li>
+<h4>
+<a href="#metadata">Metadata</a>
+</h4>
+</li>
+<li>
+<h4>
+<a href="#classes">Classes</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#Person">Person</a>
+</li>
+<li>
+<a href="#Vocabulary">Vocabulary</a>
+</li>
+<li>
+<a href="#ElectricVehicleChargingStationPool">Electric Vehicle Charging Station Pool</a>
+</li>
+<li>
+<a href="#Equipment">Equipment</a>
+</li>
+<li>
+<a href="#ElectricVehicleChargingStation">Electric Vehicle Charging Station</a>
+</li>
+<li>
+<a href="#ElectricVehicleSupplyEquipment">Electric Vehicle Supply Equipment (EVSE)</a>
+</li>
+<li>
+<a href="#ElectricVehicleSupplyEquipmentConnector">Electric Vehicle Supply Equipment (EVSE) Connector</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#objectproperties">Object Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#consistsOfStation">consists of stationconsists of EVSEconsists of connector</a>
+</li>
+<li>
+<a href="#hasAddress">has address</a>
+</li>
+<li>
+<a href="#hasAuthenticationMode">has authentication mode</a>
+</li>
+<li>
+<a href="#hasAvailabilityStatusAsPool">has availability status as pool</a>
+</li>
+<li>
+<a href="#hasAvailabilityStatusAsStation">has availability status as station</a>
+</li>
+<li>
+<a href="#hasAvailabilityStatusAsEVSE">has availability status as EVSE</a>
+</li>
+<li>
+<a href="#hasAvailabilityStatusAsConnector">has availability status as connector</a>
+</li>
+<li>
+<a href="#hasChargingSpeed">has Charging Speed</a>
+</li>
+<li>
+<a href="#hasConnectorFormat">has connector format</a>
+</li>
+<li>
+<a href="#hasConnectorType">has connector type</a>
+</li>
+<li>
+<a href="#hasLocationAsPool">has location as pool</a>
+</li>
+<li>
+<a href="#hasLocationAsStation">has location as station</a>
+</li>
+<li>
+<a href="#hasMarketParticipant">has market participant</a>
+</li>
+<li>
+<a href="#hasMaximumElectricPowerAsEVSE">has maximum electric power as EVSE</a>
+</li>
+<li>
+<a href="#hasMaximumElectricPowerAsConnector">has maximum electric power as connector</a>
+</li>
+<li>
+<a href="#hasOccupancyStatus">has occupancy status</a>
+</li>
+<li>
+<a href="#hasPaymentMethod">has payment method</a>
+</li>
+<li>
+<a href="#hasQualifiedAssociation">has qualified association</a>
+</li>
+<li>
+<a href="#isPartOfPool">is part of poolis part of EVSE</a>
+</li>
+<li>
+<a href="#isPartOfStation">is part of station</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#datatypeproperties">Datatype Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#name1">name</a>
+</li>
+<li>
+<a href="#bookable">bookable</a>
+</li>
+<li>
+<a href="#name">name</a>
+</li>
+<li>
+<a href="#visualIdentifier">visual identifier</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#annotationproperties">Annotation Properties</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#contributor">contributor</a>
+</li>
+<li>
+<a href="#creator">creator</a>
+</li>
+<li>
+<a href="#description">description</a>
+</li>
+<li>
+<a href="#issued">issued</a>
+</li>
+<li>
+<a href="#license">license</a>
+</li>
+<li>
+<a href="#modified">modified</a>
+</li>
+<li>
+<a href="#title">title</a>
+</li>
+<li>
+<a href="#preferredNamespacePrefix">preferred namespace prefix</a>
+</li>
+<li>
+<a href="#preferredNamespaceUri">preferred namespace uri</a>
+</li>
+<li>
+<a href="#term_status">term_status</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#namespaces">Namespaces</a>
+</h4>
+<ul class="second">
+<li>
+<a href="#dcterms">dcterms</a>
+</li>
+<li>
+<a href="#em">em</a>
+</li>
+<li>
+<a href="#foaf">foaf</a>
+</li>
+<li>
+<a href="#geo">geo</a>
+</li>
+<li>
+<a href="#infra">infra</a>
+</li>
+<li>
+<a href="#owl">owl</a>
+</li>
+<li>
+<a href="#prop">prop</a>
+</li>
+<li>
+<a href="#rdf">rdf</a>
+</li>
+<li>
+<a href="#rdfs">rdfs</a>
+</li>
+<li>
+<a href="#role">role</a>
+</li>
+<li>
+<a href="#sch">sch</a>
+</li>
+<li>
+<a href="#seas">seas</a>
+</li>
+<li>
+<a href="#vann">vann</a>
+</li>
+<li>
+<a href="#voaf">voaf</a>
+</li>
+<li>
+<a href="#vs">vs</a>
+</li>
+<li>
+<a href="#xsd">xsd</a>
+</li>
+</ul>
+</li>
+<li>
+<h4>
+<a href="#legend">Legend</a>
+</h4>
+<ul class="second"></ul>
+</li>
+</ul>
+</div>
+</body>
+</html>
 </body></html>
