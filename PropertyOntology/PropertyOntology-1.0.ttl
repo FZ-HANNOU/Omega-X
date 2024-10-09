@@ -325,7 +325,7 @@ prop:HeatSinkTemperature a owl:Class;
                          rdfs:subClassOf prop:Temperature ; 
                          rdfs:comment ""@en ; 
 				         prop:isMeasuredIn unit:DEG_C;
-                    rdfs:label "Air Temperature"@en.
+                    rdfs:label "Heat Sink Temperature"@en.
 
 # Enclosure Temperature
 prop:EnclosureTemperature a owl:Class;
