@@ -629,7 +629,7 @@ prop:ReactivePowerSetPoint a owl:Class ;
 			   rdfs:isDefinedBy prop:.
 # DC Power
 prop:DCPower a owl:Class ;
-	     rdfs:comment "Power in DC mode."@en ;
+	     rdfs:comment "Power in Direct Current mode."@en ;
 	     rdfs:label "DC Power"@en ;
 	     rdfs:subClassOf seas:ElectricPowerProperty, prop:Power;
 	     prop:isMeasuredIn unit:W;
