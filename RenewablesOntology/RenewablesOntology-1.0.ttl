@@ -257,3 +257,4 @@ solar:SolarModuleConfiguration rdf:type owl:Class ;
                             rdfs:comment "The solar module configuration contains the solar mdule properties that are found in the datasheet."@en ;
                             rdfs:label "Solar Module Configuration"@en ;
                             infra:includesProperty prop:SolarModuleProperty.
+seas:ElectricPowerSystem rdfs:subClassOf infra:Equipment.
