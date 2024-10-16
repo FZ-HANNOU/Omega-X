@@ -232,3 +232,28 @@ solar:WeatherStation rdf:type owl:Class ;
                    rdfs:subClassOf solar:Equipment ;
                    rdfs:comment "A weather station is instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.(source : wikipedia)."@en ;
                    rdfs:label "Weather Station"@en .
+
+###  Inverter Configuration
+solar:InverterConfiguration rdf:type owl:Class ;
+                            rdfs:comment "The inverter configuration contains the inverter properties that are found in the datasheet."@en ;
+                            rdfs:label "Inverter Configuration"@en ;
+                            infra:includesProperty prop:InverterProperty.
+
+###  CombinerBox Configuration
+solar:CombinerBoxConfiguration rdf:type owl:Class ;
+                            rdfs:comment "The combiner box configuration contains the combiner box properties that are found in the datasheet."@en ;
+                            rdfs:label "CombinerBox Configuration"@en ;
+                            infra:includesProperty prop:CombinerBoxProperty.
+
+
+###  Tracker Configuration
+solar:TrackerConfiguration rdf:type owl:Class ;
+                            rdfs:comment "The tracker configuration contains the tracker properties that are found in the datasheet."@en ;
+                            rdfs:label "Tracker Configuration"@en ;
+                            infra:includesProperty prop:TrackerProperty.
+
+###  Solar Module Configuration
+solar:SolarModuleConfiguration rdf:type owl:Class ;
+                            rdfs:comment "The solar module configuration contains the solar mdule properties that are found in the datasheet."@en ;
+                            rdfs:label "Solar Module Configuration"@en ;
+                            infra:includesProperty prop:SolarModuleProperty.
