@@ -1,4 +1,4 @@
-@prefix : <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
+@prefix : <https://w3id.org/omega-x/ontology/Renewables/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -16,11 +16,11 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
-@prefix solar: <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
+@prefix solar: <https://w3id.org/omega-x/ontology/Renewables/> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
+@base <https://w3id.org/omega-x/ontology/Renewables/> .
 
-<https://w3id.org/omega-x/ontogy/RenewablesSolar> rdf:type owl:Ontology ;
+<https://w3id.org/omega-x/ontogy/Renewables> rdf:type owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/RenewablesSolar-1.0/> ;
                                              dcterms:description """- Purpose: information about sharing data concerning solar plant in order to execute a set of services
 -Scope: This module provides solar dedicated classes for the simplified topology as well as mechanism to attach dynamic measures to equipments."""@en ; 
@@ -34,7 +34,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Renewables Solar Ontology"@en ;
                                              vann:preferredNamespacePrefix "solar" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/RenewablesSolar/> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Renewables/> ;
                                              rdfs:label "Renewables Solar ontology"@en ;
                                              owl:versionInfo "1.0".
 
