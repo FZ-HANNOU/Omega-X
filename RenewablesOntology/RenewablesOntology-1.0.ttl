@@ -122,17 +122,35 @@ seas:subsytemOf rdf:type owl:ObjectProperty .
 #################################################################
 #    Data properties
 #################################################################
-
+#----------------Combiner Box Configuratuion
 ###  nbStrings
-solar:nbStrings rdf:type owl:DatatypeProperty ;
-                 rdfs:domain solar:PowerCabinet ;
+solar:NumberOfStrings rdf:type owl:DatatypeProperty ;
+                 rdfs:domain solar:CombinerBoxConfiguration ;
                  rdfs:range xsd:integer ;
-                 rdfs:label "number of strings"^^xsd:string .
+                 rdfs:label "Number of Strings"^^xsd:string .
 ###  level
 solar:level rdf:type owl:DatatypeProperty ;
-                 rdfs:domain solar:CombinerBoxCnfiguration;
+                 rdfs:domain solar:CombinerBoxConfiguration;
                  rdfs:range xsd:integer ;
                  rdfs:label "level"^^xsd:string .
+###  nbModules per string
+solar:NumberOfModulesPerString rdf:type owl:DatatypeProperty ;
+                 rdfs:domain solar:CombinerBoxConfiguration;
+                 rdfs:range xsd:integer ;
+                 rdfs:label "Number of Modules per String"^^xsd:string .
+
+#----------------Solar Tracker Configuratuion------------------
+###  Solar Tracker control Algorithm
+solar:TrackerControlAlorithm rdf:type owl:DatatypeProperty ;
+                 rdfs:domain solar:TrackerConfiguration;
+                 rdfs:range xsd:string ;
+                 rdfs:label "Tracker Control Algorithm"^^xsd:string .
+
+###  Solar Tracker Rotation Axes Number
+solar:TrackerRotationAxexNumber rdf:type owl:DatatypeProperty ;
+                 rdfs:domain solar:TrackerConfiguration;
+                 rdfs:range xsd:integer ;
+                 rdfs:label "Tracker Rotation Axes Number"^^xsd:string .
 
 #################################################################
 #    Classes
@@ -217,7 +235,7 @@ solar:SolarTracker rdf:type owl:Class ;
                     rdfs:label "Solar Tracker"@en .
 
 
-###  hSubstation
+###  Substation
 solar:Substation rdf:type owl:Class ;
                   rdfs:subClassOf seas:ElectricPowerSystem ;
                   rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. "@en ;
