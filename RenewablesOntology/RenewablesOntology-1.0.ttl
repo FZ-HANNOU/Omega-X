@@ -130,7 +130,7 @@ solar:nbStrings rdf:type owl:DatatypeProperty ;
                  rdfs:label "number of strings"^^xsd:string .
 ###  level
 solar:level rdf:type owl:DatatypeProperty ;
-                 rdfs:domain solar:CombinerBox ;
+                 rdfs:domain solar:CombinerBoxCnfiguration;
                  rdfs:range xsd:integer ;
                  rdfs:label "level"^^xsd:string .
 
