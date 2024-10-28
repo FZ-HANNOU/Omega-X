@@ -880,25 +880,25 @@ prop:inverterProperty a owl:Class ;
 	  	                rdfs:label "Inverter Property"@en ;
 		                rdfs:isDefinedBy prop:.
 
-prop:inveterMaxInputDCVoltage a owl:Class;
+prop:inverterMaxInputDCVoltage a owl:Class;
                               rdfs:comment "The maximum input dc voltage of an inverter."@en ;
 							  rdfs:label "Inverter Max Input DC Voltage"@en ;
 							  rdfs:subClassOf prop:DCVoltage, prop:inverterProperty;
 							  prop:measuredIn unit:V;
 							  rdfs:isDefinedBy prop:. 
-prop:inveterMaxInputDCCurrent	rdf:type owl:Class ;
+prop:inverterMaxInputDCCurrent	rdf:type owl:Class ;
 							rdfs:comment "The maximum dc input current of an inverter."@en ;
 							rdfs:label "Inverter Max Input DC Current"@en ;
 							rdfs:subClassOf prop:DCCurrent,prop:inverterProperty;
 							prop:measuredIn unit:A;
 							rdfs:isDefinedBy prop:.	 
-prop:inveterMaxInputDCPower	rdf:type owl:Class ;
+prop:inverterMaxInputDCPower	rdf:type owl:Class ;
 							rdfs:comment "The maximum input DC  power of an inverter."@en ;
 							rdfs:label "Inverter Max Input DC Power"@en ;
 							rdfs:subClassOf prop:DCPower,prop:inverterProperty;
 							prop:measuredIn unit:W;
 							rdfs:isDefinedBy prop:.		
-prop:inveterDCMaxPowerPointVoltageRange rdf:type owl:Class ;
+prop:inverterDCMaxPowerPointVoltageRange rdf:type owl:Class ;
 							rdfs:comment "The maximum voltage range of DC power point of an inverter."@en ;
 							rdfs:label "Inveter DC Max Power Point Voltage Range"@en ;
 							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
