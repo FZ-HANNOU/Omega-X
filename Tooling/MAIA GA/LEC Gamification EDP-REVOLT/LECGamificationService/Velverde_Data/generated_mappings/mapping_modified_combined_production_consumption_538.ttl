@@ -14,7 +14,7 @@
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> .
 @prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.
-@prefix velverde:  <https://w3id.org/omega-x/velverde/> .
+@prefix velverde:  <https://w3id.org/omega-x/KG/velverde/> .
 @base <https://w3id.org/omega-x/velverde/> .
 
 # Map The Excel File to time series for each home management system
