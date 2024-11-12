@@ -18,6 +18,5 @@ SELECT ?Equipment ?SystemConfiguration
 WHERE 
 {
     ?Equipment rdf:type  infra:Equipment.
-    ?Equipment infra:isSystemKindOf ?SystemOfInterest .
-    ?SystemOfInterest infra:hasSystemConfiguration ?SystemConfiguration .
+    ?Equipment infra:hasSystemConfiguration ?SystemConfiguration .
 }
