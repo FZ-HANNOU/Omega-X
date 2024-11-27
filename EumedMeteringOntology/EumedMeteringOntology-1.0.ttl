@@ -3669,20 +3669,20 @@ eme:nominal rdf:type owl:NamedIndividual ,
 eme:none rdf:type owl:NamedIndividual ,
                   [ rdf:type owl:Class ;
                     owl:unionOf ( eme:AccumulationKind
-                  eme:AggregateKind
-                  eme:CommodityKind
-                  eme:FlowDirectionKind
-                  eme:MacroPeriodKind
-                  eme:MeasurementKind
-                  eme:MeasuringPeriodKind
-                  eme:UnitMultiplier
-                  eme:UnitSymbol
+                                  eme:AggregateKind
+                                  eme:CommodityKind
+                                  eme:FlowDirectionKind
+                                  eme:MacroPeriodKind
+                                  eme:MeasurementKind
+                                  eme:MeasuringPeriodKind
+                                  eme:UnitMultiplier
+                                  eme:UnitSymbol
                                 )
                   ] ;
          rdfs:comment """(AccumulationKind) Not applicable, or implied by the unit of measure. 
-(UnitSymbol) Dimension less quantity e.g. count per unit etc.
-(UnitMultiplier) No multiplier or equivalently multiply by 1. 
-(AggregateKind, CommodityKind, FlowDirectionKind, MacroPeriodKind, MeasurementKind, MeasuringPeriodKind) Not Applicable.""" @en ;
+                        (UnitSymbol) Dimensionless quantity e.g. count per unit etc.
+                        (UnitMultiplier) No multiplier or equivalently multiply by 1. 
+                        (AggregateKind, CommodityKind, FlowDirectionKind, MacroPeriodKind, MeasurementKind, MeasuringPeriodKind) Not Applicable."""@en ;
          rdfs:label "none"@en .
 
 

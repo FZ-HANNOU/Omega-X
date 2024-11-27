@@ -1,4 +1,4 @@
-PREFIX ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/>
+PREFIX infra: <https://w3id.org/omega-x/ontology/Infrastructure/>
 prefix cc: <http://creativecommons.org/ns#> 
 prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> 
 prefix owl: <http://www.w3.org/2002/07/owl#> 
@@ -12,13 +12,11 @@ prefix voaf: <http://purl.org/vocommons/voaf#>
 prefix dcterms: <http://purl.org/dc/terms/> 
 prefix time: <http://www.w3.org/2006/time#> 
 prefix schema: <http://schema.org/>
-prefix omegax: <https://w3id.org/omega-x/ontology> 
-prefix maia: <https://w3id.org/omega-x/Maia/Meteo/> 
+prefix omegax: <https://w3id.org/omega-x/ontology/> 
 
-SELECT ?s ?o ?c
+SELECT ?Equipment ?SystemConfiguration
 WHERE 
 {
-    ?s rdf:type ets:TimeSeries .
-    ?o ets:isElementOf ?s .
-    ?o rdf:type ?c .
+    ?Equipment rdf:type  infra:Equipment.
+    ?Equipment infra:hasSystemConfiguration ?SystemConfiguration .
 }
