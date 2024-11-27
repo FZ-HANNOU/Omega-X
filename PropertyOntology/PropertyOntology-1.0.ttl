@@ -325,7 +325,7 @@ prop:HeatSinkTemperature a owl:Class;
                          rdfs:subClassOf prop:Temperature ; 
                          rdfs:comment ""@en ; 
 				         prop:isMeasuredIn unit:DEG_C;
-                    rdfs:label "Air Temperature"@en.
+                    rdfs:label "Heat Sink Temperature"@en.
 
 # Enclosure Temperature
 prop:EnclosureTemperature a owl:Class;
@@ -629,7 +629,7 @@ prop:ReactivePowerSetPoint a owl:Class ;
 			   rdfs:isDefinedBy prop:.
 # DC Power
 prop:DCPower a owl:Class ;
-	     rdfs:comment "Power in DC mode."@en ;
+	     rdfs:comment "Power in Direct Current mode."@en ;
 	     rdfs:label "DC Power"@en ;
 	     rdfs:subClassOf seas:ElectricPowerProperty, prop:Power;
 	     prop:isMeasuredIn unit:W;
@@ -880,29 +880,29 @@ prop:inverterProperty a owl:Class ;
 	  	                rdfs:label "Inverter Property"@en ;
 		                rdfs:isDefinedBy prop:.
 
-prop:inveterMaxInputDCVoltage a owl:Class;
+prop:inverterMaxInputDCVoltage a owl:Class;
                               rdfs:comment "The maximum input dc voltage of an inverter."@en ;
 							  rdfs:label "Inverter Max Input DC Voltage"@en ;
 							  rdfs:subClassOf prop:DCVoltage, prop:inverterProperty;
-							  prop:measuredIn unit:V;
+							  prop:isMeasuredIn unit:V;
 							  rdfs:isDefinedBy prop:. 
-prop:inveterMaxInputDCCurrent	rdf:type owl:Class ;
+prop:inverterMaxInputDCCurrent	rdf:type owl:Class ;
 							rdfs:comment "The maximum dc input current of an inverter."@en ;
 							rdfs:label "Inverter Max Input DC Current"@en ;
 							rdfs:subClassOf prop:DCCurrent,prop:inverterProperty;
-							prop:measuredIn unit:A;
+							prop:isMeasuredIn unit:A;
 							rdfs:isDefinedBy prop:.	 
-prop:inveterMaxInputDCPower	rdf:type owl:Class ;
+prop:inverterMaxInputDCPower	rdf:type owl:Class ;
 							rdfs:comment "The maximum input DC  power of an inverter."@en ;
 							rdfs:label "Inverter Max Input DC Power"@en ;
 							rdfs:subClassOf prop:DCPower,prop:inverterProperty;
-							prop:measuredIn unit:W;
+							prop:isMeasuredIn unit:W;
 							rdfs:isDefinedBy prop:.		
-prop:inveterDCMaxPowerPointVoltageRange rdf:type owl:Class ;
+prop:inverterDCMaxPowerPointVoltageRange rdf:type owl:Class ;
 							rdfs:comment "The maximum voltage range of DC power point of an inverter."@en ;
 							rdfs:label "Inveter DC Max Power Point Voltage Range"@en ;
 							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
-							prop:measuredIn unit:V;
+							prop:isMeasuredIn unit:V;
 							rdfs:isDefinedBy prop:.	
 #---- REN Solar Module properties------------------------------------------------------------
 prop:solarModuleProperty a owl:Class ;
@@ -914,32 +914,32 @@ prop:solarModuleVoC rdf:type owl:Class ;
 							rdfs:comment "Solar module open circuit voltage given at STC operating standard conditions."@en ;
 							rdfs:label "Solar Module VOC"@en ;
 							rdfs:subClassOf prop:Voltage,  prop:solarModuleProperty;
-							prop:measuredIn unit:V;
+							prop:isMeasuredIn unit:V;
 							rdfs:isDefinedBy prop:.
 prop:solarModuleIsc rdf:type owl:Class ;
 							rdfs:comment "Solar module short circuit current given at STC operating standard conditions."@en ;
 							rdfs:label "Solar Module ISC"@en ;
 							rdfs:subClassOf prop:Current, prop:solarModule;
-							prop:measuredIn unit:A;
+							prop:isMeasuredIn unit:A;
 							rdfs:isDefinedBy prop:.
 prop:solarModuleVmp rdf:type owl:Class ;
 							rdfs:comment "Solar module maximum power point voltage at operating standard conditions."@en ;
 							rdfs:label "Solar Module VMP"@en ;
 							rdfs:subClassOf prop:Voltage, prop:solarModuleProperty;
-							prop:measuredIn unit:V;
+							prop:isMeasuredIn unit:V;
 							rdfs:isDefinedBy prop:.
 prop:solarModuleImp rdf:type owl:Class ;
 							rdfs:comment "Solar module maximum power point current at operating standard conditions."@en ;
 							rdfs:label "Solar Module ISC"@en ;
 							rdfs:subClassOf prop:Current, prop:solarModuleProperty;
-							prop:measuredIn unit:A;
+							prop:isMeasuredIn unit:A;
 							rdfs:isDefinedBy prop:.
 
 prop:solarModuleTemperatureCoefficient rdf:type owl:Class ;
 							rdfs:comment "Solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
 							rdfs:label "Solar Module Temperature Coefficient"@en ;
 							rdfs:subClassOf prop:Temperature, prop:solarModuleProperty;
-							prop:measuredIn unit:DEG_C;
+							prop:isMeasuredIn unit:DEG_C;
 							rdfs:isDefinedBy prop:.
 # Dynamic Qualitative Properties
 #--------------------------------------------------------------  
