@@ -42,7 +42,7 @@ A site is a part of the physical world or a virtual world that is inherently bot
 * [**infra:SystemConfiguration**](https://w3id.org/omega-x/InfrastructureOntology/SystemConfiguration/)
 A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet.
 ## OWL Description
-![Diagram](./InfraModule-v1.0.png)
+![Diagram](./InfraModule-v1.1.png)
 # Recommendations
 - A `infra:SystemOfInterest` can be an `eds:EvaluationPoint` (see [_EvaluationPoint_](../Energy Data Set Ontology) once an energy data set is attached to it. 
 - The static attributes of an `infra:SystemOfInterest` can be defined in `infra:SystemConfiguration`. 
