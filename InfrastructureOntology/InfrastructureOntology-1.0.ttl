@@ -29,7 +29,7 @@
                                                   vann:preferredNamespacePrefix "infra" ;
                                                   vann:preferredNamespaceUri <https://w3id.org/omega-x/InfrastructureOntology/> ;
                                                   rdfs:label "Infrastructure Ontology"@en ;
-                                                  owl:imports  <https://w3id.org/omega-x/PropertyOntology/>,<https://w3id.org/omega-x/EnergyRoleOntology/>;
+                                                  owl:imports  <https://w3id.org/omega-x/EnergyDataSetOntology/>, <https://w3id.org/omega-x/PropertyOntology/>,<https://w3id.org/omega-x/EnergyRoleOntology/>;
                                                   owl:versionInfo "v1.1" .
 
 #----------------------------------------------------------------
@@ -131,7 +131,7 @@ infra:hasLocation rdf:type owl:ObjectProperty ;
                                               rdfs:isDefinedBy infra:.
 
 infra:hasSystemConfiguration rdf:type owl:ObjectProperty ;
-                                              rdfs:domain infra:SystemOfInterest ;
+                                              rdfs:domain infra:System ;
                                               rdfs:range infra:SystemConfiguration ;
                                               rdfs:comment "This property permits to link a system to its configuration."@en ;
                                               rdfs:label "Has System Configuration"@en ;
@@ -139,7 +139,7 @@ infra:hasSystemConfiguration rdf:type owl:ObjectProperty ;
 infra:isSystemConfigurationOf rdf:type owl:ObjectProperty ;
                                               owl:inverseOf infra:hasSystemConfiguration;
                                               rdfs:domain infra:SystemConfiguration ;
-                                              rdfs:range infra:SystemOfInterest ;
+                                              rdfs:range infra:System ;
                                               rdfs:comment "This property permits to link a system configuration to its corresponding system of interest."@en ;
                                               rdfs:label "Is System Configuration Of"@en ;
                                               rdfs:isDefinedBy infra:.
