@@ -78,6 +78,7 @@ Group Name| Module | Scope |State
 The figure below illustrates common modules (Top level and domain modules). The online diagram version is available here : 
 [Common Modules Diagram](https://app.diagrams.net/#G1q05sxDvyCEwQj_UCIHW11u9iUm4L0wDy#%7B%22pageId%22%3A%22oPHg0NIDeMugmmmMHvXY%22%7D)
 
+
 ![Common Modules](./CommonModules.png)
 
 ## Utils
