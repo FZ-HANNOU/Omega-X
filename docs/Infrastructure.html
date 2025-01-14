@@ -1,0 +1,96 @@
+<html><head></head><body><h1 style="color: #21618C; text-decoration: underline;">Infrastructure Ontology</h1>
+<h2 style="color: #21618C; text-decoration: underline;">Description</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Purpose</h3>
+<p>In energy domain, a simplified infrastructure topology of the system should be described in order to deliver intelligent services. The infrastructure topology facilitates the description of an infrastructure in a flexible way by allowing to describe the infrastructure’s components and its relations. </p>
+<h3 style="color: #21618C; text-decoration: underline;">Scope</h3>
+<p>Infrastructure ontology provides OWL classes and properties to allow infrastructure of an energy system to be described.</p>
+<h3 style="color: #21618C; text-decoration: underline;">Description</h3>
+<p>This Infrastructure Ontology helps to define the infrastructure system of OMEGA-X use cases. The main class is the system which can be a physical system, a virtual system, an equipment or a site. A system can have a system configuration encompassing different properties, in general defined from the data sheet or from an initial configuration of the system. New module can be created to define the infrastructure of a specific use case family. This new module should be aligned with the general infrastructure ontology.</p>
+<h2 style="color: #21618C; text-decoration: underline;">Competency Questions</h2>
+<h3 style="color: #21618C; text-decoration: underline;">Querying Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cq-1</td>
+<td>What is the identifier of specific system?</td>
+<td>the id of a specific system</td>
+</tr>
+<tr>
+<td>cq-2</td>
+<td>What is the system connected to a specific system?</td>
+<td>A weather station  is connected to meter</td>
+</tr>
+<tr>
+<td>cq-3</td>
+<td>What is the location of a specific site?</td>
+<td>the  geolocation of a solar plant</td>
+</tr>
+<tr>
+<td>cq-1</td>
+<td>What is the system configuratin of a specific equipment?</td>
+<td>the configuration  of a specific battery includig the nominal charge voltage</td>
+</tr>
+</tbody>
+</table>
+<h3 style="color: #21618C; text-decoration: underline;">Inference Questions</h3>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Question in natural language</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>iq-1</td>
+<td>What are the systems connected to another system?</td>
+<td>the list of systems connected via connected to target and connected to source relations</td>
+</tr>
+<tr>
+<td>iq-2</td>
+<td>What are the systems having a specific system configuration?</td>
+<td>the list of batteries having the same configuration</td>
+</tr>
+</tbody>
+</table>
+<h2 style="color: #21618C; text-decoration: underline;">Glossary</h2>
+<h3 style="color: #21618C; text-decoration: underline;">OMEGA-X Infrastructure</h3>
+<ul>
+<li><a href="https://w3id.org/omega-x/InfrastructureOntology/ValueSet/"><strong>infra:<em>System</em></strong></a>
+A system may be an equipment, a site, or any other physical or virtual system. A system that is neither an equipment nor a site may be, for instance, an electric grid or a data analytics service available on a Dataspace.</li>
+<li><a href="https://w3id.org/omega-x/InfrastructureOntology/Equipment/"><strong>infra:Equipment</strong></a>
+An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station.</li>
+<li><a href="https://w3id.org/omega-x/InfrastructureOntology/Site/"><strong>infra:Site</strong></a>
+A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool.</li>
+<li><a href="https://w3id.org/omega-x/InfrastructureOntology/SystemConfiguration/"><strong>infra:SystemConfiguration</strong></a>
+A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet.</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">OWL Description</h2><img alt="OWL Description" src="InfraModule-v1.0.png"/>
+<p><img alt="Diagram" src="./InfraModule-v1.0.png"/></p>
+<h1 style="color: #21618C; text-decoration: underline;">Recommendations</h1>
+<ul>
+<li>A <code>infra:System</code> can be an <code>eds:EvaluationPoint</code> (see <a href="../Energy Data Set Ontology"><em>EvaluationPoint</em></a> once an energy data set is attached to it. </li>
+<li>The static attributes of an <code>infra:System</code> can be defined in <code>infra:SystemConfiguration</code>. </li>
+<li>A <code>infra:System</code> can have a location. </li>
+<li>A <code>infra:System</code> can consist of an another  <code>infra:System</code> or many  <code>infra:System</code>.</li>
+<li>A An <code>infra:System</code> can be connected to another An <code>infra:System</code>. To precise the direction of the connection the object properties <code>infra:isConnectedTo</code> and An <code>infra:isConnectedFrom</code></li>
+<li>For each specific use case family, a detailed infrastructure is defined to create the taxonomy of sites, equipements and static attributes, in addition to the relations between different systems.</li>
+</ul>
+<h2 style="color: #21618C; text-decoration: underline;">Related Work</h2>
+<h3 style="color: #21618C; text-decoration: underline;">SEAS</h3>
+<ul>
+<li>
+<p><a href="https://w3id.org/seas/System"><strong><em>seas:System</em></strong></a>: The class of systems, i.e., systems virtually isolated from the environment, whose behaviour and interactions with the environment are modeled.</p>
+</li>
+<li>
+<p><a href="https://w3id.org/seas/connectedTo"><strong><em>seas:connectedTo</em></strong></a>: Links a system to a system it is connected to. Connected systems interact in some way. The exact meaning of interact is defined by sub properties of [<strong><em>seas:connectedTo</em></strong>]. </p>
+</li>
+</ul></body></html>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -170,6 +171,8 @@ prop:Irradiance a owl:Class ;
              rdfs:label "Irradiance"@en;
 			 prop:isMeasuredIn unit:W-PER-M2;
 			 prop:isDefinedBy prop:.
+=======
+>>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
 
 # DCVoltage
 prop:DCVoltage a owl:Class ;
@@ -785,5 +788,16 @@ prop:solarModuleAssemblyThermalModel a owl:Class ;
 		             rdfs:label "Solar Module Assembly Thermal Model "@en ;
 		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
                      rdfs:isDefinedBy prop:.
+<<<<<<< HEAD
 
 
+=======
+#    Units
+#--------------------------------------------------------------  
+#---Unit
+prop:CubicMeter-HR a owl:Class ;
+                   rdfs:comment ""@en ;
+		   rdfs:label "Cubic Meter per Hour"@en ;
+		   rdfs:subClassOf prop:Unit;
+                   rdfs:isDefinedBy prop:.
+>>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477

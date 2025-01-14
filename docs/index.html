@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Ontology Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+        .header {
+            text-align: center;
+            padding: 20px;
+            background-color: #21618C;
+            color: white;
+            width: 100%;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            width: 100%;
+            padding: 20px;
+        }
+        .content {
+            display: flex;
+            width: 80%;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .left, .right {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .left {
+            background-color: #f9f9f9;
+            height: 100%;
+            font-size: 1.2em; /* Increase text size */
+            line-height: 1.6; /* Increase line spacing */
+        }
+        .right img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        .bottom {
+            width: 80%;
+            margin: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #21618C;
+            color: white;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .footer img {
+            width: 100px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome to the Omega-X Common Semantic Data Model Website</h1>
+    </div>
+
+    <div class="container">
+        <div class="content">
+            <div class="left">
+                <h2>Description</h2>
+                <p>Welcome to the Common Semantic Data Model Documentation. The CSDM is a modular ontology designed by EDF Team as part of the Work Package 4 of the Omega-X European project, to support semantic interoperability within the Omega-X energy dataspace. The CSDM has been developed following two ontology engineering methodologies: Agile Interaction Based Methodology for Energy Data Spaces (<a href="https://omega-x.eu/wp-content/uploads/2024/02/D4.1-Data-ingestion-Common-Information-Model-and-Semantic-Interoperability-v1.0.pdf">AIME</a>) and <a href="https://acimov.gitlab.io">ACIMOV</a> for tooling. Here, you will find detailed information about each module, including documentation and source links. Use the table below to navigate to the specific module documentation and source files.</p>
+            </div>
+            <div class="right">
+                <img src="overview.png" alt="CSDM Overview">
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <h2>Modules</h2>
+        <table>
+            <tr>
+                <th>Module</th>
+                <th>Documentation Link</th>
+                <th>Source HTML</th>
+                <th>Source Turtle</th>
+            </tr>
+            <tr>
+                <td>Events and Time Series (ETS)</td>
+                <td><a href="EventsTimeSeries.html">ETS webpage</a></td>
+                <td><a href="EventsTimeSeriesOntology.html">ETS Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/EventsTimeSeries">ETS TTL</a></td>
+            </tr>
+            <tr>
+                <td>Energy Data Set (EDS)</td>
+                <td><a href="EnergyDataSet.html">EDS webpage</a></td>
+                <td><a href="EnergyDataSetOntology.html">EDS Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/EnergyDataSet">EDS TTL</a></td>
+            </tr>
+            <tr>
+                <td>Eumed Metering (EME)</td>
+                <td><a href="EumedMetering.html">EME webpage</a></td>
+                <td><a href="EumedMeteringOntology.html">EME Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/EumedMetering">EME TTL</a></td>
+            </tr>
+            <tr>
+                <td>Property (PROP)</td>
+                <td><a href="Property.html">PROP webpage</a></td>
+                <td><a href="PropertyOntology.html">PROP Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Property">PROP TTL</a></td>
+            </tr>
+            <tr>
+                <td>Infrastructure (INFRA)</td>
+                <td><a href="Infrastructure.html">INFRA webpage</a></td>
+                <td><a href="InfrastructureOntology.html">INFRA Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Infrastructure">INFRA TTL</a></td>
+            </tr>
+            <tr>
+                <td>Energy role (ROLE)</td>
+                <td><a href="EnergyRole.html">ROLE webpage</a></td>
+                <td><a href="EnergyRoleOntology.html">ROLE Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/EnergyRole">ROLE TTL</a></td>
+            </tr>
+            <tr>
+                <td>Quality (QUAL)</td>
+                <td><a href="Quality.html">QUAL webpage</a></td>
+                <td><a href="QualityOntology.html">QUAL Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Quality">QUAL TTL</a></td>
+            </tr>
+            <tr>
+                <td>Scheduling (SCHE)</td>
+                <td><a href="Scheduling.html">SCHE webpage</a></td>
+                <td><a href="SchedulingOntology.html">SCHE Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Scheduling">SCHE TTL</a></td>
+            <tr>
+                <td>Renewables (REN)</td>
+                <td><a href="Renewables.html">REN webpage</a></td>
+                <td><a href="RenewablesOntology.html">REN Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Renewables">REN TTL</a></td>
+            </tr>
+            <tr>
+                <td>Flexibility (FLEX)</td>
+                <td><a href="Flexibility.html">FLEX webpage</a></td>
+                <td><a href="FlexibilityOntology.html">FLEX Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Flexibility">FLEX TTL</a></td>
+            </tr>
+            <tr>
+                <td>Local Energy Communities (LEC)</td>
+                <td><a href="LocalEnergyCommunities.html">LEC webpage</a></td>
+                <td><a href="LocalEnergyCommunitiesOntology.html">LEC Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/LocalEnergyCommunities">LEC TTL</a></td>
+            </tr>
+            <tr>
+                <td>Electromobility (EM)</td>
+                <td><a href="Electromobility.html">EM webpage</a></td>
+                <td><a href="ElectromobilityOntology.html">EM Documentation</a></td>
+                <td><a href="https://w3id.org/omega-x/ontology/Electromobility">EM TTL</a></td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <img src="EDF.png" alt="EDF Logo">
+        <p>&copy; Developed by the EDF team in the frame of the European project Omega-X.</p>
+    </div>
+
+</body>
+</html>
