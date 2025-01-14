@@ -13,6 +13,8 @@
 @prefix seas: <https://w3id.org/seas/>.
 @prefix schema: <http://schema.org/>.
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
+@prefix plt: <https://w3id.org/platoon/>.
+@prefix mv: <http://schema.mobivoc.org/#>.
 @prefix prop: <https://w3id.org/omega-x/Ontology/Property/> .
 @prefix ets: <https://w3id.org/omega-x/Ontology/EventTimeSeries/> .
 @base <https://w3id.org/omega-x/Ontology/Property/> .
@@ -989,6 +991,436 @@ prop:solarModuleAssemblyThermalModel a owl:Class ;
 		             rdfs:label "Solar Module Assembly Thermal Model "@en ;
 		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
                      rdfs:isDefinedBy prop:.
+#--------------------------------------------------------------
+#    Electromobility Classification
+#--------------------------------------------------------------
+
+#-- Authentication Mode
+  
+prop:AuthenticationMode a owl:Class ;
+        rdfs:label "Authentication Mode"@en ;      
+        rdfs:comment "The authentication mode refers to the method or process used to verify and authenticate the identity and authorization of users accessing related infrastructure."@en ;
+        rdfs:subClassOf prop:QualitativeProperty;
+	prop:isEvaluatedIn prop:AuthenticationModeCategory;
+        rdfs:isDefinedBy  prop: .
+  
+prop:AuthenticationModeCategory a owl:Class ;
+        rdfs:label "Authentication Mode Category"@en ;      
+        rdfs:comment "Identified category values for the authentication mode."@en ;
+        rdfs:subClassOf prop:Category;
+        rdfs:isDefinedBy  prop: .
+
+prop:Local a owl:NamedIndividual, prop:AuthenticationModeCategory;
+        rdfs:label "Local"@en ;      
+        rdfs:comment "The local authentication mode refers to a method of verifying and authorizing users or devices within an infrastructure without requiring communication with an external server or network."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:Remote a owl:NamedIndividual, prop:AuthenticationModeCategory;
+        rdfs:label "Remote"@en ;      
+        rdfs:comment "The remote authentication mode refers to a method of verifying and granting access to users or devices that requires communication with external authentication servers or services over a network."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:No a owl:NamedIndividual, prop:AuthenticationModeCategory;
+        rdfs:label "No"@en ;      
+        rdfs:comment "The no authentication mode is a configuration in which a system or network or service operated without implementing any authentication mechanisms."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:RFID a owl:NamedIndividual, prop:AuthenticationModeCategory;
+        rdfs:label "RFID"@en ;      
+        rdfs:comment "The Radio-Frequency Identification (RFID) refers to a method of authorization to a system, facility, or service using RFID technology."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:By15118 a owl:NamedIndividual, prop:AuthenticationModeCategory;
+        rdfs:label "By 15118"@en ;      
+        rdfs:comment "The authentication by 15118 refers to a specific authentication mechanism defined in the ISO 15118 standard."@en ;
+        rdfs:isDefinedBy  prop: .
+
+#--  Charging Speed
+
+prop:ChargingSpeed a owl:Class ;
+        rdfs:label "Charging Speed Property"@en ;
+        rdfs:comment "The class of charging speed refers to the rate at which a system's battery can be recharged with electric energy."@en ;
+        rdfs:subClassOf prop:QualitativeProperty;
+	prop:isEvaluatedIn prop:ChargingSpeedCategory;
+        rdfs:isDefinedBy prop: .
+
+prop:ChargingSpeedCategory a owl:Class ;
+        rdfs:label "Charging Speed Category"@en ;
+        rdfs:comment "Identified values for charging speed category."@en ;
+        rdfs:subClassOf prop:Category;
+        rdfs:isDefinedBy prop: .
+
+prop:Standard a owl:NamedIndividual, prop:ChargingSpeedCategory ;
+        rdfs:label "Standard"@en  ;
+        rdfs:comment "Standard charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:Accelerated a owl:Class ;
+        rdfs:label "Accelerated"@en ;
+        rdfs:comment "Accelerated charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:Fast a owl:Class ;
+        rdfs:label "Fast"@en  ;
+        rdfs:comment "Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:UltraFast a owl:Class ;
+        rdfs:label "Ultra Fast"@en  ;
+        rdfs:comment "Ultra Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:ExtremelyFast a owl:Class ;
+        rdfs:label "Extremely Fast"@en  ;
+        rdfs:comment "Extremely Fast Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+#-- Electric Vehicle Supply Equipment Connector Format
+
+prop:ElectricVehicleSupplyEquipmentConnectorFormat a owl:Class ;
+	rdfs:label "Electric Vehicle Supply Equipment Connector Format"@en ;
+        rdfs:comment "(source OCPI 2.2.1) The format (socket/cable) of the installed connector."@en ; 
+        rdfs:seeAlso <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
+        rdfs:subClassOf prop:QualitativeProperty;
+	prop:isEvaluatedIn prop:ElectricVehicleSupplyEquipmentConnectorFormatCategory;
+	rdfs:isDefinedBy prop: .
+
+prop:ElectricVehicleSupplyEquipmentConnectorFormatCategory a owl:Class ;
+	rdfs:label "Electric Vehicle Supply Equipment Connector Format Category"@en ;
+        rdfs:comment "List of identified values for the Electric Vehicle Supply Equipment Connector Format."@en ;  
+        rdfs:subClassOf prop:Category;
+	rdfs:isDefinedBy prop: .
+
+prop:Socket  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorFormatCategory ;
+        rdfs:label "socket"@en ;
+        rdfs:comment "Electric Vehicle Supply Equipment Connector Format is a socket."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:Cable  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorFormatCategory ;
+        rdfs:label "cable"@en ;
+        rdfs:comment "Electric Vehicle Supply Equipment Connector Format is a cable."@en ;
+        rdfs:isDefinedBy prop:  .
+
+#-- ElectricVehicleSupplyEquipment Connector Type
+
+prop:ElectricVehicleSupplyEquipmentConnectorType a owl:Class ;
+	rdfs:label "Electric Vehicle Supply Equipment Connector Type"@en ;
+        rdfs:comment "(source OCPI 2.2.1) The standard of the installed connector."@en ; 
+        rdfs:seeAlso <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
+        rdfs:subClassOf mv:PlugType, prop:QualitativeProperty;
+	prop:isEvaluatedIn prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory;
+	rdfs:isDefinedBy prop: .
+
+prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory a owl:Class ;
+	rdfs:label "Electric Vehicle Supply Equipment Connector Type Category"@en ;
+        rdfs:comment "List of identified values for the Electric Vehicle Supply Equipment Connector Type."@en ;  
+        rdfs:subClassOf prop:Category;
+	rdfs:isDefinedBy prop: .
+
+prop:CHAdeMO  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "CHAdeMO"@en ;
+        rdfs:comment "CHAdeMO is the trade name of a quick charging method for battery electric vehicles delivering up to 62.5 kW of direct current (500 V, 125 A[1]) via a special electrical connector (wikipedia)."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:ChaoJi  a owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "ChaoJi"@en  ;
+        rdfs:comment "The ChaoJi connector. The new generation charging connector, harmonized between CHAdeMO and GB/T. DC. (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_A  a owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC A"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"A\", NEMA 1-15, 2 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_B  a owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC B"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"B\", NEMA 5-15, 3 pins (OCPI). "@en ;
+         rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_C  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC C"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"C\", CEE 7/17, 2 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_D  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC D"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"D\", 3 pin (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_E  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+	rdfs:label "DOMESTIC E"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"E\", CEE 7/5 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_F  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC F"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"F\", CEE 7/4, Schuko, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_G  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+	rdfs:label "DOMESTIC G"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"G\", BS 1363, Commonwealth, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_H  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC H"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"H\", SI-32, 3 pins (OCPI). "@en ;
+        rdfs:subClassOf prop:ElectricVehicleSupplyEquipmentConnectorType;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_I  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+	rdfs:label "DOMESTIC I"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"I\", AS 3112, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_J  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC J"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"J\", SEV 1011, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_K  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC K"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"K\", DS 60884-2-D1, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_L  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC L"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"L\", CEI 23-16-VII, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_M  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC M"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"M\", BS 546, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_N  a owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC N"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"N\", NBR 14136, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_O  a owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "DOMESTIC O"@en  ;
+        rdfs:comment "Standard/Domestic household, type \"O\", TIS 166-2549, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:GBT_AC  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "GBT AC"@en  ;
+        rdfs:comment "Guobiao GB/T 20234.2 AC socket/connector (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:GBT_DC  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "GBT DC"@en  ;
+        rdfs:comment "Guobiao GB/T 20234.3 DC connector (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_single_16  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 60309-2 single 16"@en  ;
+        rdfs:comment "IEC 60309-2 Industrial Connector single phase 16 amperes (usually blue) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_16  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 60309-2 three 16"@en  ;
+        rdfs:comment "IEC 60309-2 Industrial Connector three phases 16 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_32  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 60309-2 three 32"@en  ;
+        rdfs:comment "IEC 60309-2 Industrial Connector three phases 32 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_64  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+	rdfs:label "IEC 60309-2 three 64"@en  ;
+        rdfs:comment "IEC 60309-2 Industrial Connector three phases 64 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T1  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 62196 T1"@en  ;
+        rdfs:comment "IEC 62196 Type 1 \"SAE J1772\" (OCPI)."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T1_COMBO  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 62196 T1 COMBO"@en  ;
+        rdfs:comment "Combo Type 1 based, DC (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T2  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 62196 T2"@en  ;
+        rdfs:comment "IEC 62196 Type 2 \"Mennekes\" (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T2_COMBO  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+	rdfs:label "IEC 62196 T2 COMBO"@en  ;
+        rdfs:comment " Combo Type 2 based, DC (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T3A  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 62196 T3A"@en  ;
+        rdfs:comment " IEC 62196 Type 3A (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T3C  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "IEC 62196 T3C"@en  ;
+        rdfs:comment "IEC 62196 Type 3C \"Scame\" (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_5_20  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 5 20"@en  ;
+        rdfs:comment "NEMA 5-20, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_6_30  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 6 30"@en  ;
+        rdfs:comment "NEMA 6-30, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_6_50  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 6 50"@en  ;
+        rdfs:comment "NEMA 6-50, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_10_30  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 10 30"@en  ;
+        rdfs:comment "NEMA 10-30, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_10_50  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 10 50"@en  ;
+        rdfs:comment "NEMA 10-50, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_14_30  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 14 30"@en  ;
+        rdfs:comment "NEMA 14-30, 3 pins, rating of 30 A (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_14_50  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "NEMA 14 50"@en  ;
+        rdfs:comment "NEMA 14-50, 3 pins, rating of 50 A (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:PANTOGRAPH_BOTTOM_UP  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "PANTOGRAPH BOTTOM UP"@en  ;
+        rdfs:comment "On-board Bottom-up-Pantograph typically for bus charging (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:PANTOGRAPH_TOP_DOWN  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "PANTOGRAPH TOP DOWN"@en  ;
+        rdfs:comment "Off-board Top-down-Pantograph typically for bus charging (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:TESLA_R  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "TESLA R"@en  ;
+      rdfs:comment "Tesla Connector \"Roadster\"-type (round, 4 pin) (OCPI)."@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:TESLA_S  a  owl:NamedIndividual, prop:ElectricVehicleSupplyEquipmentConnectorTypeCategory ;
+        rdfs:label "TESLA S"@en  ;
+        rdfs:comment "Tesla Connector \"Model-S\"-type (oval, 5 pin) (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+#-- Payment Method
+
+prop:PaymentMethod a owl:Class ;
+        rdfs:label "Payment Method"@en ;      
+        rdfs:comment "The payment method refers to the various ways can pay for services, infrastructure use, or offerings."@en ;
+        rdfs:subClassOf prop:QualitativeProperty;
+	prop:isEvaluatedIn prop:PaymentModeCategory;
+        rdfs:isDefinedBy  prop: .
+       
+prop:PaymentMethodCategory a owl:Class ;
+        rdfs:label "Payment Method Category"@en ;
+        rdfs:comment "List of identified values for the payment method."@en ;  
+        rdfs:subClassOf prop:Category;
+	rdfs:isDefinedBy prop: .
+  
+prop:FreeOfPayment a owl:NamedIndividual, prop:PaymentMethodCategory ;
+        rdfs:label "Free"@en ;      
+        rdfs:comment "The free payment method reefrs to a transactional process where the payer does not incur any direct financial cost or obligation when making a payment."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:CreditCard a owl:NamedIndividual, prop:PaymentMethodCategory ;
+        rdfs:label "Credit Card"@en ;      
+        rdfs:comment "The credit card payment method refers to a financial transaction in which a consumer utilizes a credit card to purchase goods or services."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:OperatorContract a owl:NamedIndividual, prop:PaymentMethodCategory;
+        rdfs:label "Operator Contract"@en ;      
+        rdfs:comment "The operator contract payment method  refers to the method by which payments are processed within the context of a contractual agreement between an operator (such as a charging point opertor) and another party (such as a client, customer, or partner)."@en ;
+        rdfs:isDefinedBy  prop: .
+
+#-- Status
+
+prop:Status a owl:Class ;
+	rdfs:label "Status"@en ;
+        rdfs:comment "TBA."@en ; 
+        rdfs:subClassOf plt:Status, prop:QualitativeProperty;
+        rdfs:isDefinedBy prop: .
+
+#-- Availability Status
+
+prop:AvailabilityStatus a owl:Class ;
+	rdfs:label "Availablility Status"@en ;
+        rdfs:comment "The availability status refers the current condition of a specific system at a given moment during a process, indicating whether it is operationally ready and accessible for use."@en ; 
+        rdfs:subClassOf prop:Status;
+        prop:isEvaluatedIn prop:AvailabilityStatusCategory;
+	rdfs:isDefinedBy prop: .
+
+prop:AvailabilityStatusCategory a owl:Class ;
+        rdfs:label "Availability Status Category"@en ;
+        rdfs:comment "List of identified values for the availability status."@en ;  
+        rdfs:subClassOf prop:Category;
+	rdfs:isDefinedBy prop: .
+
+prop:OutOfOrder a owl:NamedIndividual, prop:AvailabilityStatusCategory ;
+	rdfs:label "Out Of Order"@en ;
+        rdfs:comment "(source eMIP) The EVCI element is not available to the end-user."@en ; 
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:InService a owl:NamedIndividual, prop:AvailabilityStatusCategory ;
+	rdfs:label "In Service"@en ;
+        rdfs:comment "(source eMIP) The EVCI element is available to the end-user."@en ; 
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:Future a owl:NamedIndividual, prop:AvailabilityStatusCategory ;
+	rdfs:label "Future"@en ;
+        rdfs:comment "(source eMIP) The EVCI element is not available to the end-user because it does not exist yet. The installation of this element is scheduled."@en ; 
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:Deleted a owl:NamedIndividual, prop:AvailabilityStatusCategory ;
+	rdfs:label "Deleted"@en ;
+        rdfs:comment "(source eMIP) The EVCI element is not available to the end-user because it does not exist anymore."@en ; 
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+#-- Occupancy Status
+
+prop:OccupancyStatus a owl:Class ;
+        rdfs:label "Occupancy Status"@en ;
+        rdfs:comment "The occupancy status indicates that a system is currently free or occupied in time during a process."@en ;  
+        rdfs:subClassOf prop:Status;
+        prop:isEvaluatedIn prop:OccupancyStatusCategory;
+	rdfs:isDefinedBy prop: .
+
+prop:OccupancyStatusCategory a owl:Class ;
+        rdfs:label "Occupancy Status Category"@en ;
+        rdfs:comment "List of identified values for the busy status."@en ;  
+        rdfs:subClassOf prop:Category;
+	rdfs:isDefinedBy prop: .
+
+prop:Occupied a owl:NamedIndividual, prop:BusyStatusCategory;
+        rdfs:label "Occupied"@en ;
+        rdfs:comment "The occupied status is the situation of a system when it is actively in use."@en ;  
+        rdfs:isDefinedBy prop: .
+
+prop:FreeOfOccupancy a owl:NamedIndividual, prop:BusyStatusCategory ;
+        rdfs:label "Free"@en ;
+        rdfs:comment "The free status refers to the situation of a system when it is available and not currently in use."@en ;  
+        rdfs:isDefinedBy prop:  .
+
+
 #    Units
 #--------------------------------------------------------------  
 #---Unit
@@ -997,4 +1429,3 @@ prop:CubicMeter-HR a owl:Class ;
 		   rdfs:label "Cubic Meter per Hour"@en ;
 		   rdfs:subClassOf prop:Unit;
                    rdfs:isDefinedBy prop:.
-
