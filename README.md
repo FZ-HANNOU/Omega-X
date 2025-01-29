@@ -14,22 +14,15 @@ The omega-X ontology is defined by two modules: a core ontology for Events and T
 ```
 📂 Omega-X Ontology 
 │
-├─ 📁 Top Level-ETS Ontology
-│   ├── 📄 onto.ttl                  /* T-box
-│   ├── 📄 dataset.ttl              /* A-box
-│   ├── 🖼️ diagram.<imgFormat>     /* eg. CHOWLK diagram
+├─ 📁 EventsTimeSeriesOntology
+│   ├── 📄 EventsTimeSeriesOntology.ttl       /* T-box
+│   ├── 📄 dataset.ttl                    /* A-box
+│   ├── 🖼️ EventsTimeSeries.png        /* eg. CHOWLK diagram
 │   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
 │   └── 📄 README.md
 │
-├─ 📁 Domain Ontologies
-│   ├── 📄 onto.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
-│   ├── 🖼️ diagram.<imgFormat>  /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
-│   └── 📄 README.md
-│
-├─ 📁 Application-UC Ontology      /* One folder per application ontology (Renewable, Electromobility, LEC, Flexibility)
-│   ├── 📄 onto.ttl               /* T-box
+├─ 📁 ModuleNameOntology
+│   ├── 📄 ModuleNameOntology.ttl               /* T-box
 │   ├── 📄 dataset.ttl           /* A-box
 │   ├── 🖼️ diagram.<imgFormat>  /* eg. CHOWLK diagram
 │   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
@@ -60,18 +53,18 @@ The omega-X ontology is defined by two modules: a core ontology for Events and T
 ## List of modules 
 Group Name| Module | Scope |State
 |---|---|---|---|
-|Top Level | [Events and Time Series (ETS)](./[Top Level] Events & Time Series Ontology) | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.0
-|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.0
+|Top Level | [Events and Time Series (ETS)](./[Top Level] Events & Time Series Ontology) | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.1
+|Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.1
 |Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
-|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.0
-|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.0
+|Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.1
+|Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.1
 |Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
 |Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
 |Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
-|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V0.1 (in progress)
-|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V0.1 (in progress)
-|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V0.1 (in progress)
-|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V0.1 (in progress)
+|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V1.0
+|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V1.0
+|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V1.0
+|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V1.0
 
 ## Overview of common modules
 
@@ -90,6 +83,6 @@ The figure below illustrates common modules (Top level and domain modules). The 
 This project is licensed under the MIT License. See the [LICENSE](./LICENSE) file for details.
 
 ## Credit
-This work has been developed by [Electricité De France (EDF)](https://www.edf.fr/) team and partners ([Ecole des mines de Saint-Etienne](https://www.mines-stetienne.fr/) and [Trialog](https://www.trialog.com/fr/accueil/)), in the frame of the European projetc Omega-X [Omega-X website](https://omega-x.eu/), 
+This work has been developed by [Electricité De France (EDF)](https://www.edf.fr/) team and partners ([Ecole des mines de Saint-Etienne](https://www.mines-stetienne.fr/) and [Trialog](https://www.trialog.com/fr/accueil/)), as part of the European projetc Omega-X [Omega-X website](https://omega-x.eu/), 
 
 ![Europe](EU.png)
