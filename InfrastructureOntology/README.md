@@ -29,22 +29,21 @@ The system of interest has a system kind and a system configuration encompassing
 
 ## Glossary
 ### OMEGA-X Infrastructure
-* [**infra:_System_**](https://w3id.org/omega-x/InfrastructureOntology/System/)
+* [**infra:_System_**](https://w3id.org/omega-x/ontology/Infrastructure/System)
 A system is an abstract class that can be a system of interest or a system kind. A system can consist f another system and can be connected to another system. 
-* [**infra:_SystemOfInterest_**](https://w3id.org/omega-x/InfrastructureOntology/SystemOfInterest/)
+* [**infra:_SystemOfInterest_**](https://w3id.org/omega-x/ontology/Infrastructure/SystemOfInterest)
 A system of intrest represents specific systems within the infrastructure. If an exchanges dataset is attached to the system of interest, it will be considered as an evaluation point.
-* [**infra:_SystemKind_**](https://w3id.org/omega-x/InfrastructureOntology/SystemKind/)
+* [**infra:_SystemKind_**](https://w3id.org/omega-x/ontology/Infrastructure/SystemKind)
 The system kind class provides a taxonomy for the categorization of infrastructure equipment and sites, enabling better organization and classification of components within the infrastructure. A system kind may be an equipment, a site, or any other physical or virtual system. A system kind that is neither an equipment nor a site may be, for instance, an electric grid or a data analytics service available on a Dataspace.
-* [**infra:Equipment**](https://w3id.org/omega-x/InfrastructureOntology/Equipment/)
+* [**infra:Equipment**](https://w3id.org/omega-x/ontology/Infrastructure/Equipment)
 An equipement is a physical system kind which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station.
-* [**infra:Site**](https://w3id.org/omega-x/InfrastructureOntology/Site/)
+* [**infra:Site**](https://w3id.org/omega-x/ontology/Infrastructure/Site)
 A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment. A site may be, for instance, a solar plant or an electric vehicle charging station pool.
-* [**infra:SystemConfiguration**](https://w3id.org/omega-x/InfrastructureOntology/SystemConfiguration/)
+* [**infra:SystemConfiguration**](https://w3id.org/omega-x/ontology/Infrastructure/SystemConfiguration)
 A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet.
 ## OWL Description
 ![Diagram](./InfraModule-v1.1.png)
-# Recommendations
-- A `infra:SystemOfInterest` can be an `eds:EvaluationPoint` (see [_EvaluationPoint_](../Energy Data Set Ontology) once an energy data set is attached to it. 
+# Recommendations 
 - The static attributes of an `infra:SystemOfInterest` can be defined in `infra:SystemConfiguration`. 
 - A `infra:SystemOfInterest` can have a location. 
 - A `infra:System` can consist of an another  `infra:System` or many  `infra:System`.
