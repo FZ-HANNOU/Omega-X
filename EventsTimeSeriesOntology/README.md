@@ -1,4 +1,4 @@
-# Upper Level Ontology: Event & Time Series
+# Event & Time Series  [MODIFICATION IN PROGRESS TO MATCH V1.1]
 
 ## Description
 `Events and Time Series`, or `ETS`, is the upper-level module of the Common Semantic Data Model (CSDM). It is an upper-level ontology that captures knowledge about datasets' global structure and underlying elements.
