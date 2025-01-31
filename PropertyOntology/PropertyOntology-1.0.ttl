@@ -378,12 +378,6 @@ prop:WaterQuantity a owl:Class ;
 		prop:isMeasuredIn unit:M3-PER-HR;
 		rdfs:subClassOf prop:QuantitaiveProperty;
 		rdfs:isDefinedBy prop:.
-# Water Losses
-prop:WayerLosses a owl:Class ;
-	         rdfs:comment "The amount of water lost in the distribution grid. It can be consumed or supplied."@en ;
-	         rdfs:subClassOf prop:WaterQuantity;
-		 rdfs:label "Water Losses "@en ;
-		 rdfs:isDefinedBy prop:.
 
 # Water Supplied
 prop:WaterSupplied a owl:Class ;
