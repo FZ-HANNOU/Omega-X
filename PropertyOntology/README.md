@@ -1,4 +1,4 @@
-# Domain Ontology: Property
+# Domain Ontology: Property [Documentation in progress to cope with V1.1]
 
 ## Description
 `Property`, or `Prop`, is a domain level module of the Common Semantic Data Model (CSDM). It provides a taxonomy of energy domain properties. 
