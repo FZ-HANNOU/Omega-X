@@ -17,7 +17,7 @@
 @base <https://w3id.org/omega-x/QualityOntology/> .
 
 <https://w3id.org/omega-x/QualityOntology/> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/QualityOntology-1.0> ;
+                                             owl:versionIRI <https://w3id.org/omega-x/QualityOntology-1.1> ;
                                              dcterms:description """The quality ontology enables to describe quality dimensions associated with data. It can be : 
                                              - Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.
                                              - Quality Metrics: indicates the quality metrics attributes associated with data according to data quality dimensions defined by ISO 25012.
@@ -35,7 +35,7 @@
                                              vann:preferredNamespacePrefix "qual" ;
                                              vann:preferredNamespaceUri <> ;
                                              rdfs:label "Quality"@en ;
-                                             owl:versionInfo "1.0".
+                                             owl:versionInfo "1.1".
 
 #---------------------------------------------------------------
 #    Annotation properties
@@ -60,9 +60,13 @@ time:TemporalEntity a owl:Class .
 #----------------------------------------------------------------
 #    Classes
 #----------------------------------------------------------------
+qual:QualityAssessement a owl:Class ; 
+    rdfs:label "Quality Description"@en ; 
+    rdfs:comment "The class representing any quality description assertion that can apply to a dataset."@en . 
 
 #--- Aggregation level
 qual:Aggregation a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Aggregation"@en ;
     rdfs:comment "The class of functions applied to aggregate data such as sum of values or average."@en .
 
@@ -85,12 +89,14 @@ qual:QualityAttribute a owl:Class ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
 qual:QualityMetric a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Quality Metric"@en ;
     rdfs:comment "The class of quantifiable measures used to assess a quality attribute."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
 #--- Measuring procedure
 qual:MeasuringProcedure a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Measurement Procedure"@en ;
     rdfs:comment "The class of procedures used to provide data"@en.
 

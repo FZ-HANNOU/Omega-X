@@ -1,4 +1,4 @@
-# Quality Ontology
+# Quality Ontology [Modification in progress to cope with V1.1]
 
 ## Description
 ` Quality`, or `QUal`, is a domain ontology module of the Common Semantic Data Model (CSDM). It is a common ontology that enables to describe quality dimensions associated with data. It can be : 
