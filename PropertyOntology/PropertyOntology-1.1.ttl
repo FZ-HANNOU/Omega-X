@@ -11,8 +11,11 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix qudt: <http://qudt.org/schema/qudt/>.
+@prefix mv: <http://schema.mobivoc.org/#>.
+@prefix plt: <https://w3id.org/platoon/>.
 @prefix schema: <http://schema.org/>.
 @prefix seas: <https://w3id.org/seas/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
 @prefix ets: <https://w3id.org/omega-x/Eventsontology/TimeSeries/> .
@@ -139,7 +142,7 @@ prop:hasPropertyKind a owl:ObjectProperty ;
 # Temperature
 prop:Temperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ; 
               skos:prefLabel "Temperature"@en;
-			 prop:isMeasuredInIn unit:DEG_C . 
+			 prop:isMeasuredIn unit:DEG_C . 
 # Energy
 prop:Energy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
               skos:prefLabel "Energy"@en.
@@ -502,167 +505,167 @@ prop:ProductionDuration a owl:namedIndividual , skos:Concept , prop:Quantitative
 			   prop:isMeasuredInIn time:Duration.
 
 # Battery Property
-prop:batteryProperty  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ;
-		      skos:definition "Data sheet/static property related to a battery."@en.
+prop:BatteryProperty  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ;
+                      skos:definition "Data sheet/static property related to a battery."@en.
                        
 						
 # Battery Nominal Voltage
-prop:batteryNominalVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader prop:Voltage , prop:;
+prop:BatteryNominalVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader prop:Voltage, prop:BatteryProperty;
 			   skos:definition "The operating voltage under load is 3V."@en ;
 			    skos:prefLabel "Battery Nominal voltage"@en ;
 			   prop:isMeasuredIn unit:V.
 			    
 # Battery Operating Voltage
-prop:batteryOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:Voltage , prop:batteryProperty;
+prop:BatteryOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:Voltage , prop:BatteryProperty;
 			 skos:definition "The operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Operating Voltage"@en ;
 			 prop:isMeasuredIn unit:V.
 			  
 # Battery Maximum Operating Voltage
-prop:batteryMaxOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:batteryOperatingVoltage;
+prop:BatteryMaxOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:BatteryOperatingVoltage;
 			 skos:definition "Battery maximum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Maximum Operating Voltage"@en.
 			  
 # Battery Minimum Operating Voltage
-prop:batteryMinOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:batteryOperatingVoltage;
+prop:BatteryMinOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:BatteryOperatingVoltage;
 			 skos:definition "Battery minimum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Minimum Operating Voltage"@en .
 			  
 # Battery Minimum State of Charge               
-prop:batteryMinSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:BatteryMinSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	           skos:broader  prop:StateOfCharge;
 	           skos:definition "Battery minimum state of charge."@en ;
 	            skos:prefLabel "Battery Minimum State of Charge"@en .
 		    
 # Battery Maximum State of Charge
-prop:batteryMaxSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:BatteryMaxSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		   skos:broader  prop:StateOfCharge;
 		   skos:definition "Battery maximum state of charge."@en ;
 		    skos:prefLabel "Battery Maximum State of Charge"@en .
 		    
 #Battery deep discharge Voltage
-prop:batteryDeepDischargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:voltage, prop:batteryProperty;
+prop:BatteryDeepDischargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:voltage, prop:BatteryProperty;
 			     skos:definition "The cell is damaged if voltage drops below this voltage."@en ;
 			      skos:prefLabel "Battery Deep Discharge Voltage"@en .
 			      
 #Battery capacity
-prop:batteryCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		 skos:broader  prop:batteryProperty;
+prop:BatteryCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:broader  prop:BatteryProperty;
 		 skos:definition "The capacity of the battery in ampere hour."@en ;
 		  skos:prefLabel "Battery Capacity"@en ;
 		 prop:isMeasuredIn unit:A-HR.
                   
 # Battery Cell Average Temperature
-prop:batteryCellAverageTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				   skos:broader  prop:Temperature, prop:batteryProperty;
+prop:BatteryCellAverageTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				   skos:broader  prop:Temperature, prop:BatteryProperty;
 				   skos:definition "The battery temperature should not decrease this level during charge and discharge."@en ;
                                     skos:prefLabel "Battery Cell Average Temperature"@en ;
                                    prop:isMeasuredIn unit:DEG_C.
                                     
 # Battery Maximum Temperature
-prop:batteryMaxTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader  prop:Temperature, prop:batteryProperty;
+prop:BatteryMaxTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:Temperature, prop:BatteryProperty;
 			   skos:definition "The battery temperature should not increase this level during charge and discharge."@en ;
 			    skos:prefLabel "Battery Cell Maximum Temperature"@en ;
 			   prop:isMeasuredIn unit:DEG_C.
                             
 # Battery Maximum Charge Voltage
-prop:batteryMaxChargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:Voltage, prop:batteryProperty;
+prop:BatteryMaxChargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:BatteryProperty;
 			     skos:definition "The battery cell is damaged if voltage exceeds this level in charge."@en ;
 			      skos:prefLabel "Battery Maximum Charge Voltage"@en ;
 			     prop:isMeasuredIn unit:V.
 			      
 # Battery Optimal Discharge Current
-prop:batteryOptimalDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryOptimalDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal  current at 0.5°C."@en ;
 				     skos:prefLabel "Battery Optimal Discharge Current"@en ;
 				    prop:isMeasuredIn unit:A.
 			             
 # Battery Maximum Discharge Current
-prop:batteryMaxDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaxDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				skos:broader  prop:Current, prop:BatteryProperty;
 				skos:definition "The maximal current at 3°C, continious for max 15 minutes from full charge."@en ;
 				 skos:prefLabel "Battery Optimal Discharge Current"@en ;
 				prop:isMeasuredIn unit:A.
 				 
 # Battery Maximum Peak Discharge Current
-prop:batteryMaxPeakDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaxPeakDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal current at 10°C, maximal 5 seconds in 1 minute."@en ;
 				     skos:prefLabel "Battery Maximum Peak Discharge Current"@en ;
 				    prop:isMeasuredIn unit:A.
 				     
 # Battery Optimal Charge Current
-prop:batteryOptimalChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			        skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryOptimalChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			        skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal current at 0.5 C."@en ;
 				    skos:prefLabel "Battery Optimal Charge Current"@en ;
                     prop:isMeasuredIn unit:A.
 				  
 # Battery Optimal Charge Current
-prop:batteryMaChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			    skos:broader  prop:Current, prop:BatteryProperty;
 			    skos:definition "The maximal current at <0.3 C with battery temperature monitoring."@en ;
 			     skos:prefLabel "Battery Maximum Charge Current"@en ;
 			    prop:isMeasuredIn unit:A.
 			     
 # Battery Dimensions
-prop:batteryDimensions a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		       skos:broader prop:batteryProperty;
+prop:BatteryDimensions a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		       skos:broader prop:BatteryProperty;
 		       skos:definition "The dimension of the battery Lxlxh."@en ;
 		        skos:prefLabel "Battery Dimensions"@en ;
 		       prop:isMeasuredIn unit:MilliM.
 		        
 # Battery Weight
-prop:batteryWeight  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		    skos:broader prop:batteryProperty;
+prop:BatteryWeight  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:broader prop:BatteryProperty;
 		    skos:definition "The weight of the battery in Kg."@en ;
 		     skos:prefLabel "Battery Weight"@en ;
 		    prop:isMeasuredIn unit:KiloGM.
 		     
 # Transformer Property
-prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:TransformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		      skos:broader  prop:Property;
 		      skos:definition "The Transformer Properties."@en ;
 		       skos:prefLabel "Transformer Power"@en.
 		       
 # Transformer Power
-prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		      skos:broader  prop:Power, prop:transformerProperty;
+prop:TransformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		      skos:broader  prop:Power, prop:TransformerProperty;
 		      skos:definition "The Transformer Power."@en ;
 		       skos:prefLabel "Transformer Power"@en ;
 		      prop:isMeasuredIn unit:W.
 		       
 # Transformer Resistance
-prop:transformerResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader  prop:transformerProperty;
+prop:TransformerResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:TransformerProperty;
 			   skos:definition "The Transformer Resistance."@en ;
 			    skos:prefLabel "Transformer Resistance"@en ;
 			   prop:isMeasuredIn unit:OHM.
 			    
 # Transformer Capacity
-prop:transformerCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			skos:broader  prop:Capacity, prop:transformerProperty;
+prop:TransformerCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader  prop:Capacity, prop:TransformerProperty;
 			skos:definition "the transformer capacity."@en ;
 			 skos:prefLabel "Transformer Capacity"@en ;
 			prop:isMeasuredIn unit:KiloV-A.
 			 
 # Transformer Voltage Level
-prop:transformervoltageLevel a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:Voltage, prop:transformerProperty;
+prop:TransformervoltageLevel a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:TransformerProperty;
 			     skos:definition "The transformer voltage level."@en ;
 			      skos:prefLabel "Transformer Voltage Level"@en ;
 	           	     prop:isMeasuredIn unit:V.
 			      
 #--Bus static properties--------
-prop:busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		skos:broader  prop:Voltage ; 
 		skos:definition "The bus voltage ."@en ;
 		 skos:prefLabel "Bus voltage"@en ;
@@ -670,69 +673,69 @@ prop:busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty
 		 
 
 #-- Inverter static property--
-prop:inverterProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InverterProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                skos:broader prop:Property;
 		                skos:definition "This property includes all static properties of an inverter."@en ;
 	  	                 skos:prefLabel "Inverter Property"@en.		                 
 
-prop:inverterMaxInputDCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InverterMaxInputDCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                         skos:definition "The maximum input dc voltage of an inverter."@en ;
 						skos:prefLabel "Inverter Max Input DC Voltage"@en ;
-						skos:broader prop:DCVoltage, prop:inverterProperty;
+						skos:broader prop:DCVoltage, prop:InverterProperty;
 						prop:isMeasuredIn unit:V.
 							    
-prop:inverterMaxInputDCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterMaxInputDCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum dc input current of an inverter."@en ;
 							skos:prefLabel "Inverter Max Input DC Current"@en ;
-							skos:broader prop:DCCurrent,prop:inverterProperty;
+							skos:broader prop:DCCurrent,prop:InverterProperty;
 							prop:isMeasuredIn unit:A.
 							 	 
-prop:inverterMaxInputDCPower	a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterMaxInputDCPower	a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum input DC  power of an inverter."@en ;
 							skos:prefLabel "Inverter Max Input DC Power"@en ;
-							skos:broader prop:DCPower,prop:inverterProperty;
+							skos:broader prop:DCPower,prop:InverterProperty;
 							prop:isMeasuredIn unit:W.
 							 		
-prop:inverterDCMaxPowerPointVoltageRange a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterDCMaxPowerPointVoltageRange a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum voltage range of DC power point of an inverter."@en ;
 							 skos:prefLabel "inverter DC Max Power Point Voltage Range"@en ;
 							skos:broader prop:voltage;
 							prop:isMeasuredIn unit:V.
 							 	
 #---- REN Solar Module properties------------------------------------------------------------
-prop:solarModuleProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:SolarModuleProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                 skos:definition "This property includes all static properties of a solar module."@en ;
 	  	                 skos:prefLabel "Solar Module Property"@en.
 		                 
-prop:solarModuleVoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleVoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module open circuit voltage given at STC operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module VOC"@en ;
-							skos:broader prop:Voltage,  prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Open Circuit Voltage"@en ;
+							skos:broader prop:Voltage,  prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:V.
 							 
-prop:solarModuleIsc a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleIsc a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module short circuit current given at STC operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module ISC"@en ;
-							skos:broader prop:Current , prop:solarModule;
+							 skos:prefLabel "Solar Module Short Circuit Current"@en ;
+							skos:broader prop:Current , prop:SolarModule;
 							prop:isMeasuredIn unit:A.
 							 
-prop:solarModuleVmp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleVmp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module maximum power point voltage at operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module VMP"@en ;
-							skos:broader prop:Voltage, prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Maximum Power Point Voltage"@en ;
+							skos:broader prop:Voltage, prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:V.
 							 
-prop:solarModuleImp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleImp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module maximum power point current at operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module ISC"@en ;
-							skos:broader prop:Current , prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Maximum Power Point Current"@en ;
+							skos:broader prop:Current , prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:A.
 							 
 
-prop:solarModuleTemperatureCoefficient a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleTemperatureCoefficient a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
 							 skos:prefLabel "Solar Module Temperature Coefficient"@en ;
-							skos:broader prop:Temperature, prop:solarModuleProperty;
+							skos:broader prop:Temperature, prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:DEG_C.
 
 
@@ -755,27 +758,27 @@ prop:MainBreakerState a owl:namedIndividual , skos:Concept , prop:QualitativePro
 		 skos:definition "The main breaker state."@en ;
 		  skos:prefLabel "Main Breaker State "@en .
                   
-prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		             skos:definition "The type of the solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
-prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		                             skos:definition "The type of the solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:QualitativeProperty, prop:solarModuleProperty .
+		             skos:broader prop:QualitativeProperty, prop:SolarModuleProperty .
                       
 # Static Quantitative Properties
 #--------------------------------------------------------------  
-prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+prop:SolarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
 		             skos:definition "The type of a solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
-prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		                             skos:definition "The assembly thermal model of a solar module."@en ;
 		              skos:prefLabel "Solar Module Assembly Thermal Model "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
 #--------------------------------------------------------------
 #    Electromobility Classification
