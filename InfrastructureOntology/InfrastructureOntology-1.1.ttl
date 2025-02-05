@@ -38,13 +38,13 @@
 #----------------------------------------------------------------
 infra:Equipment rdf:type owl:Class ;
                                            rdfs:comment "An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station."@en ;
-                                           rdfs:subClassOf infra:SystemKind;
+                                           rdfs:subClassOf infra:System;
                                            rdfs:label "Equipment"@en ;
                                             rdfs:isDefinedBy infra:.
 
 infra:Site rdf:type owl:Class ;
                                            rdfs:comment "A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool."@en ;
-                                           rdfs:subClassOf infra:SystemKind;
+                                           rdfs:subClassOf infra:System;
                                            rdfs:label "Site"@en;
                                             rdfs:isDefinedBy infra:.
 
