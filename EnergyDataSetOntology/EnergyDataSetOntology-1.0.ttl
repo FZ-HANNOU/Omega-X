@@ -21,7 +21,7 @@
 @base <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
 
 <https://w3id.org/omega-x/ontology/EnergyDataSet> rdf:type owl:Ontology ;
-                                                  owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyDataSet-1.0/> ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyDataSet-1.0> ;
                                                   dcterms:creator <https://omega-x.eu/> ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ;
@@ -39,7 +39,7 @@ Scope : Sharing data resources in complex environments like in the case of energ
                                                   dcterms:issued "2024-05-06"@en ;
                                                   dcterms:title "Energy Data Set Ontology"@en ;
                                                   vann:preferredNamespacePrefix "eds" ;
-                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet/> ;
+                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet> ;
                                                   rdfs:label "Energy Data Set Ontology"@en ;
                                                   owl:versionInfo "v1.0" .
 
