@@ -7,7 +7,6 @@
 @prefix uiote: <http://www.w3id.org/urban-iot/electric#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @base  <https://w3id.org/omega-x/ontology/EnergyRole/>.
 @prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
