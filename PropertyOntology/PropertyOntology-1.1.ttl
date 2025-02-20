@@ -254,7 +254,12 @@ prop:InternalInverterTemperature a owl:namedIndividual , skos:Concept , prop:Qua
 			skos:broader prop:Temperature ; 
             skos:definition "Maximum temperatures among all the Power Electronics devices constituting the inverter arms (IEC_61850_7_420_2019A)."@en ; 
             skos:prefLabel "Internal Inverter Temperature"@en.
-			 
+
+# Inverter Enclosure Temperature
+prop:InverterEnclosureTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader prop:Temperature ; 
+            skos:definition "The average value of the Inverter Enclosure Temperature  (IEC_61850_7_420_2019A)."@en ; 
+            skos:prefLabel "Inverter Enclosure  Temperature"@en.			 
 
 # Electrical losses
 prop:Elosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;

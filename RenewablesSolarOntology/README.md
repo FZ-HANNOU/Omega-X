@@ -54,7 +54,7 @@ A weather station is instruments and equipment for measuring atmospheric conditi
 Equipment measuring the production of PV Plant.
 ## OWL Description
 
-![Diagram](./Renewables.png)
+![Diagram](./Module-ren.png)
 
 ## Related Work
 ### SEAS
