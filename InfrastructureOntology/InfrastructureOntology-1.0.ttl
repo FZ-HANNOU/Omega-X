@@ -35,6 +35,25 @@
                                                   vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Infrastructure> ;
                                                   rdfs:label "Infrastructure Ontology"@en ;
                                                   owl:versionInfo "v1.0" .
+#---------------------------------------------------------------
+#    Annotation properties
+#--------------------------------------------------------------
+
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+owl:maxQualifiedCardinality a owl:AnnotationProperty .
+owl:qualifiedCardinality a owl:AnnotationProperty .
+vs:term_status a owl:AnnotationProperty .
+schema:domainIncludes a owl:AnnotationProperty .
+schema:rangeIncludes a owl:AnnotationProperty .
+
 
 #----------------------------------------------------------------
 #    Classes
@@ -43,7 +62,7 @@ infra:Equipment rdf:type owl:Class ;
                                            rdfs:comment "An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station."@en ;
                                            rdfs:subClassOf infra:System;
                                            rdfs:label "Equipment"@en ;
-                                            rdfs:isDefinedBy infra:.
+                                           rdfs:isDefinedBy infra:.
 
 infra:Site rdf:type owl:Class ;
                                            rdfs:comment "A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool."@en ;
