@@ -15,12 +15,12 @@
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
 @prefix plt: <https://w3id.org/platoon/>.
 @prefix mv: <http://schema.mobivoc.org/#>.
-@prefix prop: <https://w3id.org/omega-x/Ontology/Property/> .
-@prefix ets: <https://w3id.org/omega-x/Ontology/EventTimeSeries/> .
-@base <https://w3id.org/omega-x/Ontology/Property/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
+@base <https://w3id.org/omega-x/ontology/Property/> .
 
-<https://w3id.org/omega-x/Ontology/Property> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/Ontology/Property-1.0> ;
+<https://w3id.org/omega-x/0ntology/Property> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.0> ;
                                              dcterms:description """The property ontology is a common module of the CSDM designed to provide a structured taxonomy for the properties of the energy domain.
                                              It distinguishes two type of properties: 
                                              - Quantitative properties: physical quantities associated to numerical values and unit of measures. 
@@ -37,7 +37,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Property ontology"@en ;
                                              vann:preferredNamespacePrefix "prop" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/Ontology/Property>  ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property>  ;
                                              rdfs:label "Property"@en ;
                                              owl:versionInfo "1.0".
 
