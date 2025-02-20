@@ -916,7 +916,7 @@ prop:solarModuleVoC rdf:type owl:Class ;
 prop:solarModuleIsc rdf:type owl:Class ;
 							rdfs:comment "Solar module short circuit current given at STC operating standard conditions."@en ;
 							rdfs:label "Solar Module ISC"@en ;
-							rdfs:subClassOf prop:Current, prop:solarModule;
+							rdfs:subClassOf prop:Current, prop:solarModuleProperty;
 							prop:isMeasuredIn unit:A;
 							rdfs:isDefinedBy prop:.
 prop:solarModuleVmp rdf:type owl:Class ;

@@ -115,7 +115,7 @@ infra:hasSystemProperty rdf:type owl:ObjectProperty ;
                                               rdfs:range prop:Property ;
                                               rdfs:comment "This property permits to link a system to its datasheet attributes or configured parameters."@en ;
                                               rdfs:label "has system property"@en ;
-                                               rdfs:isDefinedBy infra:.
+                                              rdfs:isDefinedBy infra:.
 
 infra:hasLocation rdf:type owl:ObjectProperty ;
                                               rdfs:domain infra:System ;
