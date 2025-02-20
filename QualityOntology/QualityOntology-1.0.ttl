@@ -16,7 +16,7 @@
 @prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
 @base <https://w3id.org/omega-x/ontology/Quality/> .
 
-<https://w3id.org/omega-x/QualityOntology/> a owl:Ontology ;
+<https://w3id.org/omega-x/ontology/Quality> a owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/QualityOntology-1.0> ;
                                              dcterms:description """The quality ontology enables to describe quality dimensions associated with data. It can be : 
                                              - Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.
@@ -33,7 +33,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Quality ontology"@en ;
                                              vann:preferredNamespacePrefix "qual" ;
-                                             vann:preferredNamespaceUri <> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Quality> ;
                                              rdfs:label "Quality"@en ;
                                              owl:versionInfo "1.0".
 
