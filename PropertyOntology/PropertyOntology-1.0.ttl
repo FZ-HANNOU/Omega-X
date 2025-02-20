@@ -19,7 +19,7 @@
 @prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
 @base <https://w3id.org/omega-x/ontology/Property/> .
 
-<https://w3id.org/omega-x/0ntology/Property> a owl:Ontology ;
+<https://w3id.org/omega-x/ontology/Property> a owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.0> ;
                                              dcterms:description """The property ontology is a common module of the CSDM designed to provide a structured taxonomy for the properties of the energy domain.
                                              It distinguishes two type of properties: 
