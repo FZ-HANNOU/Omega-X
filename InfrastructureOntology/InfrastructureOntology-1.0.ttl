@@ -48,7 +48,7 @@ infra:Equipment rdf:type owl:Class ;
 infra:Site rdf:type owl:Class ;
                                            rdfs:comment "A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment.A site may be, for instance, a solar plant or an electric vehicle charging station pool."@en ;
                                            rdfs:subClassOf infra:System;
-                                           rdfs:label "Site"@en;
+                                           rdfs:label "Site"@en ;
                                             rdfs:isDefinedBy infra:.
 
 infra:System rdf:type owl:Class ;
@@ -101,7 +101,7 @@ infra:consistsOf rdf:type owl:ObjectProperty ;
                                               rdfs:domain infra:System ;
                                               rdfs:range infra:System ;
                                               rdfs:comment "This property permits to link a system to its components."@en ;
-                                              rdfs:label "consists of "@en ;
+                                              rdfs:label "consists of"@en ;
                                                rdfs:isDefinedBy infra:.
 infra:isPartOf rdf:type owl:ObjectProperty ;
                                               owl:inverseOf infra:consistsOf ;
