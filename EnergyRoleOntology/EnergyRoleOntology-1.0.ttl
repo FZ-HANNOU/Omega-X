@@ -7,12 +7,12 @@
 @prefix uiote: <http://www.w3id.org/urban-iot/electric#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/>.
 @base  <https://w3id.org/omega-x/ontology/EnergyRole/>.
-@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
 
-<https://w3id.org/omega-x/ontology/EnergyRole/> a owl:Ontology ;
+<https://w3id.org/omega-x/ontology/EnergyRole> a owl:Ontology ;
     dcterms:title "Energy Role Ontology"@en ;
     dcterms:description """Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour, and relationships with other elements involved in energy market business processes.
         Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role), and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility, and local energy communities domains.
@@ -26,7 +26,7 @@
     dcterms:license <https://opensource.org/license/mit/> ;
     dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
     vann:preferredNamespacePrefix "role" ;
-    vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EnergyRole/> ;  
+    vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EnergyRole> ;  
     owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyRole-1.0> ;
     owl:versionInfo "1.0" .
 
