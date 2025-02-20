@@ -12,11 +12,11 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet> .
-@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole> .
+@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
 @prefix seas:<https://w3id.org/seas/>.
-@prefix prop:<https://w3id.org/omega-x/ontology/Property>.
-@prefix eds:<https://w3id.org/omega-x/ontology/EnergyDataSet>.
+@prefix prop:<https://w3id.org/omega-x/ontology/Property/>.
+@prefix eds:<https://w3id.org/omega-x/ontology/EnergyDataSet/>.
 @prefix bot:<https://w3id.org/bot#>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
