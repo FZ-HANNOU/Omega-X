@@ -3,29 +3,28 @@
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix uiote: <http://www.w3id.org/urban-iot/electric#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
-@base  <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.
+@base  <https://w3id.org/omega-x/ontology/EnergyRole/>.
 
-role:EnergyRoleOntology rdf:type owl:Ontology ;
+<https://w3id.org/omega-x/ontology/EnergyRole>rdf:type owl:Ontology ;
         dcterms:title "Energy Role Ontology"@en ;
         dcterms:description "Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour and relationships with other elements involved in energy market business processes."@en ;
         dcterms:description "Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role) and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility and local energy communities domains."@en ;
-        dcterms:issued "2025-03-01"^^xsd:date ;
-        dcterms:modified "2025-02-O3"^^xsd:date ;
-        dcterms:created "2025-02-03"^^xsd:date ;
+        dcterms:issued "2024-05-06"^^xsd:date ;
+        dcterms:modified "2025-02-24"^^xsd:date ;
+        dcterms:created "2024-02-27"^^xsd:date ;
         dcterms:creator <https://omega-x.eu/>;
-	  dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
-        dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
+	dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
+        dcterms:contributor [a foaf:Person ; foaf:name "Maxime LefranÃ§ois" ] ;
         dcterms:license <https://opensource.org/license/mit/> ;
-        dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+        dcterms:rights "Copyright Â© Omega-X Consortium 2022-2025"@en ; ; 
         vann:preferredNamespacePrefix "role" ;
-        vann:preferredNamespaceUri <https://w3id.org/omega-x/EnergyRoleOntology/> ;  
-        owl:versionIRI <https://w3id.org/omega-x/EnergyRoleOntology-1.1> ;
+        vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EnergyRole> ;  
+        owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyRole-1.1> ;
         owl:versionInfo "1.1" .
 
 #---------------------------------------------------------------
@@ -51,19 +50,19 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 #-- Market Participant
 role:MarketParticipant a owl:Class ;
         rdfs:label "Market Participant"@en;
-	  rdfs:comment "(source IEC 62325-351 Ed.3) The identification of the party participating in energy market business processes."@en ;
+	rdfs:comment "(source IEC 62325-351 Ed.3) The identification of the party participating in energy market business processes."@en ;
         rdfs:isDefinedBy role: .
 
 #-- Market Role
 role:MarketRole a owl:Class ;
         rdfs:label "Market Role"@en;
-	  rdfs:comment "(source IEC 62325-351 Ed.3) The identification of the intended behaviour of a market participant played within a given business process."@en ;
+	rdfs:comment "(source IEC 62325-351 Ed.3) The identification of the intended behaviour of a market participant played within a given business process."@en ;
         rdfs:isDefinedBy role: .
 
 #-- Association
 role:Association a owl:Class ;
         rdfs:label "Association"@en;
-	  rdfs:comment "(source The PROV Namespace) An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it."@en ;
+	rdfs:comment "(source The PROV Namespace) An instance of prov:Association provides additional descriptions about the binary prov:wasAssociatedWith relation from an prov:Activity to some prov:Agent that had some responsiblity for it."@en ;
         rdfs:seeAlso prov: ;
         rdfs:isDefinedBy role: .
 
@@ -71,7 +70,7 @@ role:Association a owl:Class ;
 #    Object Properties
 #--------------------------------------------------------------
 
-#-- plays 
+#-- has role of 
 role:plays a owl:ObjectProperty ; 
         rdfs:label "has role of"@en ;
         rdfs:comment "(source IEC 62325-351 Ed.3) The role associated with a MarketParticipant."@en;
@@ -89,7 +88,7 @@ role:isPlayedBy a owl:ObjectProperty ;
         rdfs:range role:MarketParticipant ;
         rdfs:isDefinedBy role: .
 
-#-- has role 
+#-- role 
 role:hasRole a owl:ObjectProperty ; 
         rdfs:label "has role"@en ;
         rdfs:comment "The role part of an Association."@en;
@@ -105,6 +104,7 @@ role:hasParticipant a owl:ObjectProperty ;
         rdfs:range role:MarketParticipant;
         rdfs:isDefinedBy role: .
 
+
 #-- isAssociatedWith 
 role:isAssociatedWith a owl:ObjectProperty ; 
         rdfs:label "is associated with"@en ;
@@ -113,9 +113,9 @@ role:isAssociatedWith a owl:ObjectProperty ;
         rdfs:isDefinedBy role: .
 
 #-- qualifiedAssociation 
-role:hasQualifiedAssociation a owl:ObjectProperty ; 
-        rdfs:label "has qualified association"@en ;
-        rdfs:comment "Designates the Qualified Association concerned."@en;
+role:qualifiedAssociation a owl:ObjectProperty ; 
+        rdfs:label "qualified association"@en ;
+        rdfs:comment "Qualifies the parts involved in the association."@en;
         rdfs:range role:Association ; 
         rdfs:isDefinedBy role: .
 
@@ -138,71 +138,92 @@ role:identifier a owl:DatatypeProperty ;
         rdfs:isDefinedBy role: .
 
 #----------------------------------------------------------------
-#    Taxonomy of Electromobility roles
+#    Electromobility Classes
 #----------------------------------------------------------------
 
 #-- Electromobility Market Role
-role:ElectromobilityMarketRole a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Electromobility Market Role"@en;
-	  skos:definition "The identification of the intended behaviour of an electromobility market participant played within a given business process."@en .
+role:ElectroMobilityMarketRole a owl:Class ;
+        rdfs:label "Electromobility Market Role"@en;
+	rdfs:comment "The identification of the intended behaviour of an electromobility market participant played within a given business process."@en ;
+	rdfs:subClassOf uiote:ChargePointOperator;
+        rdfs:isDefinedBy role: .
 
 #-- Charge Point Operator
-role:ChargePointOperator a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Charge Point Operator"@en;
-	  skos:definition "(source OCPI 2.2.1) Abbreviated as CPO. Operates a network of Charge Points."@en ;
+role:ChargePointOperator a owl:Class ;
+        rdfs:label "Charge Point Operator"@en;
+	rdfs:comment "(source OCPI 2.2.1) Abbreviated as CPO. Operates a network of Charge Points."@en ;
         rdfs:seeAlso <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
-        rdfs:seeAlso uiote:ChargePointOperator .
+        rdfs:subClassOf uiote:ChargePointOperator;
+        rdfs:subClassOf role:ElectroMobilityMarketRole;
+	rdfs:isDefinedBy role: .
 
 #-- eMobility Service Provider
-role:eMobilityServiceProvider a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "eMobility Service Provider"@en;
-	  skos:definition "(source OCPI 2.2.1) Abbreviated as eMSP. Gives EV drivers access to charging services."@en ;
-        rdfs:seeAlso <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> .
+role:eMobilityServiceProvider a owl:Class ;
+        rdfs:label "eMobility Service Provider"@en;
+	rdfs:comment "(source OCPI 2.2.1) Abbreviated as eMSP. Gives EV drivers access to charging services."@en ;
+        rdfs:seeAlso <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
+        rdfs:subClassOf uiote:eMobilityServiceProvider;
+        rdfs:subClassOf role:ElectroMobilityMarketRole;
+	rdfs:isDefinedBy role: .
 
 #-- eMobility Service Provider for Accessing
-role:eMobilityAccessingServiceProvider a  owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "eMobility Service Provider for Accessing"@en  ;
-        skos:definition "The eMobility Service Provider for accessing is a service provider that offers to its end-user-customers the ability of accessing charging services on Charging-Points of a CPO (source eMIP Protocol). "@en .
+role:eMobilitySAccessingerviceProvider a  owl:Class;
+        rdfs:label "eMobility Service Provider for Accessing"@en  ;
+        rdfs:comment "The eMobility Service Provider for accessing is a service provider that offers to its end-user-customers the ability of accessing charging services on Charging-Points of a CPO (source eMIP Protocol). "@en ;
+        rdfs:subClassOf role:eMobilityServiceProvider ;
+        rdfs:isDefinedBy role: .
 
 #-- eMobility Service Provider for Booking
-role:eMobilityBookingServiceProvider a  owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "eMobility Service Provider for Booking"@en  ;
-        skos:definition "The eMobility Service Provider for booking is a service provider that offers to its end-user-customer the ability of booking Charging-Points of a CPO (source eMIP Protocol). "@en .
+role:eMobilityBookingServiceProvider a  owl:Class;
+        rdfs:label "eMobility Service Provider for Booking"@en  ;
+        rdfs:comment "The eMobility Service Provider for booking is a service provider that offers to its end-user-customer the ability of booking Charging-Points of a CPO (source eMIP Protocol). "@en ;
+        rdfs:subClassOf role:eMobilityServiceProvider;
+        rdfs:isDefinedBy role: .
 
 #-- eMobility Service Provider for Roaming
-role:eMobilityRoamingServiceProvider a  owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "eMobility Service Provider for Roaming"@en  ;
-        skos:definition "The eMobility Service Provider for roaming is a service provider that facilitates electric vehicle charging access across various networks, enabling seamless charging experiences for drivers while they travel beyond their home network coverage . "@en .
+role:eMobilityRoamingServiceProvider a  owl:Class;
+        rdfs:label "eMobility Service Provider for Roaming"@en  ;
+        rdfs:comment "The eMobility Service Provider for roaming is a service provider that facilitates electric vehicle charging access across various networks, enabling seamless charging experiences for drivers while they travel beyond their home network coverage . "@en ;
+        rdfs:subClassOf role:ElectroMobilityMarketRole;
+        rdfs:isDefinedBy role: .
 
 #----------------------------------------------------------------
 #    Local Energy Community Classes
 #----------------------------------------------------------------
 
 #-- Local Energy Community Market Role
-role:LocalEnergyCommunityMarketRole a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Local Energy Community Market Role"@en;
-	  skos:definition "The identification of the intended behaviour of a LEC (local energy community) market participant played within a given business process."@en .
+role:LocalEnergyCommunityMarketRole a owl:Class ;
+        rdfs:label "Local Energy Community Market Role"@en;
+	rdfs:comment "The identification of the intended behaviour of a LEC (local energy community) market participant played within a given business process."@en ;
+	rdfs:isDefinedBy role: .
 
 #-- Local Energy Community Promoter
-role:LocalEnergyCommunityPromoter a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Local Energy Community Promoter"@en;
-	  skos:definition "Local Energy Community Promoter."@en .
+role:LocalEnergyCommunityPromoter a owl:Class ;
+        rdfs:label "Local Energy Community Promoter"@en;
+	rdfs:comment "Local Energy Community Promoter."@en ;
+        rdfs:subClassOf role:LocalEnergyCommunityMarketRole;
+	rdfs:isDefinedBy role: .
 
 #----------------------------------------------------------------
 #    Flexibility Classes
 #----------------------------------------------------------------
 
 #-- Flexibility Market Role
-role:FlexibilityMarketRole a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Flexibility Market Role"@en;
-	  skos:definition "The identification of the intended behaviour of a flexibility market participant played within a given business process."@en .
+role:FlexibilityMarketRole a owl:Class ;
+        rdfs:label "Flexibility Market Role"@en;
+	rdfs:comment "The identification of the intended behaviour of a flexibility market participant played within a given business process."@en ;
+	rdfs:isDefinedBy role: .
 
 #-- Flexibility Provider
-role:FlexibilityProvider a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Flexibility Provider"@en;
-	  skos:definition "Flexibility Provider."@en .
+role:FlexibilityProvider a owl:Class ;
+        rdfs:label "Flexibility Provider"@en;
+	rdfs:comment "Flexibility Provider."@en ;
+        rdfs:subClassOf role:FlexibilityMarketRole;
+	rdfs:isDefinedBy role: .
 
 #-- Flexibility User
-role:FlexibilityUser a owl:namedIndividual, skos:Concept, role:MarketRole ;
-        skos:prefLabel "Flexibility User"@en;
-	  skos:definition "Flexibility User."@en .
+role:FlexibilityUser a owl:Class ;
+        rdfs:label "Flexibility User"@en;
+	rdfs:comment "Flexibility User."@en ;
+        rdfs:subClassOf role:FlexibilityMarketRole;
+	rdfs:isDefinedBy role: .

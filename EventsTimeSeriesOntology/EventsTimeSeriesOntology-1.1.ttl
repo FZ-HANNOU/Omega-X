@@ -16,7 +16,7 @@
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
 @prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
 
-<https://w3id.org/omega-x/ontology/EventsTimeSeries/> a owl:Ontology ;
+<https://w3id.org/omega-x/ontology/EventsTimeSeries> a owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/EventsTimeSeries-1.1/> ;
                                              owl:imports prop: , qual: ;
                                              dcterms:description """ Event and time series ontology describes the global structure of value sets. Value sets can be :
