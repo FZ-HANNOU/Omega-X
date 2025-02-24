@@ -1,63 +1,59 @@
-# Energy Data Set Ontology
+# Infrastructure Ontology
 
 ## Description
-### Purpose:
-Sharing data resources in complex environments like in the case of energy domain requires some contextual information together with data values to facilitate and ensure consistent interpretation of data exchange in the dataspace. 
-### Scope:
-Energy Data Set ontology provides OWL classes and properties to allow energy data sets to be described. The use of a dataset description enriches the data structure description with contextual information.
-### Description:
-This Energy Data set Ontology helps to define data sets in Energy Data Spaces. It adds:
-- the technical context as the property, the schedule, and the quality associated to an energy data set.
-- the exchange context as the participants of the data exchange.
-- the evaluation point attached to the data set exchange.
+### Purpose
+In energy domain, a simplified infrastructure topology of the system should be described in order to deliver intelligent services. The infrastructure topology facilitates the description of an infrastructure in a flexible way by allowing to describe the infrastructure’s components and its relations. 
+### Scope
+Infrastructure ontology provides OWL classes and properties to allow infrastructure of an energy system to be described.
+### Description
+This Infrastructure Ontology helps to define the infrastructure system of OMEGA-X use cases. The main class is the system which can be a physical system, a virtual system, an equipment or a site.
+A system can be a System of interest that represents specific systems within the infrastructure, or a system kind that provides a taxonomy for the categorization of infrastructure equipment and sites.
+The system of interest has a system kind.
+A system can have a system configuration encompassing different properties, generally defined from the data sheet or an initial configuration of the system. If the system is a system of interest, the properties included in the configuration are properties of interest. However, if the system is a system kind, the properties will be property kinds.
+New module can be created to define the infrastructure of a specific use case family. This new module should be aligned with the general infrastructure ontology.
 
 ## Competency Questions
 
 ### Querying Questions
 | ID | Question in natural language | Example
 |---|---|---|
-| cq-1 |What is the evaluation point of a specifc energy data set?  | The evaluation point associated to a specific energy data set like the weather station associated to a meteolological data set.|
-| cq-2 |What are the properties included in a sepcific  energy data set?   | The list of properties  associated to a specific energy data set like the global irradiance.|
-| cq-3 | What are the energy data sets sent by a specific partcipant?  | The list of energy data sets sent by a specific participant for example the energy data sets sent by EDFRD renewable power producer.|
-| cq-4 |  What is the value data type of a specific energy data set?  | The value type of a specific energy data set like integer, float,...|
-| cq-5 |  What is the technical context associated to a specific energy data set?  | The technical context associated to a specific energy data set .|
+| cq-1 |What is the identifier of specific system? | the id of a specific system |
+| cq-2 |What is the system connected to a specific system? | A weather station  is connected to meter  |
+| cq-3 |What is the location of a specific site? | the  geolocation of a solar plant|
+| cq-4 |What is the system configuratin of a specific equipment? | the configuration  of a specific battery includig the nominal charge voltage|
+| cq-5 |What are the systems of a specific system kind, e.g pv plants? |the systems of interest that have a system kind a specific pv plants model|
+
 ### Inference Questions
 | ID | Question in natural language | Example
 |---|---|---|
-| iq-1| What are the properties associated to an energy data set? | The list of properties associated to an energy data set.|
+| iq-1 | What are the systems connected to another system?| the list of systems connected via connected to target and connected to source relations|
+| iq-2 | What are the systems having a specific system configuration?| the list of batteries having the same configuration|
 
 ## Glossary
-### Omega-X EDS
-* [**eds:_EnergyDataSet_**](https://w3id.org/omega-x/ontolgy/EnergyDataSet/EnergyDataSet)
-Group of data exchanged using an Energy Dataspace. 
-* [**eds:_TechnicalContext_**](https://w3id.org/omega-x/ontolgy/EnergyDataSet/TechnicalContext)
-Technical characteristics of the context where the exchange of data takes place.
-* [**eds:_EvaluationPoint_**](https://w3id.org/omega-x/ontolgy/EnergyDataSet/EvaluationPoint)
-Evaluation point concerned by the data exchanged. It can be either a physical or virtual component. An evaluation point can be a smart meter collecting the data or a software compiling the data.
-* [**eds:_ExchangeContext_**](https://w3id.org/omega-x/ontolgy/EnergyDataSet/ExchangeContext)
-Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange.
+### OMEGA-X Infrastructure
+* [**infra:_System_**](https://w3id.org/omega-x/ontology/Infrastructure/System)
+A system is an abstract class that can be a system of interest or a system kind. A system can consist of another system and can be connected to another system. 
+* [**infra:_SystemOfInterest_**](https://w3id.org/omega-x/ontology/Infrastructure/SystemOfInterest)
+A system of intrest represents specific systems within the infrastructure. If an exchanged dataset is attached to the system of interest, it will be considered as an evaluation point.
+* [**infra:_SystemKind_**](https://w3id.org/omega-x/ontology/Infrastructure/SystemKind)
+The system kind class provides a taxonomy for the categorization of infrastructure equipment and sites, enabling better organization and classification of components within the infrastructure.
+* [**infra:Equipment**](https://w3id.org/omega-x/ontology/Infrastructure/Equipment)
+An equipement is a physical system which is part of the infrastructure.An equipment may be, for instance, an inverter or an electric vehicle charging station.
+* [**infra:Site**](https://w3id.org/omega-x/ontology/Infrastructure/Site)
+A site is a part of the physical world or a virtual world that is inherently both located in this world and having a 3D spatial extent. It can include more than one equipment. A site may be, for instance, a solar plant or an electric vehicle charging station pool.
+* [**infra:SystemConfiguration**](https://w3id.org/omega-x/ontology/Infrastructure/SystemConfiguration)
+A system configuration is a set of properties characterizing its structure and behavior. In case of an equipment, it may reflect its datasheet.
 ## OWL Description
-
 ![Diagram](./EDSModule-v1.1.png)
+# Recommendations 
+- The static attributes of an `infra:SystemOfInterest` can be defined in `infra:SystemConfiguration`. 
+- A `infra:SystemOfInterest` can have a location. 
+- A `infra:System` can consist of an another  `infra:System` or many  `infra:System`.
+- A `infra:System` can be connected to another An `infra:System`. To precise the direction of the connection the object properties `infra:isConnectedTo` and An `infra:isConnectedFrom`
+- For each specific use case family, a detailed infrastructure is defined to create the taxonomy of sites, equipements and static attributes, in addition to the relations between different systems.
 
-## Recommendations
-- A `ets:ValueSet` (see [_ValueSet_](../  [Top Level] Events & Time Series Ontology)) exchanged within the energy data space will be considered as an energy data set`eds:EnergyDataSet`. 
-- An `eds:EvaluationPoint` can be a `infra:System` (see [_System_](../ [Domain] Infrastructure Ontology)). The properties and connections of the system can be retreived from (../  Infrastructure Ontology).
-- A `eds:EnergyDataSet` can have `eds:ContextExchange` sent from a `role:MarketParticipant` to another `role:MarketParticpant` (see [_MarkeParticipant_](../  [Domain] Energy Role Ontology)). More details about the market participants can be described in (../  [Domain] Energy Role Ontology) module.
-- A `eds:TechnicalContext` will include all the properties associated to the data exchange. These properties can be inferred from the relation: of `ets:PropertyValue` `prop:isAboutProperty` `prop:Property` in  (../  [Top Level] Events & Time Series Ontology) module.
-- A `eds:EnergyDataSet` can have more than one evalutaion point which can be considered the equipement measuring the data, collecting the data, aggregating the data or more general attached to it.
 ## Related Work
-### EUMED Metering profile (IEC 61968-9 Ed 3.0)
-* Evaluation point: The identification of an entity where energy products are measured or computed.
-
-* Measurement kind: Identifies "what" is being measured, as refinement of 'commodity'. When
-combined with 'unit', it provides detail to the unit of measure.
-* Business Role: A business role that this organisation plays. A single organisation
-typically performs many functions, each one described as a role.
-* build: Time stamp of the data exchange.
-* A business context is a set of properties that gives some business details on a value set.
-* A technical context is a set of properties that gives some technical details on a value set.
-
 ### SEAS
- [**_seas:System**](https://w3id.org/seas/System): The class of systems, i.e., systems virtually isolated from the environment, whose behaviour and interactions with the environment are modeled.
- [**_seas:FeatureOfInterest**](https://w3id.org/seas/FeatureOfInterest): A feature of interest is an abstraction of a real world phenomena (thing, person, event, etc). A feature of interest is then defined in terms of its properties.
+* [**_seas:System_**]( https://w3id.org/seas/System): The class of systems, i.e., systems virtually isolated from the environment, whose behaviour and interactions with the environment are modeled.
+
+* [**_seas:connectedTo_**]( https://w3id.org/seas/connectedTo): Links a system to a system it is connected to. Connected systems interact in some way. The exact meaning of interact is defined by sub properties of [**_seas:connectedTo_**]. 
