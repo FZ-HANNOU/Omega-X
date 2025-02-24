@@ -20,7 +20,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @base <https://w3id.org/omega-x/ontology/Scheduling/> .
 
-<https://w3id.org/omega-x/ontology/Scheduling/> rdf:type owl:Ontology ;                                              
+<https://w3id.org/omega-x/ontology/Scheduling> rdf:type owl:Ontology ;                                              
                                                dcterms:creator <https://omega-x.eu/> ;                                 
                                                dcterms:contributor [a foaf:Person ; foaf:name "Henon M. Lamboro" ] ; 
                                                dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;                                           
@@ -34,8 +34,9 @@
                                                vann:preferredNamespacePrefix "sched" ;
                                                vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Scheduling/> ;
                                                rdfs:label "Scheduling Ontology"@en ;
-                                               owl:versionIRI <https://w3id.org/omega-x/ontology/Scheduling-1.0>;
-                                               owl:versionInfo "v1.0" .
+                                               owl:imports  prop:, role:, infra:, ets:;
+                                               owl:versionIRI <https://w3id.org/omega-x/ontology/Scheduling-1.1>;
+                                               owl:versionInfo "v1.1" .
 
 #---------------------------------------------------------------
 #    Annotation properties

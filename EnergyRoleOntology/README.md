@@ -22,8 +22,7 @@ The Energy Role ontology defines three generic concepts: business parties (parti
 ## OWL Description
 The Energy Role Ontology contains a generic model and specific classifications for electromobility, local energy community and flexibility:
 - Generic model
-![Diagram](./EnergyRoleOntologyV10-Energy_Role_Generic.png)
-
+![Diagram](./RoleOntology)
 ## Recommendations
 - When used as datatype property of 'role:MarketParticipant', it is recommended to give to 'role:identifier' a value delivered by an authorized authority. 
 

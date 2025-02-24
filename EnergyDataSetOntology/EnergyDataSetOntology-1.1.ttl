@@ -15,7 +15,7 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
 @prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
-@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
 @base <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
 
 <https://w3id.org/omega-x/ontology/EnergyDataSet> rdf:type owl:Ontology ;
@@ -27,8 +27,8 @@
                                                   dcterms:created "2025-01-04"^^xsd:date ;
                                                   dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                                   dcterms:description """This Energy Data set Ontology helps to define data sets in Energy Data Spaces. It adds:
-- the technical context as the property, the schedule, and the quality associated to an energy data set
-- the exchange context as the participants of the data exchange.
+- the technical context which includes the technical standards or communication protocols that govern the dataset exchange
+- the exchange context which encompasses the participants of the data exchange.
 - the evaluation point attached to the data set exchange.
 Scope : Sharing data resources in complex environments like in the case of energy domain requires some contextual information together with data values to facilitate and ensure consistent interpretation of data. 
 """@en ;
@@ -39,7 +39,12 @@ Scope : Sharing data resources in complex environments like in the case of energ
                                                   vann:preferredNamespacePrefix "eds" ;
                                                   vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet> ;
                                                   rdfs:label "Energy Data Set Ontology"@en ;
-                                                  owl:versionInfo "v1.1" .
+                                                  owl:versionInfo "v1.1" ;
+                                                  owl:imports prop: , ets: , role:;
+                                                   rdfs:comment """Information about changes to version 1.1:
+- Deprecated eds:includesSchedule to solve the problem of import loops.
+- Relaxed the domain of eds:includesEvaluationPoint to eds:EnergyDataSet to allow to attach an evaluation point directly to the data set. 
+"""@en .
 
 #----------------------------------------------------------------
 #    Classes
