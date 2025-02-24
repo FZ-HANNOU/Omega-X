@@ -18,8 +18,8 @@
 @prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
 @base <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
 
-<https://w3id.org/omega-x/ontology/EnergyDataSet/> rdf:type owl:Ontology ;
-                                                  owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyDataSet-1.1/> ;
+<https://w3id.org/omega-x/ontology/EnergyDataSet> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyDataSet-1.1> ;
                                                   dcterms:creator <https://omega-x.eu/> ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ; 
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ;
@@ -37,7 +37,7 @@ Scope : Sharing data resources in complex environments like in the case of energ
                                                   dcterms:issued "2025-01-08"@en ;
                                                   dcterms:title "Energy Data Set Ontology"@en ;
                                                   vann:preferredNamespacePrefix "eds" ;
-                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet/> ;
+                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet> ;
                                                   rdfs:label "Energy Data Set Ontology"@en ;
                                                   owl:versionInfo "v1.1" .
 
@@ -99,7 +99,7 @@ eds:isTechnicalContextOf rdf:type owl:ObjectProperty ;
 
 eds:includesEvaluationPoint rdf:type owl:ObjectProperty ;
                                               owl:inverseOf eds:isEvaluationPointOf ;
-                                              rdfs:domain eds:EnergyDataSet ;
+                                              rdfs:domain  [ rdf:unionOf (eds:TechnicalContext eds:EnergyDataSet) ] ;
                                               rdfs:range eds:EvaluationPoint ;
                                               rdfs:comment "Links the data set to a specific evaluation point."@en ;
                                               rdfs:label "Includes Evaluation Point"@en ;
@@ -121,7 +121,7 @@ eds:toTarget rdf:type owl:ObjectProperty ;
                                                
 eds:isEvaluationPointOf rdf:type owl:ObjectProperty ;
                                                rdfs:domain eds:EvaluationPoint ;
-                                               rdfs:range eds:EnergyDataSet;
+                                               rdfs:range eds:TechnicalContext;
                                                rdfs:comment "Links the evaluation point to a specific data set."@en ;
                                                rdfs:label "Is Evaluation Point Of"@en ;
                                                rdfs:isDefinedBy eds:.
@@ -155,4 +155,4 @@ eds:build rdf:type owl:DatatypeProperty ;
                                            rdfs:domain eds:EnergyDataSet ;
                                            rdfs:comment "The building version or time or reference of an energy data set."@en ;
                                            rdfs:label "build"@en;
-                                           rdfs:isDefinedBy eds:.                                         
+                                           rdfs:isDefinedBy eds:.               

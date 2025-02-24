@@ -23,12 +23,6 @@ The Energy Role ontology defines three generic concepts: business parties (parti
 The Energy Role Ontology contains a generic model and specific classifications for electromobility, local energy community and flexibility:
 - Generic model
 ![Diagram](./EnergyRoleOntologyV10-Energy_Role_Generic.png)
-- Classification for Electromobility roles
-![Diagram](./EnergyRoleOntologyV10-Energy_Role_EM.png)
-- Classification for Local Energy Community roles
-![Diagram](./EnergyRoleOntologyV10-Energy_Role_LEC.png)
-- Classification for Flexibility roles
-![Diagram](./EnergyRoleOntologyV10-Energy_Role_FLEX.png)
 
 ## Recommendations
 - When used as datatype property of 'role:MarketParticipant', it is recommended to give to 'role:identifier' a value delivered by an authorized authority. 
