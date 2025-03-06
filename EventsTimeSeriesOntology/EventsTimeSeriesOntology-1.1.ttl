@@ -65,13 +65,12 @@ time:TemporalEntity a owl:Class .
 #----------------------------------------------------------------
 
 #--Value Set 
-ets:ValueSet a owl:Class ;
+ets:ValueSet rdf:type owl:Class ;
           rdfs:comment "Container for a set of values. The four kinds of value set are: data points, data collections, events and time series."@en ;
           rdfs:label "Value Set"@en ;
           rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasTemporalContext; owl:someValuesFrom time:TemporalEntity] ;
           rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:rank; owl:maxCardinality "1"^^xsd:nonNegativeInteger] ;
           rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:creationTime; owl:maxCardinality "1"^^xsd:nonNegativeInteger] ;
-          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:belongsTo; owl:onClass ets:DataCollection ; owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger] ;
           rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:isElementOf;  owl:onClass ets:TimeSeries ; owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger] .
 
 #--Data Collection
@@ -118,12 +117,7 @@ ets:DataValue a owl:Class ;
       rdfs:label "Data Value"@en ;
       rdfs:isDefinedBy ets:.
 
-#--Rank description
-ets:RankDescription a owl:Class ; 
-      rdfs:comment "The rank description describes common caracteristics of elements sharing the same rank of a data collection. "@en ; 
-      rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:describedRank ; owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
-      rdfs:label "Rank Description"@en ;
-      rdfs:isDefinedBy ets:.       
+ets:PropertyValue a owl:Class ; rdfs:subClassOf ets:DataValue. 
      
 #--------------------------------------------------------------
 #    Object Properties
@@ -164,14 +158,6 @@ ets:comprises a owl:ObjectProperty ;
               rdfs:comment "the relationship indicating value sets comprised in a data collection."@en ;
               rdfs:label "Comprises"@en ;
              rdfs:isDefinedBy ets: .
-
-#--has collection ranks description
-ets:hasCollectionsRankDescription a owl:ObjectProperty ;
-      rdfs:domain ets:ValueSet ;
-      rdfs:range ets:RankDescription ; 
-      rdfs:comment "The relation providing common caracteristics of elements sharing the same rank in a collection container (data collection or time series)."@en ;
-      rdfs:label "Has Collections Rank Description"@en ;
-      rdfs:isDefinedBy ets:.
 
 #--has step
 ets:hasStep a owl:ObjectProperty ;
