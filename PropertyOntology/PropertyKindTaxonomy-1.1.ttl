@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
@@ -38,7 +37,7 @@
                                              dcterms:title "Property ontology"@en ;
                                              vann:preferredNamespacePrefix "prop" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property>  ;
-                                             rdfs:label "Property"@en ;
+                                              skos:prefLabel "Property"@en ;
                                              owl:versionInfo "1.0".
 
 #---------------------------------------------------------------
@@ -61,743 +60,1030 @@ schema:domainIncludes a owl:AnnotationProperty .
 schema:rangeIncludes a owl:AnnotationProperty .
 time:TemporalEntity a owl:Class .
 
+
+# Quantitative Properties
 #----------------------------------------------------------------
-#    Classes
-#----------------------------------------------------------------
-
-
-# General   Classes
-#----------------------------------------------------------------
-#--Property
-prop:Property a owl:Class ;
-          rdfs:comment "A characteristic of the real world that can be observed."@en ;
-          rdfs:label "Property"@en .
-
-#--Quantitative property 
-prop:QuantitativeProperty a owl:Class ;
-       rdfs:subClassOf prop:Property ; 
-       rdfs:comment "Physical quantities associated to numerical values and unit of measures"@en ;
-       rdfs:label "Quantitative property"@en .
-
-#--Qualitative property
-prop:QualitativeProperty a owl:Class ;
-        rdfs:subClassOf prop:Property ; 
-        owl:disjointWith prop:QuantitativeProperty ; 
-        rdfs:comment "A qualitative property is a characteristic of real world with possible values defined by a defined category. Qualitative properties have non numerical values."@en ;
-        rdfs:label "Qualitative Property"@en .
-
-#--Unit
-prop:Unit a owl:Class ;
-        rdfs:comment "A standard of measurement for quantities."@en ;
-        rdfs:label "Unit"@en .
-
-#--Category
-prop:Category a owl:Class ;
-        rdfs:subClassOf ets:PropertyValue ; 
-        rdfs:comment "A class of categories, used to enumerate possible values of qualitative properties."@en ;
-        rdfs:label "Category"@en .
-
-
-# Dynamic Quantitative Properties
-#----------------------------------------------------------------
-
-# Voltage
-prop:Voltage a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Voltage"@en;
-             rdfs:isDefinedBy prop:.
-# Energy
-prop:Energy a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Energy"@en;
-             rdfs:isDefinedBy prop:.
-
-# Power
-prop:Power a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Power"@en;
-             rdfs:isDefinedBy prop:.
-
 # Temperature
-prop:Temperature a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Temperature"@en;
-             rdfs:isDefinedBy prop:.
-
+prop:Temperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ; 
+              skos:prefLabel "Temperature"@en;
+			 prop:isMeasuredInIn unit:DEG_C . 
+# Energy
+prop:Energy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+              skos:prefLabel "Energy"@en.
+              
+# Power
+prop:Power a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+              skos:prefLabel "Power"@en.
+              
 # Current
-prop:Current a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Current"@en;
-			 prop:isMeasuredIn unit:A;
-             rdfs:isDefinedBy prop:.
-# DC current# Current
-prop:DCCurrent a owl:Class ;
-             rdfs:subClassOf prop:Current ; 
-             rdfs:comment "The current in DC mode."@en ; 
-             rdfs:label "DC Current"@en;
-			 prop:isMeasuredIn unit:A;
-             rdfs:isDefinedBy prop:.
+prop:Current a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+              skos:prefLabel "Current"@en;
+			 prop:isMeasuredIn unit:A.
+
+#Capacity 
+prop:Capacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+              skos:prefLabel "Capacity"@en.
+              
+# DC current
+prop:DCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:broader prop:Current ; 
+             skos:definition "The current in DC mode."@en ; 
+            skos:prefLabel "DC Current"@en;
+			 prop:isMeasuredIn unit:A.
+              
 # Resistance 
-prop:Resistance a owl:Class ;
-               rdfs:subClassOf prop:QuantitativeProperty ; 
-               rdfs:comment "For a resistive two-terminal element or two-terminal circuit with terminals A and B, quotient of the voltage (131-11-56) uAB between the terminals by the electric current i in the element or circuit."@en ; 
-               rdfs:label "Resistance"@en;
-			   rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-12-04>;
-			  prop:isMeasuredIn unit:OHM;
-              rdfs:isDefinedBy prop:.
+prop:Resistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+            skos:definition "For a resistive two-terminal element or two-terminal circuit with terminals A and B, quotient of the voltage (131-11-56) uAB between the terminals by the electric current i in the element or circuit."@en ; 
+            skos:prefLabel "Resistance"@en;
+			dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-12-04>;
+			prop:isMeasuredIn unit:OHM.
+             
+
 # AC Current
-prop:ACCurrent a owl:Class ;
-             rdfs:subClassOf prop:Current ; 
-             rdfs:comment "Alternating current on different phases."@en ; 
-             rdfs:label "AC Current L1"@en;
-             rdfs:isDefinedBy prop:.
+prop:ACCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:broader prop:Current  ; 
+             skos:definition "Alternating current on different phases."@en ; 
+              skos:prefLabel "AC Current L1"@en.
+              
 # Voltage
-prop:Voltage a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "Voltage"@en;
-			 prop:isMeasuredIn unit:V;
-             rdfs:isDefinedBy prop:.
+prop:Voltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:prefLabel "Voltage"@en;
+			 prop:isMeasuredIn unit:V.
+              
 # Irradiance  
-prop:Irradiance a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment "density of incident radiant flux with respect to area at a point on a real or imaginary surface."@en ; 
-			 rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-21-053>;
-             rdfs:label "Irradiance"@en;
+prop:Irradiance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;  
+             skos:definition "density of incident radiant flux with respect to area at a point on a real or imaginary surface."@en ; 
+			 dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-21-053>;
+             skos:prefLabel "Irradiance"@en;
 			 prop:isMeasuredIn unit:W-PER-M2;
 			 prop:isDefinedBy prop:.
-=======
->>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
-
 # DCVoltage
-prop:DCVoltage a owl:Class ;
-             rdfs:subClassOf prop:Voltage ; 
-             rdfs:comment "Direct Current Voltage"@en ; 
-             rdfs:label "DC Voltage"@en;
-             rdfs:isDefinedBy prop:.
+prop:DCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:broader prop:Voltage ; 
+             skos:definition "Direct Current Voltage"@en ; 
+              skos:prefLabel "DC Voltage"@en.
+              
 # AC Voltage phase 
-prop:ACVoltage a owl:Class ;
-             rdfs:subClassOf prop:Voltage ; 
-             rdfs:comment "Alternating Current Voltage for different phases."@en ; 
-             rdfs:label "AC Voltage"@en;
-             rdfs:isDefinedBy prop:.			
+prop:ACVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:broader prop:Voltage ; 
+             skos:definition "Alternating Current Voltage for different phases."@en ; 
+             skos:prefLabel "AC Voltage"@en.
+              			
 # Root Mean Square Voltage
-prop:RMSVoltage a owl:Class ;
-		rdfs:comment "The root mean square voltage."@en ;
-		rdfs:label "RMS Voltage"@en ;
-		rdfs:subClassOf prop:Voltage, seas:Voltage;
-		rdfs:isDefinedBy prop:.
+prop:RMSVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		     skos:definition "The root mean square voltage."@en ;
+		     skos:prefLabel "RMS Voltage"@en ;
+		     skos:broader prop:Voltage.
+		      
 # Frequency
-prop:Frequency a owl:Class ;
-             rdfs:subClassOf prop:QuantitativeProperty ; 
-             rdfs:comment "Reciprocal of the period."@en ; 
-             rdfs:label "Frequency"@en;
-			 prop:isMeasuredIn unit:HZ;
-             rdfs:isDefinedBy prop:.
+prop:Frequency a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:definition "Reciprocal of the period."@en ; 
+              skos:prefLabel "Frequency"@en;
+			 prop:isMeasuredIn unit:HZ.
+              
 # Energy Cost
-prop:EnergyCost a owl:Class ;
-		rdfs:comment "Energy prices agreed with the supplier for the energy term."@en ;
-		rdfs:label "Energy Cost"@en ;
-		rdfs:subClassOf seas:PricePerEnergy,prop:Energy;
-		prop:isMeasuredIn unit:EUR-PER-KiloW;
-		rdfs:isDefinedBy prop:.
+prop:EnergyCost a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		skos:definition "Energy prices agreed with the supplier for the energy term."@en ;
+		 skos:prefLabel "Energy Cost"@en ;
+		prop:isMeasuredIn unit:EUR-PER-KiloW.
+		 
 
 # Air Temperature
-prop:AirTemperature a owl:Class;
-                    rdfs:subClassOf prop:Temperature ; 
-                    rdfs:comment ""@en ; 
-					prop:isMeasuredIn unit:DEG_C;
-                    rdfs:label "Air Temperature"@en.
+prop:AirTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+        skos:broader prop:Temperature ;   
+		prop:isMeasuredIn unit:DEG_C;
+        skos:prefLabel "Air Temperature"@en.
 
 # Heat Sink Temperature
-prop:HeatSinkTemperature a owl:Class;
-                         rdfs:subClassOf prop:Temperature ; 
-                         rdfs:comment ""@en ; 
+prop:HeatSinkTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+                         skos:broader prop:Temperature ;    
 				         prop:isMeasuredIn unit:DEG_C;
-                         rdfs:label "Air Temperature"@en.
+                          skos:prefLabel "Air Temperature"@en.
 
 # System Internal Temperature
-prop:SystemInternalTemperature rdfs:subClassOf prop:Temperature ; 
-             rdfs:comment ""@en ; 
-             rdfs:label "System Internal Temperature"@en;
-			 rdfs:isDefinedBy prop:.
+prop:SystemInternalTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader prop:Temperature ; 
+            skos:prefLabel "System Internal Temperature"@en.
+			 
 
 # Panel Temperature
-prop:PanelTemperature rdfs:subClassOf prop:Temperature ; 
-             rdfs:comment "The temperature of a panel module measured by a weather station."@en ; 
-             rdfs:label "Panel Temperature"@en;
-			 rdfs:isDefinedBy prop:.
+prop:PanelTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader prop:Temperature ; 
+            skos:definition "The temperature of a panel module measured by a weather station."@en ; 
+            skos:prefLabel "Panel Temperature"@en.
+			 
 
 # Internal Inverter Temperature
-prop:InternalInverterTemperature rdfs:subClassOf prop:Temperature ; 
-             rdfs:comment "Maximum temperatures among all the Power Electronics devices constituting the inverter arms (IEC_61850_7_420_2019A)."@en ; 
-             rdfs:label "Internal Inverter Temperature"@en;
-			 rdfs:isDefinedBy prop:.
+prop:InternalInverterTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader prop:Temperature ; 
+            skos:definition "Maximum temperatures among all the Power Electronics devices constituting the inverter arms (IEC_61850_7_420_2019A)."@en ; 
+            skos:prefLabel "Internal Inverter Temperature"@en.
+			 
 
 # Electrical losses
-prop:Elosses a owl:Class ;
-	     rdfs:comment "The estimated amount of energy lost in the distribution grid."@en ;
-	     rdfs:label "Electrical Losses"@en ;
-	     rdfs:subClassOf prop:QuantitaiveProperty, seas:ElectricalEnergyProperty, prop:Energy;
-	     prop:isMeasuredIn unit:KiloW-HR;
-	     rdfs:isDefinedBy prop:.
+prop:Elosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	     skos:definition "The estimated amount of energy lost in the distribution grid."@en ;
+	      skos:prefLabel "Electrical Losses"@en ;
+	     skos:broader prop:Energy;
+	     prop:isMeasuredIn unit:KiloW-HR.
 
 # Thermal Energy
-prop:ThermalEnergy  a owl:Class ;
-		rdfs:comment "Thermal energy is a kind of energy and it is generated when the temperature rises. It can be consumed or supplied."@en ;
-		rdfs:subClassOf seas:ElectricalEnergyProperty, prop:Energy;
-		rdfs:label "Thermal Energy "@en ;
-		prop:isMeasuredIn unit:KiloW-HR;
-		rdfs:isDefinedBy prop:.
+prop:ThermalEnergy  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		skos:definition "Thermal energy is a kind of energy and it is generated when the temperature rises. It can be consumed or supplied."@en ;
+		skos:broader seas:ElectricalEnergyProperty, prop:Energy;
+		 skos:prefLabel "Thermal Energy "@en ;
+		prop:isMeasuredIn unit:KiloW-HR.
+		 
                 
 # Water Quantity                
-prop:WaterQuantity a owl:Class ;
-	        rdfs:comment "Volume flow rate quantity equal to the volume dV of substance crossing a given surface during a time interval with infinitesimal duration dt, divided by this duration, thus qV = dV / dt."@en ;
-		rdfs:label "Water Losses "@en ;
-		rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=113-03-72>;
-		prop:isMeasuredIn unit:M3-PER-HR;
-		rdfs:subClassOf prop:QuantitaiveProperty;
-		rdfs:isDefinedBy prop:.
+prop:WaterQuantity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	    skos:definition "Volume flow rate quantity equal to the volume dV of substance crossing a given surface during a time interval with infinitesimal duration dt, divided by this duration, thus qV = dV / dt."@en ;
+		 skos:prefLabel "Water Losses "@en ;
+		dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=113-03-72>;
+		prop:isMeasuredIn unit:M3-PER-HR.
+		 
 # Water Losses
-prop:WayerLosses a owl:Class ;
-	         rdfs:comment "The amount of water lost in the distribution grid. It can be consumed or supplied."@en ;
-	         rdfs:subClassOf prop:WaterQuantity;
-		 rdfs:label "Water Losses "@en ;
-		 rdfs:isDefinedBy prop:.
+prop:WayerLosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	         skos:definition "The amount of water lost in the distribution grid. It can be consumed or supplied."@en ;
+	         skos:broader prop:WaterQuantity;
+		  skos:prefLabel "Water Losses "@en .
+		  
 
 # Water Supplied
-prop:WaterSupplied a owl:Class ;
-                   rdfs:comment "The water quantity supplied."@en ;
-	           rdfs:label "Water Supplied"@en ;
-	           rdfs:subClassOf prop:WaterQuantity;
-	           rdfs:isDefinedBy prop:.
+prop:WaterSupplied a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+                   skos:definition "The water quantity supplied."@en ;
+	            skos:prefLabel "Water Supplied"@en ;
+	           skos:broader prop:WaterQuantity.
+	            
 
 # Water Consumed               
-prop:WaterConsumed a owl:Class;
-                   rdfs:comment "The water quantity consumed."@en ;
-		   rdfs:label "Water Consumed"@en ;
-		   rdfs:subClassOf prop:WaterQuantity;
-		   rdfs:isDefinedBy prop:.
+prop:WaterConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+                   skos:definition "The water quantity consumed."@en ;
+		    skos:prefLabel "Water Consumed"@en ;
+		   skos:broader prop:WaterQuantity.
+		    
 
 # Water Losses
-prop:WaterLosses a owl:Class;
-             rdfs:comment "The computed water quantity lost."@en ;
-	     rdfs:label "Water Losses"@en ;
-	     rdfs:subClassOf prop:WaterQuantity;
-	     rdfs:isDefinedBy prop:.
+prop:WaterLosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+             skos:definition "The computed water quantity lost."@en ;
+	      skos:prefLabel "Water Losses"@en ;
+	     skos:broader prop:WaterQuantity.
+	      
 
 # Active Energy
-prop:ActiveEnergy a owl:Class ;
-		          rdfs:comment "the active energy is the integral of the instantaneous power p over a time interval [t1, t2]."@en ;
-		          rdfs:label "Active Energy"@en ;
-		          rdfs:subClassOf seas:ElectricEnergyProperty, prop:Energy;
-		          rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-57>;
-		          prop:isMeasuredIn unit:KiloW-HR, unit:W-HR;
-                  rdfs:isDefinedBy prop:.
+prop:ActiveEnergy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		          skos:definition "the active energy is the integral of the instantaneous power p over a time interval [t1, t2]."@en ;
+		           skos:prefLabel "Active Energy"@en ;
+		          skos:broader seas:ElectricEnergyProperty, prop:Energy;
+		          dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-57>;
+		          prop:isMeasuredIn unit:KiloW-HR, unit:W-HR.
+                   
 # Active Energy Produced
-prop:ActiveEnergyProduced a owl:Class ;
-		                  rdfs:comment "the active energy produced."@en ;
-		                  rdfs:label "Active Energy Produced"@en ;
-		                  rdfs:subClassOf prop:ActiveEnergy;
-						  rdfs:isDefinedBy prop:.
+prop:ActiveEnergyProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                  skos:definition "the active energy produced."@en ;
+		                   skos:prefLabel "Active Energy Produced"@en ;
+		                  skos:broader prop:ActiveEnergy.
+						   
 # Active Energy Consumed
-prop:ActiveEnergyConsumed a owl:Class ;
-		                  rdfs:comment "the active energy consumed."@en ;
-		                  rdfs:label "Active Energy Consumed"@en ;
-		                  rdfs:subClassOf prop:ActiveEnergy;
-						  rdfs:isDefinedBy prop:.
+prop:ActiveEnergyConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                  skos:definition "the active energy consumed."@en ;
+		                   skos:prefLabel "Active Energy Consumed"@en ;
+		                  skos:broader prop:ActiveEnergy.
+						   
 
 # Active Energy Produced Off Peak Hour 
-prop:ActiveEnergyProducedOffPeakHR a owl:Class ;
-		                  rdfs:comment "the active energy produced during off peak hour."@en ;
-		                  rdfs:label "Active Energy Produced Off Peak Hour"@en ;
-		                  rdfs:subClassOf prop:ActiveEnergyProduced;
-                          rdfs:isDefinedBy prop:. 
+prop:ActiveEnergyProducedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                  skos:definition "the active energy produced during off peak hour."@en ;
+		                   skos:prefLabel "Active Energy Produced Off Peak Hour"@en ;
+		                  skos:broader prop:ActiveEnergyProduced.
 
 # Active Energy Produced  Peak Hour 
-prop:ActiveEnergyProducedPeakHR a owl:Class ;
-		                  rdfs:comment "the active energy produced during  peak hour."@en ;
-		                  rdfs:label "Active Energy Produced Peak Hour"@en ;
-		                  rdfs:subClassOf prop:ActiveEnergyProduced;
-                          rdfs:isDefinedBy prop:.      						  
-
+prop:ActiveEnergyProducedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                  skos:definition "the active energy produced during  peak hour."@en ;
+		                   skos:prefLabel "Active Energy Produced Peak Hour"@en ;
+		                  skos:broader prop:ActiveEnergyProduced.
 
 # Reactive Energy							
-prop:ReactiveEnergy a owl:Class ;
-		    rdfs:comment "In an AC system, the captive electrical energy exchanged continuously between the different electric and magnetic fields associated with the operation of the electrical system and of all the connected apparatus."@en ;
-		    rdfs:label "Reactive Energy"@en ;
-		    rdfs:subClassOf seas:ElectricEnergyProperty, prop:Energy;
-		    rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=601-01-20>;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "In an AC system, the captive electrical energy exchanged continuously between the different electric and magnetic fields associated with the operation of the electrical system and of all the connected apparatus."@en ;
+		     skos:prefLabel "Reactive Energy"@en ;
+		    skos:broader seas:ElectricEnergyProperty, prop:Energy;
+		    dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=601-01-20>.
+		     
 # Reactive Energy Consumed						
-prop:ReactiveEnergyConsumed a owl:Class ;
-		    rdfs:comment "The reactive energy consumed."@en ;
-		    rdfs:label "Reactive Energy Consumed"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergy;
-			prop:isMeasuredIn unit:KiloW-HR;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy consumed."@en ;
+		     skos:prefLabel "Reactive Energy Consumed"@en ;
+		    skos:broader prop:ReactiveEnergy;
+			prop:isMeasuredIn unit:KiloW-HR.
+		     
 # Reactive Energy Consumed OFF Peak Hour						
-prop:ReactiveEnergyConsumedOffPeakHR a owl:Class ;
-		    rdfs:comment "The reactive energy consumed during off-peak hours."@en ;
-		    rdfs:label "Reactive Energy Consumed Off Peak Hours"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergyConsumed;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyConsumedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy consumed during off-peak hours."@en ;
+		     skos:prefLabel "Reactive Energy Consumed Off Peak Hours"@en ;
+		    skos:broader prop:ReactiveEnergyConsumed.
+		     
 # Reactive Energy Consumed  Peak Hour						
-prop:ReactiveEnergyConsumedPeakHR a owl:Class ;
-		    rdfs:comment "The reactive energy consumed during peak hours."@en ;
-		    rdfs:label "Reactive Energy Consumed Peak Hours"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergyConsumed;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyConsumedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy consumed during peak hours."@en ;
+		     skos:prefLabel "Reactive Energy Consumed Peak Hours"@en ;
+		    skos:broader prop:ReactiveEnergyConsumed.
+		     
 #Reactive Energy Produced						
-prop:ReactiveEnergyProduced a owl:Class ;
-		    rdfs:comment "The reactive energy produced."@en ;
-		    rdfs:label "Reactive Energy Produced"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergy;
-			prop:isMeasuredIn unit:V-A_Reactive-HR;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy produced."@en ;
+		     skos:prefLabel "Reactive Energy Produced"@en ;
+		    skos:broader prop:ReactiveEnergy;
+			prop:isMeasuredIn unit:V-A_Reactive-HR.
+		     
 # Reactive Energy Produced OFF Peak Hour						
-prop:ReactiveEnergyProducedOffPeakHR a owl:Class ;
-		    rdfs:comment "The reactive energy produced during off-peak hours."@en ;
-		    rdfs:label "Reactive Energy Produced Off Peak Hours"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergyProduced;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyProducedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy produced during off-peak hours."@en ;
+		     skos:prefLabel "Reactive Energy Produced Off Peak Hours"@en ;
+		    skos:broader prop:ReactiveEnergyProduced.
+		     
 # Reactive Energy Produced  Peak Hour						
-prop:ReactiveEnergyProducedPeakHR a owl:Class ;
-		    rdfs:comment "The reactive energy produced during peak hours."@en ;
-		    rdfs:label "Reactive Energy Produced Peak Hours"@en ;
-		    rdfs:subClassOf prop:ReactiveEnergyProduced;
-		    rdfs:isDefinedBy prop:.
+prop:ReactiveEnergyProducedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:definition "The reactive energy produced during peak hours."@en ;
+		     skos:prefLabel "Reactive Energy Produced Peak Hours"@en ;
+		    skos:broader prop:ReactiveEnergyProduced.
+		     
 # Active Power
-prop:ActivePower a owl:Class ;
-		 rdfs:comment "Under periodic conditions, mean value, taken over one period T, of the instantaneous power p."@en ;
-		 rdfs:label "Active Power"@en ;
-		 rdfs:subClassOf seas:ElectricPoweryProperty, prop:Power;
-		 rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-42>;
-		 prop:isMeasuredIn unit:W;
-		 rdfs:isDefinedBy prop:.
+prop:ActivePower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:definition "Under periodic conditions, mean value, taken over one period T, of the instantaneous power p."@en ;
+		  skos:prefLabel "Active Power"@en ;
+		 skos:broader seas:ElectricPoweryProperty, prop:Power;
+		 dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-42>;
+		 prop:isMeasuredIn unit:W.
+		  
 # Active Power AC
-prop:ActivePowerAC a owl:Class ;
-		 rdfs:comment "Active Power in AC Mode."@en ;
-		 rdfs:label "Active Power AC"@en ;
-		 rdfs:subClassOf  prop:ActivePower;
-		 rdfs:isDefinedBy prop:.
+prop:ActivePowerAC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:definition "Active Power in AC Mode."@en ;
+		  skos:prefLabel "Active Power AC"@en ;
+		 skos:broader  prop:ActivePower.
+		  
 # Active Power DC
-prop:ActivePowerDC a owl:Class ;
-		 rdfs:comment "Active Power in DC Mode."@en ;
-		 rdfs:label "Active Power DC"@en ;
-		 rdfs:subClassOf  prop:ActivePower;
-		 rdfs:isDefinedBy prop:.
+prop:ActivePowerDC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:definition "Active Power in DC Mode."@en ;
+		  skos:prefLabel "Active Power DC"@en ;
+		 skos:broader  prop:ActivePower.
+		  
 # Active Power Produced
-prop:ActivePowerProduced a owl:Class ;
-		 rdfs:comment "Active Power Produced."@en ;
-		 rdfs:label "Active Power Produced"@en ;
-		 rdfs:subClassOf  prop:ActivePower;
-		 rdfs:isDefinedBy prop:.
+prop:ActivePowerProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:definition "Active Power Produced."@en ;
+		  skos:prefLabel "Active Power Produced"@en ;
+		 skos:broader  prop:ActivePower.
+		  
 
 # Reactive Power
-prop:ReactivePower a owl:Class ;
-		   rdfs:comment "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
-		   rdfs:label "Reactive Power"@en ;
-		   rdfs:subClassOf seas:ElectricPoweryProperty, prop:Power;
-		   rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-44>;
-		   prop:isMeasuredIn unit:V-A_Reactive;
-                   rdfs:isDefinedBy prop:.
+prop:ReactivePower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		   skos:definition "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
+		   skos:prefLabel "Reactive Power"@en ;
+		   skos:broader seas:ElectricPoweryProperty, prop:Power;
+		   dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-11-44>;
+		   prop:isMeasuredIn unit:V-A_Reactive.
+                    
 # Reactive Power Produced
-prop:ReactivePowerProduced a owl:Class ;
-		                   rdfs:comment "The reactive power produced."@en ;
-		                   rdfs:label "Reactive Power Produced"@en ;
-		                   rdfs:subClassOf  prop:ReactivePower;
-                           rdfs:isDefinedBy prop:.
+prop:ReactivePowerProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                   skos:definition "The reactive power produced."@en ;
+		                    skos:prefLabel "Reactive Power Produced"@en ;
+		                   skos:broader  prop:ReactivePower.
+                            
 # Reactive Power Consumed
-prop:ReactivePowerConsumed a owl:Class ;
-		                   rdfs:comment "The reactive power consumed."@en ;
-		                   rdfs:label "Reactive Power Consumed"@en ;
-		                   rdfs:subClassOf  prop:ReactivePower;
-                           rdfs:isDefinedBy prop:.
+prop:ReactivePowerConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                   skos:definition "The reactive power consumed."@en ;
+		                    skos:prefLabel "Reactive Power Consumed"@en ;
+		                   skos:broader  prop:ReactivePower.
+                            
 # Reactive Power Set Point
-prop:ReactivePowerSetPoint a owl:Class ;
-			   rdfs:comment "Predetermined or desired value of reactive power that a device or electrical system should produce or consume at a given time."@en ;
-			   rdfs:label "Reactive Power Set Point"@en ;
-			   rdfs:subClassOf seas:ElectricPowerProperty, prop:Power;
-			   prop:isMeasuredIn unit:V-A_Reactive;
-			   rdfs:isDefinedBy prop:.
+prop:ReactivePowerSetPoint a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:definition "Predetermined or desired value of reactive power that a device or electrical system should produce or consume at a given time."@en ;
+			    skos:prefLabel "Reactive Power Set Point"@en ;
+			   skos:broader seas:ElectricPowerProperty, prop:Power;
+			   prop:isMeasuredIn unit:V-A_Reactive.
+			    
 # DC Power
-prop:DCPower a owl:Class ;
-	     rdfs:comment "Power in DC mode."@en ;
-	     rdfs:label "DC Power"@en ;
-	     rdfs:subClassOf seas:ElectricPowerProperty, prop:Power;
-	     prop:isMeasuredIn unit:W;
-             rdfs:isDefinedBy prop:.
+prop:DCPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	     skos:definition "Power in DC mode."@en ;
+	      skos:prefLabel "DC Power"@en ;
+	     skos:broader seas:ElectricPowerProperty, prop:Power;
+	     prop:isMeasuredIn unit:W.
+              
 # Energy Price
-prop:EnergyPrice a owl:Class ;
-		 rdfs:comment "Energy prices agreed with the DSO for the power term ."@en ;
-		 rdfs:label "Energy Price"@en ;
-		 rdfs:subClassOf seas:PricePerEnergy, prop:QuantitaiveProperty;
-		 prop:isMeasuredIn unit:EUR-PER-KiloW;
-                 rdfs:isDefinedBy prop:.
+prop:EnergyPrice a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:definition "Energy prices agreed with the DSO for the power term ."@en ;
+		  skos:prefLabel "Energy Price"@en ;
+		 skos:broader seas:PricePerEnergy;
+		 prop:isMeasuredIn unit:EUR-PER-KiloW.
+                  
 # State of Power 
-prop:SOP a owl:Class ;
-	 rdfs:comment "A battery state-of-power (SOP) is defined as the ratio of peak power to nominal power ."@en ;
-         rdfs:seeAlso <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
-	 rdfs:label "State of Power"@en ;
-	 rdfs:subClassOf prop:Power, prop:QuantitativeProperty;
-	 prop:isMeasuredIn unit:W;
-         rdfs:isDefinedBy prop:.
+prop:StateOfPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	 	skos:definition "A battery state-of-power (SOP) is defined as the ratio of peak power to nominal power ."@en ;
+        dcterms:source <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
+	  	skos:prefLabel "State of Power"@en ;
+	 	skos:broader prop:Power;
+	 	prop:isMeasuredIn unit:W.
+          
 # State of Power in Charge
-prop:StateofPowerCharge a owl:Class ;
-                        rdfs:comment "The maximum possible charge power that a battery system can support over a fixed time interval."@en ;
-			rdfs:label "State of Power in Charge"@en ;
-			rdfs:subClassOf seas:PowerEnergy,prop:SOP;
-			rdfs:isDefinedBy prop:.
+prop:StateofPowerCharge a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+            skos:definition "The maximum possible charge power that a battery system can support over a fixed time interval."@en ;
+			skos:prefLabel "State of Power in Charge"@en ;
+			skos:broader prop:StateOfPower.
+			 
 # State of Power in Discharge
-prop:StateofPowerDischarge a owl:Class ;
-			   rdfs:comment "The maximum possible discharge power that a battery system can support over a fixed time interval."@en ;
-			   rdfs:label "State of Power in Discharge"@en ;
-			   rdfs:subClassOf seas:PowerEnergy,prop:SOP;
-			   rdfs:isDefinedBy prop:.
+prop:StateofPowerDischarge a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:definition "The maximum possible discharge power that a battery system can support over a fixed time interval."@en ;
+			skos:prefLabel "State of Power in Discharge"@en ;
+			skos:broader prop:StateOfPower.
+			    
 # State of Charge
-prop:SoC           a owl:Class ;
-		   rdfs:comment "The state of charge (SoC) can be described as the level of charge of a battery relative to its capacity.."@en ;
-		   rdfs:label "State of Charge"@en ;
-                   rdfs:seeAlso <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
-		   rdfs:subClassOf prop:QuantitaiveProperty;
-		   prop:isMeasuredIn unit:PERCENT;
-		   rdfs:isDefinedBy prop:.
+prop:StateOfCharge  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		   skos:definition "The state of charge (SoC) can be described as the level of charge of a battery relative to its capacity.."@en ;
+		    skos:prefLabel "State of Charge"@en ;
+            dcterms:source <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
+		   prop:isMeasuredIn unit:PERCENT.
+		    
 # Insulation Resistance
-prop:InsulationResistance a owl:Class ;
-			   rdfs:comment "Resistance under specified conditions between two conductive elements separated by insulating materials ."@en ;
-			   rdfs:label "Insulation Resistance"@en ;
-			   rdfs:seeAlso <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=151-15-43>;
-			   rdfs:subClassOf prop:Resistance;
-			   rdfs:isDefinedBy prop:.
+prop:InsulationResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:definition "Resistance under specified conditions between two conductive elements separated by insulating materials ."@en ;
+			    skos:prefLabel "Insulation Resistance"@en ;
+			   dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=151-15-43>;
+			   skos:broader prop:Resistance.
+			    
 #Production Duration Off Peak Hours
-prop:ProductionDurationOffPeakHR a owl:Class ;
-			   rdfs:comment "The duration of the electricity production during off peak hours."@en ;
-			   rdfs:label "Production Duration Off Peak Hour"@en ;
-			   prop:isMeasuedIn time:Duration;
-			   rdfs:isDefinedBy prop:.
+prop:ProductionDurationOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:definition "The duration of the electricity production during off peak hours."@en ;
+			    skos:prefLabel "Production Duration Off Peak Hour"@en ;
+			   prop:isMeasuredInIn time:Duration.
+			    
 #Production Duration  Peak Hours
-prop:ProductionDurationPeakHR a owl:Class ;
-			   rdfs:comment "The duration of the electricity production during peak hours."@en ;
-			   rdfs:label "Production Duration Peak Hour"@en ;
-			   prop:isMeasuedIn time:Duration;
-			   rdfs:isDefinedBy prop:.
+prop:ProductionDurationPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:definition "The duration of the electricity production during peak hours."@en ;
+			    skos:prefLabel "Production Duration Peak Hour"@en ;
+			   prop:isMeasuredInIn time:Duration.
+			    
 #Production Duration
-prop:ProductionDuration a owl:Class ;
-			   rdfs:comment "The duration of the electricity production during peak and peak-off hours."@en ;
-			   rdfs:label "Production Duration"@en ;
-			   prop:isMeasuedIn time:Duration;
-			   rdfs:isDefinedBy prop:.
-
-
-
-# Static Quantitative Properties
-#-------------------------------------------------------------- 
-# LEC
-#-------------------------------------------------------------- 
+prop:ProductionDuration a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:definition "The duration of the electricity production during peak and peak-off hours."@en ;
+			    skos:prefLabel "Production Duration"@en ;
+			   prop:isMeasuredInIn time:Duration.
 
 # Battery Property
-prop:batteryProperty  a owl:Class ;
-		      rdfs:subClassOf  prop:QuantitaiveProperty;
-		      rdfs:comment "Data sheet/static property related to a battery."@en;
-                      rdfs:isDefinedBy prop:.
+prop:batteryProperty  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ;
+		      skos:definition "Data sheet/static property related to a battery."@en.
+                       
 						
 # Battery Nominal Voltage
-prop:batteryNominalVoltage a owl:Class ;
-			   rdfs:subClassOf prop:Voltage , prop:batteryroperty;
-			   rdfs:comment "The operating voltage under load is 3V."@en ;
-			   rdfs:label "Battery Nominal voltage"@en ;
-			   prop:isMeasuredIn unit:V;
-			   rdfs:isDefinedBy prop:.
+prop:batteryNominalVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader prop:Voltage , prop:;
+			   skos:definition "The operating voltage under load is 3V."@en ;
+			    skos:prefLabel "Battery Nominal voltage"@en ;
+			   prop:isMeasuredIn unit:V.
+			    
 # Battery Operating Voltage
-prop:batteryOperatingVoltage a owl:Class ;
-			 rdfs:subClassOf prop:Voltage , prop:batteryProperty;
-			 rdfs:comment "The operating volatge at 80% Depth Of Discharge (DOD)."@en ;
-			 rdfs:label "Battery Operating Voltage"@en ;
-			 prop:isMeasuredIn unit:V;
-			 rdfs:isDefinedBy prop:.
+prop:batteryOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:Voltage , prop:batteryProperty;
+			 skos:definition "The operating voltage at 80% Depth Of Discharge (DOD)."@en ;
+			  skos:prefLabel "Battery Operating Voltage"@en ;
+			 prop:isMeasuredIn unit:V.
+			  
 # Battery Maximum Operating Voltage
-prop:batteryMaxOperatingVoltage a owl:Class ;
-			 rdfs:subClassOf prop:batteryOperatingVoltage;
-			 rdfs:comment "Battery maximum operating volatge at 80% Depth Of Discharge (DOD)."@en ;
-			 rdfs:label "Battery Maximum Operating Voltage"@en ;
-			 rdfs:isDefinedBy prop:.
+prop:batteryMaxOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:batteryOperatingVoltage;
+			 skos:definition "Battery maximum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
+			  skos:prefLabel "Battery Maximum Operating Voltage"@en.
+			  
 # Battery Minimum Operating Voltage
-prop:batteryMinOperatingVoltage a owl:Class ;
-			 rdfs:subClassOf prop:batteryOperatingVoltage;
-			 rdfs:comment "Battery minimum operating volatge at 80% Depth Of Discharge (DOD)."@en ;
-			 rdfs:label "Battery Minimum Operating Voltage"@en ;
-			 rdfs:isDefinedBy prop:.
+prop:batteryMinOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:batteryOperatingVoltage;
+			 skos:definition "Battery minimum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
+			  skos:prefLabel "Battery Minimum Operating Voltage"@en .
+			  
 # Battery Minimum State of Charge               
-prop:batteryMinSoC a owl:Class ;
-	           rdfs:subClassOf prop:SoC;
-	           rdfs:comment "Battery minimum state of charge."@en ;
-	           rdfs:label "Battery Minimum State of Charge"@en ;
-		   rdfs:isDefinedBy prop:.
+prop:batteryMinSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+	           skos:broader  prop:StateOfCharge;
+	           skos:definition "Battery minimum state of charge."@en ;
+	            skos:prefLabel "Battery Minimum State of Charge"@en .
+		    
 # Battery Maximum State of Charge
-prop:batteryMaxSoC a owl:Class ;
-		   rdfs:subClassOf prop:SoC;
-		   rdfs:comment "Battery maximum state of charge."@en ;
-		   rdfs:label "Battery Maximum State of Charge"@en ;
-		   rdfs:isDefinedBy prop:.
+prop:batteryMaxSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		   skos:broader  prop:StateOfCharge;
+		   skos:definition "Battery maximum state of charge."@en ;
+		    skos:prefLabel "Battery Maximum State of Charge"@en .
+		    
 #Battery deep discharge Voltage
-prop:batteryDeepDischargeVoltage a owl:Class ;
-			     rdfs:subClassOf  prop:Volatge, prop:batteryProperty;
-			     rdfs:comment "The cell is damaged if voltage drops below this voltage."@en ;
-			     rdfs:label "Battery Deep Discharge Voltage"@en ;
-			     rdfs:isDefinedBy prop:.
+prop:batteryDeepDischargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:voltage, prop:batteryProperty;
+			     skos:definition "The cell is damaged if voltage drops below this voltage."@en ;
+			      skos:prefLabel "Battery Deep Discharge Voltage"@en .
+			      
 #Battery capacity
-prop:batteryCapacity a owl:Class ;
-		 rdfs:subClassOf  prop:batteryProperty, prop:QuantitativeProperty;
-		 rdfs:comment "The capacity of the battery in ampere hour."@en ;
-		 rdfs:label "Battery Capacity"@en ;
-		 prop:isMeasuredIn unit:A-HR;
-                 rdfs:isDefinedBy prop:.
+prop:batteryCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:broader  prop:batteryProperty;
+		 skos:definition "The capacity of the battery in ampere hour."@en ;
+		  skos:prefLabel "Battery Capacity"@en ;
+		 prop:isMeasuredIn unit:A-HR.
+                  
 # Battery Cell Average Temperature
-prop:batteryCellAverageTemperature a owl:Class ;
-				   rdfs:subClassOf  prop:Temperature, prop:batteryProperty;
-				   rdfs:comment "The battery temperature should not decrease this level during charge and discharge."@en ;
-                                   rdfs:label "Battery Cell Average Temperature"@en ;
-                                   prop:isMeasuredIn unit:DEG_C;
-                                   rdfs:isDefinedBy prop:.
+prop:batteryCellAverageTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				   skos:broader  prop:Temperature, prop:batteryProperty;
+				   skos:definition "The battery temperature should not decrease this level during charge and discharge."@en ;
+                                    skos:prefLabel "Battery Cell Average Temperature"@en ;
+                                   prop:isMeasuredIn unit:DEG_C.
+                                    
 # Battery Maximum Temperature
-prop:batteryMaxTemperature a owl:Class ;
-			   rdfs:subClassOf  prop:Temperature, prop:batteryProperty;
-			   rdfs:comment "The battery temperature should not increase this level during charge and discharge."@en ;
-			   rdfs:label "Battery Cell Maximum Temperature"@en ;
-			   prop:isMeasuredIn unit:DEG_C;
-                           rdfs:isDefinedBy prop:.
+prop:batteryMaxTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:Temperature, prop:batteryProperty;
+			   skos:definition "The battery temperature should not increase this level during charge and discharge."@en ;
+			    skos:prefLabel "Battery Cell Maximum Temperature"@en ;
+			   prop:isMeasuredIn unit:DEG_C.
+                            
 # Battery Maximum Charge Voltage
-prop:batteryMaxChargeVoltage a owl:Class ;
-			     rdfs:subClassOf  prop:Voltage, prop:batteryProperty;
-			     rdfs:comment "The battery cell is damaged if voltage exceeds this level in charge."@en ;
-			     rdfs:label "Battery Maximum Charge Voltage"@en ;
-			     prop:isMeasuredIn unit:V;
-			     rdfs:isDefinedBy prop:.
+prop:batteryMaxChargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:batteryProperty;
+			     skos:definition "The battery cell is damaged if voltage exceeds this level in charge."@en ;
+			      skos:prefLabel "Battery Maximum Charge Voltage"@en ;
+			     prop:isMeasuredIn unit:V.
+			      
 # Battery Optimal Discharge Current
-prop:batteryOptimalDischargeCurrent a owl:Class ;
-				    rdfs:subClassOf  prop:Current, prop:batteryProperty;
-				    rdfs:comment "The maximal  current at 0.5°C."@en ;
-				    rdfs:label "Battery Optimal Discharge Current"@en ;
-				    prop:isMeasuredIn unit:A;
-			            rdfs:isDefinedBy prop:.
+prop:batteryOptimalDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:batteryProperty;
+				    skos:definition "The maximal  current at 0.5°C."@en ;
+				     skos:prefLabel "Battery Optimal Discharge Current"@en ;
+				    prop:isMeasuredIn unit:A.
+			             
 # Battery Maximum Discharge Current
-prop:batteryMaxDischargeCurrent a owl:Class ;
-				rdfs:subClassOf  prop:Current, prop:batteryProperty;
-				rdfs:comment "The maximal current at 3°C, continious for max 15 minutes from full charge."@en ;
-				rdfs:label "Battery Optimal Discharge Current"@en ;
-				prop:isMeasuredIn unit:A;
-				rdfs:isDefinedBy prop:.
+prop:batteryMaxDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				skos:broader  prop:Current, prop:batteryProperty;
+				skos:definition "The maximal current at 3°C, continious for max 15 minutes from full charge."@en ;
+				 skos:prefLabel "Battery Optimal Discharge Current"@en ;
+				prop:isMeasuredIn unit:A.
+				 
 # Battery Maximum Peak Discharge Current
-prop:batteryMaxPeakDischargeCurrent a owl:Class ;
-				    rdfs:subClassOf  prop:Current, prop:batteryProperty;
-				    rdfs:comment "The maximal current at 10°C, maximal 5 seconds in 1 minute."@en ;
-				    rdfs:label "Battery Maximum Peak Discharge Current"@en ;
-				    prop:isMeasuredIn unit:A;
-				    rdfs:isDefinedBy prop:.
+prop:batteryMaxPeakDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:batteryProperty;
+				    skos:definition "The maximal current at 10°C, maximal 5 seconds in 1 minute."@en ;
+				     skos:prefLabel "Battery Maximum Peak Discharge Current"@en ;
+				    prop:isMeasuredIn unit:A.
+				     
 # Battery Optimal Charge Current
-prop:batteryOptimalChargeCurrent a owl:Class ;
-			         rdfs:subClassOf  prop:Current, prop:batteryProperty;
-				 rdfs:comment "The maximal current at 0.5 C."@en ;
-				 rdfs:label "Battery Optimal Charge Current"@en ;
-                                 prop:isMeasuredIn unit:A;
-				 rdfs:isDefinedBy prop:.
+prop:batteryOptimalChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			        skos:broader  prop:Current, prop:batteryProperty;
+				    skos:definition "The maximal current at 0.5 C."@en ;
+				    skos:prefLabel "Battery Optimal Charge Current"@en ;
+                    prop:isMeasuredIn unit:A.
+				  
 # Battery Optimal Charge Current
-prop:batteryMaChargeCurrent a owl:Class ;
-			    rdfs:subClassOf  prop:Current, prop:batteryProperty;
-			    rdfs:comment "The maximal current at <0.3 C with battery temperature monitoring."@en ;
-			    rdfs:label "Battery Maximum Charge Current"@en ;
-			    prop:isMeasuredIn unit:A;
-			    rdfs:isDefinedBy prop:.
+prop:batteryMaChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			    skos:broader  prop:Current, prop:batteryProperty;
+			    skos:definition "The maximal current at <0.3 C with battery temperature monitoring."@en ;
+			     skos:prefLabel "Battery Maximum Charge Current"@en ;
+			    prop:isMeasuredIn unit:A.
+			     
 # Battery Dimensions
-prop:batteryDimensions a owl:Class ;
-		       rdfs:subClassOf prop:QuantitaiveProperty, prop:batteryProperty;
-		       rdfs:comment "The dimension of the battery Lxlxh."@en ;
-		       rdfs:label "Battery Dimensions"@en ;
-		       prop:isMeasuredIn unit:MilliM;
-		       rdfs:isDefinedBy prop:.
+prop:batteryDimensions a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		       skos:broader prop:batteryProperty;
+		       skos:definition "The dimension of the battery Lxlxh."@en ;
+		        skos:prefLabel "Battery Dimensions"@en ;
+		       prop:isMeasuredIn unit:MilliM.
+		        
 # Battery Weight
-prop:batteryWeight  a owl:Class ;
-		    rdfs:subClassOf prop:QuantitaiveProperty, prop:batteryProperty;
-		    rdfs:comment "The weight of the battery in Kg."@en ;
-		    rdfs:label "Battery Weight"@en ;
-		    prop:isMeasuredIn unit:KiloGM;
-		    rdfs:isDefinedBy prop:.
-
-#--Transformer static properties---------------------------------------------------
+prop:batteryWeight  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:broader prop:batteryProperty;
+		    skos:definition "The weight of the battery in Kg."@en ;
+		     skos:prefLabel "Battery Weight"@en ;
+		    prop:isMeasuredIn unit:KiloGM.
+		     
 # Transformer Property
-prop:transformerPower a owl:Class ;
-		      rdfs:subClassOf  prop:Property;
-		      rdfs:comment "The Transformer Properties."@en ;
-		      rdfs:label "Transformer Power"@en ;	
-		      rdfs:isDefinedBy prop:.
+prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		      skos:broader  prop:Property;
+		      skos:definition "The Transformer Properties."@en ;
+		       skos:prefLabel "Transformer Power"@en.
+		       
 # Transformer Power
-prop:transformerPower a owl:Class ;
-		      rdfs:subClassOf  prop:Power, prop:transformerProperty;
-		      rdfs:comment "The Transformer Power."@en ;
-		      rdfs:label "Transformer Power"@en ;
-		      prop:isMeasuredIn unit:W;
-		      rdfs:isDefinedBy prop:.
+prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		      skos:broader  prop:Power, prop:transformerProperty;
+		      skos:definition "The Transformer Power."@en ;
+		       skos:prefLabel "Transformer Power"@en ;
+		      prop:isMeasuredIn unit:W.
+		       
 # Transformer Resistance
-prop:transformerResistance a owl:Class ;
-			   rdfs:subClassOf  prop:transformerProperty, prop:QuantitativeProperty;
-			   rdfs:comment "The Transformer Resistance."@en ;
-			   rdfs:label "Transformer Resistance"@en ;
-			   prop:isMeasuredIn unit:OHM;
-			   rdfs:isDefinedBy prop:.
+prop:transformerResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:transformerProperty;
+			   skos:definition "The Transformer Resistance."@en ;
+			    skos:prefLabel "Transformer Resistance"@en ;
+			   prop:isMeasuredIn unit:OHM.
+			    
 # Transformer Capacity
-prop:transfomerCapacity a owl:Class ;
-			rdfs:subClassOf  prop:Capacity, prop:transformerProperty;
-			rdfs:comment "the transformer capacity."@en ;
-			rdfs:label "Transformer Capacity"@en ;
-			prop:isMeasuredIn unit:KiloV-A;
-			rdfs:isDefinedBy prop:.
+prop:transformerCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader  prop:Capacity, prop:transformerProperty;
+			skos:definition "the transformer capacity."@en ;
+			 skos:prefLabel "Transformer Capacity"@en ;
+			prop:isMeasuredIn unit:KiloV-A.
+			 
 # Transformer Voltage Level
-prop:transformerVolatgeLevel a owl:Class ;
-			     rdfs:subClassOf  prop:Voltage, prop:transformerProperty;
-			     rdfs:comment "The transformer voltage level."@en ;
-			     rdfs:label "Transformer Voltage Level"@en ;
-	           	     prop:isMeasuredIn unit:V;
-			     rdfs:isDefinedBy prop:.
+prop:transformervoltageLevel a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:transformerProperty;
+			     skos:definition "The transformer voltage level."@en ;
+			      skos:prefLabel "Transformer Voltage Level"@en ;
+	           	     prop:isMeasuredIn unit:V.
+			      
 #--Bus static properties--------
-prop:busVolatge a owl:Class ;
-		rdfs:subClassOf  prop:Voltage, prop:QuantitaiveProperty;
-		rdfs:comment "The bus voltage ."@en ;
-		rdfs:label "Bus Volatge"@en ;
-		prop:isMeasuredIn unit:V;
-		rdfs:isDefinedBy prop:.
+prop:busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		skos:broader  prop:Voltage ; 
+		skos:definition "The bus voltage ."@en ;
+		 skos:prefLabel "Bus voltage"@en ;
+		prop:isMeasuredIn unit:V.
+		 
 
 #-- Inverter static property--
-prop:inverterProperty a owl:Class ;
-		                rdfs:subClassOf prop:Property;
-		                rdfs:comment "This property includes all static properties of an inverter."@en ;
-	  	                rdfs:label "Inverter Property"@en ;
-		                rdfs:isDefinedBy prop:.
+prop:inverterProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                skos:broader prop:Property;
+		                skos:definition "This property includes all static properties of an inverter."@en ;
+	  	                 skos:prefLabel "Inverter Property"@en.		                 
 
-prop:inveterMaxInputDCVoltage a owl:Class;
-                              rdfs:comment "The maximum input dc voltage of an inverter."@en ;
-							  rdfs:label "Inverter Max Input DC Voltage"@en ;
-							  rdfs:subClassOf prop:DCVoltage, prop:inverterProperty;
-							  prop:measuredIn unit:V;
-							  rdfs:isDefinedBy prop:. 
-prop:inveterMaxInputDCCurrent	rdf:type owl:Class ;
-							rdfs:comment "The maximum dc input current of an inverter."@en ;
-							rdfs:label "Inverter Max Input DC Current"@en ;
-							rdfs:subClassOf prop:DCCurrent,prop:inverterProperty;
-							prop:measuredIn unit:A;
-							rdfs:isDefinedBy prop:.	 
-prop:inveterMaxInputDCPower	rdf:type owl:Class ;
-							rdfs:comment "The maximum input DC  power of an inverter."@en ;
-							rdfs:label "Inverter Max Input DC Power"@en ;
-							rdfs:subClassOf prop:DCPower,prop:inverterProperty;
-							prop:measuredIn unit:W;
-							rdfs:isDefinedBy prop:.		
-prop:inveterDCMaxPowerPointVoltageRange rdf:type owl:Class ;
-							rdfs:comment "The maximum voltage range of DC power point of an inverter."@en ;
-							rdfs:label "Inveter DC Max Power Point Voltage Range"@en ;
-							rdfs:subClassOf seas:VoltageProperty, prop:QuantitaiveProperty;
-							prop:measuredIn unit:V;
-							rdfs:isDefinedBy prop:.	
+prop:inverterMaxInputDCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+                        skos:definition "The maximum input dc voltage of an inverter."@en ;
+						skos:prefLabel "Inverter Max Input DC Voltage"@en ;
+						skos:broader prop:DCVoltage, prop:inverterProperty;
+						prop:isMeasuredIn unit:V.
+							    
+prop:inverterMaxInputDCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "The maximum dc input current of an inverter."@en ;
+							skos:prefLabel "Inverter Max Input DC Current"@en ;
+							skos:broader prop:DCCurrent,prop:inverterProperty;
+							prop:isMeasuredIn unit:A.
+							 	 
+prop:inverterMaxInputDCPower	a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "The maximum input DC  power of an inverter."@en ;
+							skos:prefLabel "Inverter Max Input DC Power"@en ;
+							skos:broader prop:DCPower,prop:inverterProperty;
+							prop:isMeasuredIn unit:W.
+							 		
+prop:inverterDCMaxPowerPointVoltageRange a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "The maximum voltage range of DC power point of an inverter."@en ;
+							 skos:prefLabel "inverter DC Max Power Point Voltage Range"@en ;
+							skos:broader prop:voltage;
+							prop:isMeasuredIn unit:V.
+							 	
 #---- REN Solar Module properties------------------------------------------------------------
-prop:solarModuleProperty a owl:Class ;
-		                rdfs:subClassOf prop:Property;
-		                rdfs:comment "This property includes all static properties of a solar module."@en ;
-	  	                rdfs:label "Solar Module Property"@en ;
-		                rdfs:isDefinedBy prop:.
-prop:solarModuleVoC rdf:type owl:Class ;
-							rdfs:comment "Solar module open circuit voltage given at STC operating standard conditions."@en ;
-							rdfs:label "Solar Module VOC"@en ;
-							rdfs:subClassOf prop:Voltage,  prop:solarModuleProperty;
-							prop:measuredIn unit:V;
-							rdfs:isDefinedBy prop:.
-prop:solarModuleIsc rdf:type owl:Class ;
-							rdfs:comment "Solar module short circuit current given at STC operating standard conditions."@en ;
-							rdfs:label "Solar Module ISC"@en ;
-							rdfs:subClassOf prop:Current, prop:solarModule;
-							prop:measuredIn unit:A;
-							rdfs:isDefinedBy prop:.
-prop:solarModuleVmp rdf:type owl:Class ;
-							rdfs:comment "Solar module maximum power point voltage at operating standard conditions."@en ;
-							rdfs:label "Solar Module VMP"@en ;
-							rdfs:subClassOf prop:Voltage, prop:solarModuleProperty;
-							prop:measuredIn unit:V;
-							rdfs:isDefinedBy prop:.
-prop:solarModuleImp rdf:type owl:Class ;
-							rdfs:comment "Solar module maximum power point current at operating standard conditions."@en ;
-							rdfs:label "Solar Module ISC"@en ;
-							rdfs:subClassOf prop:Current, prop:solarModuleProperty;
-							prop:measuredIn unit:A;
-							rdfs:isDefinedBy prop:.
+prop:solarModuleProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		                 skos:definition "This property includes all static properties of a solar module."@en ;
+	  	                 skos:prefLabel "Solar Module Property"@en.
+		                 
+prop:solarModuleVoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "Solar module open circuit voltage given at STC operating standard conditions."@en ;
+							 skos:prefLabel "Solar Module VOC"@en ;
+							skos:broader prop:Voltage,  prop:solarModuleProperty;
+							prop:isMeasuredIn unit:V.
+							 
+prop:solarModuleIsc a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "Solar module short circuit current given at STC operating standard conditions."@en ;
+							 skos:prefLabel "Solar Module ISC"@en ;
+							skos:broader prop:Current , prop:solarModule;
+							prop:isMeasuredIn unit:A.
+							 
+prop:solarModuleVmp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "Solar module maximum power point voltage at operating standard conditions."@en ;
+							 skos:prefLabel "Solar Module VMP"@en ;
+							skos:broader prop:Voltage, prop:solarModuleProperty;
+							prop:isMeasuredIn unit:V.
+							 
+prop:solarModuleImp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "Solar module maximum power point current at operating standard conditions."@en ;
+							 skos:prefLabel "Solar Module ISC"@en ;
+							skos:broader prop:Current , prop:solarModuleProperty;
+							prop:isMeasuredIn unit:A.
+							 
 
-prop:solarModuleTemperatureCoefficient rdf:type owl:Class ;
-							rdfs:comment "Solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
-							rdfs:label "Solar Module Temperature Coefficient"@en ;
-							rdfs:subClassOf prop:Temperature, prop:solarModuleProperty;
-							prop:measuredIn unit:DEG_C;
-							rdfs:isDefinedBy prop:.
-# Dynamic Qualitative Properties
+prop:solarModuleTemperatureCoefficient a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+							skos:definition "Solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
+							 skos:prefLabel "Solar Module Temperature Coefficient"@en ;
+							skos:broader prop:Temperature, prop:solarModuleProperty;
+							prop:isMeasuredIn unit:DEG_C.
+
+
+# Qualitative Properties
 #--------------------------------------------------------------  
 
 # Smartmeter Event logs
-prop:SMEventLogs a owl:Class ;
-		 rdfs:comment "The event logs generated by a smart meter."@en ;
-		 rdfs:subClassOf  prop:QuanlitativeProperty;
-		 rdfs:label "Smart Meter Event logs "@en ;
-                 rdfs:isDefinedBy prop:.
+prop:SMEventLogs a owl:namedIndividual , skos:Concept , prop:QualitativeProperty   ;
+		 skos:definition "The event logs generated by a smart meter."@en ;
+		  skos:prefLabel "Smart Meter Event logs "@en .
+                  
 # Energy Fraud                
-prop:EnergyFraud a owl:Class ;
-		 rdfs:comment "Which type of installation is stealing energy:  Bitcoin mining, Marihuana plantations, or Squatting."@en ;
-		 rdfs:label "Energy Fraud "@en ;
-		 rdfs:subClassOf prop:QualitativeProperty;
-                 rdfs:isDefinedBy prop:.
+prop:EnergyFraud  a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+		 skos:definition "Which type of installation is stealing energy:  Bitcoin mining, Marihuana plantations, or Squatting."@en ;
+		  skos:prefLabel "Energy Fraud "@en.
+                  
 
 #Main Breaker State
-prop:MainBreakerState a owl:Class ;
-		 rdfs:comment "The main breaker state."@en ;
-		 rdfs:label "Main Breaker State "@en ;
-		 rdfs:subClassOf prop:QualitativeProperty;
-                 rdfs:isDefinedBy prop:.
-
-
-# Static Qualitative Properties
-#--------------------------------------------------------------  
-prop:solarModuleType a owl:Class ;
-		             rdfs:comment "The type of the solar module."@en ;
-		             rdfs:label "Solar Module Type "@en ;
-		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
-                     rdfs:isDefinedBy prop:.
-prop:solarModuleAssemblyThermalModel a owl:Class ;
-		                             rdfs:comment "The type of the solar module."@en ;
-		             rdfs:label "Solar Module Type "@en ;
-		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
-                     rdfs:isDefinedBy prop:.
+prop:MainBreakerState a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+		 skos:definition "The main breaker state."@en ;
+		  skos:prefLabel "Main Breaker State "@en .
+                  
+prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+		             skos:definition "The type of the solar module."@en ;
+		              skos:prefLabel "Solar Module Type "@en ;
+		             skos:broader prop:solarModuleProperty.
+                      
+prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+		                             skos:definition "The type of the solar module."@en ;
+		              skos:prefLabel "Solar Module Type "@en ;
+		             skos:broader prop:QualitativeProperty, prop:solarModuleProperty .
+                      
 # Static Quantitative Properties
 #--------------------------------------------------------------  
-prop:solarModuleType a owl:Class ;
-		             rdfs:comment "The type of a solar module."@en ;
-		             rdfs:label "Solar Module Type "@en ;
-		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
-                     rdfs:isDefinedBy prop:.
-prop:solarModuleAssemblyThermalModel a owl:Class ;
-		                             rdfs:comment "The assembly thermal model of a solar module."@en ;
-		             rdfs:label "Solar Module Assembly Thermal Model "@en ;
-		             rdfs:subClassOf prop:QualitativeProperty, prop:solarModuleProperty;
-                     rdfs:isDefinedBy prop:.
-<<<<<<< HEAD
+prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+		             skos:definition "The type of a solar module."@en ;
+		              skos:prefLabel "Solar Module Type "@en ;
+		             skos:broader prop:solarModuleProperty.
+                      
+prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+		                             skos:definition "The assembly thermal model of a solar module."@en ;
+		              skos:prefLabel "Solar Module Assembly Thermal Model "@en ;
+		             skos:broader prop:solarModuleProperty.
+                      
+#--------------------------------------------------------------
+#    Electromobility Classification
+#--------------------------------------------------------------
+
+#-- Authentication Mode
+  
+prop:AuthenticationMode a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+        skos:prefLabel "Authentication Mode"@en ;      
+        skos:definition "The authentication mode refers to the method or process used to verify and authenticate the identity and authorization of users accessing related infrastructure."@en ;
+        skos:broader prop:QualitativeProperty;
+		prop:isEvaluatedIn prop:Local, prop:Remote, prop:No , prop:RFID, prop:By15118;
+        rdfs:isDefinedBy  prop: .
+
+prop:Local a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "Local"@en ;      
+        skos:definition "The local authentication mode refers to a method of verifying and authorizing users or devices within an infrastructure without requiring communication with an external server or network."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:Remote a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "Remote"@en ;      
+        skos:definition "The remote authentication mode refers to a method of verifying and granting access to users or devices that requires communication with external authentication servers or services over a network."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:No a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "No"@en ;      
+        skos:definition "The no authentication mode is a configuration in which a system or network or service operated without implementing any authentication mechanisms."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:RFID a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "RFID"@en ;      
+        skos:definition "The Radio-Frequency Identification (RFID) refers to a method of authorization to a system, facility, or service using RFID technology."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:By15118 a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "By 15118"@en ;      
+        skos:definition "The authentication by 15118 refers to a specific authentication mechanism defined in the ISO 15118 standard."@en ;
+        rdfs:isDefinedBy  prop: .
+
+#--  Charging Speed
+
+prop:ChargingSpeed a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+        skos:prefLabel "Charging Speed Property"@en ;
+        skos:definition "The class of charging speed refers to the rate at which a system's battery can be recharged with electric energy."@en ;
+		prop:isEvaluatedIn prop:Standard, prop:Accelerated, prop:Fast, prop:UltraFast, prop:ExtremelyFast ;
+        rdfs:isDefinedBy prop: .
+
+prop:Standard a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "Standard"@en  ;
+        skos:definition "Standard charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:Accelerated a owl:namedIndividual , skos:Concept , prop:Category ; ;
+        skos:prefLabel "Accelerated"@en ;
+        skos:definition "Accelerated charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:Fast a owl:namedIndividual , skos:Concept , prop:Category  ;
+        skos:prefLabel "Fast"@en  ;
+        skos:definition "Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:UltraFast a owl:namedIndividual , skos:Concept , prop:Category ;
+        skos:prefLabel "Ultra Fast"@en  ;
+        skos:definition "Ultra Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:ExtremelyFast a owl:namedIndividual , skos:Concept , prop:Category ;
+        skos:prefLabel "Extremely Fast"@en  ;
+        skos:definition "Extremely Fast Fast charging speed. "@en ;
+        rdfs:isDefinedBy prop: .
+
+#-- Electric Vehicle Supply Equipment Connector Format
+
+prop:ElectricVehicleSupplyEquipmentConnectorFormat a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+	skos:prefLabel "Electric Vehicle Supply Equipment Connector Format"@en ;
+        skos:definition "(source OCPI 2.2.1) The format (socket/cable) of the installed connector."@en ; 
+        dcterms:source <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
+		prop:isEvaluatedIn prop:Socket , prop:Cable;
+		rdfs:isDefinedBy prop: .
+
+prop:Socket  a  owl:NamedIndividual, prop:Category ;       
+		 skos:prefLabel "socket"@en ;
+        skos:definition "Electric Vehicle Supply Equipment Connector Format is a socket."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:Cable  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "cable"@en ;
+        skos:definition "Electric Vehicle Supply Equipment Connector Format is a cable."@en ;
+        rdfs:isDefinedBy prop:  .
+
+#-- ElectricVehicleSupplyEquipment Connector Type
+
+prop:ElectricVehicleSupplyEquipmentConnectorType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+	skos:prefLabel "Electric Vehicle Supply Equipment Connector Type"@en ;
+        skos:definition "(source OCPI 2.2.1) The standard of the installed connector."@en ; 
+        dcterms:source <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
+        skos:broader mv:PlugType;
+	prop:isEvaluatedIn prop:CHAdeMO, prop:ChaoJi, prop:DOMESTIC_A , prop:DOMESTIC_B,prop:DOMESTIC_C, prop:DOMESTIC_D , prop:DOMESTIC_E,prop:DOMESTIC_F,prop:DOMESTIC_G , prop:DOMESTIC_H,prop:DOMESTIC_I, prop:DOMESTIC_J , prop:DOMESTIC_K,prop:DOMESTIC_L, prop:DOMESTIC_M , prop:DOMESTIC_N,prop:DOMESTIC_O, prop:GBT_DC, prop:IEC_60309_2_single_16  , prop:IEC_60309_2_three_16  , prop:IEC_60309_2_three_32  , prop:IEC_60309_2_three_64 , prop:IEC_62196_T1 , prop:IEC_62196_T1_COMBO , prop:IEC_62196_T2  , prop:IEC_62196_T2_COMBO , prop:IEC_62196_T3A , prop:IEC_62196_T3C , prop:NEMA_5_20 , prop:NEMA_6_30  , prop:NEMA_6_50 , prop:NEMA_10_30  , prop:NEMA_10_50 , prop:NEMA_14_30 , prop:NEMA_14_50 , prop:PANTOGRAPH_BOTTOM_UP , prop:PANTOGRAPH_TOP_DOWN , prop:TESLA_R , prop:TESLA_S.
+
+prop:CHAdeMO  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "CHAdeMO"@en ;
+        skos:definition "CHAdeMO is the trade name of a quick charging method for battery electric vehicles delivering up to 62.5 kW of direct current (500 V, 125 A[1]) via a special electrical connector (wikipedia)."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:ChaoJi  a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "ChaoJi"@en  ;
+        skos:definition "The ChaoJi connector. The new generation charging connector, harmonized between CHAdeMO and GB/T. DC. (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_A  a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC A"@en  ;
+        skos:definition "Standard/Domestic household, type \"A\", NEMA 1-15, 2 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_B  a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC B"@en  ;
+        skos:definition "Standard/Domestic household, type \"B\", NEMA 5-15, 3 pins (OCPI). "@en ;
+         rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_C  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC C"@en  ;
+        skos:definition "Standard/Domestic household, type \"C\", CEE 7/17, 2 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_D  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC D"@en  ;
+        skos:definition "Standard/Domestic household, type \"D\", 3 pin (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_E  a  owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "DOMESTIC E"@en  ;
+        skos:definition "Standard/Domestic household, type \"E\", CEE 7/5 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_F  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC F"@en  ;
+        skos:definition "Standard/Domestic household, type \"F\", CEE 7/4, Schuko, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_G  a  owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "DOMESTIC G"@en  ;
+        skos:definition "Standard/Domestic household, type \"G\", BS 1363, Commonwealth, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_H  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC H"@en  ;
+        skos:definition "Standard/Domestic household, type \"H\", SI-32, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_I  a  owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "DOMESTIC I"@en  ;
+        skos:definition "Standard/Domestic household, type \"I\", AS 3112, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_J  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC J"@en  ;
+        skos:definition "Standard/Domestic household, type \"J\", SEV 1011, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_K  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC K"@en  ;
+        skos:definition "Standard/Domestic household, type \"K\", DS 60884-2-D1, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_L  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC L"@en  ;
+        skos:definition "Standard/Domestic household, type \"L\", CEI 23-16-VII, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_M  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC M"@en  ;
+        skos:definition "Standard/Domestic household, type \"M\", BS 546, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_N  a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC N"@en  ;
+        skos:definition "Standard/Domestic household, type \"N\", NBR 14136, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:DOMESTIC_O  a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "DOMESTIC O"@en  ;
+        skos:definition "Standard/Domestic household, type \"O\", TIS 166-2549, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:GBT_AC  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "GBT AC"@en  ;
+        skos:definition "Guobiao GB/T 20234.2 AC socket/connector (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:GBT_DC  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "GBT DC"@en  ;
+        skos:definition "Guobiao GB/T 20234.3 DC connector (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_single_16  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 60309-2 single 16"@en  ;
+        skos:definition "IEC 60309-2 Industrial Connector single phase 16 amperes (usually blue) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_16  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 60309-2 three 16"@en  ;
+        skos:definition "IEC 60309-2 Industrial Connector three phases 16 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_32  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 60309-2 three 32"@en  ;
+        skos:definition "IEC 60309-2 Industrial Connector three phases 32 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_60309_2_three_64  a  owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "IEC 60309-2 three 64"@en  ;
+        skos:definition "IEC 60309-2 Industrial Connector three phases 64 amperes (usually red) (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T1  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 62196 T1"@en  ;
+        skos:definition "IEC 62196 Type 1 \"SAE J1772\" (OCPI)."@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T1_COMBO  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 62196 T1 COMBO"@en  ;
+        skos:definition "Combo Type 1 based, DC (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T2  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 62196 T2"@en  ;
+        skos:definition "IEC 62196 Type 2 \"Mennekes\" (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T2_COMBO  a  owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "IEC 62196 T2 COMBO"@en  ;
+        skos:definition " Combo Type 2 based, DC (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T3A  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 62196 T3A"@en  ;
+        skos:definition " IEC 62196 Type 3A (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:IEC_62196_T3C  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "IEC 62196 T3C"@en  ;
+        skos:definition "IEC 62196 Type 3C \"Scame\" (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_5_20  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 5 20"@en  ;
+        skos:definition "NEMA 5-20, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_6_30  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 6 30"@en  ;
+        skos:definition "NEMA 6-30, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_6_50  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 6 50"@en  ;
+        skos:definition "NEMA 6-50, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_10_30  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 10 30"@en  ;
+        skos:definition "NEMA 10-30, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_10_50  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 10 50"@en  ;
+        skos:definition "NEMA 10-50, 3 pins (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_14_30  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 14 30"@en  ;
+        skos:definition "NEMA 14-30, 3 pins, rating of 30 A (OCPI). "@en ;
+        rdfs:isDefinedBy prop:  .
+
+prop:NEMA_14_50  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "NEMA 14 50"@en  ;
+        skos:definition "NEMA 14-50, 3 pins, rating of 50 A (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:PANTOGRAPH_BOTTOM_UP  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "PANTOGRAPH BOTTOM UP"@en  ;
+        skos:definition "On-board Bottom-up-Pantograph typically for bus charging (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:PANTOGRAPH_TOP_DOWN  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "PANTOGRAPH TOP DOWN"@en  ;
+        skos:definition "Off-board Top-down-Pantograph typically for bus charging (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:TESLA_R  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "TESLA R"@en  ;
+      skos:definition "Tesla Connector \"Roadster\"-type (round, 4 pin) (OCPI)."@en ;
+        rdfs:isDefinedBy prop: .
+
+prop:TESLA_S  a  owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "TESLA S"@en  ;
+        skos:definition "Tesla Connector \"Model-S\"-type (oval, 5 pin) (OCPI). "@en ;
+        rdfs:isDefinedBy prop: .
+
+#-- Payment Method
+
+prop:PaymentMethod a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+        skos:prefLabel "Payment Method"@en ;      
+        skos:definition "The payment method refers to the various ways can pay for services, infrastructure use, or offerings."@en ;
+	prop:isEvaluatedIn prop:FreeOfPayment, prop:CreditCard, prop:OperatorContract ;
+        rdfs:isDefinedBy  prop: .
 
 
-=======
-#    Units
-#--------------------------------------------------------------  
-#---Unit
-prop:CubicMeter-HR a owl:Class ;
-                   rdfs:comment ""@en ;
-		   rdfs:label "Cubic Meter per Hour"@en ;
-		   rdfs:subClassOf prop:Unit;
-                   rdfs:isDefinedBy prop:.
->>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
+prop:FreeOfPayment a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "Free"@en ;      
+        skos:definition "The free payment method reefrs to a transactional process where the payer does not incur any direct financial cost or obligation when making a payment."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:CreditCard a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "Credit Card"@en ;      
+        skos:definition "The credit card payment method refers to a financial transaction in which a consumer utilizes a credit card to purchase goods or services."@en ;
+        rdfs:isDefinedBy  prop: .
+
+prop:OperatorContract a owl:NamedIndividual, prop:Category ;
+        skos:prefLabel "Operator Contract"@en ;      
+        skos:definition "The operator contract payment method  refers to the method by which payments are processed within the context of a contractual agreement between an operator (such as a charging point opertor) and another party (such as a client, customer, or partner)."@en ;
+        rdfs:isDefinedBy  prop: .
+
+#-- Status
+
+prop:Status a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+	skos:prefLabel "Status"@en ;
+        skos:definition "TBA."@en ; 
+        skos:broader plt:Status ;
+        rdfs:isDefinedBy prop: .
+
+#-- Availability Status
+
+prop:AvailabilityStatus a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+	skos:prefLabel "Availablility Status"@en ;
+        skos:definition "The availability status refers the current condition of a specific system at a given moment during a process, indicating whether it is operationally ready and accessible for use."@en ; 
+        skos:broader prop:Status;
+        prop:isEvaluatedIn prop:OutOfOrder, prop:InService, prop:Future, prop:Deleted ;
+	rdfs:isDefinedBy prop: .
+
+prop:OutOfOrder a owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "Out Of Order"@en ;
+        skos:definition "(source eMIP) The EVCI element is not available to the end-user."@en ; 
+        dcterms:source <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:InService a owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "In Service"@en ;
+        skos:definition "(source eMIP) The EVCI element is available to the end-user."@en ; 
+        dcterms:source <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:Future a owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "Future"@en ;
+        skos:definition "(source eMIP) The EVCI element is not available to the end-user because it does not exist yet. The installation of this element is scheduled."@en ; 
+        dcterms:source <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+prop:Deleted a owl:NamedIndividual, prop:Category ;
+	skos:prefLabel "Deleted"@en ;
+        skos:definition "(source eMIP) The EVCI element is not available to the end-user because it does not exist anymore."@en ; 
+        dcterms:source <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:isDefinedBy prop: .
+
+#-- Occupancy Status
+
+prop:OccupancyStatus a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+        skos:prefLabel "Occupancy Status"@en ;
+        skos:definition "The occupancy status indicates that a system is currently free or occupied in time during a process."@en ;  
+        skos:broader prop:Status;
+        prop:isEvaluatedIn prop:Occupied, prop:FreeOfOccupancy;
+	rdfs:isDefinedBy prop: .
+
+prop:Occupied a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "Occupied"@en ;
+        skos:definition "The occupied status is the situation of a system when it is actively in use."@en ;  
+        rdfs:isDefinedBy prop: .
+
+prop:FreeOfOccupancy a owl:NamedIndividual, prop:Category;
+        skos:prefLabel "Free"@en ;
+        skos:definition "The free status refers to the situation of a system when it is available and not currently in use."@en ;  
+        rdfs:isDefinedBy prop:  .
+

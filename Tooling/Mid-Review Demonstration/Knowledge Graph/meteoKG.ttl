@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 @prefix omegax: <https://w3id.org/omega-x/Ontology> .
-=======
-@prefix omegax: <https://w3id.org/omega-x/> .
->>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix qudt: <http://qudt.org/vocab/unit/> .
@@ -20,7 +16,6 @@
 @prefix schema: <http://schema.org/> .
 @prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
 @prefix seas: <https://w3id.org/seas/> .
-<<<<<<< HEAD
 @prefix ets: <https://w3id.org/omega-x/Ontology/ets/> .
 @prefix eds: <https://w3id.org/omega-x/Ontology/eds/> .
 @prefix maia: <https://w3id.org/omega-x/Maia#> .
@@ -30,17 +25,6 @@ prop:AirTemperature prop:measuredIn qudt:DEG_C .
 prop:AirPressure prop:measuredIn qudt:PA . 
 prop:RelativeHumidity prop:measuredIn qudt:PERCENT . 
 prop:SolarIrradiance eds:measuredIn <http://qudt.org/vocab/unit/W-PER-M2> .
-=======
-@prefix ets: <https://w3id.org/omega-x/ets/> .
-@prefix eds: <https://w3id.org/omega-x/eds/> .
-@prefix maia: <https://w3id.org/omega-x/Maia#> .
- 
-
-seas:AirTemperature eds:measuredIn qudt:DEG_C .
-eds:AirPressure eds:measuredIn qudt:PA . 
-eds:RelativeHumidity eds:measuredIn qudt:PERCENT . 
-seas:SolarIrradiance eds:measuredIn <http://qudt.org/vocab/unit/W-PER-M2> .
->>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
 
 # time Series
 
@@ -61,10 +45,6 @@ maia:MaiaMeteoCoverage a time:Interval ;
                     time:hasBeginning  [a time:Instant ; time:inXSDDateTimeStamp  "2023-01-01T00:00:00"^^xsd:dateTimeStamp ] ; 
                     time:hasDurationDescription [ a time:DurationDescription ; time:years  "1"^^xsd:integrer] .
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 656012758a281d3bd40ef52a936bb699bd7bd477
 maia:ATMOS41 a eds:EvaluationPoint ; 
     eds:hasLocation maia:CoberturaVerde . 
 

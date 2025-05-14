@@ -231,6 +231,18 @@ ets:isAboutProperty a owl:ObjectProperty ;
       rdfs:comment "The relationship that identifies the property of interest described by the value set "@en ; 
       rdfs:label "Is About Property"@en.
 
+ets:allAboutProperty a owl:ObjectProperty ; rdfs:subPropertyOf ets:isAboutProperty; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship that identifies the unique property of interest described by the value set "@en ; 
+      rdfs:label "All About Property"@en.
+
+ets:someAboutProperty a owl:ObjectProperty ; rdfs:subPropertyOf ets:isAboutProperty; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship that identifies one property of interest among those described by the value set "@en ; 
+      rdfs:label "Some About Property"@en.
+
 #--has Unit
 ets:hasUnit a owl:ObjectProperty ; 
       rdfs:domain ets:ValueSet ; 
