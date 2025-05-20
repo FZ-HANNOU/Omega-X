@@ -9,10 +9,11 @@ This module provides solar dedicated classes for the simplified topology as well
 ### Querying Questions
 | ID | Question in natural language | Example
 |---|---|---|
-|CQ1| What is the static configuration of each equipment ?| The configuration properties of an equipement |
+|CQ1| What are the combiner boxes of a certain level ?| The list of combiner boxes of level 1, 2 or others. |
 |CQ2|For a given equipment what is the weatherStation to refer in order to have the irradiance time series ? | the weatherstation attached to the timeseries containing the irradiance  |
 |CQ3|What are the equipments controlled by a tracker ? | The list of equipments controlled by a solar tracker |
 |CQ4|What are the inverters of an inverter station ? | The list of inverter which are subsystem of an inverter station |
+|CQ5|What is the number of strings and the number of modules per string for a combiner box ? | The number of strings and the number of modules per string for the combiner box. |
 
 ### Inference Questions
 | ID | Question in natural language | Example
