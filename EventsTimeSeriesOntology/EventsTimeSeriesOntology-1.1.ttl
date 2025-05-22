@@ -32,7 +32,7 @@
                                              dcterms:license <https://opensource.org/license/mit/> ;
                                              dcterms:created "2023-11-11"^^xsd:date ;
                                              dcterms:modified "2025-01-14"^^xsd:date;
-                                             dcterms:issued "2025-01-30"^^xsd:date;
+                                             dcterms:issued "2025-05-22"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Event and Time Series ontology"@en ;
                                              vann:preferredNamespacePrefix "ets" ;
@@ -117,6 +117,7 @@ ets:DataValue a owl:Class ;
       rdfs:label "Data Value"@en ;
       rdfs:isDefinedBy ets:.
 
+#--The following assertion enables the use of property values and data values, to ensure the conformity with previous version of the ontology. 
 ets:PropertyValue a owl:Class ; rdfs:subClassOf ets:DataValue. 
      
 #--------------------------------------------------------------
