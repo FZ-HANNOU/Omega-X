@@ -1091,3 +1091,90 @@ prop:FreeOfOccupancy a owl:NamedIndividual, prop:Category;
         skos:prefLabel "Free"@en ;
         skos:definition "The free status refers to the situation of a system when it is available and not currently in use."@en ;  
         rdfs:isDefinedBy prop:  .
+
+
+#--FlexibilityType
+prop:FlexibilityType a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+		skos:prefLabel "Flexibility Type"@en ;
+		skos:definition "The flexibility type refers to the different types of flexibility that can be provided by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:Flexibility a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; 
+		skos:broader prop:FlexibilityType ; 
+		skos:prefLabel "Flexibility"@en ;
+		prop:isEvaluatedIn prop:FlexibilityAvailable, prop:FlexibilityOrdered, prop:FlexibilityRequested ;
+		rdfs:isDefinedBy prop: .
+
+prop:CapacityMargin a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; 
+		skos:broader prop:FlexibilityType ; 
+		skos:prefLabel "Capacity margin"@en ;
+		prop:isEvaluatedIn prop:CapacityMarginAvailable, prop:CapacityMarginOrdered, prop:CapacityMarginRequested ;
+		rdfs:isDefinedBy prop: .
+
+#--Flexibility type
+prop:FlexibilityAvailable a owl:NamedIndividual , skos:Concept , prop:Category ;	
+		skos:prefLabel "Flexibility Available"@en ;
+		skos:definition "The flexibility available refers to the amount of flexibility that can be provided by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:FlexibilityOrdered	a owl:NamedIndividual , skos:Concept , prop:Category ;	
+		skos:prefLabel "Flexibility Ordered"@en ;
+		skos:definition "The flexibility ordered refers to the amount of flexibility that has been ordered by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:FlexibilityRequested	a owl:NamedIndividual , skos:Concept , prop:Category ;	
+		skos:prefLabel "Flexibility Requested"@en ;
+		skos:definition "The flexibility requested refers to the amount of flexibility that has been requested by a system."@en ; 
+		rdfs:isDefinedBy prop: .	
+
+#--capacity Margin
+prop:CapacityMarginAvailable a owl:NamedIndividual , skos:Concept , prop:Category ;	
+		skos:prefLabel "Capacity Margin Available"@en ;
+		skos:definition "The capacity margin available refers to the amount of capacity margin that can be provided by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:CapacityMarginOrdered a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Capacity Margin Ordered"@en ;
+		skos:definition "The capacity margin ordered refers to the amount of capacity margin that has been ordered by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:CapacityMarginRequested a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Capacity Margin Requested"@en ;
+		skos:definition "The capacity margin requested refers to the amount of capacity margin that has been requested by a system."@en ; 
+		rdfs:isDefinedBy prop: .
+
+#--ElectricityPhase 
+prop:ElectricityPhase a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+		skos:prefLabel "Electricity Phase"@en ;
+		skos:definition "The electricity phase refers to the phase of electricity."@en ; 
+		prop:isEvaluatedIn prop:SinglePhase, prop:SinglePhase1, prop:SinglePhase2, prop:SinglePhase3, prop:ThreePhase ;
+		rdfs:isDefinedBy prop: .
+
+prop:SinglePhase a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Single Phase"@en ;
+		skos:definition "The single phase refers to the single phase of electricity."@en ; 
+		rdfs:isDefinedBy prop: .
+
+prop:SinglePhase1 a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Single Phase 1"@en ;
+		skos:definition "The single phase 1 refers to the single phase 1 of electricity."@en ; 
+		skos:broader prop:SinglePhase ;
+		rdfs:isDefinedBy prop: .
+
+prop:SinglePhase2 a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Single Phase 2"@en ;
+		skos:definition "The single phase 2 refers to the single phase 2 of electricity."@en ; 
+		skos:broader prop:SinglePhase ;
+		rdfs:isDefinedBy prop: .
+
+prop:SinglePhase3 a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Single Phase 3"@en ;
+		skos:definition "The single phase 3 refers to the single phase 3 of electricity."@en ; 
+		skos:broader prop:SinglePhase ;
+		rdfs:isDefinedBy prop: .
+
+prop:ThreePhase a owl:NamedIndividual , skos:Concept , prop:Category ;
+		skos:prefLabel "Three Phase"@en ;
+		skos:definition "The three phase refers to the three phase of electricity."@en ; 
+		rdfs:isDefinedBy prop: .
+
