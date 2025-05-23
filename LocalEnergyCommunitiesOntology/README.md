@@ -39,7 +39,7 @@ Smart, often automated system that monitors, manages, and optimizes energy usage
 
 ## OWL Description
 
-![Diagram](./Module-LEC.png)
+![Diagram](./LocalEnergyCommunities.png)
 
 ## Related Work
 
