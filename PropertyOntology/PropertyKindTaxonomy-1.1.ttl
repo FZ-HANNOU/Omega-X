@@ -18,27 +18,28 @@
 @base <https://w3id.org/omega-x/ontology/Property/>.
 
 <https://w3id.org/omega-x/ontology/Property/> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.0/> ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.1/> ;
                                              owl:imports ets: ; 
                                              dcterms:description """The property ontology is a common module of the CSDM designed to provide a structured taxonomy for the properties of the energy domain.
-                                             It distinguishes two type of properties: 
+                                             It reuses a XkindXofInterest ontology design pattern to distinguish between properties used in knowledge graphs (propertyOfInterest) from those used as reference types in the taxonomy (PropertyKind).
+                                             propertyKind distinguishes two type of property kinds: 
                                              - Quantitative properties: physical quantities associated to numerical values and unit of measures. 
                                              - Qualitative properties: characteristics of real-world evaluated using non numerical categorical values.  
-                                             The property ontology presents a taxonomy of properties for which values (static or dynamic) are defined using Events and Time Series Module.
+                                             The property ontology includes a taxonomy of properties (skos:Concept), hierarchically related. 
                                              """@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
                                               dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
                                              dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              dcterms:created "2024-03-08"^^xsd:date ;
-                                             dcterms:modified "2024-04-30"^^xsd:date;
-                                             dcterms:issued "2024-05-07"^^xsd:date;
+                                             dcterms:modified "2025-05-14"^^xsd:date;
+                                             dcterms:issued "2025-05-23"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Property ontology"@en ;
                                              vann:preferredNamespacePrefix "prop" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property>  ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property/>  ;
                                               skos:prefLabel "Property"@en ;
-                                             owl:versionInfo "1.0".
+                                             owl:versionInfo "1.1".
 
 #---------------------------------------------------------------
 #    Annotation properties
@@ -61,38 +62,42 @@ schema:rangeIncludes a owl:AnnotationProperty .
 time:TemporalEntity a owl:Class .
 
 
+#--------------------------------------------------------------------------------------------------------------
+#                       Taxonomy of Energy Domain Properties
+#--------------------------------------------------------------------------------------------------------------
+
 # Quantitative Properties
 #----------------------------------------------------------------
 # Temperature
-prop:Temperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ; 
+prop:Temperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty ; 
               skos:prefLabel "Temperature"@en;
-			 prop:isMeasuredInIn unit:DEG_C . 
+			 prop:isMeasuredIn unit:DEG_C . 
 # Energy
-prop:Energy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Energy a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
               skos:prefLabel "Energy"@en.
               
 # Power
-prop:Power a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Power a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
               skos:prefLabel "Power"@en.
               
 # Current
-prop:Current a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Current a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
               skos:prefLabel "Current"@en;
 			 prop:isMeasuredIn unit:A.
 
 #Capacity 
-prop:Capacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Capacity a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
               skos:prefLabel "Capacity"@en.
               
 # DC current
-prop:DCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:DCCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:broader prop:Current ; 
              skos:definition "The current in DC mode."@en ; 
             skos:prefLabel "DC Current"@en;
 			 prop:isMeasuredIn unit:A.
               
 # Resistance 
-prop:Resistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Resistance a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
             skos:definition "For a resistive two-terminal element or two-terminal circuit with terminals A and B, quotient of the voltage (131-11-56) uAB between the terminals by the electric current i in the element or circuit."@en ; 
             skos:prefLabel "Resistance"@en;
 			dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=131-12-04>;
@@ -100,95 +105,95 @@ prop:Resistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty
              
 
 # AC Current
-prop:ACCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ACCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:broader prop:Current  ; 
              skos:definition "Alternating current on different phases."@en ; 
               skos:prefLabel "AC Current L1"@en.
               
 # Voltage
-prop:Voltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Voltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:prefLabel "Voltage"@en;
 			 prop:isMeasuredIn unit:V.
               
 # Irradiance  
-prop:Irradiance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;  
+prop:Irradiance a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;  
              skos:definition "density of incident radiant flux with respect to area at a point on a real or imaginary surface."@en ; 
 			 dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=845-21-053>;
              skos:prefLabel "Irradiance"@en;
 			 prop:isMeasuredIn unit:W-PER-M2;
 			 prop:isDefinedBy prop:.
 # DCVoltage
-prop:DCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:DCVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:broader prop:Voltage ; 
              skos:definition "Direct Current Voltage"@en ; 
               skos:prefLabel "DC Voltage"@en.
               
 # AC Voltage phase 
-prop:ACVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ACVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:broader prop:Voltage ; 
              skos:definition "Alternating Current Voltage for different phases."@en ; 
              skos:prefLabel "AC Voltage"@en.
               			
 # Root Mean Square Voltage
-prop:RMSVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:RMSVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		     skos:definition "The root mean square voltage."@en ;
 		     skos:prefLabel "RMS Voltage"@en ;
 		     skos:broader prop:Voltage.
 		      
 # Frequency
-prop:Frequency a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Frequency a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:definition "Reciprocal of the period."@en ; 
               skos:prefLabel "Frequency"@en;
 			 prop:isMeasuredIn unit:HZ.
               
 # Energy Cost
-prop:EnergyCost a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:EnergyCost a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		skos:definition "Energy prices agreed with the supplier for the energy term."@en ;
 		 skos:prefLabel "Energy Cost"@en ;
 		prop:isMeasuredIn unit:EUR-PER-KiloW.
 		 
 
 # Air Temperature
-prop:AirTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:AirTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
         skos:broader prop:Temperature ;   
 		prop:isMeasuredIn unit:DEG_C;
         skos:prefLabel "Air Temperature"@en.
 
 # Heat Sink Temperature
-prop:HeatSinkTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:HeatSinkTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                          skos:broader prop:Temperature ;    
 				         prop:isMeasuredIn unit:DEG_C;
                           skos:prefLabel "Air Temperature"@en.
 
 # System Internal Temperature
-prop:SystemInternalTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:SystemInternalTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			skos:broader prop:Temperature ; 
             skos:prefLabel "System Internal Temperature"@en.
 			 
 
 # Panel Temperature
-prop:PanelTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:PanelTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			skos:broader prop:Temperature ; 
             skos:definition "The temperature of a panel module measured by a weather station."@en ; 
             skos:prefLabel "Panel Temperature"@en.
 			 
 
 # Internal Inverter Temperature
-prop:InternalInverterTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InternalInverterTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			skos:broader prop:Temperature ; 
             skos:definition "Maximum temperatures among all the Power Electronics devices constituting the inverter arms (IEC_61850_7_420_2019A)."@en ; 
             skos:prefLabel "Internal Inverter Temperature"@en.
 			 
 
 # Electrical losses
-prop:Elosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Elosses a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	     skos:definition "The estimated amount of energy lost in the distribution grid."@en ;
 	      skos:prefLabel "Electrical Losses"@en ;
 	     skos:broader prop:Energy;
 	     prop:isMeasuredIn unit:KiloW-HR.
 
 # Thermal Energy
-prop:ThermalEnergy  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ThermalEnergy  a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		skos:definition "Thermal energy is a kind of energy and it is generated when the temperature rises. It can be consumed or supplied."@en ;
 		skos:broader seas:ElectricalEnergyProperty, prop:Energy;
 		 skos:prefLabel "Thermal Energy "@en ;
@@ -196,42 +201,42 @@ prop:ThermalEnergy  a owl:namedIndividual , skos:Concept , prop:QuantitativeProp
 		 
                 
 # Water Quantity                
-prop:WaterQuantity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:WaterQuantity a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	    skos:definition "Volume flow rate quantity equal to the volume dV of substance crossing a given surface during a time interval with infinitesimal duration dt, divided by this duration, thus qV = dV / dt."@en ;
 		 skos:prefLabel "Water Losses "@en ;
 		dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=113-03-72>;
 		prop:isMeasuredIn unit:M3-PER-HR.
 		 
 # Water Losses
-prop:WayerLosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:WayerLosses a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	         skos:definition "The amount of water lost in the distribution grid. It can be consumed or supplied."@en ;
 	         skos:broader prop:WaterQuantity;
 		  skos:prefLabel "Water Losses "@en .
 		  
 
 # Water Supplied
-prop:WaterSupplied a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:WaterSupplied a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                    skos:definition "The water quantity supplied."@en ;
 	            skos:prefLabel "Water Supplied"@en ;
 	           skos:broader prop:WaterQuantity.
 	            
 
 # Water Consumed               
-prop:WaterConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:WaterConsumed a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                    skos:definition "The water quantity consumed."@en ;
 		    skos:prefLabel "Water Consumed"@en ;
 		   skos:broader prop:WaterQuantity.
 		    
 
 # Water Losses
-prop:WaterLosses a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:WaterLosses a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
              skos:definition "The computed water quantity lost."@en ;
 	      skos:prefLabel "Water Losses"@en ;
 	     skos:broader prop:WaterQuantity.
 	      
 
 # Active Energy
-prop:ActiveEnergy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActiveEnergy a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		          skos:definition "the active energy is the integral of the instantaneous power p over a time interval [t1, t2]."@en ;
 		           skos:prefLabel "Active Energy"@en ;
 		          skos:broader seas:ElectricEnergyProperty, prop:Energy;
@@ -239,77 +244,77 @@ prop:ActiveEnergy a owl:namedIndividual , skos:Concept , prop:QuantitativeProper
 		          prop:isMeasuredIn unit:KiloW-HR, unit:W-HR.
                    
 # Active Energy Produced
-prop:ActiveEnergyProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActiveEnergyProduced a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                  skos:definition "the active energy produced."@en ;
 		                   skos:prefLabel "Active Energy Produced"@en ;
 		                  skos:broader prop:ActiveEnergy.
 						   
 # Active Energy Consumed
-prop:ActiveEnergyConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActiveEnergyConsumed a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                  skos:definition "the active energy consumed."@en ;
 		                   skos:prefLabel "Active Energy Consumed"@en ;
 		                  skos:broader prop:ActiveEnergy.
 						   
 
 # Active Energy Produced Off Peak Hour 
-prop:ActiveEnergyProducedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActiveEnergyProducedOffPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                  skos:definition "the active energy produced during off peak hour."@en ;
 		                   skos:prefLabel "Active Energy Produced Off Peak Hour"@en ;
 		                  skos:broader prop:ActiveEnergyProduced.
 
 # Active Energy Produced  Peak Hour 
-prop:ActiveEnergyProducedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActiveEnergyProducedPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                  skos:definition "the active energy produced during  peak hour."@en ;
 		                   skos:prefLabel "Active Energy Produced Peak Hour"@en ;
 		                  skos:broader prop:ActiveEnergyProduced.
 
 # Reactive Energy							
-prop:ReactiveEnergy a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergy a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "In an AC system, the captive electrical energy exchanged continuously between the different electric and magnetic fields associated with the operation of the electrical system and of all the connected apparatus."@en ;
 		     skos:prefLabel "Reactive Energy"@en ;
 		    skos:broader seas:ElectricEnergyProperty, prop:Energy;
 		    dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=601-01-20>.
 		     
 # Reactive Energy Consumed						
-prop:ReactiveEnergyConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyConsumed a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy consumed."@en ;
 		     skos:prefLabel "Reactive Energy Consumed"@en ;
 		    skos:broader prop:ReactiveEnergy;
 			prop:isMeasuredIn unit:KiloW-HR.
 		     
 # Reactive Energy Consumed OFF Peak Hour						
-prop:ReactiveEnergyConsumedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyConsumedOffPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy consumed during off-peak hours."@en ;
 		     skos:prefLabel "Reactive Energy Consumed Off Peak Hours"@en ;
 		    skos:broader prop:ReactiveEnergyConsumed.
 		     
 # Reactive Energy Consumed  Peak Hour						
-prop:ReactiveEnergyConsumedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyConsumedPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy consumed during peak hours."@en ;
 		     skos:prefLabel "Reactive Energy Consumed Peak Hours"@en ;
 		    skos:broader prop:ReactiveEnergyConsumed.
 		     
 #Reactive Energy Produced						
-prop:ReactiveEnergyProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyProduced a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy produced."@en ;
 		     skos:prefLabel "Reactive Energy Produced"@en ;
 		    skos:broader prop:ReactiveEnergy;
 			prop:isMeasuredIn unit:V-A_Reactive-HR.
 		     
 # Reactive Energy Produced OFF Peak Hour						
-prop:ReactiveEnergyProducedOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyProducedOffPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy produced during off-peak hours."@en ;
 		     skos:prefLabel "Reactive Energy Produced Off Peak Hours"@en ;
 		    skos:broader prop:ReactiveEnergyProduced.
 		     
 # Reactive Energy Produced  Peak Hour						
-prop:ReactiveEnergyProducedPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactiveEnergyProducedPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		    skos:definition "The reactive energy produced during peak hours."@en ;
 		     skos:prefLabel "Reactive Energy Produced Peak Hours"@en ;
 		    skos:broader prop:ReactiveEnergyProduced.
 		     
 # Active Power
-prop:ActivePower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActivePower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		 skos:definition "Under periodic conditions, mean value, taken over one period T, of the instantaneous power p."@en ;
 		  skos:prefLabel "Active Power"@en ;
 		 skos:broader seas:ElectricPoweryProperty, prop:Power;
@@ -317,26 +322,26 @@ prop:ActivePower a owl:namedIndividual , skos:Concept , prop:QuantitativePropert
 		 prop:isMeasuredIn unit:W.
 		  
 # Active Power AC
-prop:ActivePowerAC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActivePowerAC a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		 skos:definition "Active Power in AC Mode."@en ;
 		  skos:prefLabel "Active Power AC"@en ;
 		 skos:broader  prop:ActivePower.
 		  
 # Active Power DC
-prop:ActivePowerDC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActivePowerDC a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		 skos:definition "Active Power in DC Mode."@en ;
 		  skos:prefLabel "Active Power DC"@en ;
 		 skos:broader  prop:ActivePower.
 		  
 # Active Power Produced
-prop:ActivePowerProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ActivePowerProduced a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		 skos:definition "Active Power Produced."@en ;
 		  skos:prefLabel "Active Power Produced"@en ;
 		 skos:broader  prop:ActivePower.
 		  
 
 # Reactive Power
-prop:ReactivePower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactivePower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		   skos:definition "Quantity equal to the mean value of the product of the instantaneous voltage u and the instantaneous current i which is equal to i but leading it by π/2."@en ;
 		   skos:prefLabel "Reactive Power"@en ;
 		   skos:broader seas:ElectricPoweryProperty, prop:Power;
@@ -344,40 +349,40 @@ prop:ReactivePower a owl:namedIndividual , skos:Concept , prop:QuantitativePrope
 		   prop:isMeasuredIn unit:V-A_Reactive.
                     
 # Reactive Power Produced
-prop:ReactivePowerProduced a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactivePowerProduced a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                   skos:definition "The reactive power produced."@en ;
 		                    skos:prefLabel "Reactive Power Produced"@en ;
 		                   skos:broader  prop:ReactivePower.
                             
 # Reactive Power Consumed
-prop:ReactivePowerConsumed a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactivePowerConsumed a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                   skos:definition "The reactive power consumed."@en ;
 		                    skos:prefLabel "Reactive Power Consumed"@en ;
 		                   skos:broader  prop:ReactivePower.
                             
 # Reactive Power Set Point
-prop:ReactivePowerSetPoint a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ReactivePowerSetPoint a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			   skos:definition "Predetermined or desired value of reactive power that a device or electrical system should produce or consume at a given time."@en ;
 			    skos:prefLabel "Reactive Power Set Point"@en ;
 			   skos:broader seas:ElectricPowerProperty, prop:Power;
 			   prop:isMeasuredIn unit:V-A_Reactive.
 			    
 # DC Power
-prop:DCPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:DCPower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	     skos:definition "Power in DC mode."@en ;
 	      skos:prefLabel "DC Power"@en ;
 	     skos:broader seas:ElectricPowerProperty, prop:Power;
 	     prop:isMeasuredIn unit:W.
               
 # Energy Price
-prop:EnergyPrice a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:EnergyPrice a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		 skos:definition "Energy prices agreed with the DSO for the power term ."@en ;
 		  skos:prefLabel "Energy Price"@en ;
 		 skos:broader seas:PricePerEnergy;
 		 prop:isMeasuredIn unit:EUR-PER-KiloW.
                   
 # State of Power 
-prop:StateOfPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:StateOfPower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	 	skos:definition "A battery state-of-power (SOP) is defined as the ratio of peak power to nominal power ."@en ;
         dcterms:source <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
 	  	skos:prefLabel "State of Power"@en ;
@@ -385,211 +390,211 @@ prop:StateOfPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProper
 	 	prop:isMeasuredIn unit:W.
           
 # State of Power in Charge
-prop:StateofPowerCharge a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:StateofPowerCharge a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
             skos:definition "The maximum possible charge power that a battery system can support over a fixed time interval."@en ;
 			skos:prefLabel "State of Power in Charge"@en ;
 			skos:broader prop:StateOfPower.
 			 
 # State of Power in Discharge
-prop:StateofPowerDischarge a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:StateofPowerDischarge a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			skos:definition "The maximum possible discharge power that a battery system can support over a fixed time interval."@en ;
 			skos:prefLabel "State of Power in Discharge"@en ;
 			skos:broader prop:StateOfPower.
 			    
 # State of Charge
-prop:StateOfCharge  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:StateOfCharge  a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		   skos:definition "The state of charge (SoC) can be described as the level of charge of a battery relative to its capacity.."@en ;
 		    skos:prefLabel "State of Charge"@en ;
             dcterms:source <https://epicpower.es/wp-content/uploads/2020/08/AN028_SoC-SoH-SoP-definitions_v3.pdf>;
 		   prop:isMeasuredIn unit:PERCENT.
 		    
 # Insulation Resistance
-prop:InsulationResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InsulationResistance a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			   skos:definition "Resistance under specified conditions between two conductive elements separated by insulating materials ."@en ;
 			    skos:prefLabel "Insulation Resistance"@en ;
 			   dcterms:source <https://www.electropedia.org/iev/iev.nsf/display?openform&ievref=151-15-43>;
 			   skos:broader prop:Resistance.
 			    
 #Production Duration Off Peak Hours
-prop:ProductionDurationOffPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ProductionDurationOffPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			   skos:definition "The duration of the electricity production during off peak hours."@en ;
 			    skos:prefLabel "Production Duration Off Peak Hour"@en ;
 			   prop:isMeasuredInIn time:Duration.
 			    
 #Production Duration  Peak Hours
-prop:ProductionDurationPeakHR a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ProductionDurationPeakHR a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			   skos:definition "The duration of the electricity production during peak hours."@en ;
 			    skos:prefLabel "Production Duration Peak Hour"@en ;
 			   prop:isMeasuredInIn time:Duration.
 			    
 #Production Duration
-prop:ProductionDuration a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:ProductionDuration a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			   skos:definition "The duration of the electricity production during peak and peak-off hours."@en ;
 			    skos:prefLabel "Production Duration"@en ;
 			   prop:isMeasuredInIn time:Duration.
 
 # Battery Property
-prop:batteryProperty  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty ;
-		      skos:definition "Data sheet/static property related to a battery."@en.
+prop:BatteryProperty  a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty ;
+                      skos:definition "Data sheet/static property related to a battery."@en.
                        
 						
 # Battery Nominal Voltage
-prop:batteryNominalVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader prop:Voltage , prop:;
+prop:BatteryNominalVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader prop:Voltage, prop:BatteryProperty;
 			   skos:definition "The operating voltage under load is 3V."@en ;
 			    skos:prefLabel "Battery Nominal voltage"@en ;
 			   prop:isMeasuredIn unit:V.
 			    
 # Battery Operating Voltage
-prop:batteryOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:Voltage , prop:batteryProperty;
+prop:BatteryOperatingVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:Voltage , prop:BatteryProperty;
 			 skos:definition "The operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Operating Voltage"@en ;
 			 prop:isMeasuredIn unit:V.
 			  
 # Battery Maximum Operating Voltage
-prop:batteryMaxOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:batteryOperatingVoltage;
+prop:BatteryMaxOperatingVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:BatteryOperatingVoltage;
 			 skos:definition "Battery maximum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Maximum Operating Voltage"@en.
 			  
 # Battery Minimum Operating Voltage
-prop:batteryMinOperatingVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			 skos:broader prop:batteryOperatingVoltage;
+prop:BatteryMinOperatingVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			 skos:broader prop:BatteryOperatingVoltage;
 			 skos:definition "Battery minimum operating voltage at 80% Depth Of Discharge (DOD)."@en ;
 			  skos:prefLabel "Battery Minimum Operating Voltage"@en .
 			  
 # Battery Minimum State of Charge               
-prop:batteryMinSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:BatteryMinSoC a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 	           skos:broader  prop:StateOfCharge;
 	           skos:definition "Battery minimum state of charge."@en ;
 	            skos:prefLabel "Battery Minimum State of Charge"@en .
 		    
 # Battery Maximum State of Charge
-prop:batteryMaxSoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:BatteryMaxSoC a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		   skos:broader  prop:StateOfCharge;
 		   skos:definition "Battery maximum state of charge."@en ;
 		    skos:prefLabel "Battery Maximum State of Charge"@en .
 		    
 #Battery deep discharge Voltage
-prop:batteryDeepDischargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:voltage, prop:batteryProperty;
+prop:BatteryDeepDischargeVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:voltage, prop:BatteryProperty;
 			     skos:definition "The cell is damaged if voltage drops below this voltage."@en ;
 			      skos:prefLabel "Battery Deep Discharge Voltage"@en .
 			      
 #Battery capacity
-prop:batteryCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		 skos:broader  prop:batteryProperty;
+prop:BatteryCapacity a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		 skos:broader  prop:BatteryProperty;
 		 skos:definition "The capacity of the battery in ampere hour."@en ;
 		  skos:prefLabel "Battery Capacity"@en ;
 		 prop:isMeasuredIn unit:A-HR.
                   
 # Battery Cell Average Temperature
-prop:batteryCellAverageTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				   skos:broader  prop:Temperature, prop:batteryProperty;
+prop:BatteryCellAverageTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				   skos:broader  prop:Temperature, prop:BatteryProperty;
 				   skos:definition "The battery temperature should not decrease this level during charge and discharge."@en ;
                                     skos:prefLabel "Battery Cell Average Temperature"@en ;
                                    prop:isMeasuredIn unit:DEG_C.
                                     
 # Battery Maximum Temperature
-prop:batteryMaxTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader  prop:Temperature, prop:batteryProperty;
+prop:BatteryMaxTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:Temperature, prop:BatteryProperty;
 			   skos:definition "The battery temperature should not increase this level during charge and discharge."@en ;
 			    skos:prefLabel "Battery Cell Maximum Temperature"@en ;
 			   prop:isMeasuredIn unit:DEG_C.
                             
 # Battery Maximum Charge Voltage
-prop:batteryMaxChargeVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:Voltage, prop:batteryProperty;
+prop:BatteryMaxChargeVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:BatteryProperty;
 			     skos:definition "The battery cell is damaged if voltage exceeds this level in charge."@en ;
 			      skos:prefLabel "Battery Maximum Charge Voltage"@en ;
 			     prop:isMeasuredIn unit:V.
 			      
 # Battery Optimal Discharge Current
-prop:batteryOptimalDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryOptimalDischargeCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal  current at 0.5°C."@en ;
 				     skos:prefLabel "Battery Optimal Discharge Current"@en ;
 				    prop:isMeasuredIn unit:A.
 			             
 # Battery Maximum Discharge Current
-prop:batteryMaxDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaxDischargeCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				skos:broader  prop:Current, prop:BatteryProperty;
 				skos:definition "The maximal current at 3°C, continious for max 15 minutes from full charge."@en ;
 				 skos:prefLabel "Battery Optimal Discharge Current"@en ;
 				prop:isMeasuredIn unit:A.
 				 
 # Battery Maximum Peak Discharge Current
-prop:batteryMaxPeakDischargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-				    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaxPeakDischargeCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+				    skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal current at 10°C, maximal 5 seconds in 1 minute."@en ;
 				     skos:prefLabel "Battery Maximum Peak Discharge Current"@en ;
 				    prop:isMeasuredIn unit:A.
 				     
 # Battery Optimal Charge Current
-prop:batteryOptimalChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			        skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryOptimalChargeCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			        skos:broader  prop:Current, prop:BatteryProperty;
 				    skos:definition "The maximal current at 0.5 C."@en ;
 				    skos:prefLabel "Battery Optimal Charge Current"@en ;
                     prop:isMeasuredIn unit:A.
 				  
 # Battery Optimal Charge Current
-prop:batteryMaChargeCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			    skos:broader  prop:Current, prop:batteryProperty;
+prop:BatteryMaChargeCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			    skos:broader  prop:Current, prop:BatteryProperty;
 			    skos:definition "The maximal current at <0.3 C with battery temperature monitoring."@en ;
 			     skos:prefLabel "Battery Maximum Charge Current"@en ;
 			    prop:isMeasuredIn unit:A.
 			     
 # Battery Dimensions
-prop:batteryDimensions a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		       skos:broader prop:batteryProperty;
+prop:BatteryDimensions a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		       skos:broader prop:BatteryProperty;
 		       skos:definition "The dimension of the battery Lxlxh."@en ;
 		        skos:prefLabel "Battery Dimensions"@en ;
 		       prop:isMeasuredIn unit:MilliM.
 		        
 # Battery Weight
-prop:batteryWeight  a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		    skos:broader prop:batteryProperty;
+prop:BatteryWeight  a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		    skos:broader prop:BatteryProperty;
 		    skos:definition "The weight of the battery in Kg."@en ;
 		     skos:prefLabel "Battery Weight"@en ;
 		    prop:isMeasuredIn unit:KiloGM.
 		     
 # Transformer Property
-prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:TransformerPower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		      skos:broader  prop:Property;
 		      skos:definition "The Transformer Properties."@en ;
 		       skos:prefLabel "Transformer Power"@en.
 		       
 # Transformer Power
-prop:transformerPower a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-		      skos:broader  prop:Power, prop:transformerProperty;
+prop:TransformerPower a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+		      skos:broader  prop:Power, prop:TransformerProperty;
 		      skos:definition "The Transformer Power."@en ;
 		       skos:prefLabel "Transformer Power"@en ;
 		      prop:isMeasuredIn unit:W.
 		       
 # Transformer Resistance
-prop:transformerResistance a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			   skos:broader  prop:transformerProperty;
+prop:TransformerResistance a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			   skos:broader  prop:TransformerProperty;
 			   skos:definition "The Transformer Resistance."@en ;
 			    skos:prefLabel "Transformer Resistance"@en ;
 			   prop:isMeasuredIn unit:OHM.
 			    
 # Transformer Capacity
-prop:transformerCapacity a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			skos:broader  prop:Capacity, prop:transformerProperty;
+prop:TransformerCapacity a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			skos:broader  prop:Capacity, prop:TransformerProperty;
 			skos:definition "the transformer capacity."@en ;
 			 skos:prefLabel "Transformer Capacity"@en ;
 			prop:isMeasuredIn unit:KiloV-A.
 			 
 # Transformer Voltage Level
-prop:transformervoltageLevel a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
-			     skos:broader  prop:Voltage, prop:transformerProperty;
+prop:TransformervoltageLevel a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+			     skos:broader  prop:Voltage, prop:TransformerProperty;
 			     skos:definition "The transformer voltage level."@en ;
 			      skos:prefLabel "Transformer Voltage Level"@en ;
 	           	     prop:isMeasuredIn unit:V.
 			      
 #--Bus static properties--------
-prop:busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:Busvoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		skos:broader  prop:Voltage ; 
 		skos:definition "The bus voltage ."@en ;
 		 skos:prefLabel "Bus voltage"@en ;
@@ -597,69 +602,69 @@ prop:busvoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty
 		 
 
 #-- Inverter static property--
-prop:inverterProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InverterProperty a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                skos:broader prop:Property;
 		                skos:definition "This property includes all static properties of an inverter."@en ;
 	  	                 skos:prefLabel "Inverter Property"@en.		                 
 
-prop:inverterMaxInputDCVoltage a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:InverterMaxInputDCVoltage a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                         skos:definition "The maximum input dc voltage of an inverter."@en ;
 						skos:prefLabel "Inverter Max Input DC Voltage"@en ;
-						skos:broader prop:DCVoltage, prop:inverterProperty;
+						skos:broader prop:DCVoltage, prop:InverterProperty;
 						prop:isMeasuredIn unit:V.
 							    
-prop:inverterMaxInputDCCurrent a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterMaxInputDCCurrent a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum dc input current of an inverter."@en ;
 							skos:prefLabel "Inverter Max Input DC Current"@en ;
-							skos:broader prop:DCCurrent,prop:inverterProperty;
+							skos:broader prop:DCCurrent,prop:InverterProperty;
 							prop:isMeasuredIn unit:A.
 							 	 
-prop:inverterMaxInputDCPower	a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterMaxInputDCPower	a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum input DC  power of an inverter."@en ;
 							skos:prefLabel "Inverter Max Input DC Power"@en ;
-							skos:broader prop:DCPower,prop:inverterProperty;
+							skos:broader prop:DCPower,prop:InverterProperty;
 							prop:isMeasuredIn unit:W.
 							 		
-prop:inverterDCMaxPowerPointVoltageRange a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:InverterDCMaxPowerPointVoltageRange a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "The maximum voltage range of DC power point of an inverter."@en ;
 							 skos:prefLabel "inverter DC Max Power Point Voltage Range"@en ;
 							skos:broader prop:voltage;
 							prop:isMeasuredIn unit:V.
 							 	
 #---- REN Solar Module properties------------------------------------------------------------
-prop:solarModuleProperty a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+prop:SolarModuleProperty a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 		                 skos:definition "This property includes all static properties of a solar module."@en ;
 	  	                 skos:prefLabel "Solar Module Property"@en.
 		                 
-prop:solarModuleVoC a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleVoC a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module open circuit voltage given at STC operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module VOC"@en ;
-							skos:broader prop:Voltage,  prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Open Circuit Voltage"@en ;
+							skos:broader prop:Voltage,  prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:V.
 							 
-prop:solarModuleIsc a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleIsc a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module short circuit current given at STC operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module ISC"@en ;
-							skos:broader prop:Current , prop:solarModule;
+							 skos:prefLabel "Solar Module Short Circuit Current"@en ;
+							skos:broader prop:Current , prop:SolarModule;
 							prop:isMeasuredIn unit:A.
 							 
-prop:solarModuleVmp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleVmp a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module maximum power point voltage at operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module VMP"@en ;
-							skos:broader prop:Voltage, prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Maximum Power Point Voltage"@en ;
+							skos:broader prop:Voltage, prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:V.
 							 
-prop:solarModuleImp a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleImp a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module maximum power point current at operating standard conditions."@en ;
-							 skos:prefLabel "Solar Module ISC"@en ;
-							skos:broader prop:Current , prop:solarModuleProperty;
+							 skos:prefLabel "Solar Module Maximum Power Point Current"@en ;
+							skos:broader prop:Current , prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:A.
 							 
 
-prop:solarModuleTemperatureCoefficient a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
+prop:SolarModuleTemperatureCoefficient a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ; ;
 							skos:definition "Solar module temperature coefficient used to consider performance degradation due to high temperature."@en ;
 							 skos:prefLabel "Solar Module Temperature Coefficient"@en ;
-							skos:broader prop:Temperature, prop:solarModuleProperty;
+							skos:broader prop:Temperature, prop:SolarModuleProperty;
 							prop:isMeasuredIn unit:DEG_C.
 
 
@@ -667,42 +672,42 @@ prop:solarModuleTemperatureCoefficient a owl:namedIndividual , skos:Concept , pr
 #--------------------------------------------------------------  
 
 # Smartmeter Event logs
-prop:SMEventLogs a owl:namedIndividual , skos:Concept , prop:QualitativeProperty   ;
+prop:SMEventLogs a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty   ;
 		 skos:definition "The event logs generated by a smart meter."@en ;
 		  skos:prefLabel "Smart Meter Event logs "@en .
                   
 # Energy Fraud                
-prop:EnergyFraud  a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+prop:EnergyFraud  a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ;
 		 skos:definition "Which type of installation is stealing energy:  Bitcoin mining, Marihuana plantations, or Squatting."@en ;
 		  skos:prefLabel "Energy Fraud "@en.
                   
 
 #Main Breaker State
-prop:MainBreakerState a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+prop:MainBreakerState a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ;
 		 skos:definition "The main breaker state."@en ;
 		  skos:prefLabel "Main Breaker State "@en .
                   
-prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleType a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		             skos:definition "The type of the solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
-prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleAssemblyThermalModel a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		                             skos:definition "The type of the solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:QualitativeProperty, prop:solarModuleProperty .
+		             skos:broader prop:QualitativeProperty, prop:SolarModuleProperty .
                       
 # Static Quantitative Properties
 #--------------------------------------------------------------  
-prop:solarModuleType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+prop:SolarModuleType a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ;
 		             skos:definition "The type of a solar module."@en ;
 		              skos:prefLabel "Solar Module Type "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
-prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:SolarModuleAssemblyThermalModel a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 		                             skos:definition "The assembly thermal model of a solar module."@en ;
 		              skos:prefLabel "Solar Module Assembly Thermal Model "@en ;
-		             skos:broader prop:solarModuleProperty.
+		             skos:broader prop:SolarModuleProperty.
                       
 #--------------------------------------------------------------
 #    Electromobility Classification
@@ -710,7 +715,7 @@ prop:solarModuleAssemblyThermalModel a owl:namedIndividual , skos:Concept , prop
 
 #-- Authentication Mode
   
-prop:AuthenticationMode a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:AuthenticationMode a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
         skos:prefLabel "Authentication Mode"@en ;      
         skos:definition "The authentication mode refers to the method or process used to verify and authenticate the identity and authorization of users accessing related infrastructure."@en ;
         skos:broader prop:QualitativeProperty;
@@ -744,7 +749,7 @@ prop:By15118 a owl:NamedIndividual, prop:Category;
 
 #--  Charging Speed
 
-prop:ChargingSpeed a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:ChargingSpeed a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
         skos:prefLabel "Charging Speed Property"@en ;
         skos:definition "The class of charging speed refers to the rate at which a system's battery can be recharged with electric energy."@en ;
 		prop:isEvaluatedIn prop:Standard, prop:Accelerated, prop:Fast, prop:UltraFast, prop:ExtremelyFast ;
@@ -755,29 +760,29 @@ prop:Standard a owl:NamedIndividual, prop:Category ;
         skos:definition "Standard charging speed. "@en ;
         rdfs:isDefinedBy prop: .
 
-prop:Accelerated a owl:namedIndividual , skos:Concept , prop:Category ; ;
+prop:Accelerated a owl:NamedIndividual , skos:Concept , prop:Category ; ;
         skos:prefLabel "Accelerated"@en ;
         skos:definition "Accelerated charging speed. "@en ;
         rdfs:isDefinedBy prop: .
 
-prop:Fast a owl:namedIndividual , skos:Concept , prop:Category  ;
+prop:Fast a owl:NamedIndividual , skos:Concept , prop:Category  ;
         skos:prefLabel "Fast"@en  ;
         skos:definition "Fast charging speed. "@en ;
         rdfs:isDefinedBy prop: .
 
-prop:UltraFast a owl:namedIndividual , skos:Concept , prop:Category ;
+prop:UltraFast a owl:NamedIndividual , skos:Concept , prop:Category ;
         skos:prefLabel "Ultra Fast"@en  ;
         skos:definition "Ultra Fast charging speed. "@en ;
         rdfs:isDefinedBy prop: .
 
-prop:ExtremelyFast a owl:namedIndividual , skos:Concept , prop:Category ;
+prop:ExtremelyFast a owl:NamedIndividual , skos:Concept , prop:Category ;
         skos:prefLabel "Extremely Fast"@en  ;
         skos:definition "Extremely Fast Fast charging speed. "@en ;
         rdfs:isDefinedBy prop: .
 
 #-- Electric Vehicle Supply Equipment Connector Format
 
-prop:ElectricVehicleSupplyEquipmentConnectorFormat a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:ElectricVehicleSupplyEquipmentConnectorFormat a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 	skos:prefLabel "Electric Vehicle Supply Equipment Connector Format"@en ;
         skos:definition "(source OCPI 2.2.1) The format (socket/cable) of the installed connector."@en ; 
         dcterms:source <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
@@ -796,7 +801,7 @@ prop:Cable  a  owl:NamedIndividual, prop:Category ;
 
 #-- ElectricVehicleSupplyEquipment Connector Type
 
-prop:ElectricVehicleSupplyEquipmentConnectorType a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ;
+prop:ElectricVehicleSupplyEquipmentConnectorType a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ;
 	skos:prefLabel "Electric Vehicle Supply Equipment Connector Type"@en ;
         skos:definition "(source OCPI 2.2.1) The standard of the installed connector."@en ; 
         dcterms:source <https://evroaming.org/app/uploads/2023/12/OCPI-2.2.1-d2-2.pdf> ;
@@ -1005,7 +1010,7 @@ prop:TESLA_S  a  owl:NamedIndividual, prop:Category ;
 
 #-- Payment Method
 
-prop:PaymentMethod a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:PaymentMethod a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
         skos:prefLabel "Payment Method"@en ;      
         skos:definition "The payment method refers to the various ways can pay for services, infrastructure use, or offerings."@en ;
 	prop:isEvaluatedIn prop:FreeOfPayment, prop:CreditCard, prop:OperatorContract ;
@@ -1029,7 +1034,7 @@ prop:OperatorContract a owl:NamedIndividual, prop:Category ;
 
 #-- Status
 
-prop:Status a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:Status a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 	skos:prefLabel "Status"@en ;
         skos:definition "TBA."@en ; 
         skos:broader plt:Status ;
@@ -1037,7 +1042,7 @@ prop:Status a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 
 #-- Availability Status
 
-prop:AvailabilityStatus a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:AvailabilityStatus a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
 	skos:prefLabel "Availablility Status"@en ;
         skos:definition "The availability status refers the current condition of a specific system at a given moment during a process, indicating whether it is operationally ready and accessible for use."@en ; 
         skos:broader prop:Status;
@@ -1070,7 +1075,7 @@ prop:Deleted a owl:NamedIndividual, prop:Category ;
 
 #-- Occupancy Status
 
-prop:OccupancyStatus a owl:namedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
+prop:OccupancyStatus a owl:NamedIndividual , skos:Concept , prop:QualitativeProperty  ; ;
         skos:prefLabel "Occupancy Status"@en ;
         skos:definition "The occupancy status indicates that a system is currently free or occupied in time during a process."@en ;  
         skos:broader prop:Status;
@@ -1086,4 +1091,3 @@ prop:FreeOfOccupancy a owl:NamedIndividual, prop:Category;
         skos:prefLabel "Free"@en ;
         skos:definition "The free status refers to the situation of a system when it is available and not currently in use."@en ;  
         rdfs:isDefinedBy prop:  .
-
