@@ -1,4 +1,4 @@
-# Quality Ontology [Modification in progress to cope with V1.1]
+# Quality Ontology
 
 ## Description
 ` Quality`, or `QUal`, is a domain ontology module of the Common Semantic Data Model (CSDM). It is a common ontology that enables to describe quality dimensions associated with data. It can be : 
@@ -21,13 +21,22 @@
 
 ## Glossary
 
+* [**_qual:QualityAssessement_**](https://w3id.org/omega-x/QualityOntology/QualityAssessement/): The main class of quality descriptions for datasets. 
+
 * [**_qual:QualityMetric_**](https://w3id.org/omega-x/QualityOntology/QualityMetric/): The class of quantifiable measures used to assess a quality attribute.
 
 * [**_qual:QualityAttribute_**](https://w3id.org/omega-x/QualityOntology/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
 
 * [**_qual:Aggregation_**](https://w3id.org/omega-x/QualityOntology/Aggregation/): The class of functions applied to aggregate data such as sum of values or average
 
+* [**_qual:SpatialAggregationContext_**](https://w3id.org/omega-x/QualityOntology/SpatialAggregationContext/): The spatial aggregation context
+
+* [**_qual:TemporalAggregationContext_**](https://w3id.org/omega-x/QualityOntology/TemporalAggregationContext/): The temporal aggregation context
+
+* [**_qual:LogicalAggregationContext_**](https://w3id.org/omega-x/QualityOntology/LogicalAggregationContext/): The Logical aggregation context
+
 * [**_qual:MeasuringProcedure_**](https://w3id.org/omega-x/QualityOntology/MeasuringProcedure/): The class of procedures used to provide data
+
 ## OWL Description
 
 ![Diagram](./Quality.png)
