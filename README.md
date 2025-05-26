@@ -1,15 +1,16 @@
 # Omega-X Ontology Repository
 
 Welcome to the Omega-X Ontology repository! 
+The repository hosts the two versions of the CSDM (Common Semantic Data Model) 1.0 and 1.1. Latest version published on May 2025.
 
 ## Repository Structure
 
-The repository structure is built to fit multi-level modular ontologies.
+The repository structure is built to fit multi-level modular ontologies, following the ACIMOV ontology developement methodology. 
 It hosts also relevant alignements to external resources (ontologies/standards). 
 
 The tooling section includes automation scripts for various tasks: ontology building, documentation release, semantic validation, data semantization...
 
-The omega-X ontology is defined by two modules: a core ontology for Events and Time Series (ETS) and a domain ontology for Energy Data Set (EDS). 
+The omega-X ontology is defined by twelve modules: a top_level ontology for Events and Time Series (ETS), 7 domain ontolog modulesy for Energy domaines, and 4 Use case family ontology modules. 
 
 ```
 📂 Omega-X Ontology 
@@ -55,16 +56,16 @@ Group Name| Module | Scope |State
 |---|---|---|---|
 |Top Level | [Events and Time Series (ETS)](./[Top Level] Events & Time Series Ontology) | ETS ontology provides classes and properties to allow commonly used data structures to be described. | V 1.1
 |Domain | Energy Data Set (EDS) | EDS ontology extends ETS definitions with specefic energy domain context (both technical and business). | V 1.1
-|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.0
+|Domain | Eumed Metering (EME) | EME ontology is a semantisation of the Eumed metering profile of the CIM standard. | v1.1
 |Domain | Property (PROP) | PROP ontology provides a taxonomy of properties used in the energy domain. | v1.1
 |Domain | Infrastructure (INFRA) | INFRA ontology provides a common description for systems infrastructures in the energy domain, to be further specialiazed in UC ontologies. | v1.1
-|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.0
-|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.0
-|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.0
-|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V1.0
-|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V1.0
-|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V1.0
-|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V1.0
+|Domain | Actor role (ROLE) | ROLE ontology provides a description of business entities roles in the dataspace and in their business activities. | v1.1
+|Domain | Quality (QUAL) | QUAL ontology provides a taxonomy of quality indicators associated with datasets. | v1.1
+|Domain | Scheduling (SCHE) | SCHE ontology provides a common description of schedules. | v1.1
+|Use Case Family | Renewable (REN) | REN is the use case ontology for the renewables use case family. | V1.1
+|Use Case Family | Flexibility (FLEX) | FLEX is the use case ontology for the flexibility use case family. | V1.1
+|Use Case Family | Local Energy Communities (LEC) | LEC is the use case ontology for the lec use case family. | V1.1
+|Use Case Family | Electromobility (EM) | EM is the use case ontology for the electromobility use case family. | V1.1
 
 ## Overview of common modules
 
