@@ -54,7 +54,7 @@ A data value is the value associated with an event or a data point. It can be qu
 
 - A set of quality indicators can be associated to value sets. They are described in the `quality` module (`qual:Aggregation`, `qual:QualityMetric`, `qual:MeasuringProcedure`).
 
-- **Verisons compatibility**
+## **Verisons compatibility**
 Verison 1.1 brings the following modifications to previous major version 1.0: 
 
 Data collections can now be composed of multiple value sets. This is a generalisation. 
