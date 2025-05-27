@@ -30,6 +30,8 @@ The scope of this module extends also to the definition of units and categories 
 
 - Categorical individuals of type `prop:Category` are used as property values `ets:PropertyValue` in case of qualitative Datasets.
 
+- `prop:Unit` can be used to define units for values. We recommend using [QUDT Unit](https://qudt.org/schema/qudt/Unit) ontology for a taxonomy of units. For units not covered, new instances can be defined through `prop:Unit`. 
+
 ## **Verisons compatibility**
 - This version 1.1 distinguishes property kinds from properties of interests which remains compatible with previous version where both where under property. It enables to provide more descriptions about the properties.
 
