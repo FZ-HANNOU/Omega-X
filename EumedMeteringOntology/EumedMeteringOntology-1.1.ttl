@@ -20,7 +20,7 @@
 @base <https://w3id.org/omega-x/EumedMeteringOntology/> .
 
 <https://w3id.org/omega-x/EumedMeteringOntology> rdf:type owl:Ontology ;
-                                                  owl:versionIRI <https://w3id.org/omega-x/EumedMeteringOntology-1.0> ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/EumedMeteringOntology-1.1> ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Bruno Traverson" ] ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Henon M. Lamboro" ] ;                                                                                                  
                                                   dcterms:creator <https://w3id.org/omega-x> ;
@@ -36,14 +36,14 @@
                                                   vann:preferredNamespacePrefix "eme" ;
                                                   vann:preferredNamespaceUri <https://w3id.org/omega-x> ;
                                                   rdfs:label "Eumed Metering Ontology"@en ;
-                                                  owl:versionInfo "v1.0" ;
+                                                  owl:versionInfo "v1.1" ;
                                                   skos:scopeNote """EME is an ontology for representing Eumed Metering profile. EME is based around six main classes or groups of classes: 
-                                                   MeterReadingSet class: encapsulates a set of Meter Readings (container of measured values), Usage Points (points related to the measurements) and Reading Types (characterization of the kind of the measured values).
-                                                   Meter Reading group: composed of MeterReading, Meter, Customer and IntervalBlock classes. MeterReading gives the period of measurement for a series related to a given UsagePoint. It may be further characterized by Meter (reference to the physical device) and Customer (reference to the category/kind). IntervalBlock allows reference to ReadingType and access to individual readings.
-                                                   Interval Reading group: composed of IntervalReading and ReadingQuality classes. IntervalReading contains the measured value and the time interval or the timestamp of the measurement. It may be associated to several reading quality attributes.
-                                                   Usage Point group: composed of UsagePoint and UsagePointLocation classes. UsagePoint identifies a logical or physical device related to the measurements optionally characterized by a location.
-                                                   Reading Type class: gathers 16 technical parameters that permit to characterize the set of measured values composing a Meter Reading.
-                                                   Name group: composed of Name, NameType and NameTypeAuthority classes. This is an optional way to identify Usage Points and Reading Types."""@en .
+                                                   MeterReadingSet class: encapsulates a set of Meter Readings (container of measured values), Usage Points (points related to the measurements) and Reading Types (characterization of the kind of the measured values).
+                                                   Meter Reading group: composed of MeterReading, Meter, Customer and IntervalBlock classes. MeterReading gives the period of measurement for a series related to a given UsagePoint. It may be further characterized by Meter (reference to the physical device) and Customer (reference to the category/kind). IntervalBlock allows reference to ReadingType and access to individual readings.
+                                                  Interval Reading group: composed of IntervalReading and ReadingQuality classes. IntervalReading contains the measured value and the time interval or the timestamp of the measurement. It may be associated to several reading quality attributes.
+                                                   Usage Point group: composed of UsagePoint and UsagePointLocation classes. UsagePoint identifies a logical or physical device related to the measurements optionally characterized by a location.
+                                                   Reading Type class: gathers 16 technical parameters that permit to characterize the set of measured values composing a Meter Reading.
+                                                   Name group: composed of Name, NameType and NameTypeAuthority classes. This is an optional way to identify Usage Points and Reading Types."""@en .
 
 #---------------------------------------------------------------
 #    Annotation properties
