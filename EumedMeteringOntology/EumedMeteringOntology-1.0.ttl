@@ -1,10 +1,10 @@
-@prefix : <https://w3id.org/omega-x/EUMEDMeteringOntology/> .
+@prefix : <https://w3id.org/omega-x/EumedMeteringOntology/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
 @prefix cur: <https://www.iso.org/iso-4217-currency-codes#> .
-@prefix eme: <https://w3id.org/omega-x/EUMEDMeteringOntology#> .
+@prefix eme: <https://w3id.org/omega-x/EumedMeteringOntology#> .
 @prefix msg: <http://langdale.com.au/2005/Message#> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
@@ -17,10 +17,10 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
-@base <https://w3id.org/omega-x/EUMEDMeteringOntology/> .
+@base <https://w3id.org/omega-x/EumedMeteringOntology/> .
 
-<https://w3id.org/omega-x/EUMEDMeteringOntology> rdf:type owl:Ontology ;
-                                                  owl:versionIRI <https://w3id.org/omega-x/EUMEDMeteringOntology-1.0> ;
+<https://w3id.org/omega-x/EumedMeteringOntology> rdf:type owl:Ontology ;
+                                                  owl:versionIRI <https://w3id.org/omega-x/EumedMeteringOntology-1.0> ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Bruno Traverson" ] ;
                                                   dcterms:contributor [a foaf:Person ; foaf:name "Henon M. Lamboro" ] ;                                                                                                  
                                                   dcterms:creator <https://w3id.org/omega-x> ;
@@ -29,15 +29,15 @@
                                                   dcterms:issued "2024-05-06"^^xsd:date; 
                                                   dcterms:modified "2024-05-03"^^xsd:date ;
                                                   dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ;
-                                                  dcterms:source <https://w3id.org/omega-x/ReferenceResources/EUMEDMetering/eumedMetering.xsd>,
-                                                                  <https://w3id.org/omega-x/ReferenceResources/EUMEDMetering/eumedMeteringDataType.xsd> ;
-                                                  dcterms:title "EUMED Metering Ontology"@en ;
-                                                  dcterms:description: "European Commission develops Implementing Acts (IAs) that further define data interoperability requirements and procedures as stated in Articles 20, 23 and 24 of the Electricity Directive (EU) 2019/944. The European Union has adopted a customized implementation of IEC 61968-9:2022 named the “EUMED (EUropean My Energy Data) Metering profile”."@en ;
+                                                  dcterms:source <https://w3id.org/omega-x/ReferenceResources/EumedMetering/EumedMetering.xsd>,
+                                                                  <https://w3id.org/omega-x/ReferenceResources/EumedMetering/EumedMeteringDataType.xsd> ;
+                                                  dcterms:title "Eumed Metering Ontology"@en ;
+                                                  dcterms:description: "European Commission develops Implementing Acts (IAs) that further define data interoperability requirements and procedures as stated in Articles 20, 23 and 24 of the Electricity Directive (EU) 2019/944. The European Union has adopted a customized implementation of IEC 61968-9:2022 named the “Eumed (EUropean My Energy Data) Metering profile”."@en ;
                                                   vann:preferredNamespacePrefix "eme" ;
                                                   vann:preferredNamespaceUri <https://w3id.org/omega-x> ;
-                                                  rdfs:label "EUMED Metering Ontology"@en ;
+                                                  rdfs:label "Eumed Metering Ontology"@en ;
                                                   owl:versionInfo "v1.0" ;
-                                                  skos:scopeNote """EME is an ontology for representing EUMED Metering profile. EME is based around six main classes or groups of classes: 
+                                                  skos:scopeNote """EME is an ontology for representing Eumed Metering profile. EME is based around six main classes or groups of classes: 
                                                    MeterReadingSet class: encapsulates a set of Meter Readings (container of measured values), Usage Points (points related to the measurements) and Reading Types (characterization of the kind of the measured values).
                                                    Meter Reading group: composed of MeterReading, Meter, Customer and IntervalBlock classes. MeterReading gives the period of measurement for a series related to a given UsagePoint. It may be further characterized by Meter (reference to the physical device) and Customer (reference to the category/kind). IntervalBlock allows reference to ReadingType and access to individual readings.
                                                    Interval Reading group: composed of IntervalReading and ReadingQuality classes. IntervalReading contains the measured value and the time interval or the timestamp of the measurement. It may be associated to several reading quality attributes.
@@ -618,7 +618,7 @@ eme:name rdf:type owl:DatatypeProperty ;
                      ] ;
          rdfs:range xsd:string ;
          rdfs:comment "The name is any free human readable and possibly non unique text naming the object."@en ;
-         rdfs:isDefinedBy <http://iec.ch/TC57/EUMED-Metering#EUMED_Metering_ENTITIES/name> ;
+         rdfs:isDefinedBy <http://iec.ch/TC57/Eumed-Metering#Eumed_Metering_ENTITIES/name> ;
          rdfs:label "name"@en .
 
 
