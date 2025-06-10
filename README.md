@@ -16,39 +16,36 @@ The omega-X ontology is defined by twelve modules: a top_level ontology for Even
 📂 Omega-X Ontology 
 │
 ├─ 📁 EventsTimeSeriesOntology
-│   ├── 📄 EventsTimeSeriesOntology.ttl       /* T-box
-│   ├── 📄 dataset.ttl                    /* A-box
-│   ├── 🖼️ EventsTimeSeries.png        /* eg. CHOWLK diagram
-│   ├── ❓ cq-Q.rq                 /* A set of Competency questions translated as Sparql queries.
+│   ├── 📄 EventsTimeSeriesOntology-v.ttl       /* T-box at version v
+│   ├── 🖼️ EventsTimeSeries-v.png        /* eg. CHOWLK diagram at version **v**
+│   ├── ❓ cq-Q.rq                 /* Optional, a set of Competency questions translated as Sparql queries.
 │   └── 📄 README.md
 │
 ├─ 📁 ModuleNameOntology
 │   ├── 📄 ModuleNameOntology.ttl               /* T-box
-│   ├── 📄 dataset.ttl           /* A-box
 │   ├── 🖼️ diagram.<imgFormat>  /* eg. CHOWLK diagram
 │   ├── ❓ cq-Q.rq              /* A set of Competency questions translated as Sparql queries.
 │   └── 📄 README.md
 │
+├─ 📁 Docs
+│   ├── 📄 ModuleName.html               /* Main documentation web page for the module
+│   ├── 🖼️ diagram.<imgFormat>  /* eg. Required images for the documentation
+│
 ├─ 📁 Tooling
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
-│   ├── 📁 AO-generator            /* Application-oriented Ontology refinement 
-│   ├── 📁 SHACL                  /* Shacl constraints and validation 
-│   ├── 📁 doc                   /* Doc generations scripts
-│   ├── 📁 tests                /* Validation tests (structure, syntax, querying) 
-│   ├── 📁 Best Practices      /* Ontology development best practices recommendations 
+│   ├── 📁 [Demonstration]          /* Examples of demonstration implementing CSDM
+│   ├── 📁 SHACL                  /* Example of Shacl constraints and validation 
+│   ├── 📁 Semantisation         /* Tutorial of the semantisation feature using CSDM
 │   └── 📄 README.md
 │
 ├─ 📁 External Resources
 │   ├── 📁 EUMED Metering
-│   ├── 📄 onto.ttl              /* T-box
-│   │   ├── 📁 Alignements      /* Alignements of EUMED with Omega-X.
+│   ├── 📄 onto.ttl              /* T-box of a considered external ontology 
+│   │   ├── 📁 Alignements      /* Alignement between the external resource and Omega-X ontology.
 │   └── 📄 README.md
 │
 ├─ 📄 README.md
+├─ 📄 Omega-X-v.ttl             /* Main T-box of the ontology (importing all modules)
+├─ 📄 Omega-X-v.drawio          /* Main CHOWLK diagram source
 ```
 
 ## List of modules 
