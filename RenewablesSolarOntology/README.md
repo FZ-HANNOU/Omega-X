@@ -9,11 +9,10 @@ This module provides solar dedicated classes for the simplified topology as well
 ### Querying Questions
 | ID | Question in natural language | Example
 |---|---|---|
-|CQ1| What are the combiner boxes of a certain level ?| The list of combiner boxes of level 1, 2 or others. |
+|CQ1| What is the static configuration of each equipment ?| The configuration properties of an equipement |
 |CQ2|For a given equipment what is the weatherStation to refer in order to have the irradiance time series ? | the weatherstation attached to the timeseries containing the irradiance  |
 |CQ3|What are the equipments controlled by a tracker ? | The list of equipments controlled by a solar tracker |
 |CQ4|What are the inverters of an inverter station ? | The list of inverter which are subsystem of an inverter station |
-|CQ5|What is the number of strings and the number of modules per string for a combiner box ? | The number of strings and the number of modules per string for the combiner box. |
 
 ### Inference Questions
 | ID | Question in natural language | Example
@@ -21,41 +20,41 @@ This module provides solar dedicated classes for the simplified topology as well
 |IQ1|What are the electric power production equipments of a solar site ? |The list of electric power production equipments such as solar array, solar string, solar panel, solar module and solar cells.
 ## Glossary
 ### Omega-X SOLAR
-* [**solar:_SolarTracker_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarTracker/)
+* [**solar:_SolarTracker_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarTracker/)
 A solar tracker is a device that orients a payload toward the Sun. Payloads are usually solar panels, parabolic troughs, fresnel reflectors, mirrors or lenses.
-* [**solar:_SolarArray_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarArray/)
+* [**solar:_SolarArray_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarArray/)
 Solar arrays consist of one or many strings of solar panels connected in parallel.
-* [**solar:_SolarString_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarString/)
+* [**solar:_SolarString_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarString/)
 Solar strings consist of one or many solar panels connected in series.
-* [**solar:_SolarPanel_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarPanel/)
+* [**solar:_SolarPanel_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarPanel/)
 Solar panels consist of one or many solar modules integrated in the same mechanical part.
-* [**solar:_SolarModule_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarModule/)
+* [**solar:_SolarModule_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarModule/)
 Solar modules consist of one or many solar cells in parallel to a by-pass diode.
-* [**solar:_SolarCell_**](https://w3id.org/omega-x/ontology/RenewablesSolar/SolarCell/)
+* [**solar:_SolarCell_**](https://w3id.org/omega-x/EventTimeSeriesOntology/SolarCell/)
 Device that directly converts the energy of light into electrical energy through the photovoltaic effect.
-* [**solar:_Inverter_**](https://w3id.org/omega-x/ontology/RenewablesSolar/Inverter/)
+* [**solar:_Inverter_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Inverter/)
 The class of electronic devices or circuitry that change direct current (DC) to alternating current (AC).
-* [**solar:_PowerModule_**](https://w3id.org/omega-x/ontology/RenewablesSolar/PowerModule/)
+* [**solar:_PowerModule_**](https://w3id.org/omega-x/EventTimeSeriesOntology/PowerModule/)
 A sub unit of PowerInverter with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion.
-* [**solar:_Transformer_**](https://w3id.org/omega-x/ontology/RenewablesSolar/Transformer/)
+* [**solar:_Transformer_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Transformer/)
 An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point.
-* [**solar:_InverterStation_**](https://w3id.org/omega-x/ontology/RenewablesSolar/InverterStation/)
+* [**solar:_InverterStation_**](https://w3id.org/omega-x/EventTimeSeriesOntology/InverterStation/)
 Cabinet of inverters.
-* [**solar:_CombinerBox_**](https://w3id.org/omega-x/ontology/RenewablesSolar/CombinerBox/)
+* [**solar:_CombinerBox_**](https://w3id.org/omega-x/EventTimeSeriesOntology/CombinerBox/)
 PowerCabinet wich contain electrical equipments for combining energy coming from solar arrays.
-* [**solar:_PowerCabinet_**](https://w3id.org/omega-x/ontology/RenewablesSolar/PowerCabinet/)
+* [**solar:_PowerCabinet_**](https://w3id.org/omega-x/EventTimeSeriesOntology/PowerCabinet/)
 Cabinet for electrical equipments.
-* [**solar:_Substation_**](https://w3id.org/omega-x/ontology/RenewablesSolar/Substation/)
+* [**solar:_Substation_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Substation/)
 A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. 
-* [**solar:_Feeder_**](https://w3id.org/omega-x/ontology/RenewablesSolar/Feeder/)
+* [**solar:_Feeder_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Feeder/)
 A collection of equipment for organizational purposes, used for grouping distribution resources. The organization of a feeder does not necessarily reflect connectivity or current operation state.
-* [**solar:_WeatherStation_**](https://w3id.org/omega-x/ontology/RenewablesSolar/WeatherStation/)
+* [**solar:_WeatherStation_**](https://w3id.org/omega-x/EventTimeSeriesOntology/WeatherStation/)
 A weather station is instruments and equipment for measuring atmospheric conditions to provide information for weather forecasts and to study the weather and climate.(source : wikipedia).
-* [**solar:_Meter_**](https://w3id.org/omega-x/ontology/RenewablesSolar/Meter/)
+* [**solar:_Meter_**](https://w3id.org/omega-x/EventTimeSeriesOntology/Meter/)
 Equipment measuring the production of PV Plant.
 ## OWL Description
 
-![Diagram](./renewables.png)
+![Diagram](./Renewables.png)
 
 ## Related Work
 ### SEAS

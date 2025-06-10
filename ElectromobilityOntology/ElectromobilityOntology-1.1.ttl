@@ -23,7 +23,7 @@ em:ElectromobilityOntology rdf:type owl:Ontology ;
 	dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
         dcterms:contributor [a foaf:Person ; foaf:name "Sarra Ben Abbes" ] ;
 	dcterms:created "2025-02-05"^^xsd:date ;
-        dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ;
+        dcterms:rights "Copyright ¬© Omega-X Consortium 2022-2025"@en ;
         dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
 	dcterms:modified "2025-02-05"^^xsd:date ;
         dcterms:issued "2025-03-01"^^xsd:date ;
@@ -74,7 +74,7 @@ em:Equipment a owl:Class ;
 #-- Electric Vehicle Charging Station
 em:ElectricVehicleChargingStation a owl:Class ;
         rdfs:label "Electric Vehicle Charging Station"@en;
-	rdfs:comment """(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the ìHuman-Machine Interfaceî (HMI) between the charge infrastructure and the end users."""@en;
+	rdfs:comment """(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the ‚ÄúHuman-Machine Interface‚Äù (HMI) between the charge infrastructure and the end users."""@en;
 	rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
         rdfs:subClassOf seas:ElectricVehicleChargingStation, em:Equipment;
         rdfs:isDefinedBy em: .

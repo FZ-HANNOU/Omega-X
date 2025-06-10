@@ -163,7 +163,8 @@ prop:AirTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProp
 prop:HeatSinkTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
                          skos:broader prop:Temperature ;    
 				         prop:isMeasuredIn unit:DEG_C;
-                          skos:prefLabel "Air Temperature"@en.
+                          skos:note "used for dinv1.heatsinktmp IEC 61850 tag"@en;
+                          skos:prefLabel "Heat Sink Temperature"@en.
 
 # System Internal Temperature
 prop:SystemInternalTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
