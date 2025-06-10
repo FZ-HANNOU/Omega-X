@@ -14,7 +14,7 @@
 @prefix seas: <https://w3id.org/seas/>.
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
-@prefix ets: <https://w3id.org/omega-x/Eventsontology/TimeSeries/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
 @base <https://w3id.org/omega-x/ontology/Property/>.
 
 <https://w3id.org/omega-x/ontology/Property/> a owl:Ontology ;
@@ -165,6 +165,11 @@ prop:HeatSinkTemperature a owl:NamedIndividual , skos:Concept , prop:Quantitativ
 				         prop:isMeasuredIn unit:DEG_C;
                           skos:note "used for dinv1.heatsinktmp IEC 61850 tag"@en;
                           skos:prefLabel "Heat Sink Temperature"@en.
+# Enclosure Temperature
+prop:EnclosureTemperature a owl:namedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+                         skos:broader prop:Temperature ;    
+				         prop:isMeasuredIn unit:DEG_C;
+                          skos:prefLabel "Enclosure Temperature"@en.
 
 # System Internal Temperature
 prop:SystemInternalTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
@@ -172,11 +177,11 @@ prop:SystemInternalTemperature a owl:NamedIndividual , skos:Concept , prop:Quant
             skos:prefLabel "System Internal Temperature"@en.
 			 
 
-# Panel Temperature
-prop:PanelTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
+# Back of Panel Temperature
+prop:BackOfPanelTemperature a owl:NamedIndividual , skos:Concept , prop:QuantitativeProperty  ;
 			skos:broader prop:Temperature ; 
             skos:definition "The temperature of a panel module measured by a weather station."@en ; 
-            skos:prefLabel "Panel Temperature"@en.
+            skos:prefLabel "Back of Panel Temperature"@en.
 			 
 
 # Internal Inverter Temperature

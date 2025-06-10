@@ -34,8 +34,8 @@
                                                vann:preferredNamespacePrefix "sched" ;
                                                vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Scheduling/> ;
                                                rdfs:label "Scheduling Ontology"@en ;
-                                               owl:versionIRI <https://w3id.org/omega-x/ontology/Scheduling-1.0>;
-                                               owl:versionInfo "v1.0" .
+                                               owl:versionIRI <https://w3id.org/omega-x/ontology/Scheduling-1.1>;
+                                               owl:versionInfo "v1.1" .
 
 #---------------------------------------------------------------
 #    Annotation properties
