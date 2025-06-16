@@ -38,7 +38,7 @@ Evaluation point concerned by the data exchanged. It can be either a physical or
 Exchange context where the exchange of data takes place inluding the source and target particpants of the exchange.
 ## OWL Description
 
-![Diagram](./EDSModule-v1.1.png)
+![Diagram](./EnergyDataSet.png)
 
 ## Recommendations
 - A `ets:ValueSet` (see [_ValueSet_](../  [Top Level] Events & Time Series Ontology)) exchanged within the energy data space will be considered as an energy data set`eds:EnergyDataSet`. 
