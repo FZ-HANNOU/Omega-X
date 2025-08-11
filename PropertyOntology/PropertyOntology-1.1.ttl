@@ -63,6 +63,7 @@ schema:domainIncludes a owl:AnnotationProperty .
 schema:rangeIncludes a owl:AnnotationProperty .
 time:TemporalEntity a owl:Class .
 unit:Unit rdfs:subClassOf qudt:Unit.
+unit:Unit rdfs:subClassOf prop:Unit.
 #----------------------------------------------------------------
 #    Classes
 #----------------------------------------------------------------
