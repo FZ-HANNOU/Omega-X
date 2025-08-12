@@ -6,15 +6,15 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rml: <http://semweb.mmlab.be/ns/rml#> .
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
-@prefix qual: <https://w3id.org/omega-x/QualityOntology/> .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
 @prefix unit: <http://qudt.org/vocab/unit/>.
-@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
-@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
-@prefix eds: <https://w3id.org/omega-x/EnergyDataSetsOntology/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
+@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSets/> .
 @prefix time: <http://www.w3.org/2006/time#> .
-@prefix lec: <https://w3id.org/omega-x/LocalEnergyCommunitiesOntology/> .
-@prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
-@prefix velverde:  <https://w3id.org/omega-x/velverde/> .
+@prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.
+@prefix velverde:  <https://w3id.org/omega-x/KG/velverde/> .
 @base <https://w3id.org/omega-x/velverde/> .
 
 # Map The Excel File to time series for each home management system
@@ -156,11 +156,11 @@
         rr:object ets:TimeSeries  # Time Series
     ];
     rr:predicateObjectMap [
-        rr:predicate ets:isAboutProperty ;
+        rr:predicate prop:isAboutProperty;
         rr:objectMap [rr:template "velverde:Property/ActiveEnergyImported/{HMS_id}";]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ets:hasAggregationKind ;
+        rr:predicate qual:hasAggregationKind ;
         rr:objectMap [rr:template "velverde:AggegationKind/Total";]
     ] ;
       rr:predicateObjectMap [
@@ -168,7 +168,7 @@
         rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
     ] ;
      rr:predicateObjectMap [
-        rr:predicate ets:hasUnit ;
+        rr:predicate prop:hasUnit ;
         rr:objectMap [
             rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
         ]
@@ -242,11 +242,11 @@
         rr:object ets:TimeSeries  # Time Series
     ];
     rr:predicateObjectMap [
-        rr:predicate ets:isAboutProperty ;
+        rr:predicate prop:isAboutProperty;
         rr:objectMap [rr:template "velverde:Property/ActiveEnergyExported/{HMS_id}";]
     ] ;
     rr:predicateObjectMap [
-        rr:predicate ets:hasAggregationKind ;
+        rr:predicate qual:hasAggregationKind ;
         rr:objectMap [rr:template "velverde:AggegationKind/Total";]
     ] ;
       rr:predicateObjectMap [
@@ -254,7 +254,7 @@
         rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
     ] ;
      rr:predicateObjectMap [
-        rr:predicate ets:hasUnit ;
+        rr:predicate prop:hasUnit ;
         rr:objectMap [
             rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
         ]
@@ -329,7 +329,7 @@
         rr:object ets:TimeSeries  # Time Series
     ];
     rr:predicateObjectMap [
-        rr:predicate ets:isAboutProperty ;
+        rr:predicate prop:isAboutProperty;
         rr:objectMap [rr:template "velverde:Property/ActiveEnergyConsumed/{HMS_id}";]
     ] ;
     rr:predicateObjectMap [
@@ -337,7 +337,7 @@
         rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
     ] ;
      rr:predicateObjectMap [
-        rr:predicate ets:hasUnit ;
+        rr:predicate prop:hasUnit ;
         rr:objectMap [
             rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
         ]
@@ -412,7 +412,7 @@
         rr:object ets:TimeSeries  # Time Series
     ];
     rr:predicateObjectMap [
-        rr:predicate ets:isAboutProperty ;
+        rr:predicate prop:isAboutProperty;
         rr:objectMap [rr:template "velverde:Property/ActiveEnergyProduced/{HMS_id}";]
     ] ;
     rr:predicateObjectMap [
@@ -420,7 +420,7 @@
         rr:objectMap [rr:template "velverde:TimeSeries/{TS_id}";]
     ] ;
      rr:predicateObjectMap [
-        rr:predicate ets:hasUnit ;
+        rr:predicate prop:hasUnit ;
         rr:objectMap [
             rr:constant <http://qudt.org/vocab/unit/KiloW-HR>
         ]

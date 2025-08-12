@@ -24,7 +24,7 @@
                                              Scope: Local energy communities ontology provides OWL classes and properties to allow local energy equipments and their static parameters to be described.
                                              Description: The local energy communities ontology allows to describe the lec equipments and their properties. It includes the description of battery, transformer, bus, and PDD."""@en ; 
                                              dcterms:creator <https://omega-x.eu/>;
-					                        dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
+					          dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:license <https://opensource.org/license/mit/> ;
                                              dcterms:created "2024-02-03"^^xsd:date ;
                                              dcterms:modified "2025-04-01"^^xsd:date;
@@ -58,7 +58,7 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
           rdfs:comment "An electrical power storage system."@en ;
           rdfs:label "Battery"@en ;
           rdfs:subClassOf seas:Battery, seas:ElectricPowerStorageSystem, infra:Equipment, infra:SystemOfInterest;
-          rdfs:isDefinedBy lec:;
+          rdfs:isDefinedBy lec:.
 
 #--Transformer 
 :Transformer a owl:Class ;
@@ -82,8 +82,8 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
           rdfs:subClassOf  seas:SmartMeter, infra:Equipment,infra:SystemOfInterest;
           rdfs:isDefinedBy lec:.
 
-#--ElectricityMeterMeter 
-:ElectricityMeterMeter a owl:Class ;
+#--ElectricityMeter 
+:ElectricityMeter a owl:Class ;
           rdfs:comment "An electricity meter, electric meter, electrical meter, or energy meter is a meter that measures the amount of electric energy consumed by a residence, a business, or an electrically powered device.  ."@en ;
           rdfs:label "Electricity meter"@en ;
           rdfs:subClassOf  seas:SmartMeter, infra:Equipment;
@@ -130,13 +130,18 @@ vann:preferredNamespaceUri a owl:AnnotationProperty .
 #    Data Properties
 #--------------------------------------------------------------
 #--Battery data properties
+
+#--Battery Model Name
 :BatteryModelName a owl:DatatypeProperty;
            rdfs:domain :Battery;
            rdfs:comment "The model name of the battery."@en ;
-	    rdfs:label "battery model name"@en ;
+	    rdfs:label "Battery Model Name"@en ;
            rdfs:isDefinedBy lec:.
-:TransformerType a owl:DatatypeProperty ;
-						rdfs:comment "the transformer type."@en ;
-						rdfs:label "transformer type"@en ;
-						rdfs:domain :TransformerConfiguration;
-						rdfs:isDefinedBy lec:.
+
+#--Transformer data properties    
+#--Transformer Type        
+:TransformerType    a owl:DatatypeProperty ;
+		      rdfs:comment "the transformer type."@en ;
+		      rdfs:label "Transformer Type"@en ;
+		      rdfs:domain :TransformerConfiguration;
+		      rdfs:isDefinedBy lec:.

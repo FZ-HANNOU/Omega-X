@@ -1,0 +1,338 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>.
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/>.
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/> .
+@prefix sch: <https://schema.org/> .
+@prefix seas: <https://w3id.org/seas/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix em: <https://w3id.org/omega-x/ontology/Electromobility/>.
+@base  <https://w3id.org/omega-x/ontology/Electromobility/>.
+
+em:Electromobility rdf:type owl:Ontology ;
+        owl:versionIRI <https://w3id.org/omega-x/ontology/Electromobility-1.0> ;
+        dcterms:creator <https://omega-x.eu/>;
+	dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
+        dcterms:created "2024-03-31"^^xsd:date ;
+        dcterms:rights "Copyright Omega-X Consortium 2022-2025"@en ;
+        dcterms:license <https://www.apache.org/licenses/LICENSE-2.0> ;
+	dcterms:modified "2024-07-01"^^xsd:date ;
+        dcterms:issued "2024-06-14"^^xsd:date ;
+        dcterms:title "Electromobility Ontology"@en ;
+        dcterms:description "The Electromobility ontology represents and organizes knowledge about the charging infrastructure for electric vehicles. This ontology defines concepts and relations that are relevant to the charging infrastructure - such as pool, station, charging point and connector- but do not cover electric vehicle characteritics. Roles of stakeholders of the charging infrastructure are further described in the ROLE ontology. Detailed characteristics of charging equipments and sites are given in the PROPERTY module."@en ;
+        vann:preferredNamespacePrefix "em" ;
+        vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Electromobility/> ;  
+	rdfs:label "Electromobility Ontology"@en ;
+        owl:versionInfo "1.0" .
+
+#---------------------------------------------------------------
+#    Annotation properties
+#--------------------------------------------------------------
+
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+foaf:name a owl:DatatypeProperty .
+foaf:Person a owl:Class .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+voaf:Vocabulary a owl:Class .
+vs:term_status a owl:AnnotationProperty .
+
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+
+#-- Electric Vehicle Charging Station Pool
+em:ElectricVehicleChargingStationPool a owl:Class ;
+	rdfs:label "Electric Vehicle Charging Station Pool"@en;
+	rdfs:comment """(source eMIP) A Charging Pool is a location where charging infrastructure elements can be found. A Charging Pool may contain several Charging Stations."""@en ;
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:subClassOf seas:ElectricVehicleChargingStationPool, infra:Site;
+        rdfs:isDefinedBy em: .
+
+#-- Equipment
+em:Equipment a owl:Class ;
+        rdfs:label "Equipment"@en;
+	rdfs:comment """Equipmen of Electromobility infratructure. May be either an ElectricVehicleChargingStation, an ElectricVehicleSupplyEquipment or an ElectricVehicleSupplyEquipmentConnector."""@en;
+        rdfs:subClassOf infra:Equipment;
+        rdfs:isDefinedBy em: .
+
+#-- Electric Vehicle Charging Station
+em:ElectricVehicleChargingStation a owl:Class ;
+        rdfs:label "Electric Vehicle Charging Station"@en;
+	rdfs:comment """(source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the �Human-Machine Interface� (HMI) between the charge infrastructure and the end users."""@en;
+	rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:subClassOf seas:ElectricVehicleChargingStation, em:Equipment;
+	owl:disjointWith em:ElectricVehicleSupplyEquipment, em:ElectricVehicleSupplyEquipmentConnector;
+        rdfs:isDefinedBy em: .
+
+#-- Electric Vehicle Supply Equipment
+em:ElectricVehicleSupplyEquipment a owl:Class ;
+        rdfs:label "Electric Vehicle Supply Equipment (EVSE)"@en;
+	rdfs:comment """(source eMIP) A Charging Point, synonym of EVSE (Electric Vehicle Supply Equipment), is the energy supply element. An electrical vehicle can connect to a point on one of its connector. A Charging Point may have several Charging Connectors but only one vehicle could be charged at a time on a Charging Point."""@en;
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:subClassOf seas:ElectricVehicleServiceEquipment, em:Equipment;
+	owl:disjointWith em:ElectricVehicleChargingStation, em:ElectricVehicleSupplyEquipmentConnector;
+        rdfs:isDefinedBy em: .
+
+#-- Electric Vehicle Supply Equipment Connector
+em:ElectricVehicleSupplyEquipmentConnector a owl:Class ;
+        rdfs:label "Electric Vehicle Supply Equipment (EVSE) Connector"@en;
+        rdfs:comment """(source eMIP) A Connector related to an Electric Vehicle Supply Equipment (EVSE) that connects to the electric vehicle for the purpose of charging. It is an interface to deliver electricity."""@en ;
+        rdfs:seeAlso <https://www.gireve.com/wp-content/uploads/2022/09/Gireve_Tech_eMIP-V0.7.4_ImplementationGuide_1.0.7_en.pdf>;
+        rdfs:subClassOf seas:ElectricalConnectionPoint, em:Equipment;
+	owl:disjointWith em:ElectricVehicleChargingStation, em:ElectricVehicleSupplyEquipment;
+        rdfs:isDefinedBy em: .
+
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+
+#-- Consists Of Station
+em:consistsOfStation a owl:ObjectProperty;
+	rdfs:label "consists of station"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to one of its station constituants."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range em:ElectricVehicleChargingStation ;
+        rdfs:subPropertyOf infra:consistsOf;
+	rdfs:isDefinedBy em: . 
+
+#-- Consists Of EVSE
+em:consistsOfStation a owl:ObjectProperty;
+	rdfs:label "consists of EVSE"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to one of its EVSE constituants."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range em:ElectricVehicleSupplyEquipment ;
+        rdfs:subPropertyOf infra:consistsOf;
+	rdfs:isDefinedBy em: . 
+
+#-- Consists Of Connector
+em:consistsOfStation a owl:ObjectProperty;
+	rdfs:label "consists of connector"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to one of its connector constituants."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:range em:ElectricVehicleSupplyEquipmentConnector ;
+        rdfs:subPropertyOf infra:consistsOf;
+	rdfs:isDefinedBy em: . 
+
+#-- Has Address
+em:hasAddress a owl:ObjectProperty;
+	rdfs:label "has address"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to its address."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range sch:PostalAddress ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: .  
+
+#-- Has Authentication Mode
+em:hasAuthenticationMode a owl:ObjectProperty;
+	rdfs:label "has authentication mode"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to its authentication mode."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range prop:AuthenticationMode ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: .  
+
+#-- Has Availability Status As Pool
+em:hasAvailabilityStatusAsPool a owl:ObjectProperty;
+	rdfs:label "has availability status as pool"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to its availability status."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range prop:AvailabilityStatus ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Availability Status As Station
+em:hasAvailabilityStatusAsStation a owl:ObjectProperty;
+	rdfs:label "has availability status as station"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to its availability status."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range prop:AvailabilityStatus ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Availability Status As EVSE
+em:hasAvailabilityStatusAsEVSE a owl:ObjectProperty;
+	rdfs:label "has availability status as EVSE"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to its availability status."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:range prop:AvailabilityStatus ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Availability Status As Connector
+em:hasAvailabilityStatusAsConnector a owl:ObjectProperty;
+	rdfs:label "has availability status as connector"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its availability status."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector ;
+        rdfs:range prop:AvailabilityStatus ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Charging Speed
+em:hasChargingSpeed a owl:ObjectProperty;
+	rdfs:label "has Charging Speed"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to its charging speed."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:range prop:ChargingSpeed;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: . 
+
+#-- Has Connector Format 
+em:hasConnectorFormat rdf:type owl:ObjectProperty;
+        rdfs:label "has connector format"@en ;
+	rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its connector format."@en ;
+	rdfs:domain em:ElectricVehicleSupplyEquipmentConnector ;
+        rdfs:range prop:ElectricVehicleSupplyEquipmentConnectorFormat ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Connector Type
+em:hasConnectorType rdf:type owl:ObjectProperty;
+	rdfs:label "has connector type"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its connector type."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector ;
+        rdfs:range prop:ElectricVehicleSupplyEquipmentConnectorType ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .
+
+#-- Has Location As Pool
+em:hasLocationAsPool a owl:ObjectProperty;
+	rdfs:label "has location as pool"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to its location."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range geo:Point ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: .  
+
+#-- Has Location As Station
+em:hasLocationAsStation a owl:ObjectProperty;
+	rdfs:label "has location as station"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to its location."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range geo:Point ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: .  
+
+#-- Has Market Participant
+em:hasMarketParticipant a owl:ObjectProperty;
+	rdfs:label "has market participant"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to a market participant."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range role:MarketParticipant ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: .  
+
+#-- Has Maximum Electric Power As EVSE
+em:hasMaximumElectricPowerAsEVSE a owl:ObjectProperty;
+	rdfs:label "has maximum electric power as EVSE"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to its maximum electric power."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment;
+	rdfs:range prop:MaximumElectricPower;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .
+
+#-- Has Maximum Electric Power As Connector
+em:hasMaximumElectricPowerAsConnector a owl:ObjectProperty;
+	rdfs:label "has maximum electric power as connector"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its maximum electric power."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector;
+	rdfs:range prop:MaximumElectricPower;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .
+
+#-- Has Occupancy Status
+em:hasOccupancyStatus a owl:ObjectProperty;
+	rdfs:label "has occupancy status"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to its occupancy status."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:range prop:OccupancyStatus ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .  
+
+#-- Has Payment Method
+em:hasPaymentMethod a owl:ObjectProperty;
+        rdfs:label "has payment method"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to its payment method."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range prop:PaymentMethod;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+        rdfs:isDefinedBy em: .    
+
+#-- Has Qualified Association
+em:hasQualifiedAssociation a owl:ObjectProperty;
+	rdfs:label "has qualified association"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station Pool to a qualified association."@en ;
+        rdfs:domain em:ElectricVehicleChargingStationPool ;
+        rdfs:range role:Association ;
+        rdfs:subPropertyOf infra:hasSystemProperty;
+	rdfs:isDefinedBy em: . 
+
+#-- Is Part Of Pool
+em:isPartOfPool a owl:ObjectProperty;
+	rdfs:label "is part of pool"@en ;
+        rdfs:comment "links an Electric Vehicle Charging Station to its Electric Vehicle Charging Station Pool."@en ;
+        rdfs:domain em:ElectricVehicleChargingStation ;
+        rdfs:range em:ElectricVehicleChargingStationPool ;
+        rdfs:subPropertyOf infra:isPartOf;
+	rdfs:isDefinedBy em: . 
+
+#-- Is Part Of Station
+em:isPartOfStation a owl:ObjectProperty;
+	rdfs:label "is part of station"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment to its Electric Vehicle Charging Station."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment ;
+        rdfs:range em:ElectricVehicleChargingStation ;
+        rdfs:subPropertyOf infra:isPartOf;
+	rdfs:isDefinedBy em: . 
+
+#-- Is Part Of EVSE
+em:isPartOfPool a owl:ObjectProperty;
+	rdfs:label "is part of EVSE"@en ;
+        rdfs:comment "links an Electric Vehicle Supply Equipment Connector to its Electric Vehicle Supply Equipment."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipmentConnector ;
+        rdfs:range em:ElectricVehicleSupplyEquipment ;
+        rdfs:subPropertyOf infra:isPartOf;
+	rdfs:isDefinedBy em: . 
+
+#--------------------------------------------------------------
+#    Datatype Properties
+#--------------------------------------------------------------
+
+#-- Bookable
+em:bookable a owl:DatatypeProperty ;       
+	rdfs:label "bookable"@en ;
+        rdfs:comment "indicates if an Electric Vehicle Supply Equipment can be reserved in advance."@en ;
+        rdfs:domain em:ElectricVehicleSupplyEquipment;
+	rdfs:range xsd:boolean;
+        rdfs:isDefinedBy em: .
+ 
+#-- Name
+em:name a owl:DatatypeProperty ;
+	rdfs:label "name"@en ;
+        rdfs:comment "designates an Electric Vehicle Charging Station Pool."@en ;
+	rdfs:domain em:ElectricVehicleChargingStationPool;
+	rdfs:range xsd:string;
+        rdfs:isDefinedBy em: . 
+
+#-- Visual Identifier
+em:visualIdentifier a owl:DatatypeProperty ;
+	rdfs:label "visual identifier"@en ;
+        rdfs:comment "distinguishes visually an Electromobility Equipment."@en ;
+        rdfs:domain em:Equipment;
+	rdfs:range xsd:string;
+	rdfs:isDefinedBy em: . 

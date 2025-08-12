@@ -2,47 +2,50 @@
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdf: <http://xmlns.com/foaf/0.1/>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix uiote: <http://www.w3id.org/urban-iot/electric#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-
 @prefix role: <https://w3id.org/omega-x/EnergyRoleOntology/>.
-@base  <https://w3id.org/omega-x/EnergyRoleOntology/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+@base  <https://w3id.org/omega-x/ontology/EnergyRole/>.
+@prefix role: <https://w3id.org/omega-x/ontology/EnergyRole> .
 
-role:EnergyRoleOntology rdf:type owl:Ontology ;
-        dcterms:title "Energy Role Ontology"@en ;
-        dcterms:description "Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour and relationships with other elements involved in energy market business processes."@en ;
-        dcterms:description "Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role) and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility and local energy communities domains."@en ;
-        dcterms:issued "2025-03-01"^^xsd:date ;
-        dcterms:modified "2025-02-O3"^^xsd:date ;
-        dcterms:created "2025-02-03"^^xsd:date ;
-        dcterms:creator <https://omega-x.eu/>;
-	  dcterms:contributor[foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ;] ;
-        dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
-        dcterms:license <https://opensource.org/license/mit/> ;
-        dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
-        vann:preferredNamespacePrefix "role" ;
-        vann:preferredNamespaceUri <https://w3id.org/omega-x/EnergyRoleOntology/> ;  
-        owl:versionIRI <https://w3id.org/omega-x/EnergyRoleOntology-1.1> ;
-        owl:versionInfo "1.1" .
+<https://w3id.org/omega-x/ontology/EnergyRole/> a owl:Ontology ;
+    dcterms:title "Energy Role Ontology"@en ;
+    dcterms:description """Purpose: The Energy Role ontology is dedicated to business parties, their intended behaviour, and relationships with other elements involved in energy market business processes.
+        Scope: The Energy Role ontology defines three generic concepts: business parties (participant), business roles (role), and their relationships (association). Roles are further refined in classifications specific to electromobility, flexibility, and local energy communities domains.
+    """@en ;
+    dcterms:issued "2024-05-06"^^xsd:date ;
+    dcterms:modified "2024-05-03"^^xsd:date ;  # Corrected "O3" to "03"
+    dcterms:created "2024-02-27"^^xsd:date ;
+    dcterms:creator <https://omega-x.eu/> ;
+    dcterms:contributor [ foaf:mbox <mailto:bruno.traverson@edf.fr> ; foaf:name "Bruno Traverson" ] ;  # Removed the extra semicolon
+    dcterms:contributor [ a foaf:Person ; foaf:name "Maxime LefranÃ§ois" ] ;
+    dcterms:license <https://opensource.org/license/mit/> ;
+    dcterms:rights "Copyright Â© Omega-X Consortium 2022-2025"@en ; 
+    vann:preferredNamespacePrefix "role" ;
+    vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EnergyRole/> ;  
+    owl:versionIRI <https://w3id.org/omega-x/ontology/EnergyRole-1.0> ;
+    owl:versionInfo "1.0" .
 
 #---------------------------------------------------------------
 #    Annotation properties
 #--------------------------------------------------------------
 
-dcterms:title a owl:AnnotationProperty .
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
 dcterms:description a owl:AnnotationProperty .
 dcterms:issued a owl:AnnotationProperty .
-dcterms:modified a owl:AnnotationProperty .
-dcterms:created a owl:AnnotationProperty .
-dcterms:creator a owl:AnnotationProperty .
-dcterms:contributor a owl:AnnotationProperty .
 dcterms:license a owl:AnnotationProperty .
-dcterms:rights a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
 vann:preferredNamespacePrefix a owl:AnnotationProperty .
 vann:preferredNamespaceUri a owl:AnnotationProperty .
+owl:maxQualifiedCardinality a owl:AnnotationProperty .
+owl:qualifiedCardinality a owl:AnnotationProperty .
 
 #----------------------------------------------------------------
 #    Classes

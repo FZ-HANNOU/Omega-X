@@ -1,4 +1,3 @@
-@prefix : <https://w3id.org/omega-x/ontology/RenewablesSolar/> .
 @prefix cc: <http://creativecommons.org/ns#> .
 @prefix un: <https://qudt.org/vocab/unit#> .
 @prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
@@ -165,12 +164,14 @@ solar:CombinerBox rdf:type owl:Class ;
 
 
 ###  Feeder
+###  Feeder
 solar:Feeder rdf:type owl:Class ;
               rdfs:subClassOf seas:ElectricPowerSystem, infra:SystemOfInterest ;
               rdfs:comment "A collection of equipments for organizational purposes, used for grouping distribution resources.The organization of a feeder does not necessarily reflect connectivity or current operation state."@en ;
               rdfs:label "Feader"@en .
 
 
+###  Inverter
 ###  Inverter
 solar:Inverter rdf:type owl:Class ;
                 rdfs:subClassOf seas:PowerInverter,infra:SystemOfInterest ;
@@ -179,6 +180,7 @@ solar:Inverter rdf:type owl:Class ;
 
 
 ### InverterStation
+### InverterStation
 solar:InverterStation rdf:type owl:Class ;
                        rdfs:subClassOf solar:PowerCabinet ;
                        rdfs:comment "Cabinet of inverters."@en ;
@@ -186,12 +188,14 @@ solar:InverterStation rdf:type owl:Class ;
 
 
 ###  Meter
+###  Meter
 solar:Meter rdf:type owl:Class ;
              rdfs:subClassOf seas:ElectricPowerSystem,infra:SystemOfInterest ;
              rdfs:comment "Equipment measuring the production of PV Plant."@en ;
              rdfs:label "Meter"@en .
 
 
+###  PowerCabinet
 ###  PowerCabinet
 solar:PowerCabinet rdf:type owl:Class ;
                     rdfs:subClassOf seas:ElectricPowerSystem, infra:SystemOfInterest;

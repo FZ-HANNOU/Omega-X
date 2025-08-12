@@ -12,9 +12,9 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix schema: <http://schema.org/>.
-@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
-@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
-@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries> .
 
 <https://w3id.org/omega-x/ontology/EventsTimeSeries/> a owl:Ontology ;
                                              owl:versionIRI <https://w3id.org/omega-x/ontology/EventsTimeSeries-1.1/> ;
@@ -36,7 +36,7 @@
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Event and Time Series ontology"@en ;
                                              vann:preferredNamespacePrefix "ets" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EventsTimeSeries/> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EventsTimeSeries> ;
                                              rdfs:label "Event and Time Series Ontology"@en ;
                                              owl:versionInfo "1.1".
 

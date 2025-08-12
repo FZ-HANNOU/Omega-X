@@ -25,9 +25,9 @@
 
 * [**_qual:QualityMetric_**](https://w3id.org/omega-x/QualityOntology/QualityMetric/): The class of quantifiable measures used to assess a quality attribute.
 
-* [**_qual:QualityAttribute_**](https://w3id.org/omega-x/QualityOntology/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
+* [**_qual:QualityAttribute_**](https://w3id.org/omega-x/ontology/Quality/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
 
-* [**_qual:Aggregation_**](https://w3id.org/omega-x/QualityOntology/Aggregation/): The class of functions applied to aggregate data such as sum of values or average
+* [**_qual:Aggregation_**](https://w3id.org/omega-x/ontology/Quality/Aggregation/): The class of functions applied to aggregate data such as sum of values or average
 
 * [**_qual:SpatialAggregationContext_**](https://w3id.org/omega-x/QualityOntology/SpatialAggregationContext/): The spatial aggregation context
 

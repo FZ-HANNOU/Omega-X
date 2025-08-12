@@ -11,11 +11,13 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix schema: <http://schema.org/> .
-@prefix qual: <https://w3id.org/omega-x/Ontology/Quality/> .
-@base <https://w3id.org/omega-x/Ontology/Quality/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
+@base <https://w3id.org/omega-x/ontology/Quality/> .
 
-<https://w3id.org/omega-x/Ontology/Quality/> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/Ontology/Quality-1.1/> ;
+<https://w3id.org/omega-x/QualityOntology/> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/QualityOntology-1.1> ;
                                              dcterms:description """The quality ontology enables to describe quality dimensions associated with data. It can be : 
                                              - Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.
                                              - Quality Metrics: indicates the quality metrics attributes associated with data according to data quality dimensions defined by ISO 25012.
