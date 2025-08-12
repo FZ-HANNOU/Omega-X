@@ -26,6 +26,7 @@
 * [**_qual:QualityMetric_**](https://w3id.org/omega-x/QualityOntology/QualityMetric/): The class of quantifiable measures used to assess a quality attribute.
 
 * [**_qual:QualityAttribute_**](https://w3id.org/omega-x/ontology/Quality/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
+* [**_qual:QualityAttribute_**](https://w3id.org/omega-x/ontology/Quality/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
 
 * [**_qual:Aggregation_**](https://w3id.org/omega-x/ontology/Quality/Aggregation/): The class of functions applied to aggregate data such as sum of values or average
 
@@ -57,3 +58,4 @@ If no aggregation indicated, the default interpretation can be to associate the 
 ### ISO 25012
 
 [ISO 25012](https://iso25000.com/index.php/en/iso-25000-standards/iso-25012)
+

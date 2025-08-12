@@ -14,6 +14,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
+@prefix infra: <https://w3id.org/omega-x/ontology/Infrastructure/> .
 @prefix sch:  <https://w3id.org/omega-x/ontology/Scheduling/>  .
 @prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
@@ -40,7 +41,7 @@ Scope : Sharing data resources in complex environments like in the case of energ
                                                   dcterms:issued "2025-01-08"@en ;
                                                   dcterms:title "Energy Data Set Ontology"@en ;
                                                   vann:preferredNamespacePrefix "eds" ;
-                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet/> ;
+                                                  vann:preferredNamespaceUri<https://w3id.org/omega-x/ontology/EnergyDataSet> ;
                                                   rdfs:label "Energy Data Set Ontology"@en ;
                                                   owl:versionInfo "v1.1" .
 

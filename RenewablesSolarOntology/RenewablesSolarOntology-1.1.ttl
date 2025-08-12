@@ -66,6 +66,7 @@ solar:consistsOfPanels rdf:type owl:ObjectProperty ;
                        rdfs:subPropertyOf infra:consistsOf ;
                        rdfs:domain solar:SolarString ;
                        rdfs:range solar:SolarPlanel ;
+                       rdfs:range solar:SolarPlanel ;
                        rdfs:comment "Links, if it exists, the solar string to the solar panel(s)."@en ;
                        rdfs:label "consist of panels"@en .
 
@@ -80,6 +81,7 @@ solar:consistsOfStrings rdf:type owl:ObjectProperty ;
 
 
 ###  controls
+###  controls
 solar:controls rdf:type owl:ObjectProperty ;
                 rdfs:domain solar:SolarTracker ;
                 rdfs:range infra:Equipment ;
@@ -87,6 +89,7 @@ solar:controls rdf:type owl:ObjectProperty ;
                 rdfs:label "controls"@en .
 
 
+###  subSystemOfInveter
 ###  subSystemOfInveter
 solar:subSystemOfInveter rdf:type owl:ObjectProperty ;
                           rdfs:subPropertyOf seas:subsytemOf ;
@@ -150,12 +153,14 @@ solar:TrackerRotationAxexNumber rdf:type owl:DatatypeProperty ;
                  rdfs:domain solar:Tracker;
                  rdfs:range xsd:integer ;
                  rdfs:label "Tracker Rotation Axes Number"^^xsd:string .
+                 rdfs:label "Tracker Rotation Axes Number"^^xsd:string .
 
 #################################################################
 #    Classes
 #################################################################
 
 
+###  CombinerBox
 ###  CombinerBox
 solar:CombinerBox rdf:type owl:Class ;
                    rdfs:subClassOf solar:PowerCabinet ;
@@ -204,6 +209,7 @@ solar:PowerCabinet rdf:type owl:Class ;
 
 
 ### PowerModule
+### PowerModule
 solar:PowerModule rdf:type owl:Class ;
                    rdfs:subClassOf solar:Inverter ;
                    rdfs:comment "A sub unit of PowerInverter with valves for three phases, together with unit control equipment, essential protective and switching devices, DC storage capacitors, phase reactors and auxiliaries, if any, used for conversion."@en ;
@@ -211,12 +217,14 @@ solar:PowerModule rdf:type owl:Class ;
 
 
 ### SolarArray
+### SolarArray
 solar:SolarArray rdf:type owl:Class ;
                   rdfs:subClassOf seas:SolarArray,infra:SystemOfInterest ;
                   rdfs:comment "Solar arrays consists of one or many strings of solar panels."@en ;
                   rdfs:label "Solar Array"@en .
 
 
+###  SolarPlant
 ###  SolarPlant
 solar:SolarPlant rdf:type owl:Class ;
                   rdfs:subClassOf infra:Site, infra:SystemOfInterest ,
@@ -226,12 +234,14 @@ solar:SolarPlant rdf:type owl:Class ;
 
 
 ###  SolarString
+###  SolarString
 solar:SolarString rdf:type owl:Class ;
                    rdfs:subClassOf seas:ElectricPowerProducer,infra:SystemOfInterest ;
                    rdfs:comment "Solar strings consist of one or many solar panels."@en ;
                    rdfs:label "Solar String"@en .
 
 
+###  SolarTracker
 ###  SolarTracker
 solar:SolarTracker rdf:type owl:Class ;
                     rdfs:subClassOf seas:SolarTracker,infra:SystemOfInterest;
@@ -240,6 +250,7 @@ solar:SolarTracker rdf:type owl:Class ;
 
 
 ###  Substation
+###  Substation
 solar:Substation rdf:type owl:Class ;
                   rdfs:subClassOf seas:ElectricPowerSystem ,infra:SystemOfInterest;
                   rdfs:comment "A collection of equipment for purposes other than generation or utilization, through which electric energy in bulk is passed for the purposes of switching or modifying its characteristics. "@en ;
@@ -247,12 +258,14 @@ solar:Substation rdf:type owl:Class ;
 
 
 ###  Transformer
+###  Transformer
 solar:Transformer rdf:type owl:Class ;
                    rdfs:subClassOf seas:ElectricPowerTransformer, infra:SystemOfInterest;
                    rdfs:comment "An electric power transformer is an electric power system that is capable of transforming electricity within a power network, between a primary connection point and a secondary connection point."@en ;
                    rdfs:label "Transformer"@en .
 
 
+###  WeatherStation
 ###  WeatherStation
 solar:WeatherStation rdf:type owl:Class ;
                    rdfs:subClassOf solar:Equipment, infra:SystemOfInterest ;
