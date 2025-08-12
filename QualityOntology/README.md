@@ -21,13 +21,23 @@
 
 ## Glossary
 
-* [**_qual:QualityMetric_**](https://w3id.org/omega-x/ontology/Quality/QualityMetric/): The class of quantifiable measures used to assess a quality attribute.
+* [**_qual:QualityAssessement_**](https://w3id.org/omega-x/QualityOntology/QualityAssessement/): The main class of quality descriptions for datasets. 
 
+* [**_qual:QualityMetric_**](https://w3id.org/omega-x/QualityOntology/QualityMetric/): The class of quantifiable measures used to assess a quality attribute.
+
+* [**_qual:QualityAttribute_**](https://w3id.org/omega-x/ontology/Quality/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
 * [**_qual:QualityAttribute_**](https://w3id.org/omega-x/ontology/Quality/QualityAttribute/): The class of attributes representing the degree to which data satisfy the requirements.
 
 * [**_qual:Aggregation_**](https://w3id.org/omega-x/ontology/Quality/Aggregation/): The class of functions applied to aggregate data such as sum of values or average
 
-* [**_qual:MeasuringProcedure_**](https://w3id.org/omega-x/ontology/Quality/MeasuringProcedure/): The class of procedures used to provide data
+* [**_qual:SpatialAggregationContext_**](https://w3id.org/omega-x/QualityOntology/SpatialAggregationContext/): The spatial aggregation context
+
+* [**_qual:TemporalAggregationContext_**](https://w3id.org/omega-x/QualityOntology/TemporalAggregationContext/): The temporal aggregation context
+
+* [**_qual:LogicalAggregationContext_**](https://w3id.org/omega-x/QualityOntology/LogicalAggregationContext/): The Logical aggregation context
+
+* [**_qual:MeasuringProcedure_**](https://w3id.org/omega-x/QualityOntology/MeasuringProcedure/): The class of procedures used to provide data
+
 ## OWL Description
 
 ![Diagram](./Quality.png)
@@ -48,3 +58,4 @@ If no aggregation indicated, the default interpretation can be to associate the 
 ### ISO 25012
 
 [ISO 25012](https://iso25000.com/index.php/en/iso-25000-standards/iso-25012)
+

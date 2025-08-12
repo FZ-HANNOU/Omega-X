@@ -11,10 +11,10 @@
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix schema: <http://schema.org/>.
-@prefix omegax: <https://w3id.org/omega-x/ontology> .
+@prefix omegax: <https://w3id.org/ontology/Omega-x-1.1> .
 
-<https://w3id.org/omega-x/ontology> a owl:Ontology , voaf:Vocabulary;
-                                             owl:versionIRI <https://w3id.org/omega-x/ontology> ;
+<https://w3id.org/ontology/Omega-x> a owl:Ontology , voaf:Vocabulary;
+                                             owl:versionIRI <https://w3id.org/ontology/Omega-x-1.1> ;
                                              dcterms:description """ Omega-X ontology """@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
@@ -25,27 +25,27 @@
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              
                                              dcterms:license <https://opensource.org/license/mit/> ;
-                                             dcterms:created "2024-02-02"^^xsd:date ;
-                                             dcterms:modified "2024-05-04"^^xsd:date;
-                                             dcterms:issued "2024-05-06"^^xsd:date;
+                                             dcterms:created "2025-01-02"^^xsd:date ;
+                                             dcterms:modified "2025-05-30"^^xsd:date;
+                                             dcterms:issued "2025-06-10"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Omega-X ontology"@en ;
-                                             vann:preferredNamespacePrefix "omegax" ;
-                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology> ;
+                                             vann:preferredNamespacePrefix "omega-x" ;
+                                             vann:preferredNamespaceUri <https://w3id.org/ontology/omega-x-1.1> ;
                                              rdfs:label "Omega-X Ontology"@en ;
-                                             owl:versionInfo "1.0" ; 
-                                             owl:imports <https://w3id.org/omega-x/ontology/EventsTimeSeries> , 
-                                                         <https://w3id.org/omega-x/ontology/EnergyDataSet> ,
-                                                         <https://w3id.org/omega-x/ontology/Infrastructure> ,
-                                                         <https://w3id.org/omega-x/ontology/Property> ,
-                                                         <https://w3id.org/omega-x/ontology/Quality> ,
-                                                         <https://w3id.org/omega-x/ontology/Scheduling> ,
-                                                         <https://w3id.org/omega-x/ontology/EnergyRole> ,
-                                                         <https://w3id.org/omega-x/ontology/EUMEDMetering> ,
-                                                         <https://w3id.org/omega-x/ontology/Flexibility> ,
-                                                         <https://w3id.org/omega-x/ontology/RenewableSolar> ,
-                                                         <https://w3id.org/omega-x/ontology/Electromobility> ,
-                                                         <https://w3id.org/omega-x/ontology/LocalEnergyCommunities> .
+                                             owl:versionInfo "1.1" ; 
+                                             owl:imports <https://w3id.org/omega-x/ontology/EventsTimeSeries-1.1/> , 
+                                                         <https://w3id.org/omega-x/ontology/EnergyDataSet-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Infrastructure-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Property-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Quality-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Scheduling-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/EnergyRole-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/EUMEDMetering-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Flexibility-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/RenewableSolar-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/Electromobility-1.1/> ,
+                                                         <https://w3id.org/omega-x/ontology/LocalEnergyCommunities-1.1/> .
 
 #---------------------------------------------------------------
 #    Annotation properties

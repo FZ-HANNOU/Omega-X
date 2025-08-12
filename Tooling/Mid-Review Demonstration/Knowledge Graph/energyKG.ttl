@@ -41,6 +41,7 @@ maia:MaiaEnergyprodCoverage a time:Interval ;
                     time:hasBeginning  [a time:Instant ; time:inXSDDateTimeStamp  "2023-01-01T00:00:00"^^xsd:dateTimeStamp ] ;
                     time:hasDurationDescription [ a time:DurationDescription ; time:years  "1"^^xsd:integrer] .
  
+ 
 # Evaluation Point
 maia:GueifãesControlSystem a eds:EvaluationPoint ;
     eds:hasLocation maia:GueifãesControlSystemLocation .
@@ -29428,3 +29429,20 @@ maia:MaiaEnergyBC a eds:BusinessContext .
 		ets:isElementOf maia:MaiaEnergyProd;
 		ets:aboutProperty seas:ElectricEnergyProperty.
 
+
+# Forme turtle extended
+kg:InverterAPower a prop:PropertyOfInterest ;
+				 prop:haspropertyValue kg:InverterAPowerValue.
+
+kg:InverterAPowerValue a prop:DataValue ; 
+				prop:value "20"^^xsd:Decimal . 
+
+
+kg:A a infra:SystemOfInterest, solar:Inverter ; 
+	 infra:hasSystemProperty kg:InverterAPower. 
+
+
+# Forme turtle optimisée
+kg:InverterAPower a prop:PropertyOfInterest ;
+				 prop:haspropertyValue [ a prop:DataValue ; 
+										prop:value "20"^^xsd:Decimal ]. 

@@ -31,7 +31,7 @@ This Electromobility Ontology contains four main classes:
 ## Glossary
 
 * Electric Vehicle Charging Station Pool: (source eMIP) A Charging Pool is a location where charging infrastructure elements can be found. A Charging Pool may contain several Charging Stations.
-* Electric Vehicle Charging Station: (source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the ìHuman-Machine Interfaceî (HMI) between the charge infrastructure and the end users.
+* Electric Vehicle Charging Station: (source eMIP) A Charging Station is a physical element, visible for the users, on which Charging Points are available. The Charging Station is also the ‚ÄúHuman-Machine Interface‚Äù (HMI) between the charge infrastructure and the end users.
 * Electric Vehicle Supply Equipment (EVSE): (source eMIP) A Charging Point, synonym of EVSE (Electric Vehicle Supply Equipment), is the energy supply element. An electrical vehicle can connect to a point on one of its connector. A Charging Point may have several Charging Connectors but only one vehicle could be charged at a time on a Charging Point.
 * Electric Vehicle Supply Equipment (EVSE) Connector: (source eMIP) A Connector related to an Electric Vehicle Supply Equipment (EVSE) that connects to the electric vehicle for the purpose of charging. It is an interface to deliver electricity.
  

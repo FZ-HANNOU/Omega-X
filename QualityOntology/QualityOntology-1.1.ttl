@@ -15,9 +15,13 @@
 @prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
 @prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
 @base <https://w3id.org/omega-x/ontology/Quality/> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
+@base <https://w3id.org/omega-x/ontology/Quality/> .
 
-<https://w3id.org/omega-x/ontology/Quality> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/ontology/QualityOntology-1.0> ;
+<https://w3id.org/omega-x/QualityOntology/> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/QualityOntology-1.1> ;
                                              dcterms:description """The quality ontology enables to describe quality dimensions associated with data. It can be : 
                                              - Aggregation Level: indicates the granularity of each data value, such as sum of values or average. Aggregation can be performed spatially, temporally or logically.
                                              - Quality Metrics: indicates the quality metrics attributes associated with data according to data quality dimensions defined by ISO 25012.
@@ -28,14 +32,14 @@
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ; ; 
                                              dcterms:license <https://opensource.org/license/mit/> ;
                                              dcterms:created "2024-03-14"^^xsd:date ;
-                                             dcterms:modified "2024-04-30"^^xsd:date;
-                                             dcterms:issued "2024-05-07"^^xsd:date; 
+                                             dcterms:modified "2025-05-14"^^xsd:date;
+                                             dcterms:issued "2025-05-23"^^xsd:date; 
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Quality ontology"@en ;
                                              vann:preferredNamespacePrefix "qual" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Quality> ;
                                              rdfs:label "Quality"@en ;
-                                             owl:versionInfo "1.0".
+                                             owl:versionInfo "1.1".
 
 #---------------------------------------------------------------
 #    Annotation properties
@@ -60,9 +64,13 @@ time:TemporalEntity a owl:Class .
 #----------------------------------------------------------------
 #    Classes
 #----------------------------------------------------------------
+qual:QualityAssessment a owl:Class ; 
+    rdfs:label "Quality Description"@en ; 
+    rdfs:comment "The class representing any quality description assertion that can apply to a dataset."@en . 
 
 #--- Aggregation level
 qual:Aggregation a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Aggregation"@en ;
     rdfs:comment "The class of functions applied to aggregate data such as sum of values or average."@en .
 
@@ -85,24 +93,24 @@ qual:QualityAttribute a owl:Class ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
 qual:QualityMetric a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Quality Metric"@en ;
     rdfs:comment "The class of quantifiable measures used to assess a quality attribute."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
 #--- Measuring procedure
 qual:MeasuringProcedure a owl:Class ;
+    rdfs:subClassOf qual:QualityAssessement ; 
     rdfs:label "Measurement Procedure"@en ;
     rdfs:comment "The class of procedures used to provide data"@en.
 
 
 #---Aggregation functions 
-qual:Sum a owl:Class ;
-    rdfs:subClassOf qual:Aggregation ;
+qual:Sum a qual:Aggregation ;
     rdfs:label "Sum"@en ;
     rdfs:comment "Sum aggregation function"@en .
 
-qual:Average a owl:Class ;
-    rdfs:subClassOf qual:Aggregation ;
+qual:Average a qual:Aggregation ;
     rdfs:label "Average"@en ;
     rdfs:comment "Average aggregation function."@en .
 
@@ -124,11 +132,11 @@ qual:Median a qual:Aggregation ;
 
 qual:FirstQuartile a qual:Aggregation ;
     rdfs:label "First Quartile"@en ;
-    rdfs:comment "First quartile aggregation function"@en.
+    rdfs:comment "First Quartile aggregation function"@en.
 
 qual:ThirdQuartile a qual:Aggregation ;
-    rdfs:label "Third Quartile"@en ;
-    rdfs:comment "Thrid quartile aggregation function"@en.
+    rdfs:label "Third quartile"@en ;
+    rdfs:comment "Thrid Quartile aggregation function"@en.
 
 qual:Cumulative a qual:Aggregation ;
     rdfs:label "Cumulative"@en ;
@@ -158,30 +166,27 @@ qual:Scheduling a qual:MeasuringProcedure ;
 
 #----Quality attributes
 
-qual:Completeness a owl:Class ;
-    rdfs:subClassOf qual:QualityAttribute ;
+qual:Completeness a qual:QualityAttribute ;
     rdfs:label "Completeness"@en ;
     rdfs:comment "The degree to which subject data associated with an entity has values for all expected attributes and related entity instances in a specific context of use."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
-qual:Accuracy a owl:Class ;
-    rdfs:subClassOf qual:QualityAttribute ;
+qual:Accuracy a qual:QualityAttribute ;
     rdfs:label "Accuracy"@en ;
     rdfs:comment "The degree to which data has attributes that correctly represent the true value of the intended attribute of a concept or event in a specific context of use.."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
-qual:Compliance a owl:Class ;
-    rdfs:subClassOf qual:QualityAttribute ;
+qual:Compliance a qual:QualityAttribute ;
     rdfs:label "Compliance"@en ;
     rdfs:comment "The degree to which data has attributes that adhere to standards, conventions or regulations in force and similar rules relating to data quality in a specific context of use.."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
-qual:Currentness rdfs:subClassOf qual:QualityAttribute ;
-    rdfs:label "Curentness"@en ;
+qual:Currentness a qual:QualityAttribute ;
+    rdfs:label "Currentness"@en ;
     rdfs:comment "The degree to which data has attributes that are of the right age in a specific context of use.."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
 
-qual:Consistency rdfs:subClassOf qual:QualityAttribute ;
+qual:Consistency a qual:QualityAttribute ;
     rdfs:label "Consistency"@en ;
     rdfs:comment "The degree to which data has attributes that are free from contradiction and are coherent with other data in a specific context of use. It can be either or both among data regarding one entity and across similar data for comparable entities.."@en ;
     rdfs:seeAlso <https://iso25000.com/index.php/en/iso-25000-standards/iso-25012>.
@@ -189,28 +194,46 @@ qual:Consistency rdfs:subClassOf qual:QualityAttribute ;
 
 
 # --- Quality Metrics
-qual:PercentOfMissingValues rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Completeness ;
+qual:PercentOfMissingValues rdfs:subClassOf qual:QualityMetric ,
+     [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Completeness
+                    ] ;
     rdfs:label "Percent of Missing Values"@en .
 
-qual:ErrorRate rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Compliance ;
+qual:ErrorRate rdfs:subClassOf qual:QualityMetric ,
+            [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Compliance
+                    ] ;
     rdfs:label "Error Rate"@en .
 
-qual:Precision rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Accuracy ;
+qual:Precision rdfs:subClassOf qual:QualityMetric ,
+                [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Accuracy
+                    ] ;
     rdfs:label "Precision"@en .
 
-qual:Recall rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Accuracy ;
+qual:Recall rdfs:subClassOf qual:QualityMetric ,
+    [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Accuracy
+                    ] ;
     rdfs:label "Recall"@en .
 
-qual:Latency rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Currentness ;
+qual:Latency rdfs:subClassOf qual:QualityMetric ,
+    [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Currentness
+                    ] ;
     rdfs:label "Latency"@en .
 
-qual:ConsistencyRate rdfs:subClassOf qual:QualityMetric ;
-    qual:evaluates qual:Consistency ;
+qual:ConsistencyRate rdfs:subClassOf qual:QualityMetric ,
+            [ a owl:Restriction ;
+                      owl:onProperty qual:evaluates ;
+                      owl:hasValue qual:Consistency
+                    ] ;
     rdfs:label "Consistency Rate"@en .
 
 
@@ -224,44 +247,26 @@ qual:evaluates a owl:ObjectProperty ;
     rdfs:domain qual:QualityMetric ;
     rdfs:range qual:QualityAttribute.
 
-# -- has aggregation kind
-qual:hasAggregationKind a owl:ObjectProperty ;
-    rdfs:label "has aggregation kind"@en ;
-    rdfs:domain ets:ValueSet ;
-    rdfs:range qual:Aggregation.
-
-# -- is provided using
-qual:isProvidedUsing a owl:ObjectProperty ;
-    rdfs:label "is provided using"@en ;
-    rdfs:domain ets:ValueSet ;
-    rdfs:range qual:MeasuringProcedure.
-
-# -- has quality metric
-qual:hasQualityMetric a owl:ObjectProperty ;
-    rdfs:label "has quality metric"@en ;
-    rdfs:domain ets:ValueSet ;
-    rdfs:range qual:QualityMetric.
-
 qual:hasTemporalContext a owl:ObjectProperty ;
     rdfs:label "has temporal context"@en ;
-    rdfs:domain ets:Aggregation ;
+    rdfs:domain qual:Aggregation ;
     rdfs:range qual:TemporalAggregationContext.
 
 qual:hasSpatialContext a owl:ObjectProperty ;
     rdfs:label "has spatial context"@en ;
-    rdfs:domain ets:Aggregation ;
+    rdfs:domain qual:Aggregation ;
     rdfs:range qual:SpatialAggregationContext.
 
 qual:hasLogicalContext a owl:ObjectProperty ;
     rdfs:label "has logical context"@en ;
-    rdfs:domain ets:Aggregation ;
+    rdfs:domain qual:Aggregation ;
     rdfs:range qual:LogicalAggregationContext.
 
 #----------------------------------------------------------------
 #    Datatype Properties
 #----------------------------------------------------------------
 qual:value a owl:DatatypeProperty ;
-            rdfs:domain ets:QualityMetric ;
+            rdfs:domain qual:QualityMetric ;
             rdfs:comment "The value of a quality metric."@en ;
             rdfs:label "value"@en .
 

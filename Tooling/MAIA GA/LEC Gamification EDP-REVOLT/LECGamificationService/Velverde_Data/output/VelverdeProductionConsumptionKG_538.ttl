@@ -5,9 +5,9 @@
 @prefix ql: <http://semweb.mmlab.be/ns/ql#> .
 @prefix qual: <https://w3id.org/omega-x/ontology/Quality/> .
 @prefix unit: <http://qudt.org/vocab/unit/>.
-@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
-@prefix ets: <https://w3id.org/omega-x/ontology/EventTimeSeries/> .
-@prefix eds: <https://w3id.org/omega-x/ontology/EnergyDataSet/> .
+@prefix prop: <https://w3id.org/omega-x/PropertyOntology/> .
+@prefix ets: <https://w3id.org/omega-x/EventTimeSeriesOntology/> .
+@prefix eds: <https://w3id.org/omega-x/EnergyDataSetsOntology/> .
 @prefix time: <http://www.w3.org/2006/time#> .
 @prefix lec: <https://w3id.org/omega-x/ontology/LocalEnergyCommunities/> .
 @prefix role: <https://w3id.org/omega-x/ontology/EnergyRole/>.

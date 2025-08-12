@@ -15,29 +15,34 @@
 @prefix qual: <https://w3id.org/omega-x/ontology/Quality> .
 @prefix prop: <https://w3id.org/omega-x/ontology/Property> .
 @prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries> .
+@prefix qual: <https://w3id.org/omega-x/ontology/Quality> .
+@prefix prop: <https://w3id.org/omega-x/ontology/Property> .
+@prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries> .
 
-<https://w3id.org/omega-x/ontology/EventsTimeSeries> a owl:Ontology ;
-                                             owl:versionIRI <https://w3id.org/omega-x/ontology/EventsTimeSeries-1.0> ;
+<https://w3id.org/omega-x/ontology/EventsTimeSeries/> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/EventsTimeSeries-1.1/> ;
+                                             owl:imports prop: , qual: ;
                                              dcterms:description """ Event and time series ontology describes the global structure of value sets. Value sets can be :
                                                 - Data points, elementary data structure that holds a data value and optional data time. 
                                                 - Events, elementary data structure that holds an event value and mandatory trigerring time. 
                                                 - Data collections, complex data structures that includes multiple data points. 
                                                 - Time series, timely ordered data collections. Time series include data points, events or data collections. They can be nested too. 
-                                             """@en ; 
+                                             """@en ;
                                              dcterms:creator <https://omega-x.eu/> ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
                                              dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              dcterms:license <https://opensource.org/license/mit/> ;
                                              dcterms:created "2023-11-11"^^xsd:date ;
-                                             dcterms:modified "2024-05-15"^^xsd:date;
-                                             dcterms:issued "2024-05-15"^^xsd:date;
+                                             dcterms:modified "2025-01-14"^^xsd:date;
+                                             dcterms:issued "2025-05-22"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
                                              dcterms:title "Event and Time Series ontology"@en ;
                                              vann:preferredNamespacePrefix "ets" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EventsTimeSeries> ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/EventsTimeSeries> ;
                                              rdfs:label "Event and Time Series Ontology"@en ;
-                                             owl:versionInfo "1.0".
+                                             owl:versionInfo "1.1".
 
 #---------------------------------------------------------------
 #    Annotation properties
@@ -64,51 +69,61 @@ time:TemporalEntity a owl:Class .
 #----------------------------------------------------------------
 
 #--Value Set 
-ets:ValueSet a owl:Class ;
+ets:ValueSet rdf:type owl:Class ;
           rdfs:comment "Container for a set of values. The four kinds of value set are: data points, data collections, events and time series."@en ;
           rdfs:label "Value Set"@en ;
-          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasTemporalContext; owl:someValuesFrom time:TemporalEntity] .
-
-#--Event 
-ets:Event a owl:Class ;
-       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:cause ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:someValuesFrom xsd:string] ;
-       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:state ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ; owl:someValuesFrom xsd:string] ;
-       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:triggeringTime ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-       rdfs:subClassOf ets:ValueSet ;
-       rdfs:comment "An occurrence of a change in the environement that happens at a specific time. "@en ;
-       rdfs:label "Event"@en .
+          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasTemporalContext; owl:someValuesFrom time:TemporalEntity] ;
+          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:rank; owl:maxCardinality "1"^^xsd:nonNegativeInteger] ;
+          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:creationTime; owl:maxCardinality "1"^^xsd:nonNegativeInteger] ;
+          rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:isElementOf;  owl:onClass ets:TimeSeries ; owl:maxQualifiedCardinality "1"^^xsd:nonNegativeInteger] .
 
 #--Data Collection
 ets:DataCollection a owl:Class ;
         rdfs:subClassOf ets:ValueSet ;
-        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:CollectionTime ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-        rdfs:comment "A data collection represents a set of data points, that share some common context. Data Collections may also have a common collection time."@en ;
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:collectionTime ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:collectionValuesCount;  owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:comprises;  owl:minCardinality "1"^^xsd:nonNegativeInteger ] ; 
+        rdfs:comment "A data collection represents a set of value sets, that share some common context. Data Collections may also have a common collection time."@en ;
         rdfs:label "Data Collection"@en .
 
 #--Time Series
 ets:TimeSeries a owl:Class ;
         rdfs:subClassOf ets:ValueSet ;
         rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasStep; owl:someValuesFrom time:Duration] ;
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:seriesElementsCount;  owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+        rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:isComposedOf;  owl:minCardinality "1"^^xsd:nonNegativeInteger ] ; 
         rdfs:comment "Value container for a time series. Time series elements can be regularly spaced (in time) with a fixed step."@en ;
         rdfs:label "Time Series"@en .
 
 #--Data Point
 ets:DataPoint a owl:Class ; 
       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:dataTime ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-      rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:rank ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+      rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasDataValue ; owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
       rdfs:subClassOf ets:ValueSet ; 
-      rdfs:comment "A data point with a unique value, and possible data time."@en ; 
+      rdfs:comment "A data point with possible data time. data points values are provided through Data value instance"@en ; 
       rdfs:label "Data Point"@en ;
       rdfs:isDefinedBy ets:.
 
-#--Property Value
-ets:PropertyValue a owl:Class ; 
+#--Event 
+ets:Event a owl:Class ;
+       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:cause ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:state ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:triggeringTime ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
+       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasEventValue ; owl:cardinality "1"^^xsd:nonNegativeInteger ] ;
+       rdfs:subClassOf ets:ValueSet ;
+       rdfs:comment "An occurrence of a change in the environement that happens at a specific time. Event values are provided through data value instance "@en ;
+       rdfs:label "Event"@en .
+
+#--Data Value
+ets:DataValue a owl:Class ; 
+      rdfs:comment "A data value is the entity providing the value of a data point or an event."@en ; 
       rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:value ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-     rdfs:subClassOf [ a owl:Restriction ; owl:onProperty ets:hasUnit; owl:someValuesFrom prop:Unit ; owl:maxCardinality "1"^^xsd:nonNegativeInteger ] ;
-      rdfs:comment "A property value is the value associated with a unique property and a unit of measurement."@en ; 
-      rdfs:label "Property Value"@en ;
+      rdfs:label "Data Value"@en ;
       rdfs:isDefinedBy ets:.
-            
+
+#--The following assertion enables the use of property values and data values, to ensure the conformity with previous version of the ontology. 
+ets:PropertyValue a owl:Class ; rdfs:subClassOf ets:DataValue. 
+     
 #--------------------------------------------------------------
 #    Object Properties
 #--------------------------------------------------------------
@@ -134,9 +149,9 @@ ets:isComposedOf a owl:ObjectProperty ;
 #--belongs to
 ets:belongsTo a owl:ObjectProperty, owl:FunctionalProperty ; 
              owl:inverseOf ets:comprises ;
-             rdfs:domain ets:DataPoint ; 
+             rdfs:domain ets:ValueSet ; 
              rdfs:range ets:DataCollection;
-             rdfs:comment "the relationship indicating the data collection to which the data point belongs."@en;
+             rdfs:comment "the relationship indicating the data collection to which the value set belongs."@en;
              rdfs:label "Belongs To"@en ;
              rdfs:isDefinedBy ets:.
 
@@ -144,45 +159,101 @@ ets:belongsTo a owl:ObjectProperty, owl:FunctionalProperty ;
 ets:comprises a owl:ObjectProperty ;
               owl:inverseOf ets:belongsTo ;
               rdfs:domain ets:DataCollection ;
-              rdfs:range ets:DataPoint ;
-              rdfs:comment "the relationship indicating data points comprised in a data collection."@en ;
+              rdfs:range ets:ValueSet ;
+              rdfs:comment "the relationship indicating value sets comprised in a data collection."@en ;
               rdfs:label "Comprises"@en ;
              rdfs:isDefinedBy ets: .
 
 #--has step
 ets:hasStep a owl:ObjectProperty ;
       rdfs:domain ets:TimeSeries ;
+      schema:rangeIncludes time:Duration ;
       rdfs:comment "The step between two elements of a time series. This value is only indicated for regular series."@en ;
       rdfs:label "Has Step"@en ;
       rdfs:isDefinedBy ets:.
 
-#--has quality
-ets:hasQuality a owl:ObjectProperty ;
-      rdfs:domain ets:ValueSet ;
-      rdfs:comment "The relationship indicating a quality value for a value set."@en ;
-      rdfs:label "Has Quality"@en ;
-      rdfs:isDefinedBy ets:.
 
 #--has data value
 ets:hasDataValue a owl:ObjectProperty, owl:FunctionalProperty ;
       rdfs:domain ets:DataPoint ;
-      rdfs:range ets:PropertyValue ; 
+      rdfs:range ets:DataValue ; 
       rdfs:comment "The relationship indicating a property value for a data point."@en ;
       rdfs:label "Has Data Value"@en .
 
 #--has event value
 ets:hasEventValue a owl:ObjectProperty, owl:FunctionalProperty ;
       rdfs:domain ets:Event ;
-      rdfs:range ets:PropertyValue ; 
+      rdfs:range ets:DataValue ; 
       rdfs:comment "The relationship indicating a property value for an event."@en ;
-      rdfs:label "Has Data Value"@en .
+      rdfs:label "Has Event Value"@en .
+
+#--has rank property
+ets:hasRankProperty a owl:ObjectProperty, owl:FunctionalProperty ;
+      rdfs:domain ets:RankDescription ;
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship identifying the property of interest described by data collections elements sharing the same rank."@en ;
+      rdfs:label "Has Rank property"@en .
+
+#--has rank property
+ets:hasRankUnit a owl:ObjectProperty, owl:FunctionalProperty ;
+      rdfs:domain ets:RankDescription ;
+      rdfs:range prop:Unit ; 
+      rdfs:comment "The relationship identifying the unit used by values of data collections elements sharing the same rank."@en ;
+      rdfs:label "Has Rank Unit"@en .
 
 #--temporal context
 ets:hasTemporalContext a owl:ObjectProperty ; 
       rdfs:domain ets:ValueSet ; 
-      rdfs:range time:TemporalEntity ; 
+      schema:rangeIncludes time:TemporalEntity ; 
       rdfs:comment "Associates a temporal context for value set coverage. This represents the timeseries entire coverage interval, a data point or an event validity time, i.e time period in which collected values still valid. "@en ; 
       rdfs:label "Has Temporal Context"@en.
+
+#--has Quality Metric
+ets:hasQualityMetric a owl:ObjectProperty ; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range qual:QualityMetric ; 
+      rdfs:comment "The relationship that indicates a quality metric for the value set "@en ; 
+      rdfs:label "Has Quality Metric"@en.
+
+#--has Aggregation Kind
+ets:hasAggregationKind a owl:ObjectProperty ; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range qual:Aggregation ; 
+      rdfs:comment "The relationship that indicates an aggregation kind for the value set "@en ; 
+      rdfs:label "Has Aggregation Kind"@en.
+
+#--is Proided Using
+ets:isProvidedUsing a owl:ObjectProperty ; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range qual:MeasuringProcedure ; 
+      rdfs:comment "The relationship that indicates a measuring procedure for the value set "@en ; 
+      rdfs:label "Is Provided Using"@en.
+
+#--is About Property
+ets:isAboutProperty a owl:ObjectProperty ; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship that identifies the property of interest described by the value set "@en ; 
+      rdfs:label "Is About Property"@en.
+
+ets:allAboutProperty a owl:ObjectProperty ; rdfs:subPropertyOf ets:isAboutProperty; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship that identifies the unique property of interest described by the value set "@en ; 
+      rdfs:label "All About Property"@en.
+
+ets:someAboutProperty a owl:ObjectProperty ; rdfs:subPropertyOf ets:isAboutProperty; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:PropertyOfInterest ; 
+      rdfs:comment "The relationship that identifies one property of interest among those described by the value set "@en ; 
+      rdfs:label "Some About Property"@en.
+
+#--has Unit
+ets:hasUnit a owl:ObjectProperty ; 
+      rdfs:domain ets:ValueSet ; 
+      rdfs:range prop:Unit ; 
+      rdfs:comment "The relationship that identifies the unit used in the value set"@en ; 
+      rdfs:label "Has Unit"@en.
 
 #--------------------------------------------------------------
 #    Datatype properties
@@ -194,12 +265,6 @@ ets:dataTime a owl:DatatypeProperty ;
       rdfs:comment "The data time indicating the value recording time."@en ;
       rdfs:label "Data Time"@en ;
              rdfs:isDefinedBy ets:.
-
-ets:rank a owl:DatatypeProperty ;
-       rdfs:domain ets:DataPoint;
-      rdfs:comment "The rank of a data point within a data collection if r"@en ;
-      rdfs:label "Rank"@en ;
-      rdfs:isDefinedBy ets:.
 
 #-----Data collection datatype properties---
 ets:collectionValuesCount a owl:DatatypeProperty ;
@@ -219,12 +284,14 @@ ets:collectionTime a owl:DatatypeProperty ;
 #-----Event datatype properties---
 ets:cause a owl:DatatypeProperty ;
       rdfs:domain ets:Event;
+      schema:rangeIncludes xsd:string ;
       rdfs:comment "The cause that triggered an event."@en ;
       rdfs:label "Cause"@en ;
       rdfs:isDefinedBy ets: .
 
 ets:state a owl:DatatypeProperty ;
       rdfs:domain ets:Event ;
+      schema:rangeIncludes xsd:string ;
       rdfs:comment "The state of a system following the occurence of an event."@en ;
       rdfs:label "State"@en ;
       rdfs:isDefinedBy ets:.
@@ -243,10 +310,12 @@ ets:seriesElementsCount a owl:DatatypeProperty ;
                 rdfs:label "Series Elements Count"@en .
 
 #-----ValueSet datatype properties---
-ets:identifier a owl:DatatypeProperty ;
-            rdfs:domain ets:ValueSet ;
-            rdfs:comment "The identifier of a value set ."@en ;
-            rdfs:label "Identifier"@en .
+ets:rank a owl:DatatypeProperty ;
+      rdfs:domain ets:ValueSet;
+      rdfs:range xsd:nonNegativeInteger ;
+      rdfs:comment "The rank of a value set within a data collection"@en ;
+      rdfs:label "Rank"@en ;
+      rdfs:isDefinedBy ets:.
 
 ets:name a owl:DatatypeProperty ;
       rdfs:domain ets:ValueSet ;
@@ -259,8 +328,15 @@ ets:creationTime a owl:DatatypeProperty ;
             rdfs:comment "Creation time refers to the timestamp when the value set is created."@en;
             rdfs:label "Creation Time"@en.    
 
-#----Property Value datatype properties
+#----DataValue datatype properties
 ets:value a owl:DatatypeProperty ;  
-            rdfs:domain ets:PropertyValue ;
-            rdfs:comment "The value associated with a property value ."@en ;
+            rdfs:domain ets:DataValue ;
+            rdfs:comment "The value of a data point or an event."@en ;
             rdfs:label "Value"@en .
+
+#----Rank Description datatype properties
+ets:describedRank a owl:DatatypeProperty ;  
+            rdfs:domain ets:RankDescription ;
+            rdfs:range xsd:nonNegativeInteger ;
+            rdfs:comment "The described rank refers to the rank of data collcetions described by RankDescription."@en ;
+            rdfs:label "Described Rank"@en .

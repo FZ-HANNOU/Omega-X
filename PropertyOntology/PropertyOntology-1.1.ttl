@@ -1,0 +1,180 @@
+@prefix cc: <http://creativecommons.org/ns#> .
+@prefix vs: <http://www.w3.org/2003/06/sw-vocab-status/ns#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix voaf: <http://purl.org/vocommons/voaf#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix qudt: <http://qudt.org/schema/qudt/>.
+@prefix mv: <http://schema.mobivoc.org/#>.
+@prefix plt: <https://w3id.org/platoon/>.
+@prefix schema: <http://schema.org/>.
+@prefix seas: <https://w3id.org/seas/>.
+@prefix skos: <http://www.w3.org/2004/02/skos/core#>.
+@prefix unit: <http://qudt.org/schema/qudt/Unit/>.
+@prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
+@prefix ets: <https://w3id.org/omega-x/Eventsontology/TimeSeries/> .
+@base <https://w3id.org/omega-x/ontology/Property/>.
+
+<https://w3id.org/omega-x/ontology/Property/> a owl:Ontology ;
+                                             owl:versionIRI <https://w3id.org/omega-x/ontology/Property-1.1/> ;
+                                             dcterms:description """The property ontology is a common module of the CSDM designed to provide a structured taxonomy for the properties of the energy domain.
+                                             It reuses a XkindXofInterest ontology design pattern to distinguish between properties used in knowledge graphs (propertyOfInterest) from those used as reference types in the taxonomy (PropertyKind).
+                                             propertyKind distinguishes two type of property kinds: 
+                                             - Quantitative properties: physical quantities associated to numerical values and unit of measures. 
+                                             - Qualitative properties: characteristics of real-world evaluated using non numerical categorical values.  
+                                             The property ontology includes a taxonomy of properties (skos:Concept), hierarchically related. """@en ; 
+                                             dcterms:creator <https://omega-x.eu/> ;
+                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
+                                             dcterms:created "2024-03-08"^^xsd:date ;
+                                             dcterms:modified "2025-05-14"^^xsd:date;
+                                             dcterms:issued "2025-05-23"^^xsd:date;
+                                             dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+                                             dcterms:title "Property ontology"@en ;
+                                             vann:preferredNamespacePrefix "prop" ;
+                                             vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property/>  ;
+                                             rdfs:label "Property"@en ;
+                                             owl:versionInfo "1.1".
+
+#---------------------------------------------------------------
+#    Annotation properties
+#--------------------------------------------------------------
+
+dcterms:contributor a owl:AnnotationProperty .
+dcterms:creator a owl:AnnotationProperty .
+dcterms:description a owl:AnnotationProperty .
+dcterms:issued a owl:AnnotationProperty .
+dcterms:license a owl:AnnotationProperty .
+dcterms:modified a owl:AnnotationProperty .
+dcterms:title a owl:AnnotationProperty .
+vann:preferredNamespacePrefix a owl:AnnotationProperty .
+vann:preferredNamespaceUri a owl:AnnotationProperty .
+owl:maxQualifiedCardinality a owl:AnnotationProperty .
+owl:qualifiedCardinality a owl:AnnotationProperty .
+vs:term_status a owl:AnnotationProperty .
+schema:domainIncludes a owl:AnnotationProperty .
+schema:rangeIncludes a owl:AnnotationProperty .
+time:TemporalEntity a owl:Class .
+unit:Unit rdfs:subClassOf qudt:Unit.
+unit:Unit rdfs:subClassOf prop:Unit.
+#----------------------------------------------------------------
+#    Classes
+#----------------------------------------------------------------
+#--Property
+prop:Property a owl:Class ;
+          rdfs:comment "A characteristic of the real world that can be observed or measured."@en ;
+          rdfs:label "Property"@en .
+
+#--Property kind
+prop:PropertyKind a owl:Class ;
+          rdfs:subClassOf skos:Concept ; 
+          rdfs:comment "A kind of property. This corresponds to XKind in the XKind XOfInterest Ontology Design Pattern.Property kind can be either quantitative or qualitative."@en ;
+          rdfs:label "Property Kind"@en .
+
+#--Property of interest
+prop:PropertyOfInterest a owl:Class ;
+          rdfs:subClassOf prop:Property ;       
+          rdfs:comment "A unique property in the real world. This corresponds to XofInterest in the XKind XOfInterest Ontology Design Pattern."@en ;
+          rdfs:label "Property of Interest"@en .
+
+#--Quantitative property 
+prop:QuantitativeProperty a owl:Class ;
+       rdfs:subClassOf prop:PropertyKind ; 
+       rdfs:comment "Physical quantities associated with numerical values and unit of measures"@en ;
+       rdfs:label "Quantitative property"@en .
+
+#--Qualitative property
+prop:QualitativeProperty a owl:Class ;
+        rdfs:subClassOf prop:PropertyKind ; 
+        owl:disjointWith prop:QuantitativeProperty ; 
+        rdfs:comment "A qualitative property is a characteristic of real world with possible values defined by a defined category. Qualitative properties have non numerical values."@en ;
+        rdfs:label "Qualitative Property"@en .
+
+#--Unit
+prop:Unit a owl:Class ;
+        rdfs:comment "A standard of measurement for quantities."@en ;
+        rdfs:label "Unit"@en .
+
+#--Category
+prop:Category a owl:Class ;
+        rdfs:comment "A class of categories, used to enumerate possible values of qualitative properties."@en ;
+        rdfs:label "Category"@en .
+
+#--Data value
+prop:DataValue a owl:Class ;
+				 rdfs:subClassOf [a owl:Restriction ;
+   		 		 owl:onProperty prop:value ;
+    			 owl:maxCardinality "1"^^xsd:nonNegativeInteger
+				] ;
+				rdfs:comment "A data value that can be either qualitative  (individual from prop:Category) or quantitative (defined through value datatype property)."@en ;
+				rdfs:label "Data Value"@en .
+
+#--------------------------------------------------------------
+#    Object Properties
+#--------------------------------------------------------------
+#--is Measured In
+prop:isMeasuredIn a owl:ObjectProperty ;
+        rdfs:domain prop:QuantitativeProperty ;
+        owl:disjointWith prop:isEvaluatedIn ;
+        rdfs:range prop:Unit ;
+        rdfs:comment "The relationship that associates a quantitative property with its measurement unit."@en ;
+        rdfs:label "Is Measured In"@en .
+
+#--is Evaluated In
+prop:isEvaluatedIn a owl:ObjectProperty ;
+        rdfs:domain prop:QualitativeProperty ;
+        owl:disjointWith prop:isMeasuredIn ;
+        rdfs:range prop:Category ;
+        rdfs:comment "The relationship that links a qualitative property with the category it is evaluated in."@en ;
+        rdfs:label "Is Evaluated In"@en .
+
+#--is Category Of
+prop:isCategoryOf a owl:ObjectProperty ;
+        rdfs:domain prop:Category ;
+		owl:inverseOf prop:isEvaluatedIn ;
+        rdfs:range prop:QualitativeProperty ;
+        rdfs:comment "The relationship that indicates for which qualitative property the category is defined."@en ;
+        rdfs:label "Is category Of"@en .
+
+#--is Value Of Qualitative Property
+prop:isValueOfQualitativeProperty a owl:ObjectProperty ;
+		rdfs:domain prop:Category ;
+		rdfs:range prop:Property ;
+		rdfs:comment "The relationship that indicates for which property the category is defined."@en ;
+		rdfs:label "Is Value Of Qualitative Property"@en .
+
+#--has Property Value
+prop:hasPropertyValue a owl:ObjectProperty ;
+		rdfs:domain prop:Property ;
+		rdfs:range prop:DataValue ;
+		rdfs:comment "The relationship that provide a data value (qualitative or quantitative) for a property."@en ;
+		rdfs:label "Has Property Value"@en .
+
+#--is Data Value Of
+prop:isDataValueOf a owl:ObjectProperty ;
+    rdfs:domain prop:DataValue ;
+    rdfs:range prop:PropertyOfInterest ;
+    rdfs:comment "The relationship linking a data value to the property of interest it describes."@en ;
+    rdfs:label "Is Data Value Of"@en .
+
+#--hasPropertyKind
+prop:hasPropertyKind a owl:ObjectProperty ;
+        rdfs:domain prop:PropertyOfInterest ;
+        rdfs:range prop:PropertyKind ;
+        rdfs:comment "The relationship that indicates a property kind (from the taxonomy) for a property of interest."@en ;
+        rdfs:label "Has Property Kind"@en .
+
+#--------------------------------------------------------------
+#    DataType Properties
+#--------------------------------------------------------------
+prop:value a owl:DatatypeProperty ;
+		rdfs:domain prop:DataValue ;
+		rdfs:comment "The value of the data value. It can be either a numerical value (for quantitative properties) or a categorical value (for qualitative properties)."@en ;
+		rdfs:label "value"@en .
