@@ -10,6 +10,7 @@
 @prefix voaf: <http://purl.org/vocommons/voaf#> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix time: <http://www.w3.org/2006/time#> .
+@prefix mv: <http://schema.mobivoc.org/#>.
 @prefix schema: <http://schema.org/>.
 @prefix seas: <https://w3id.org/seas/>.
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
