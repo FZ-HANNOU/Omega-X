@@ -16,7 +16,8 @@
 @prefix unit: <http://qudt.org/schema/qudt/Unit/>.
 @prefix prop: <https://w3id.org/omega-x/ontology/Property/> .
 @prefix ets: <https://w3id.org/omega-x/ontology/EventsTimeSeries/> .
-@prefix skos:  <http://www.w3.org/2004/02/skos/core#>. 
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#>.
+@prefix plt: <https://w3id.org/platoon/>.
 @base <https://w3id.org/omega-x/ontology/Property/>.
 
 <https://w3id.org/omega-x/ontology/Property/> a owl:Ontology ;
