@@ -30,13 +30,14 @@
                                              - Qualitative properties: characteristics of real-world evaluated using non numerical categorical values.  
                                              The property ontology includes a taxonomy of properties (skos:Concept), hierarchically related. """@en ; 
                                              dcterms:creator <https://omega-x.eu/> ;
-                                              dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
+                                             dcterms:contributor [a foaf:Person ; foaf:name "Fatma-Zohra Hannou" ] ; 
                                              dcterms:contributor [a foaf:Person ; foaf:name "Lina Nachabe" ] ;
                                              dcterms:contributor [a foaf:Person ; foaf:name "Maxime Lefrançois" ] ;
                                              dcterms:created "2024-03-08"^^xsd:date ;
                                              dcterms:modified "2025-05-14"^^xsd:date;
                                              dcterms:issued "2025-05-23"^^xsd:date;
                                              dcterms:rights "Copyright © Omega-X Consortium 2022-2025"@en ; 
+                                             dcterms:license <https://opensource.org/license/mit/> : 
                                              dcterms:title "Property ontology"@en ;
                                              vann:preferredNamespacePrefix "prop" ;
                                              vann:preferredNamespaceUri <https://w3id.org/omega-x/ontology/Property/>  ;
